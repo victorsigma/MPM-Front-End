@@ -30,3 +30,9 @@
 .button:active {
     transform: translateY(-1px);
 }
+
+.text-subtitle {
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
