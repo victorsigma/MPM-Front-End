@@ -1,0 +1,30 @@
+.content-project {
+    border-top: black 2px solid;
+    border-bottom: black 2px solid;
+}
+
+.content-project h1 {
+    font-size: 30px;
+}
+
+.button-options {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    margin-right: 5px;
+}
+
+.button-options:hover {
+    background-color: #0d6efd;
+    box-shadow: 0px 15px 20px #10499e;
+    color: #fff;
+}

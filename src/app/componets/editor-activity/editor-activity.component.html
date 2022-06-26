@@ -1,0 +1,83 @@
+<div class="modal fade" id="editActivity" tabindex="-1"
+    aria-labelledby="editActivityLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editActivityLabel">{{dataServiceModal.activity.title}}</h5>
+                <button type="button" class="btn-close"
+                    data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label" for="nameP">Change
+                            activity name</label>
+                        <input class="form-control" id="nameP"
+                            name="nameP"
+                            type="text" placeholder="{{dataServiceModal.activity.title}}"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1"
+                            class="form-label">Change description</label>
+                        <textarea class="form-control"
+                            id="exampleFormControlTextarea1" rows="3" placeholder="{{dataServiceModal.activity.subtitle}}"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Change status</label>
+                        <select class="form-select" aria-label="Default
+                            select example">
+                            <option value="1" [selected]="dataServiceModal.activity.status == 1">Unassigned</option>
+                            <option value="2" [selected]="dataServiceModal.activity.status == 2">In progress</option>
+                            <option value="3" [selected]="dataServiceModal.activity.status == 3">Completed</option>
+                        </select>
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Participating roles</label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="checkbox" [checked]="dataServiceModal.activity.rolesList.Leader" disabled
+                            class="form-check-input"
+                            id="exampleCheck1">
+                        <label class="form-check-label"
+                            for="exampleCheck1">Leader</label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="checkbox" [checked]="dataServiceModal.activity.rolesList.Analyst" class="form-check-input"
+                            id="exampleCheck2">
+                        <label class="form-check-label"
+                            for="exampleCheck2">Analyst</label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="checkbox" [checked]="dataServiceModal.activity.rolesList.Designer" class="form-check-input"
+                            id="exampleCheck3">
+                        <label class="form-check-label"
+                            for="exampleCheck3">Designer</label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="checkbox" [checked]="dataServiceModal.activity.rolesList.Programmer" class="form-check-input"
+                            id="exampleCheck4">
+                        <label class="form-check-label"
+                            for="exampleCheck4">Programmer</label>
+                    </div>
+                    <div class="mb-3">
+                        <label class="control-label" for="date">Completion
+                            date</label>
+                            <br>
+                            <label class="control-label" for="date">Actual date {{dataServiceModal.activity.dateEnd}}</label>
+                        <input class="form-control" id="date"
+                            name="date" placeholder="MM/DD/YYYY"
+                            type="text"/>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger"
+                            data-bs-dismiss="modal" (click)="removeActivity()">Remove</button>
+                        <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save
+                            changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

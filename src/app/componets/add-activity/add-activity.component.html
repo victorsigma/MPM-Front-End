@@ -1,0 +1,76 @@
+<div class="modal fade" id="addActivity" tabindex="-1"
+    aria-labelledby="addActivityLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addActivityLabel">Add Activity</h5>
+                <button type="button" class="btn-close"
+                    data-bs-dismiss="modal" (click)="addCancel()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form" (ngSubmit)="addActivity()">
+                    <div class="mb-3">
+                        <label class="form-label" for="nameActivity">Change
+                            activity name</label>
+                        <input class="form-control" required formControlName="title" maxlength="30" type="text" placeholder="Name Activity"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descriptionActivity"
+                            class="form-label">Change description</label>
+                        <textarea class="form-control" required formControlName="subtitle"
+                            id="descriptionActivity" rows="3" maxlength="150" placeholder="Description Activity"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="statusActivity">Change status</label>
+                        <select formControlName="status" class="form-select" id="statusActivity" name="statusActivity">
+                            <option value="1" selected >Unassigned</option>
+                            <option value="2">In progress</option>
+                            <option value="3">Completed</option>
+                        </select>
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Participating roles</label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="checkbox" checked disabled
+                            class="form-check-input"
+                            id="leadeCheck">
+                        <label class="form-check-label"
+                            for="leadeCheck">Leader</label>
+                    </div>
+                    <div class="mb-3">
+                        <input formControlName="rolesListAnalyst" type="checkbox" class="form-check-input"
+                            id="analystCheck">
+                        <label class="form-check-label"
+                            for="analystCheck">Analyst</label>
+                    </div>
+                    <div class="mb-3">
+                        <input formControlName="rolesListDesigner" type="checkbox" class="form-check-input"
+                            id="designerCheck">
+                        <label class="form-check-label"
+                            for="designerCheck">Designer</label>
+                    </div>
+                    <div class="mb-3">
+                        <input formControlName="rolesListProgrammer" type="checkbox" class="form-check-input"
+                            id="exampleCheck4">
+                        <label class="form-check-label"
+                            for="exampleCheck4">Programmer</label>
+                    </div>
+                    <div class="mb-3">
+                        <label class="control-label" for="dateEnd">Completion
+                            date</label>
+                        <input formControlName="dateEnd" required class="form-control" maxlength="10" id="dateEnd"
+                            name="date" placeholder="MM/DD/YYYY"
+                            type="text"/>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            data-bs-dismiss="modal" (click)="addCancel()">Close</button>
+                        <button type="submit" [disabled]="!this.form.valid" class="btn btn-primary" data-bs-dismiss="modal">Save
+                            changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
