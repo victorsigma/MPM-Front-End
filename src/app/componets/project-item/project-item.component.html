@@ -1,10 +1,10 @@
 <div class="card-aling card-center">
     <div class="card" style="width: 18rem;">
-        <img src="./assets/img/card/img_1.jpg"
+        <img src="./assets/img/card/{{project.src}}.jpg"
             class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Project 1</h5>
-            <p class="card-text">Project Description</p>
+            <h5 class="card-title">{{project.title}}</h5>
+            <p class="card-text text-subtitle">{{project.subtitle}}</p>
             <button class="button" (click)="openActivities()"> Go
                 project</button>
         </div>

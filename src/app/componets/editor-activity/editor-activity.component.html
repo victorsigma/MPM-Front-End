@@ -63,10 +63,10 @@
                         <label class="control-label" for="date">Completion
                             date</label>
                             <br>
-                            <label class="control-label" for="date">Actual date {{dataServiceModal.activity.dateEnd}}</label>
+                            <label class="control-label" for="date">Actual date {{dataServiceModal.activity.dateEnd.toLocaleDateString()}}</label>
                         <input class="form-control" id="date"
                             name="date" placeholder="MM/DD/YYYY"
-                            type="text"/>
+                            type="date"/>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger"

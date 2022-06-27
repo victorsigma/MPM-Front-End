@@ -10,18 +10,17 @@
             <div class="modal-body">
                 <form [formGroup]="form" (ngSubmit)="addActivity()">
                     <div class="mb-3">
-                        <label class="form-label" for="nameActivity">Change
-                            activity name</label>
+                        <label class="form-label" for="nameActivity">Activity name</label>
                         <input class="form-control" required formControlName="title" maxlength="30" type="text" placeholder="Name Activity"/>
                     </div>
                     <div class="mb-3">
                         <label for="descriptionActivity"
-                            class="form-label">Change description</label>
+                            class="form-label">Description Activity</label>
                         <textarea class="form-control" required formControlName="subtitle"
                             id="descriptionActivity" rows="3" maxlength="150" placeholder="Description Activity"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="statusActivity">Change status</label>
+                        <label class="form-label" for="statusActivity">Status</label>
                         <select formControlName="status" class="form-select" id="statusActivity" name="statusActivity">
                             <option value="1" selected >Unassigned</option>
                             <option value="2">In progress</option>
@@ -59,15 +58,12 @@
                     <div class="mb-3">
                         <label class="control-label" for="dateEnd">Completion
                             date</label>
-                        <input formControlName="dateEnd" required class="form-control" maxlength="10" id="dateEnd"
-                            name="date" placeholder="MM/DD/YYYY"
-                            type="text"/>
+                        <input formControlName="dateEnd" required class="form-control" id="dateEnd" name="dateEnd" placeholder="MM/DD/YYYY" type="date"/>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary"
                             data-bs-dismiss="modal" (click)="addCancel()">Close</button>
-                        <button type="submit" [disabled]="!this.form.valid" class="btn btn-primary" data-bs-dismiss="modal">Save
-                            changes</button>
+                        <button type="submit" [disabled]="!this.form.valid" class="btn btn-primary" data-bs-dismiss="modal">Add Activity</button>
                     </div>
                 </form>
             </div>

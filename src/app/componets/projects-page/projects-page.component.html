@@ -1,17 +1,20 @@
 <div>
-    <nav class="navbar">
-        <div class="container-fluid content-project">
-            <h1 class="navbar-brand">Projects</h1>
-            <ul class="navbar-nav d-flex">
-                <li class="nav-item">
-                    <button class="button-options"
-                        data-bs-toggle="modal"
-                        data-bs-target="#createProject" >Create <i class="fa-solid fa-plus"></i></button>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</div>
-<div>
-    <app-projects></app-projects>
+    <div>
+        <nav class="navbar">
+            <div class="container-fluid content-project">
+                <h1 class="navbar-brand">Projects</h1>
+                <ul class="navbar-nav d-flex">
+                    <li class="nav-item">
+                        <button class="button-options"
+                            data-bs-toggle="modal"
+                            data-bs-target="#createProject" >Create <i class="fa-solid fa-plus"></i></button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="container-fluid">
+        <app-project-item *ngFor="let project of projects" [project]="project"></app-project-item>
+    </div>
+    <app-add-project (newProject)="newProject($event)"></app-add-project>
 </div>

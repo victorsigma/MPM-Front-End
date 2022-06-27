@@ -1,9 +1,10 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { LsActivityService } from 'src/app/services/ls-activity.service';
 import { RolesListActivity } from '../../models/roles';
 import { ActivityData } from '../../models/ativities';
+import { ProjectData } from 'src/app/models/projects';
 
 @Component({
   selector: 'app-add-activity',
@@ -15,8 +16,9 @@ export class AddActivityComponent implements OnInit {
   form: FormGroup;
   activity: ActivityData = new ActivityData();
   @Output() newActivity: EventEmitter<ActivityData> = new EventEmitter();
+  @Input() project:ProjectData = new ProjectData();
 
-  constructor(private dataServiceLastActivity: LsActivityService, private toastr: ToastrService) {
+  constructor(private activityId: LsActivityService, private toastr: ToastrService) {
     this.form = new FormGroup(
       {
         title: new FormControl(),
@@ -35,7 +37,7 @@ export class AddActivityComponent implements OnInit {
 
   addActivity(): void {
     this.activity = {
-      id: this.dataServiceLastActivity.activity,
+      id: this.activityId.activity,
       title: this.form.get('title')?.value,
       subtitle: this.form.get('subtitle')?.value,
       src: 'img_'+this.random(1, 7),
@@ -47,7 +49,7 @@ export class AddActivityComponent implements OnInit {
         this.form.get('rolesListDesigner')?.value,
         this.form.get('rolesListProgrammer')?.value
       ),
-      projectId: 0
+      projectId: this.project.id
     }
 
     this.newActivity.emit(this.activity);

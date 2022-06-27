@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivityData } from '../../models/ativities';
 import { ActivityDataService } from 'src/app/services/activity-data.service';
-import { EditorActivityComponent } from '../editor-activity/editor-activity.component';
+import { ProjectData } from '../../models/projects';
 
 @Component({
   selector: 'app-activity-item',
@@ -11,9 +11,12 @@ import { EditorActivityComponent } from '../editor-activity/editor-activity.comp
 export class ActivityItemComponent implements OnInit {
 
   data = new ActivityData();
+  
 
   @Input() activity:ActivityData = new ActivityData();
-  constructor(private dataServiceModal: ActivityDataService) { }
+  @Input() project:ProjectData = new ProjectData();
+  constructor(private dataServiceModal: ActivityDataService) { 
+  }
 
   ngOnInit(): void {
   }
@@ -21,6 +24,5 @@ export class ActivityItemComponent implements OnInit {
   onModalData(): void {
     this.dataServiceModal.activity = this.activity;
     this.data = this.dataServiceModal.activity;
-    console.log(this.dataServiceModal.activity);
   }
 }
