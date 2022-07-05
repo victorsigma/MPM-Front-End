@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/cor
 import { FormGroup, FormControl } from '@angular/forms';
 import { LoginDataService } from '../../services/login-data.service';
 import { UsersListService } from '../../services/users-list.service';
+import { UserData } from '../../models/users';
 
 @Component({
   selector: 'app-login-section',
@@ -11,6 +12,8 @@ import { UsersListService } from '../../services/users-list.service';
 export class LoginSectionComponent implements OnInit {
 
   isLogin: boolean = false;
+  users: UserData[] = [];
+  user: UserData = new UserData();
   form: FormGroup = new FormGroup({
     user: new FormControl(),
     password: new FormControl()
@@ -24,11 +27,15 @@ export class LoginSectionComponent implements OnInit {
   }
 
   isLoginDataTrue(): void {
-    this.userList.usersList.filter((obj)=> {
-      return obj.userId == this.form.get('user')?.value && obj.password == this.form.get('user')?.value
+    /*this.users = this.userList.usersList.filter((obj)=> {
+      return obj.userId === this.form.get('user')?.value
     })
-    this.loginData.isLogin = true;
-    this.loginDate.emit()
+    this.user = this.users[0];
+    console.log(this.userList.usersList)*/
+    //if (this.user.userId == this.form.get('user')?.value && this.user.password == this.form.get('user')?.value) {
+      this.loginData.isLogin = true;
+      this.loginDate.emit()
+    //}
   }
   isLoginDataFalse(): void {
     this.loginData.isLogin = false;
