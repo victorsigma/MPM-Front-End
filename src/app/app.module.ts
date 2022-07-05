@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AddProjectComponent } from './componets/add-project/add-project.component';
+import { WhiteComponent } from './componets/white/white.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AddProjectComponent } from './componets/add-project/add-project.compone
     ActivityItemComponent,
     EditorActivityComponent,
     AddActivityComponent,
-    AddProjectComponent
+    AddProjectComponent,
+    WhiteComponent
   ],
   imports: [
     BrowserModule,

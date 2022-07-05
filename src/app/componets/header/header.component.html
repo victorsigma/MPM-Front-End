@@ -18,21 +18,33 @@
                             routerLink="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/projects">Projects</a>
+                        <a class="nav-link" routerLink="/projects"  [class.disabled]="isLogin == false">Projects</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav d-flex">
+                <ul class="navbar-nav d-flex" *ngIf="isLogin == false">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
                             href="" data-bs-toggle="modal"
                             data-bs-target="#registerModal">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="inicio_secion.html" data-bs-toggle="modal"
+                        <a class="nav-link" href="" data-bs-toggle="modal"
                         data-bs-target="#loginModal">Login</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav d-flex" *ngIf="isLogin == true">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page"
+                        routerLink="/" (click)="logout()">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/">Account</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 </header>
+
+<app-register-section></app-register-section>
+<app-login-section (loginDate)="loginDate()"></app-login-section>

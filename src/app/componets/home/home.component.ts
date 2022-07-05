@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginDataService } from '../../services/login-data.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  isLogin: boolean;
+  constructor(public loginData: LoginDataService) { 
+    this.isLogin = this.loginData.isLogin;
+  }
 
   ngOnInit(): void {
+    
   }
 
 }

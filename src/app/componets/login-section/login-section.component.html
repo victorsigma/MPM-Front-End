@@ -5,11 +5,11 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="loginModalLabel">Login</h5>
                 <button type="button" class="btn-close"
-                    data-bs-dismiss="modal" aria-label="Close"></button>
+                    data-bs-dismiss="modal" aria-label="Close" (click)="isLoginDataFalse()"></button>
             </div>
 
             <div class="modal-body">
-                <form>
+                <form [formGroup]="form" (ngSubmit)="isLoginDataTrue()">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email
                             address - Username</label>
@@ -32,8 +32,7 @@
                             me out</label>
                     </div>
                     <div class="list-group card-body">
-                        <button type="submit" class="btn btn-primary"
-                            onclick="location.href='index.html'">Login</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" class="btn btn-primary">Login</button>
                     </div>
                 </form>
             </div>

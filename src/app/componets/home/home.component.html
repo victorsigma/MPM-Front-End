@@ -11,18 +11,17 @@
                         class="btn btn-lg bd-btn-lg btn-bd-primary
                         d-flex align-items-center justify-content-center
                         fw-semibold" data-bs-toggle="modal"
-                        data-bs-target="#registerModal">
+                        data-bs-target="#registerModal" [class.btn-ghost] = "isLogin == true" [class.disabled]="isLogin == true">
                         Create Account
                     </a>
                     <a
                         href="inicio_secion.html"
                         class="btn btn-lg bd-btn-lg
                         btn-outline-secondary" data-bs-toggle="modal"
-                        data-bs-target="#loginModal">
+                        data-bs-target="#loginModal" [class.btn-ghost] = "isLogin == true" [class.disabled]="isLogin == true">
                         Login Account
                     </a>
                 </div>
-
             </div>
         </div>
     </div>
