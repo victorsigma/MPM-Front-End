@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import {v4 as uuidv4} from 'uuid';
 import { LsActivityService } from 'src/app/services/ls-activity.service';
 import { RolesListActivity } from '../../models/roles';
 import { ActivityData } from '../../models/ativities';
@@ -18,7 +19,7 @@ export class AddActivityComponent implements OnInit {
   @Output() newActivity: EventEmitter<ActivityData> = new EventEmitter();
   @Input() project:ProjectData = new ProjectData();
 
-  constructor(private activityId: LsActivityService, private toastr: ToastrService) {
+  constructor(private toastr: ToastrService) {
     this.form = new FormGroup(
       {
         title: new FormControl(),
@@ -37,7 +38,7 @@ export class AddActivityComponent implements OnInit {
 
   addActivity(): void {
     this.activity = {
-      id: this.activityId.activity,
+      id: uuidv4()/*this.activityId.activity*/,
       title: this.form.get('title')?.value,
       subtitle: this.form.get('subtitle')?.value,
       src: 'img_'+this.random(1, 7),

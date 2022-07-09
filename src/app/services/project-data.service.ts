@@ -7,6 +7,5 @@ import { ProjectData } from '../models/projects';
 export class ProjectDataService {
 
   project:ProjectData = new ProjectData();
-  lsProject:number = 0;
   constructor() { }
 }

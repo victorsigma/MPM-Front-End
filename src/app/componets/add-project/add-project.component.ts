@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import {v4 as uuidv4} from 'uuid';
 import { ProjectData } from '../../models/projects';
 import { ProjectDataService } from '../../services/project-data.service';
 
@@ -29,7 +30,7 @@ export class AddProjectComponent implements OnInit {
 
   createProject(): void {
     this.project = {
-      id: this.projectId.lsProject,
+      id: uuidv4(),
       title: this.form.get('title')?.value,
       subtitle: this.form.get('subtitle')?.value,
       src: 'img_'+this.random(1, 7),

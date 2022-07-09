@@ -1,5 +1,5 @@
 export class ProjectData {
-    id: number = 0;
+    id: string = '';
     title: string = '';
     subtitle:string = '';
     src:string = '';
