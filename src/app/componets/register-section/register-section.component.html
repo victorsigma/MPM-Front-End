@@ -9,47 +9,33 @@
             </div>
 
             <div class="modal-body">
-                <form>
+                <form [formGroup]="form" (ngSubmit)="isRegisterDataTrue()">
                     <div class="mb-3">
-                        <label for="exampleInputUserName1" class="form-label">User Name</label>
+                        <label for="userName" class="form-label">User Name</label>
                         <input type="text" class="form-control"
-                            id="exampleInputUserName1"
-                            aria-describedby="emailHelp">
+                            id="userName" formControlName="user" required>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email
+                        <label for="email" class="form-label">Email
                             address</label>
                         <input type="email" class="form-control"
-                            id="exampleInputEmail1"
-                            aria-describedby="emailHelp">
+                            id="email" formControlName="email" required>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPhoneNumber1" class="form-label">Phone Number</label>
-                        <input type="text" value="null" class="form-control"
-                            id="exampleInputPhoneNumber1"
-                            aria-describedby="emailHelp">
+                        <label for="phoneNumber" class="form-label">Phone Number</label>
+                        <input type="text" value="" class="form-control"
+                            id="phoneNumber" formControlName="phone">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control"
-                            id="exampleInputPassword1">
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input"
-                            id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check
-                            me out</label>
+                            id="password" formControlName="password" required>
                     </div>
                     <div class="list-group card-body">
-                        <button type="submit" class="btn btn-primary"
-                            onclick="location.href='index.html'">Submit</button>
+                        <button type="submit" [disabled]="!this.form.valid" data-bs-dismiss="modal" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-<!--
-    class="modal fade"
--->
