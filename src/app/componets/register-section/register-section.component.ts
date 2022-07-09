@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { AES,enc } from 'crypto-js';
+import { AES } from 'crypto-js';
 import { ToastrService } from 'ngx-toastr';
 import { UserData } from '../../models/users';
 import {v4 as uuidv4} from 'uuid';

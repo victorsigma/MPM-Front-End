@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { UserData } from '../models/users';
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class LoginDataService {
 
   isLogin: boolean = false;
+  usersList: UserData[] = [];
   constructor() {
   }
 }

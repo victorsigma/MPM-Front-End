@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AES, enc } from 'crypto-js';
+import { ToastrService } from 'ngx-toastr';
 import { LoginDataService } from '../../services/login-data.service';
 import { UsersListService } from '../../services/users-list.service';
 import { UserData } from '../../models/users';
@@ -20,7 +21,7 @@ export class LoginSectionComponent implements OnInit {
   });
 
   @Output() loginDate: EventEmitter<null> = new EventEmitter();
-  constructor(private loginData: LoginDataService, private userList: UsersListService) {
+  constructor(private loginData: LoginDataService, private userList: UsersListService, private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -33,23 +34,12 @@ export class LoginSectionComponent implements OnInit {
       })
       if (this.users[0] != undefined) {
         if (AES.decrypt(this.users[0].password,this.userList.encryptionKey).toString(enc.Utf8) == this.form.get('password')?.value) {
-          this.loginData.isLogin = true;
-          this.loginDate.emit();
-          this.form = new FormGroup({
-            user: new FormControl(),
-            password: new FormControl()
-          });
+          this.loggingUser();
         } else {
-          this.form = new FormGroup({
-            user: new FormControl(),
-            password: new FormControl()
-          });
+          this.toastr.error('Incorrect data connection error.', 'Operation Canceled');
         }
       } else {
-        this.form = new FormGroup({
-          user: new FormControl(),
-          password: new FormControl()
-        });
+        this.toastr.error('Incorrect data connection error.', 'Operation Canceled');
       }
     } else {
       this.users = this.userList.usersList.filter((obj) => {
@@ -57,25 +47,15 @@ export class LoginSectionComponent implements OnInit {
       })
       if (this.users[0] != undefined) {
         if (AES.decrypt(this.users[0].password,this.userList.encryptionKey).toString(enc.Utf8) == this.form.get('password')?.value) {
-          this.loginData.isLogin = true;
-          this.loginDate.emit();
-          this.form = new FormGroup({
-            user: new FormControl(),
-            password: new FormControl()
-          });
+          this.loggingUser();
         } else {
-          this.form = new FormGroup({
-            user: new FormControl(),
-            password: new FormControl()
-          });
+          this.toastr.error('Incorrect data connection error.', 'Operation Canceled');
         }
       } else {
-        this.form = new FormGroup({
-          user: new FormControl(),
-          password: new FormControl()
-        });
+        this.toastr.error('Incorrect data connection error.', 'Operation Canceled');
       }
     }
+    this.reloadForm();
   }
   isLoginDataFalse(): void {
     this.loginData.isLogin = false;
@@ -84,5 +64,20 @@ export class LoginSectionComponent implements OnInit {
 
   ngOnDestroy(): void {
 
+  }
+
+
+  reloadForm() {
+    this.form = new FormGroup({
+      user: new FormControl(),
+      password: new FormControl()
+    });
+  }
+
+  loggingUser() {
+    this.toastr.success('Successfully logged.', 'Operation Completed');
+    this.loginData.isLogin = true;
+    this.loginData.usersList = this.users;
+    this.loginDate.emit();
   }
 }

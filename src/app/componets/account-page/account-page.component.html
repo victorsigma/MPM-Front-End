@@ -1,0 +1,158 @@
+<div *ngIf="loginData.isLogin">
+    <nav class="nv-projct navbar">
+        <div class="container-fluid content-project">
+            <h1 class="navbar-brand">Account</h1>
+        </div>
+    </nav>
+
+    <div class="d-flex align-items-start nav-ver-margin">
+        <div class="nav flex-column nav-pills me-3" id="v-pills-tab"
+            role="tablist" aria-orientation="vertical">
+            <button class="nav-link nav-link-margin active"
+                id="v-pills-information-tab"
+                data-bs-toggle="pill" data-bs-target="#v-pills-information"
+                type="button" role="tab" aria-controls="v-pills-information"
+                aria-selected="false">Information</button>
+            <button class="nav-link nav-link-margin"
+                id="v-pills-update-information-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#v-pills-update-information"
+                type="button" role="tab"
+                aria-controls="v-pills-update-information"
+                aria-selected="false">Update Information</button>
+        </div>
+        <div class="tab-content col-4" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-information"
+                role="tabpanel"
+                aria-labelledby="v-pills-information-tab" tabindex="0">
+                <div class="container">
+                    <div class="row">
+                        <div class="">
+                            <form>
+                                <div class="mb-1">
+                                    <label class="form-label" for="name">Information</label>
+                                </div>
+                                <div class="mb-1">
+                                    <label class="form-label" for="name">Username</label>
+                                    <input class="form-control" name="name"
+                                        type="text" disabled
+                                        placeholder="{{loginData.usersList[0].userName}}"
+                                        />
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="email">Email
+                                        address</label>
+                                    <input class="form-control" name="email"
+                                        type="text" disabled
+                                        placeholder="{{loginData.usersList[0].userMail}}"
+                                        />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password"
+                                        class="form-label">Password</label>
+                                    <input type="password" class="form-control"
+                                        disabled placeholder="*******">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="v-pills-update-information"
+                role="tabpanel"
+                aria-labelledby="v-pills-update-information-tab"
+                tabindex="0">
+                <div class="account-container container-fluid">
+                    <form [formGroup]="formName" (ngSubmit)="updateName()">
+                        <div class="mb-1">
+                            <label class="form-label">Information</label>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="name-update">Username</label>
+                            <input class="form-control" id="name-update"
+                                name="name-update"
+                                type="text" formControlName="userName"
+                                placeholder="{{loginData.usersList[0].userName}}"
+                                required/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="name-update">Confirm
+                                Username</label>
+                            <input class="form-control" id="name-update"
+                                name="name-update"
+                                type="text" formControlName="userNameConfirm"
+                                placeholder="{{loginData.usersList[0].userName}}"
+                                required/>
+                        </div>
+                        <div class="list-group card-body">
+                            <button type="submit"
+                                [disabled]="!this.formName.valid" class="btn
+                                btn-primary" data-bs-dismiss="modal" class="btn
+                                btn-primary">Update</button>
+                        </div>
+                    </form>
+                    <hr>
+                    <form [formGroup]="formEmail" (ngSubmit)="updateEmail()">
+                        <div class="mb-3">
+                            <label class="form-label" for="email-update">Email
+                                address</label>
+                            <input class="form-control" id="email-update"
+                                name="email-update"
+                                type="email" formControlName="userEmail"
+                                placeholder="{{loginData.usersList[0].userMail}}"
+                                required/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="c-email-update">Confirm
+                                Email
+                                address</label>
+                            <input class="form-control" id="c-email-update"
+                                name="c-email-update"
+                                type="email" formControlName="userEmailConfirm"
+                                placeholder="{{loginData.usersList[0].userMail}}"
+                                required/>
+                        </div>
+                        <div class="list-group card-body">
+                            <button type="submit"
+                                [disabled]="!this.formEmail.valid" class="btn
+                                btn-primary" data-bs-dismiss="modal" class="btn
+                                btn-primary">Update</button>
+                        </div>
+                    </form>
+                    <hr>
+                    <form [formGroup]="formPassword"
+                        (ngSubmit)="updatePassword()">
+                        <div class="mb-3">
+                            <label for="password-update" class="form-label">Password</label>
+                            <input type="password" class="form-control"
+                                id="password-update"
+                                formControlName="userPassword"
+                                placeholder="Password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="c-password-update" class="form-label">Confirm
+                                Password</label>
+                            <input type="password" class="form-control"
+                                id="c-password-update"
+                                formControlName="userPasswordConfirm"
+                                placeholder="Password" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input"
+                                id="check-password">
+                            <label class="form-check-label" for="check-password"
+                                required>Check me out</label>
+                        </div>
+                        <div class="list-group card-body">
+                            <button type="submit"
+                                [disabled]="!this.formPassword.valid" class="btn
+                                btn-primary" data-bs-dismiss="modal" class="btn
+                                btn-primary">Update</button>
+                        </div>
+                    </form>
+                    <br>
+                    <br>
+                </div></div>
+        </div>
+    </div>
+</div>

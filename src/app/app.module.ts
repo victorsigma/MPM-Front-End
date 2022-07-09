@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AddProjectComponent } from './componets/add-project/add-project.component';
 import { WhiteComponent } from './componets/white/white.component';
+import { AccountPageComponent } from './componets/account-page/account-page.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { WhiteComponent } from './componets/white/white.component';
     EditorActivityComponent,
     AddActivityComponent,
     AddProjectComponent,
-    WhiteComponent
+    WhiteComponent,
+    AccountPageComponent
   ],
   imports: [
     BrowserModule,

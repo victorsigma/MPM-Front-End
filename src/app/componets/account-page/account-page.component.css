@@ -1,0 +1,24 @@
+.container {
+    padding: 1em;
+}
+
+.nav-link-margin {
+    margin-top: 20px;
+}
+
+.nav-ver-margin {
+    margin-left: 10px;
+}
+
+.content-project {
+    border-top: black 2px solid;
+    border-bottom: black 2px solid;
+}
+
+.content-project h1 {
+    font-size: 30px;
+}
+
+.account-container {
+    width: 100%;
+}

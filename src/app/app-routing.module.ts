@@ -4,6 +4,7 @@ import { HomeComponent } from './componets/home/home.component';
 import { ProjectsPageComponent } from './componets/projects-page/projects-page.component';
 import { ActivitiesPageComponent } from './componets/activities-page/activities-page.component';
 import { WhiteComponent } from './componets/white/white.component';
+import { AccountPageComponent } from './componets/account-page/account-page.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'reload',
     component: WhiteComponent
+  },
+  {
+    path: 'account',
+    component: AccountPageComponent
   }
 ];
 
