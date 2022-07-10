@@ -8,6 +8,8 @@ import { ProjectDataService } from 'src/app/services/project-data.service';
 import { ActivityListService } from '../../services/activity-list.service';
 import { LoginDataService } from '../../services/login-data.service';
 import { UpdateDataService } from '../../services/update-data.service';
+import { UsersProjectsService } from 'src/app/services/users-projects.service';
+import { ProjectsHasUser } from 'src/app/models/projectsHasUser';
 
 @Component({
   selector: 'app-activities-page',
@@ -18,44 +20,52 @@ export class ActivitiesPageComponent implements OnInit {
   project: ProjectData = new ProjectData();
 
   public update: Subject<void> = new Subject<void>();
+  loginRol:  ProjectsHasUser[] = [];
   constructor(
     private toastr: ToastrService,
     private dataActivities: ActivityDataService,
     public projectData: ProjectDataService,
     public activityList: ActivityListService,
     public loginData: LoginDataService,
-    private emitter: UpdateDataService
+    private emitter: UpdateDataService,
+    private members: UpdateDataService,
+    private userMember: UsersProjectsService
   ) {
-    this.reloadActivities();
+    this.filterRol();
     this.project = this.projectData.project;
+
+    this.loginRol = this.userMember.projectMembers.filter(data => {
+      return data.proyects_id_p == projectData.project.id && data.user_id_user == loginData.usersList[0].userId
+    })
+
   }
 
   ngOnInit(): void {
   }
 
-  test() {
-  }
-
   newActivity(activity: ActivityData) {
-    this.activityList.activities.push(activity);
+    this.activityList.activitiesMaster.push(activity);
     console.log(activity);
-    this.reloadActivities();
-    this.activityList.reloadActivities();
+    this.filterRol();
     this.toastr.success(activity.subtitle, 'Add ' + activity.title);
   }
 
   deletActivity(index: number) {
-    this.activityList.activities.splice(index, 1);
-    this.reloadActivities();
-    this.activityList.reloadActivities();
+    this.activityList.activitiesMaster.splice(index, 1);
+    this.filterRol();
     this.toastr.error('The activity was eliminated.', 'Remove Activity');
   }
 
-  reloadActivities() {
-    this.dataActivities.activities = this.activityList.activities;
+  filterRol() {
+    this.activityList.filterRol();
+    this.dataActivities.activities = this.activityList.activitiesMaster;
   }
 
   updateData() {
     this.emitter.emitirEvento();
+  }
+
+  updateMembers() {
+    this.members.emitirEvento();
   }
 }

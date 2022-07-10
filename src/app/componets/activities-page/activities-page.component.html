@@ -3,16 +3,16 @@
         <div class="container-fluid content-project">
             <h1 class="navbar-brand">{{project.title}}</h1>
             <ul class="navbar-nav d-flex">
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="loginRol[0].roles_id_rol == 0">
                     <button class="button-options"
                         data-bs-toggle="modal"
-                        data-bs-target="#exampleModa2">Options</button>
+                        data-bs-target="#projectOptions">Options</button>
+                    <button class="button-options" (click)="updateMembers()"
+                        data-bs-toggle="modal"
+                        data-bs-target="#projectMembers">Members</button>
                     <button class="button-options"
                         data-bs-toggle="modal"
-                        data-bs-target="#exampleModa3">Members</button>
-                    <button class="button-options"
-                        data-bs-toggle="modal"
-                        data-bs-target="#addActivity" (click)="test()" >Add <i class="fa-solid fa-plus"></i></button>
+                        data-bs-target="#addActivity">Add <i class="fa-solid fa-plus"></i></button>
                 </li>
             </ul>
         </div>
@@ -50,31 +50,34 @@
                 role="tabpanel"
                 aria-labelledby="v-pills-unassigned-tab" tabindex="0">
                 <div class="container-fluid">
-                    <app-activity-item (update)="updateData()" *ngFor="let activity of activityList.activitiesUn" [activity]="activity" [project]="project"></app-activity-item>
+                    <app-activity-item (update)="updateData()" *ngFor="let activity of activityList.activitiesUn" [activity]="activity" [project]="project" [loginRol]="loginRol[0]"></app-activity-item>
                 </div>
             </div>
             <div class="tab-pane fade" id="v-pills-in-progress"
                 role="tabpanel"
                 aria-labelledby="v-pills-in-progress-tab" tabindex="0">
                 <div class="container-fluid">
-                    <app-activity-item (update)="updateData()" *ngFor="let activity of activityList.activitiesIn" [activity]="activity" [project]="project"></app-activity-item>
+                    <app-activity-item (update)="updateData()" *ngFor="let activity of activityList.activitiesIn" [activity]="activity" [project]="project" [loginRol]="loginRol[0]"></app-activity-item>
                 </div>
             </div>
             <div class="tab-pane fade" id="v-pills-completed"
                 role="tabpanel"
                 aria-labelledby="v-pills-completed-tab" tabindex="0">
                 <div class="container-fluid">
-                    <app-activity-item (update)="updateData()" *ngFor="let activity of activityList.activitiesCm" [activity]="activity" [project]="project"></app-activity-item>
+                    <app-activity-item (update)="updateData()" *ngFor="let activity of activityList.activitiesCm" [activity]="activity" [project]="project" [loginRol]="loginRol[0]"></app-activity-item>
                 </div>
             </div>
             <div class="tab-pane fade" id="v-pills-all" role="tabpanel"
                 aria-labelledby="v-pills-all-tab" tabindex="0">
                 <div class="container-fluid">
-                    <app-activity-item (update)="updateData()" *ngFor="let activity of activityList.activities" [activity]="activity" [project]="project"></app-activity-item>
+                    <app-activity-item (update)="updateData()" *ngFor="let activity of activityList.activities" [activity]="activity" [project]="project" [loginRol]="loginRol[0]"></app-activity-item>
                 </div>
             </div>
         </div>
     </div>
     <app-editor-activity (deletActivity)="deletActivity($event)"></app-editor-activity>
+    <app-more-activity></app-more-activity>
     <app-add-activity (newActivity)="newActivity($event)" [project]="project"></app-add-activity>
+    <app-project-options [project]="project"></app-project-options>
+    <app-project-members [project]="project"></app-project-members>
 </div>

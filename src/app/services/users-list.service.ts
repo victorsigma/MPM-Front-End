@@ -17,6 +17,13 @@ export class UsersListService {
       'userName': 'victorsigma',
       'password': AES.encrypt('pato123',this.encryptionKey).toString(),
       'phoneNumber': ''
+    },
+    {
+      'userId': 'e9b8e535-203b-4539-a4f3-34c3b70e92ce',
+      'userMail': 'victorossielgaray@gmail.com',
+      'userName': 'victorsigma1',
+      'password': AES.encrypt('pato123',this.encryptionKey).toString(),
+      'phoneNumber': ''
     }
   ]
   constructor() { }

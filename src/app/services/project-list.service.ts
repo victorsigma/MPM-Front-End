@@ -21,8 +21,8 @@ export class ProjectListService {
       'title': 'Project 2',
       'subtitle': 'Proyecto de Prueba',
       'src': 'img_3',
-      'dateStart': new Date("06/26/2022"),
-      'dateEnd':new Date("07/20/2022")
+      'dateStart': new Date("06/10/2022"),
+      'dateEnd':new Date("07/30/2022")
     }
   ]
   constructor() { }

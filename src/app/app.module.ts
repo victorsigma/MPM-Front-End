@@ -19,6 +19,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { AddProjectComponent } from './componets/add-project/add-project.component';
 import { WhiteComponent } from './componets/white/white.component';
 import { AccountPageComponent } from './componets/account-page/account-page.component';
+import { ProjectOptionsComponent } from './componets/project-options/project-options.component';
+import { ProjectMembersComponent } from './componets/project-members/project-members.component';
+import { MemberItemComponent } from './componets/member-item/member-item.component';
+import { MoreActivityComponent } from './componets/more-activity/more-activity.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,11 @@ import { AccountPageComponent } from './componets/account-page/account-page.comp
     AddActivityComponent,
     AddProjectComponent,
     WhiteComponent,
-    AccountPageComponent
+    AccountPageComponent,
+    ProjectOptionsComponent,
+    ProjectMembersComponent,
+    MemberItemComponent,
+    MoreActivityComponent
   ],
   imports: [
     BrowserModule,

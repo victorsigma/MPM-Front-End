@@ -1,6 +1,5 @@
-import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ActivityData } from '../../models/ativities';
 import { ActivityDataService } from '../../services/activity-data.service';
 import { ActivityListService } from 'src/app/services/activity-list.service';
 import { RolesListActivity } from 'src/app/models/roles';
@@ -44,18 +43,18 @@ export class EditorActivityComponent implements OnInit {
 
   editActivity() {
     if (this.form.get('title')?.value != null) {
-      this.activityList.activities[this.activityList.activities.indexOf(this.dataServiceModal.activity)].title = this.form.get('title')?.value;
+      this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf(this.dataServiceModal.activity)].title = this.form.get('title')?.value;
     }
 
     if (this.form.get('subtitle')?.value != null) {
-      this.activityList.activities[this.activityList.activities.indexOf(this.dataServiceModal.activity)].subtitle = this.form.get('subtitle')?.value;
+      this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf(this.dataServiceModal.activity)].subtitle = this.form.get('subtitle')?.value;
     }
 
     if (this.form.get('status')?.value != 0) {
-      this.activityList.activities[this.activityList.activities.indexOf(this.dataServiceModal.activity)].status = this.form.get('status')?.value;
+      this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf(this.dataServiceModal.activity)].status = this.form.get('status')?.value;
     }
 
-    this.activityList.activities[this.activityList.activities.indexOf( this.dataServiceModal.activity )].rolesList = new RolesListActivity(
+    this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf( this.dataServiceModal.activity )].rolesList = new RolesListActivity(
       true,
         this.form.get('rolesListAnalyst')?.value,
         this.form.get('rolesListDesigner')?.value,
@@ -63,15 +62,15 @@ export class EditorActivityComponent implements OnInit {
     )
 
     if (this.form.get('dateEnd')?.value != null) {
-      this.activityList.activities[this.activityList.activities.indexOf(this.dataServiceModal.activity)].dateEnd = new Date(new Date(this.form.get('dateEnd')?.value).setDate(new Date(this.form.get('dateEnd')?.value).getDate() + 1));
+      this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf(this.dataServiceModal.activity)].dateEnd = new Date(new Date(this.form.get('dateEnd')?.value).setDate(new Date(this.form.get('dateEnd')?.value).getDate() + 1));
     }
 
-    this.activityList.reloadActivities();
+    this.activityList.filterRol();
     this.reloadForm();
   }
 
   removeActivity() {
-    var index = this.dataActivities.activities.indexOf(this.dataServiceModal.activity);
+    var index = this.activityList.activitiesMaster.indexOf(this.dataServiceModal.activity);
     this.deletActivity.emit(index);
   }
 

@@ -1,31 +1,31 @@
-<div class="modal fade" id="editActivity" tabindex="-1"
-    aria-labelledby="editActivityLabel" aria-hidden="true" data-bs-backdrop="static">
+<div class="modal fade" id="moreActivity" tabindex="-1"
+    aria-labelledby="moreActivityLabel" aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editActivityLabel">{{dataServiceModal.activity.title}}</h5>
+                <h5 class="modal-title" id="moreActivityLabel">{{dataServiceModal.activity.title}}</h5>
                 <button type="button" class="btn-close"
                     data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form [formGroup]="form" (ngSubmit)="editActivity()">
+                <form>
                     <div class="mb-3">
                         <label class="form-label" for="nameActivity">Change
                             activity name</label>
                         <input class="form-control" id="nameActivity"
                             name="nameActivity"
-                            type="text" formControlName="title" placeholder="{{dataServiceModal.activity.title}}"/>
+                            type="text" disabled value="{{dataServiceModal.activity.title}}"/>
                     </div>
                     <div class="mb-3">
                         <label for="descriptionActivity"
                             class="form-label">Change description</label>
                         <textarea class="form-control"
-                            id="descriptionActivity" rows="3" formControlName="subtitle" placeholder="{{dataServiceModal.activity.subtitle}}"></textarea>
+                            id="descriptionActivity" rows="3" disabled value="{{dataServiceModal.activity.subtitle}}"></textarea>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Change status</label>
-                        <select formControlName="status" class="form-select" aria-label="Default
-                            select example">
+                        <select class="form-select" aria-label="Default
+                            select example" disabled>
                             <option value="1" [selected]="dataServiceModal.activity.status == 1">Unassigned</option>
                             <option value="2" [selected]="dataServiceModal.activity.status == 2">In progress</option>
                             <option value="3" [selected]="dataServiceModal.activity.status == 3">Completed</option>
@@ -42,19 +42,19 @@
                             for="checkLeader">Leader</label>
                     </div>
                     <div class="mb-3">
-                        <input type="checkbox" formControlName="rolesListAnalyst" [checked]="dataServiceModal.activity.rolesList.Analyst" class="form-check-input"
+                        <input type="checkbox" [checked]="dataServiceModal.activity.rolesList.Analyst" disabled class="form-check-input"
                             id="checkAnalyst">
                         <label class="form-check-label"
                             for="checkAnalyst">Analyst</label>
                     </div>
                     <div class="mb-3">
-                        <input type="checkbox" formControlName="rolesListDesigner" [checked]="dataServiceModal.activity.rolesList.Designer" class="form-check-input"
+                        <input type="checkbox" [checked]="dataServiceModal.activity.rolesList.Designer" disabled class="form-check-input"
                             id="checkDesigner">
                         <label class="form-check-label"
                             for="checkDesigner">Designer</label>
                     </div>
                     <div class="mb-3">
-                        <input type="checkbox" formControlName="rolesListProgrammer" [checked]="dataServiceModal.activity.rolesList.Programmer" class="form-check-input"
+                        <input type="checkbox" [checked]="dataServiceModal.activity.rolesList.Programmer" disabled class="form-check-input"
                             id="checkProgrammer">
                         <label class="form-check-label"
                             for="checkProgrammer">Programmer</label>
@@ -62,19 +62,9 @@
                     <div class="mb-3">
                         <label class="control-label" for="date">Completion
                             date</label>
-                            <br>
-                            <label class="control-label" for="date">Actual date {{dataServiceModal.activity.dateEnd.toLocaleDateString()}}</label>
-                        <input formControlName="dateEnd" class="form-control" id="date"
-                            name="date" placeholder="MM/DD/YYYY"
-                            type="date"/>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger"
-                            data-bs-dismiss="modal" (click)="removeActivity()">Remove</button>
-                        <button type="button" class="btn btn-secondary"
-                            data-bs-dismiss="modal">Close</button>
-                        <button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Save
-                            changes</button>
+                        <input disabled class="form-control" id="date"
+                            name="date"
+                            type="text" value="{{dataServiceModal.activity.dateEnd.toLocaleDateString()}}"/>
                     </div>
                 </form>
             </div>

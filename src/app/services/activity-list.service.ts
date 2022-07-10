@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { RolesListActivity } from 'src/app/models/roles';
 import { ActivityData } from '../models/ativities';
+import { ProjectsHasUser } from '../models/projectsHasUser';
+import { UsersProjectsService } from './users-projects.service';
+import { LoginDataService } from './login-data.service';
+import { ProjectDataService } from './project-data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ActivityListService {
 
-  activities: ActivityData[] = [
+  activitiesMaster: ActivityData[] = [
     {
       "id": '3cf75862-ca69-4436-807f-8e9262b7a888',
       "title": "Actividad 1",
@@ -51,23 +55,103 @@ export class ActivityListService {
     }
   ]
 
+  activities: ActivityData[] = [];
   activitiesUn: ActivityData[] = [];
   activitiesIn: ActivityData[] = [];
   activitiesCm: ActivityData[] = [];
-  constructor() { 
-    this.reloadActivities();
+
+  loginRol: ProjectsHasUser[] = [];
+  constructor(private userMember: UsersProjectsService, private loginData: LoginDataService, public projectData: ProjectDataService,) {
+    this.filterRol();
   }
 
+  filterRol() {
+    this.loginRol = this.userMember.projectMembers.filter(data => {
+      return data.proyects_id_p == this.projectData.project.id && data.user_id_user == this.loginData.usersList[0].userId
+    })
+    if (this.loginRol[0].roles_id_rol == 0) {
+      this.leaderActivitis();
+    }
+    if (this.loginRol[0].roles_id_rol == 1) {
+      this.analystActivitis();
+    }
+    if (this.loginRol[0].roles_id_rol == 2) {
+      this.designerActivitis();
+    }
+    if (this.loginRol[0].roles_id_rol == 3) {
+      this.programmerActivitis();
+    }
+  }
 
-  reloadActivities() {
-    this.activitiesUn = this.activities.filter((obj) => {
-      return obj.status == 1;
+  leaderActivitis() {
+    this.activities = this.activitiesMaster.filter(data=> {
+      return data.rolesList.Leader == true;
     })
-    this.activitiesIn = this.activities.filter((obj) => {
-      return obj.status == 2;
+
+    this.activitiesCm = this.activitiesMaster.filter(data=> {
+      return data.rolesList.Leader == true && data.status == 3;
     })
-    this.activitiesCm = this.activities.filter((obj) => {
-      return obj.status == 3;
+
+    this.activitiesIn = this.activitiesMaster.filter(data=> {
+      return data.rolesList.Leader == true && data.status == 2;
+    })
+
+    this.activitiesUn = this.activitiesMaster.filter(data=> {
+      return data.rolesList.Leader == true && data.status == 1;
+    })
+  }
+
+  analystActivitis() {
+    this.activities = this.activitiesMaster.filter(data=> {
+      return data.rolesList.Analyst == true;
+    })
+
+    this.activitiesCm = this.activitiesMaster.filter(data=> {
+      return data.rolesList.Analyst == true && data.status == 3;
+    })
+
+    this.activitiesIn = this.activitiesMaster.filter(data=> {
+      return data.rolesList.Analyst == true && data.status == 2;
+    })
+
+    this.activitiesUn = this.activitiesMaster.filter(data=> {
+      return data.rolesList.Analyst == true && data.status == 1;
+    })
+  }
+
+  designerActivitis() {
+    this.activities = this.activitiesMaster.filter(data=> {
+      return data.rolesList.Designer == true;
+    })
+
+    this.activitiesCm = this.activitiesMaster.filter(data=> {
+      return data.rolesList.Designer == true && data.status == 3;
+    })
+
+    this.activitiesIn = this.activitiesMaster.filter(data=> {
+      return data.rolesList.Designer == true && data.status == 2;
+    })
+
+    this.activitiesUn = this.activitiesMaster.filter(data=> {
+      return data.rolesList.Designer == true && data.status == 1;
+    })
+  }
+
+  programmerActivitis() {
+    this.activities = this.activitiesMaster.filter(data=> {
+      return data.rolesList.Programmer == true;
+    })
+
+    this.activitiesCm = this.activitiesMaster.filter(data=> {
+      return data.rolesList.Programmer == true && data.status == 3;
+    })
+
+    this.activitiesIn = this.activitiesMaster.filter(data=> {
+      return data.rolesList.Programmer == true && data.status == 2;
+    })
+
+    this.activitiesUn = this.activitiesMaster.filter(data=> {
+      return data.rolesList.Programmer == true && data.status == 1;
     })
   }
 }

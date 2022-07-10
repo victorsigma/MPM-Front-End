@@ -1,0 +1,48 @@
+<div class="modal fade" id="projectMembers" tabindex="-1"
+    aria-labelledby="projectMembersLabe1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectMembersLabel">Members
+                    List</h5>
+                <button type="button" class="btn-close"
+                    data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="menbers-container">
+                    <app-member-item *ngFor="let member of members" [member]="member" (updateMembers)="updateMembers()"> </app-member-item>
+                </div>
+                <form>
+                    <div class="mb-1">
+                        <label class="form-label" for="nameP">Add Member</label>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="nameP">Username</label>
+                        <input class="form-control" id="nameP"
+                            name="nameP"
+                            type="text" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Select Rol</label>
+                        <select class="form-select" aria-label="Default
+                            select example">
+                            <option value="1" selected>Analyst</option>
+                            <option value="2">Designer</option>
+                            <option value="3">Programmer</option>
+                        </select>
+                    </div>
+                    <div class="list-group card-body">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save
+                    changes</button>
+            </div>
+        </div>
+    </div>
+</div>
