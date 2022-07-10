@@ -8,23 +8,23 @@
                     data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form [formGroup]="form" (ngSubmit)="editActivity()">
                     <div class="mb-3">
-                        <label class="form-label" for="nameP">Change
+                        <label class="form-label" for="nameActivity">Change
                             activity name</label>
-                        <input class="form-control" id="nameP"
-                            name="nameP"
-                            type="text" placeholder="{{dataServiceModal.activity.title}}"/>
+                        <input class="form-control" id="nameActivity"
+                            name="nameActivity"
+                            type="text" formControlName="title" placeholder="{{dataServiceModal.activity.title}}"/>
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1"
                             class="form-label">Change description</label>
                         <textarea class="form-control"
-                            id="exampleFormControlTextarea1" rows="3" placeholder="{{dataServiceModal.activity.subtitle}}"></textarea>
+                            id="exampleFormControlTextarea1" rows="3" formControlName="subtitle" placeholder="{{dataServiceModal.activity.subtitle}}"></textarea>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Change status</label>
-                        <select class="form-select" aria-label="Default
+                        <select formControlName="status" class="form-select" aria-label="Default
                             select example">
                             <option value="1" [selected]="dataServiceModal.activity.status == 1">Unassigned</option>
                             <option value="2" [selected]="dataServiceModal.activity.status == 2">In progress</option>
@@ -37,34 +37,34 @@
                     <div class="mb-3">
                         <input type="checkbox" [checked]="dataServiceModal.activity.rolesList.Leader" disabled
                             class="form-check-input"
-                            id="exampleCheck1">
+                            id="checkLeader">
                         <label class="form-check-label"
-                            for="exampleCheck1">Leader</label>
+                            for="checkLeader">Leader</label>
                     </div>
                     <div class="mb-3">
-                        <input type="checkbox" [checked]="dataServiceModal.activity.rolesList.Analyst" class="form-check-input"
-                            id="exampleCheck2">
+                        <input type="checkbox" formControlName="rolesListAnalyst" [checked]="dataServiceModal.activity.rolesList.Analyst" class="form-check-input"
+                            id="checkAnalyst">
                         <label class="form-check-label"
-                            for="exampleCheck2">Analyst</label>
+                            for="checkAnalyst">Analyst</label>
                     </div>
                     <div class="mb-3">
-                        <input type="checkbox" [checked]="dataServiceModal.activity.rolesList.Designer" class="form-check-input"
-                            id="exampleCheck3">
+                        <input type="checkbox" formControlName="rolesListDesigner" [checked]="dataServiceModal.activity.rolesList.Designer" class="form-check-input"
+                            id="checkDesigner">
                         <label class="form-check-label"
-                            for="exampleCheck3">Designer</label>
+                            for="checkDesigner">Designer</label>
                     </div>
                     <div class="mb-3">
-                        <input type="checkbox" [checked]="dataServiceModal.activity.rolesList.Programmer" class="form-check-input"
-                            id="exampleCheck4">
+                        <input type="checkbox" formControlName="rolesListProgrammer" [checked]="dataServiceModal.activity.rolesList.Programmer" class="form-check-input"
+                            id="checkProgrammer">
                         <label class="form-check-label"
-                            for="exampleCheck4">Programmer</label>
+                            for="checkProgrammer">Programmer</label>
                     </div>
                     <div class="mb-3">
                         <label class="control-label" for="date">Completion
                             date</label>
                             <br>
                             <label class="control-label" for="date">Actual date {{dataServiceModal.activity.dateEnd.toLocaleDateString()}}</label>
-                        <input class="form-control" id="date"
+                        <input formControlName="dateEnd" class="form-control" id="date"
                             name="date" placeholder="MM/DD/YYYY"
                             type="date"/>
                     </div>
@@ -73,7 +73,7 @@
                             data-bs-dismiss="modal" (click)="removeActivity()">Remove</button>
                         <button type="button" class="btn btn-secondary"
                             data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save
+                        <button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Save
                             changes</button>
                     </div>
                 </form>

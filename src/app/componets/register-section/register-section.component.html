@@ -1,5 +1,5 @@
 <div class="modal fade" id="registerModal" tabindex="-1"
-    aria-labelledby="registerModalLabe1" aria-hidden="true">
+    aria-labelledby="registerModalLabe1" aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -11,9 +11,9 @@
             <div class="modal-body">
                 <form [formGroup]="form" (ngSubmit)="isRegisterDataTrue()">
                     <div class="mb-3">
-                        <label for="userName" class="form-label">User Name</label>
+                        <label for="newUserName" class="form-label">User Name</label>
                         <input type="text" class="form-control"
-                            id="userName" formControlName="user" required>
+                            id="newUserName" formControlName="user" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email
@@ -27,9 +27,9 @@
                             id="phoneNumber" formControlName="phone">
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
+                        <label for="newPassword" class="form-label">Password</label>
                         <input type="password" class="form-control"
-                            id="password" formControlName="password" required>
+                            id="newPassword" formControlName="password" required>
                     </div>
                     <div class="list-group card-body">
                         <button type="submit" [disabled]="!this.form.valid" data-bs-dismiss="modal" class="btn btn-primary">Submit</button>

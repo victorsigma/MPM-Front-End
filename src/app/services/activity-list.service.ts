@@ -50,5 +50,24 @@ export class ActivityListService {
       "projectId": '490602c6-a115-44ec-9bfb-d1d9b9f476d9'
     }
   ]
-  constructor() { }
+
+  activitiesUn: ActivityData[] = [];
+  activitiesIn: ActivityData[] = [];
+  activitiesCm: ActivityData[] = [];
+  constructor() { 
+    this.reloadActivities();
+  }
+
+
+  reloadActivities() {
+    this.activitiesUn = this.activities.filter((obj) => {
+      return obj.status == 1;
+    })
+    this.activitiesIn = this.activities.filter((obj) => {
+      return obj.status == 2;
+    })
+    this.activitiesCm = this.activities.filter((obj) => {
+      return obj.status == 3;
+    })
+  }
 }

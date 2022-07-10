@@ -23,6 +23,12 @@ export class RegisterSectionComponent implements OnInit {
     password: new FormControl()
   });
   constructor(private userList: UsersListService, private toastr: ToastrService) { 
+    this.form = new FormGroup({
+      user: new FormControl(),
+      email: new FormControl(),
+      phone: new FormControl(),
+      password: new FormControl()
+    });
   }
 
   ngOnInit(): void {

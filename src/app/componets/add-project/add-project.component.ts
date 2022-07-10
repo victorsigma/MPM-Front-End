@@ -35,7 +35,7 @@ export class AddProjectComponent implements OnInit {
       subtitle: this.form.get('subtitle')?.value,
       src: 'img_'+this.random(1, 7),
       dateStart: new Date(),
-      dateEnd: new Date(this.form.get('dateEnd')?.value)
+      dateEnd: new Date(new Date(this.form.get('dateEnd')?.value).setDate(new Date(this.form.get('dateEnd')?.value).getDate()+1))
     };
 
     this.newProject.emit(this.project);

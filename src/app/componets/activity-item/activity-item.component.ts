@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivityData } from '../../models/ativities';
 import { ActivityDataService } from 'src/app/services/activity-data.service';
 import { ProjectData } from '../../models/projects';
@@ -16,6 +16,7 @@ export class ActivityItemComponent implements OnInit {
 
   @Input() activity:ActivityData = new ActivityData();
   @Input() project:ProjectData = new ProjectData();
+  @Output() update:EventEmitter<null> = new EventEmitter<null>();
   constructor(private dataServiceModal: ActivityDataService, public loginData: LoginDataService) { 
   }
 
@@ -24,6 +25,7 @@ export class ActivityItemComponent implements OnInit {
 
   onModalData(): void {
     this.dataServiceModal.activity = this.activity;
+    this.update.emit();
     this.data = this.dataServiceModal.activity;
   }
 }

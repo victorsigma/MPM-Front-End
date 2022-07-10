@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Subject } from 'rxjs';
 import { ActivityData } from '../../models/ativities';
 import { ActivityDataService } from '../../services/activity-data.service';
 import { ProjectData } from 'src/app/models/projects';
 import { ProjectDataService } from 'src/app/services/project-data.service';
 import { ActivityListService } from '../../services/activity-list.service';
+import { LoginDataService } from '../../services/login-data.service';
+import { UpdateDataService } from '../../services/update-data.service';
 
 @Component({
   selector: 'app-activities-page',
@@ -12,16 +15,16 @@ import { ActivityListService } from '../../services/activity-list.service';
   styleUrls: ['./activities-page.component.css']
 })
 export class ActivitiesPageComponent implements OnInit {
-  activitiesUn: ActivityData[] = [];
-  activitiesIn: ActivityData[] = [];
-  activitiesCm: ActivityData[] = [];
-  project:ProjectData = new ProjectData();
+  project: ProjectData = new ProjectData();
 
+  public update: Subject<void> = new Subject<void>();
   constructor(
     private toastr: ToastrService,
     private dataActivities: ActivityDataService,
     public projectData: ProjectDataService,
-    public activyList: ActivityListService
+    public activityList: ActivityListService,
+    public loginData: LoginDataService,
+    private emitter: UpdateDataService
   ) {
     this.reloadActivities();
     this.project = this.projectData.project;
@@ -34,28 +37,25 @@ export class ActivitiesPageComponent implements OnInit {
   }
 
   newActivity(activity: ActivityData) {
-    this.activyList.activities.push(activity);
+    this.activityList.activities.push(activity);
     console.log(activity);
     this.reloadActivities();
+    this.activityList.reloadActivities();
     this.toastr.success(activity.subtitle, 'Add ' + activity.title);
   }
 
   deletActivity(index: number) {
-    this.activyList.activities.splice(index, 1);
+    this.activityList.activities.splice(index, 1);
     this.reloadActivities();
+    this.activityList.reloadActivities();
     this.toastr.error('The activity was eliminated.', 'Remove Activity');
   }
 
   reloadActivities() {
-    this.activitiesUn = this.activyList.activities.filter((obj) => {
-      return obj.status == 1;
-    })
-    this.activitiesIn = this.activyList.activities.filter((obj) => {
-      return obj.status == 2;
-    })
-    this.activitiesCm = this.activyList.activities.filter((obj) => {
-      return obj.status == 3;
-    })
-    this.dataActivities.activities = this.activyList.activities;
+    this.dataActivities.activities = this.activityList.activities;
+  }
+
+  updateData() {
+    this.emitter.emitirEvento();
   }
 }
