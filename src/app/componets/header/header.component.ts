@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserData } from 'src/app/models/users';
 import { LoginDataService } from '../../services/login-data.service';
 
 @Component({
@@ -20,6 +21,7 @@ export class HeaderComponent implements OnInit {
 
   logout(): void {
     this.loginData.isLogin = false;
+    this.loginData.usersList = [];
     this.updateLogin();
   }
 

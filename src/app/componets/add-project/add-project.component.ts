@@ -3,6 +3,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 import {v4 as uuidv4} from 'uuid';
 import { ProjectData } from '../../models/projects';
 import { ProjectDataService } from '../../services/project-data.service';
+import { LoginDataService } from '../../services/login-data.service';
+import { ProjectsHasUser } from '../../models/projectsHasUser';
+import { UsersProjectsService } from 'src/app/services/users-projects.service';
 
 @Component({
   selector: 'app-add-project',
@@ -13,9 +16,10 @@ export class AddProjectComponent implements OnInit {
 
   form: FormGroup;
   project: ProjectData = new ProjectData();
+  relationProject: ProjectsHasUser = new ProjectsHasUser();
 
   @Output() newProject: EventEmitter<ProjectData> = new EventEmitter();
-  constructor(public projectId: ProjectDataService) {
+  constructor(public projectId: ProjectDataService, private userLoging:LoginDataService, private memberList:UsersProjectsService) {
     this.form = new FormGroup(
       {
         title: new FormControl(),
@@ -38,7 +42,14 @@ export class AddProjectComponent implements OnInit {
       dateEnd: new Date(new Date(this.form.get('dateEnd')?.value).setDate(new Date(this.form.get('dateEnd')?.value).getDate()+1))
     };
 
+    this.relationProject = {
+      proyects_id_p: this.project.id,
+      user_id_user: this.userLoging.usersList[0].userId,
+      roles_id_rol: 0
+    }
+
     this.newProject.emit(this.project);
+    this.memberList.projectMembers.push(this.relationProject)
     console.log(this.project);
     this.reloadForm();
   }
