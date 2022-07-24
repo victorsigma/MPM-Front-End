@@ -28,30 +28,33 @@ export class MemberItemComponent implements OnInit {
 
   updateDate() {
     this.users = this.userFilter.usersList.filter(data => {
-      return data.userId == this.member.user_id_user
+      return data.userId == this.member.userIdUser
     })
 
     this.user = this.users[0];
 
-    if (this.member.roles_id_rol == 0) {
+    if (this.member.rolesIdRol == 0) {
       this.userRol = 'Leader'
     }
 
-    if (this.member.roles_id_rol == 1) {
+    if (this.member.rolesIdRol == 1) {
       this.userRol = 'Analyst'
     }
 
-    if (this.member.roles_id_rol == 2) {
+    if (this.member.rolesIdRol == 2) {
       this.userRol = 'Designer'
     }
 
-    if (this.member.roles_id_rol == 3) {
+    if (this.member.rolesIdRol == 3) {
       this.userRol = 'Programmer'
     }
   }
 
   deletedMember() {
     this.memberList.projectMembers.splice(this.memberList.projectMembers.indexOf(this.member), 1);
+    this.memberList.removeProjectUser(this.member.id).subscribe(data => {
+      this.memberList.getList();
+    })
     this.updateMembers.emit();
   }
 }

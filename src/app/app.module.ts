@@ -23,6 +23,7 @@ import { ProjectOptionsComponent } from './componets/project-options/project-opt
 import { ProjectMembersComponent } from './componets/project-members/project-members.component';
 import { MemberItemComponent } from './componets/member-item/member-item.component';
 import { MoreActivityComponent } from './componets/more-activity/more-activity.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { MoreActivityComponent } from './componets/more-activity/more-activity.c
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot() // ToastrModule added
+    ToastrModule.forRoot(), // ToastrModule added
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

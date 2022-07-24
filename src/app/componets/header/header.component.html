@@ -18,7 +18,7 @@
                             routerLink="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/projects"  [class.disabled]="isLogin == false">Projects</a>
+                        <a class="nav-link" routerLink="/projects" (click)="reloadProjects()"  [class.disabled]="isLogin == false">Projects</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav d-flex" *ngIf="isLogin == false">

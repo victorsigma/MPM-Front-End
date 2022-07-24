@@ -35,35 +35,35 @@
                         <label class="form-label">Participating roles</label>
                     </div>
                     <div class="mb-3">
-                        <input type="checkbox" [checked]="dataServiceModal.activity.rolesList.Leader" disabled
+                        <input type="checkbox" [checked]="dataServiceModal.activity.leader" disabled
                             class="form-check-input"
-                            id="checkLeader">
+                            id="checkleader">
                         <label class="form-check-label"
-                            for="checkLeader">Leader</label>
+                            for="checkleader">Leader</label>
                     </div>
                     <div class="mb-3">
-                        <input type="checkbox" formControlName="rolesListAnalyst" [checked]="dataServiceModal.activity.rolesList.Analyst" class="form-check-input"
-                            id="checkAnalyst">
+                        <input type="checkbox" formControlName="rolesListAnalyst" [checked]="dataServiceModal.activity.analyst" class="form-check-input"
+                            id="checkanalyst">
                         <label class="form-check-label"
-                            for="checkAnalyst">Analyst</label>
+                            for="checkanalyst">Analyst</label>
                     </div>
                     <div class="mb-3">
-                        <input type="checkbox" formControlName="rolesListDesigner" [checked]="dataServiceModal.activity.rolesList.Designer" class="form-check-input"
-                            id="checkDesigner">
+                        <input type="checkbox" formControlName="rolesListDesigner" [checked]="dataServiceModal.activity.designer" class="form-check-input"
+                            id="checkdesigner">
                         <label class="form-check-label"
-                            for="checkDesigner">Designer</label>
+                            for="checkdesigner">Designer</label>
                     </div>
                     <div class="mb-3">
-                        <input type="checkbox" formControlName="rolesListProgrammer" [checked]="dataServiceModal.activity.rolesList.Programmer" class="form-check-input"
-                            id="checkProgrammer">
+                        <input type="checkbox" formControlName="rolesListProgrammer" [checked]="dataServiceModal.activity.programmer" class="form-check-input"
+                            id="checkprogrammer">
                         <label class="form-check-label"
-                            for="checkProgrammer">Programmer</label>
+                            for="checkprogrammer">Programmer</label>
                     </div>
                     <div class="mb-3">
                         <label class="control-label" for="date">Completion
                             date</label>
                             <br>
-                            <label class="control-label" for="date">Actual date {{dataServiceModal.activity.dateEnd.toLocaleDateString()}}</label>
+                            <label class="control-label" for="date">Actual date {{dataServiceModal.activity.dateEnd}}</label>
                         <input formControlName="dateEnd" class="form-control" id="date"
                             name="date" placeholder="MM/DD/YYYY"
                             type="date"/>

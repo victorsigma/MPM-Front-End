@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { LoginDataService } from '../../services/login-data.service';
 import { UsersListService } from '../../services/users-list.service';
 import { UserData } from '../../models/users';
+import { ProjectListService } from '../../services/project-list.service';
 
 @Component({
   selector: 'app-login-section',
@@ -21,10 +22,11 @@ export class LoginSectionComponent implements OnInit {
   });
 
   @Output() loginDate: EventEmitter<null> = new EventEmitter();
-  constructor(private loginData: LoginDataService, private userList: UsersListService, private toastr: ToastrService) {
+  constructor(private loginData: LoginDataService, private userList: UsersListService, private toastr: ToastrService, private projectList: ProjectListService) {
   }
 
   ngOnInit(): void {
+    this.getUsers();
   }
 
   isLoginDataTrue(): void {
@@ -79,5 +81,10 @@ export class LoginSectionComponent implements OnInit {
     this.loginData.isLogin = true;
     this.loginData.usersList = this.users;
     this.loginDate.emit();
+    this.projectList.loadProjects();
+  }
+
+  getUsers() {
+    this.userList.getList();
   }
 }

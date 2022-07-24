@@ -20,7 +20,15 @@ export class ActivitiesPageComponent implements OnInit {
   project: ProjectData = new ProjectData();
 
   public update: Subject<void> = new Subject<void>();
-  loginRol:  ProjectsHasUser[] = [];
+  loginRol: ProjectsHasUser[] = [];
+
+  activitiesMaster: ActivityData[] = []
+
+  activities: ActivityData[] = [];
+  activitiesUn: ActivityData[] = [];
+  activitiesIn: ActivityData[] = [];
+  activitiesCm: ActivityData[] = [];
+
   constructor(
     private toastr: ToastrService,
     private dataActivities: ActivityDataService,
@@ -35,30 +43,42 @@ export class ActivitiesPageComponent implements OnInit {
     this.project = this.projectData.project;
 
     this.loginRol = this.userMember.projectMembers.filter(data => {
-      return data.proyects_id_p == projectData.project.id && data.user_id_user == loginData.usersList[0].userId
+      return data.proyectsIdProject == projectData.project.id && data.userIdUser == loginData.usersList[0].userId
     })
-
   }
 
   ngOnInit(): void {
+    this.filterRol()
   }
 
   newActivity(activity: ActivityData) {
     this.activityList.activitiesMaster.push(activity);
-    console.log(activity);
-    this.filterRol();
-    this.toastr.success(activity.subtitle, 'Add ' + activity.title);
+
+    this.activityList.addActivity(activity).subscribe(data => {
+      this.filterRol();
+      this.toastr.info(activity.subtitle, 'Add ' + activity.title);
+    })
   }
 
-  deletActivity(index: number) {
-    this.activityList.activitiesMaster.splice(index, 1);
-    this.filterRol();
-    this.toastr.error('The activity was eliminated.', 'Remove Activity');
+  deletActivity(id: string) {
+    this.activityList.removeActivity(id).subscribe(data => {
+      this.filterRol();
+      this.toastr.error('The activity was eliminated.', 'Remove Activity');
+    })
+  }
+
+  updateActivity(activity: ActivityData) {
+    this.activityList.updateActivity(activity.id, activity).subscribe(data => {
+      this.filterRol();
+    })
   }
 
   filterRol() {
-    this.activityList.filterRol();
-    this.dataActivities.activities = this.activityList.activitiesMaster;
+    this.activityList.getListActivities().subscribe(data => {
+      this.activityList.activitiesMaster = data;
+      this.dataActivities.activities = this.activityList.activitiesMaster;
+      this.activityList.filterRol();
+    })
   }
 
   updateData() {

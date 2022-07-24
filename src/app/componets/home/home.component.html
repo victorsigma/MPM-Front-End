@@ -11,14 +11,17 @@
                         class="btn btn-lg bd-btn-lg btn-bd-primary
                         d-flex align-items-center justify-content-center
                         fw-semibold" data-bs-toggle="modal"
-                        data-bs-target="#registerModal" [class.btn-ghost] = "isLogin == true" [class.disabled]="isLogin == true">
+                        data-bs-target="#registerModal"
+                        [class.btn-ghost]="isLogin
+                        == true" [class.disabled]="isLogin == true">
                         Create Account
                     </a>
                     <a
                         href="inicio_secion.html"
                         class="btn btn-lg bd-btn-lg
                         btn-outline-secondary" data-bs-toggle="modal"
-                        data-bs-target="#loginModal" [class.btn-ghost] = "isLogin == true" [class.disabled]="isLogin == true">
+                        data-bs-target="#loginModal" [class.btn-ghost]="isLogin
+                        == true" [class.disabled]="isLogin == true">
                         Login Account
                     </a>
                 </div>
@@ -39,8 +42,7 @@
             <div class="col-lg-9">
                 <div class="row">
                     <div class="col-sm-6 col-md-4 mb-3">
-                        <a class="d-block"
-                            href="projects.html">
+                        <a class="d-block" (click)="openProjects()">
                             <img class="img-thumbnail mb-3"
                                 src="./assets/img/caps/projects.png"
                                 alt="" width="480" height="300">
@@ -53,7 +55,7 @@
 
                     <div class="col-sm-6 col-md-4 mb-3">
                         <a class="d-block"
-                            href="project_page.html">
+                            (click)="openActivity()">
                             <img class="img-thumbnail mb-3"
                                 src="./assets/img/caps/activities.png"
                                 alt="" width="480" height="300">
@@ -66,7 +68,7 @@
 
                     <div class="col-sm-6 col-md-4 mb-3">
                         <a class="d-block"
-                            href="project_page.html">
+                            (click)="openActivity()">
                             <img class="img-thumbnail mb-3"
                                 src="./assets/img/caps/change_project.png"
                                 alt="" width="480" height="300">
@@ -79,7 +81,7 @@
 
                     <div class="col-sm-6 col-md-4 mb-3">
                         <a class="d-block"
-                            href="project_page.html">
+                            (click)="openActivity()">
                             <img class="img-thumbnail mb-3"
                                 src="./assets/img/caps/add_remove_member.png"
                                 alt="" width="480" height="300">
@@ -90,7 +92,7 @@
                     </div>
                     <div class="col-sm-6 col-md-4 mb-3">
                         <a class="d-block"
-                            href="project_page.html">
+                            (click)="openActivity()">
                             <img class="img-thumbnail mb-3"
                                 src="./assets/img/caps/edit_activity.png"
                                 alt="" width="480" height="300">
@@ -104,4 +106,8 @@
             </div>
         </div>
     </div>
+    <footer class="container">
+        <p class="float-end"><a href="#">Back to top</a></p>
+        <p>&copy; 2022–2022</p>
+    </footer>
 </main>

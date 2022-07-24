@@ -3,7 +3,7 @@
         <div class="container-fluid content-project">
             <h1 class="navbar-brand">{{project.title}}</h1>
             <ul class="navbar-nav d-flex">
-                <li class="nav-item" *ngIf="loginRol[0].roles_id_rol == 0">
+                <li class="nav-item" *ngIf="loginRol[0].rolesIdRol == 0">
                     <button class="button-options"
                         data-bs-toggle="modal"
                         data-bs-target="#projectOptions">Options</button>
@@ -75,7 +75,7 @@
             </div>
         </div>
     </div>
-    <app-editor-activity (deletActivity)="deletActivity($event)"></app-editor-activity>
+    <app-editor-activity (deletActivity)="deletActivity($event)" (updateActivity)="updateActivity($event)"></app-editor-activity>
     <app-more-activity></app-more-activity>
     <app-add-activity (newActivity)="newActivity($event)" [project]="project"></app-add-activity>
     <app-project-options [project]="project"></app-project-options>

@@ -51,8 +51,12 @@ export class RegisterSectionComponent implements OnInit {
         return obj.userName == this.form.get('user')?.value
       })
       if (this.users[0] == undefined) {
-        this.userList.usersList.push(this.user);
-        this.toastr.success('Successfully registered.', 'Operation Completed');
+        //this.userList.usersList.push(this.user);
+        this.userList.addUser(this.user).subscribe(data => {
+          this.toastr.success('Successfully registered.', 'Operation Completed');
+          this.userList.getList();
+          this.form.reset();
+        })
       } else {
         this.toastr.error('The user is already registered.', 'Operation Canceled');
       }

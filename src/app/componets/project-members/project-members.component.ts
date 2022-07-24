@@ -41,18 +41,21 @@ export class ProjectMembersComponent implements OnInit {
 
   reloadMembers() {
     this.members = this.memberList.projectMembers.filter(memberList=> {
-      return memberList.proyects_id_p == this.project.id
+      return memberList.proyectsIdProject == this.project.id
     })
   }
 
   addMember() {
     this.memberData = this.userList.usersList.filter(obj => { return obj.userName == this.form.get('userName')?.value});
     if (this.memberData.length != 0) {
-      if (this.memberList.projectMembers.filter(data=> { return data.proyects_id_p == this.project.id && data.user_id_user == this.memberData[0].userId}).length == 0) {
-        this.newMember.proyects_id_p = this.project.id;
-        this.newMember.user_id_user = this.memberData[0].userId;
-        this.newMember.roles_id_rol = this.form.get('userRol')?.value;
-        this.memberList.projectMembers.push(this.newMember);
+      if (this.memberList.projectMembers.filter(data=> { return data.proyectsIdProject == this.project.id && data.userIdUser == this.memberData[0].userId}).length == 0) {
+        this.newMember.proyectsIdProject = this.project.id;
+        this.newMember.userIdUser = this.memberData[0].userId;
+        this.newMember.rolesIdRol = this.form.get('userRol')?.value;
+        //this.memberList.projectMembers.push(this.newMember);
+        this.memberList.addProjectUser(this.newMember).subscribe(data => {
+          this.memberList.getList();
+        })
       } else {
         console.log('Usuario Registrado')
       }

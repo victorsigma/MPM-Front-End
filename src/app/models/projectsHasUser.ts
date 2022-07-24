@@ -1,5 +1,6 @@
 export class ProjectsHasUser {
-    proyects_id_p: string = '';
-    user_id_user: string = '';
-    roles_id_rol: number = 0;
+    id: number = 0;
+    proyectsIdProject: string = '';
+    userIdUser: string = '';
+    rolesIdRol: number = 0;
 }

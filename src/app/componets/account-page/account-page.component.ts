@@ -34,10 +34,21 @@ export class AccountPageComponent implements OnInit {
 
 
   updateName() {
-    if(this.formName.get('userName')?.value === this.formName.get('userNameConfirm')?.value) {
-      this.userList.usersList[this.userList.usersList.indexOf( this.loginData.usersList[0] )].userName = this.formName.get('userNameConfirm')?.value;
-      this.toastr.success('Successfully registered.', 'Operation Completed');
-      this.reloadForms();
+    if (this.formName.get('userName')?.value === this.formName.get('userNameConfirm')?.value) {
+      if (this.userList.usersList.filter(data => {
+        return data.userName === this.formName.get('userNameConfirm')?.value
+      }).length == 0) {
+        //this.userList.usersList[this.userList.usersList.indexOf(this.loginData.usersList[0])].userName = this.formName.get('userNameConfirm')?.value;
+        this.loginData.usersList[0].userName = this.formName.get('userNameConfirm')?.value;
+
+        this.userList.updateUser(this.loginData.usersList[0].userId, this.loginData.usersList[0]).subscribe(data => {
+          this.toastr.info('Successfully registered.', 'Operation Completed');
+          this.reloadForms();
+        })
+      } else {
+        this.reloadForms();
+        this.toastr.error('Exists Username.', 'Operation Canceled');
+      }
     } else {
       this.reloadForms();
       this.toastr.error('Incorrect data.', 'Operation Canceled');
@@ -45,10 +56,25 @@ export class AccountPageComponent implements OnInit {
   }
 
   updateEmail() {
-    if(this.formEmail.get('userEmail')?.value === this.formEmail.get('userEmailConfirm')?.value) {
-      this.userList.usersList[this.userList.usersList.indexOf( this.loginData.usersList[0] )].userMail = this.formEmail.get('userEmailConfirm')?.value;
-      this.toastr.success('Successfully registered.', 'Operation Completed');
-      this.reloadForms();
+    if (/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(this.formEmail.get('userEmail')?.value)) {
+      if (this.formEmail.get('userEmail')?.value === this.formEmail.get('userEmailConfirm')?.value) {
+        if (this.userList.usersList.filter(data => {
+          return data.userMail === this.formEmail.get('userEmailConfirm')?.value
+        }).length == 0) {
+          //this.userList.usersList[this.userList.usersList.indexOf(this.loginData.usersList[0])].userMail = this.formEmail.get('userEmailConfirm')?.value;
+          this.loginData.usersList[0].userMail = this.formEmail.get('userEmailConfirm')?.value;
+
+          this.userList.updateUser(this.loginData.usersList[0].userId, this.loginData.usersList[0]).subscribe(data => {
+            this.toastr.info('Successfully registered.', 'Operation Completed');
+            this.reloadForms();
+          })
+        } else {
+          this.toastr.error('Exists Email.', 'Operation Canceled');
+        }
+      } else {
+        this.reloadForms();
+        this.toastr.error('Incorrect data.', 'Operation Canceled');
+      }
     } else {
       this.reloadForms();
       this.toastr.error('Incorrect data.', 'Operation Canceled');
@@ -56,10 +82,15 @@ export class AccountPageComponent implements OnInit {
   }
 
   updatePassword() {
-    if(this.formPassword.get('userPassword')?.value === this.formPassword.get('userPasswordConfirm')?.value) {
-      this.userList.usersList[this.userList.usersList.indexOf( this.loginData.usersList[0] )].password = AES.encrypt(this.formPassword.get('userPasswordConfirm')?.value,this.userList.encryptionKey).toString();
-      this.toastr.success('Successfully registered.', 'Operation Completed');
-      this.reloadForms();
+    if (this.formPassword.get('userPassword')?.value === this.formPassword.get('userPasswordConfirm')?.value) {
+      //this.userList.usersList[this.userList.usersList.indexOf(this.loginData.usersList[0])].password = AES.encrypt(this.formPassword.get('userPasswordConfirm')?.value, this.userList.encryptionKey).toString();
+
+      this.loginData.usersList[0].password = AES.encrypt(this.formPassword.get('userPasswordConfirm')?.value, this.userList.encryptionKey).toString();
+
+      this.userList.updateUser(this.loginData.usersList[0].userId, this.loginData.usersList[0]).subscribe(data => {
+        this.toastr.info('Successfully registered.', 'Operation Completed');
+        this.reloadForms();
+      })
     } else {
       this.reloadForms();
       this.toastr.error('Incorrect data.', 'Operation Canceled');
@@ -71,12 +102,12 @@ export class AccountPageComponent implements OnInit {
       userName: new FormControl(),
       userNameConfirm: new FormControl()
     })
-  
+
     this.formEmail = new FormGroup({
       userEmail: new FormControl(),
       userEmailConfirm: new FormControl()
     })
-  
+
     this.formPassword = new FormGroup({
       userPassword: new FormControl(),
       userPasswordConfirm: new FormControl()

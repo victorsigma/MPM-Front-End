@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserData } from '../models/users';
-import { AES } from 'crypto-js';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -8,23 +9,29 @@ import { AES } from 'crypto-js';
 })
 export class UsersListService {
 
+  //private myAppUrl = 'http://localhost:3000/'
+  private myAppUrl = 'https://localhost:7172/'
+  private myApiUrl = 'api/Users/'
 
   encryptionKey: string = '77767b40-fedc-11ec-b939-0242ac120002';
-  usersList: UserData[] = [
-    {
-      'userId': 'a826a50d-e189-47c8-a0e9-929607f78cfc',
-      'userMail': 'victorossielgaray1@gmail.com',
-      'userName': 'victorsigma',
-      'password': AES.encrypt('pato123',this.encryptionKey).toString(),
-      'phoneNumber': ''
-    },
-    {
-      'userId': 'e9b8e535-203b-4539-a4f3-34c3b70e92ce',
-      'userMail': 'victorossielgaray@gmail.com',
-      'userName': 'victorsigma1',
-      'password': AES.encrypt('pato123',this.encryptionKey).toString(),
-      'phoneNumber': ''
-    }
-  ]
-  constructor() { }
+  usersList: UserData[] = [];
+  constructor(private http:HttpClient) { }
+
+  getListUsers(): Observable<any> {
+    return this.http.get(this.myAppUrl + this.myApiUrl)
+  }
+
+  getList() {
+    this.getListUsers().subscribe(data=> {
+      this.usersList = data;
+    })
+  }
+
+  addUser(user: UserData) {
+    return this.http.post(this.myAppUrl + this.myApiUrl, user)
+  }
+
+  updateUser(id: string, user: UserData): Observable<any> {
+    return this.http.put(this.myAppUrl + this.myApiUrl+id, user)
+  }
 }

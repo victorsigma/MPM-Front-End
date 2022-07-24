@@ -2,8 +2,8 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivityDataService } from '../../services/activity-data.service';
 import { ActivityListService } from 'src/app/services/activity-list.service';
-import { RolesListActivity } from 'src/app/models/roles';
 import { UpdateDataService } from 'src/app/services/update-data.service';
+import { ActivityData } from '../../models/ativities';
 
 @Component({
   selector: 'app-editor-activity',
@@ -14,8 +14,11 @@ import { UpdateDataService } from 'src/app/services/update-data.service';
 
 export class EditorActivityComponent implements OnInit {
 
-  @Output() deletActivity: EventEmitter<number> = new EventEmitter();
+  @Output() deletActivity: EventEmitter<string> = new EventEmitter();
+  @Output() updateActivity: EventEmitter<ActivityData> = new EventEmitter();
 
+
+  activity: ActivityData = new ActivityData();
   form: FormGroup = new FormGroup({
     title: new FormControl(),
     subtitle: new FormControl(),
@@ -27,7 +30,6 @@ export class EditorActivityComponent implements OnInit {
   })
   constructor(
     public dataServiceModal: ActivityDataService, 
-    private dataActivities: ActivityDataService, 
     public activityList: ActivityListService,
     private emitter: UpdateDataService
   )
@@ -42,36 +44,44 @@ export class EditorActivityComponent implements OnInit {
   }
 
   editActivity() {
+    this.activity = this.dataServiceModal.activity;
+
     if (this.form.get('title')?.value != null) {
-      this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf(this.dataServiceModal.activity)].title = this.form.get('title')?.value;
+      //this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf(this.dataServiceModal.activity)].title = this.form.get('title')?.value;
+      this.activity.title = this.form.get('title')?.value;
     }
 
     if (this.form.get('subtitle')?.value != null) {
-      this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf(this.dataServiceModal.activity)].subtitle = this.form.get('subtitle')?.value;
+      //this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf(this.dataServiceModal.activity)].subtitle = this.form.get('subtitle')?.value;
+      this.activity.subtitle = this.form.get('subtitle')?.value;
     }
 
     if (this.form.get('status')?.value != 0) {
-      this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf(this.dataServiceModal.activity)].status = this.form.get('status')?.value;
+      //this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf(this.dataServiceModal.activity)].status = this.form.get('status')?.value;
+      this.activity.status = this.form.get('status')?.value;
     }
 
-    this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf( this.dataServiceModal.activity )].rolesList = new RolesListActivity(
-      true,
-        this.form.get('rolesListAnalyst')?.value,
-        this.form.get('rolesListDesigner')?.value,
-        this.form.get('rolesListProgrammer')?.value
-    )
+    //this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf( this.dataServiceModal.activity )].analyst =  this.form.get('rolesListAnalyst')?.value;
+    this.activity.analyst = this.form.get('rolesListAnalyst')?.value;
+
+    //this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf( this.dataServiceModal.activity )].designer = this.form.get('rolesListDesigner')?.value;
+    this.activity.designer = this.form.get('rolesListDesigner')?.value;
+
+    //this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf( this.dataServiceModal.activity )].programmer = this.form.get('rolesListProgrammer')?.value;
+    this.activity.programmer = this.form.get('rolesListProgrammer')?.value;
 
     if (this.form.get('dateEnd')?.value != null) {
-      this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf(this.dataServiceModal.activity)].dateEnd = new Date(new Date(this.form.get('dateEnd')?.value).setDate(new Date(this.form.get('dateEnd')?.value).getDate() + 1));
+      //this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf(this.dataServiceModal.activity)].dateEnd = new Date(new Date(this.form.get('dateEnd')?.value).setDate(new Date(this.form.get('dateEnd')?.value).getDate() + 1));
+      this.activity.dateEnd = new Date(new Date(this.form.get('dateEnd')?.value));
     }
 
     this.activityList.filterRol();
+    this.updateActivity.emit(this.activity);
     this.reloadForm();
   }
 
   removeActivity() {
-    var index = this.activityList.activitiesMaster.indexOf(this.dataServiceModal.activity);
-    this.deletActivity.emit(index);
+    this.deletActivity.emit(this.dataServiceModal.activity.id);
   }
 
   reloadForm() {
@@ -80,9 +90,9 @@ export class EditorActivityComponent implements OnInit {
       subtitle: new FormControl(),
       status: new FormControl(this.dataServiceModal.activity.status),
       dateEnd: new FormControl(),
-      rolesListAnalyst: new FormControl(this.dataServiceModal.activity.rolesList.Analyst),
-      rolesListDesigner: new FormControl(this.dataServiceModal.activity.rolesList.Designer),
-      rolesListProgrammer: new FormControl(this.dataServiceModal.activity.rolesList.Programmer)
+      rolesListAnalyst: new FormControl(this.dataServiceModal.activity.analyst),
+      rolesListDesigner: new FormControl(this.dataServiceModal.activity.designer),
+      rolesListProgrammer: new FormControl(this.dataServiceModal.activity.programmer)
     })
   }
 }

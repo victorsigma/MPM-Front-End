@@ -2,7 +2,6 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import {v4 as uuidv4} from 'uuid';
-import { RolesListActivity } from '../../models/roles';
 import { ActivityData } from '../../models/ativities';
 import { ProjectData } from 'src/app/models/projects';
 
@@ -42,13 +41,11 @@ export class AddActivityComponent implements OnInit {
       subtitle: this.form.get('subtitle')?.value,
       src: 'img_'+this.random(1, 7),
       status: this.form.get('status')?.value,
-      dateEnd: new Date(new Date(this.form.get('dateEnd')?.value).setDate(new Date(this.form.get('dateEnd')?.value).getDate()+1)),
-      rolesList: new RolesListActivity(
-        true,
-        this.form.get('rolesListAnalyst')?.value,
-        this.form.get('rolesListDesigner')?.value,
-        this.form.get('rolesListProgrammer')?.value
-      ),
+      dateEnd: new Date(new Date(this.form.get('dateEnd')?.value)),
+      leader: true,
+      analyst: this.form.get('rolesListAnalyst')?.value,
+      designer: this.form.get('rolesListDesigner')?.value,
+      programmer: this.form.get('rolesListProgrammer')?.value,
       projectId: this.project.id
     }
 

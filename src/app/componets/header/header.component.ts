@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserData } from 'src/app/models/users';
 import { LoginDataService } from '../../services/login-data.service';
+import { ProjectListService } from '../../services/project-list.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ import { LoginDataService } from '../../services/login-data.service';
 export class HeaderComponent implements OnInit {
 
   isLogin: boolean;
-  constructor(private router:Router, public loginData:LoginDataService) {
+  constructor(private router:Router, public loginData:LoginDataService, private projectList:ProjectListService) {
     this.isLogin = this.loginData.isLogin;
   }
 
@@ -32,5 +33,9 @@ export class HeaderComponent implements OnInit {
 
   loginDate(): void {
     this.updateLogin();
+  }
+
+  reloadProjects() {
+    this.projectList.loadProjects();
   }
 }

@@ -1,4 +1,3 @@
-import { RolesListActivity } from './roles';
 export class ActivityData {
     id: string = '';
     title: string = '';
@@ -6,7 +5,10 @@ export class ActivityData {
     src:string = '';
     status: number = 0;
     dateEnd: Date = new Date();
-    rolesList: RolesListActivity =  new RolesListActivity(true,false,false,false);
+    leader: boolean =  true;
+    analyst: boolean =  false;
+    designer: boolean = false;
+    programmer: boolean = false;
     projectId: string = '';
     
 }

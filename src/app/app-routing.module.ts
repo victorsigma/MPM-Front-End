@@ -18,8 +18,7 @@ const routes: Routes = [
   {
     path: 'activities',
     component: ActivitiesPageComponent
-  }
-  ,
+  },
   {
     path: 'reload',
     component: WhiteComponent

@@ -6,6 +6,8 @@ import { ProjectDataService } from '../../services/project-data.service';
 import { LoginDataService } from '../../services/login-data.service';
 import { ProjectsHasUser } from '../../models/projectsHasUser';
 import { UsersProjectsService } from 'src/app/services/users-projects.service';
+import { ProjectListService } from '../../services/project-list.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-project',
@@ -19,7 +21,13 @@ export class AddProjectComponent implements OnInit {
   relationProject: ProjectsHasUser = new ProjectsHasUser();
 
   @Output() newProject: EventEmitter<ProjectData> = new EventEmitter();
-  constructor(public projectId: ProjectDataService, private userLoging:LoginDataService, private memberList:UsersProjectsService) {
+  constructor(
+    public projectId: ProjectDataService, 
+    private userLoging:LoginDataService, 
+    private memberList:UsersProjectsService, 
+    private projectList:ProjectListService,
+    private router:Router
+    ) {
     this.form = new FormGroup(
       {
         title: new FormControl(),
@@ -39,19 +47,35 @@ export class AddProjectComponent implements OnInit {
       subtitle: this.form.get('subtitle')?.value,
       src: 'img_'+this.random(1, 7),
       dateStart: new Date(),
-      dateEnd: new Date(new Date(this.form.get('dateEnd')?.value).setDate(new Date(this.form.get('dateEnd')?.value).getDate()+1))
+      dateEnd: new Date(new Date(this.form.get('dateEnd')?.value))
     };
 
     this.relationProject = {
-      proyects_id_p: this.project.id,
-      user_id_user: this.userLoging.usersList[0].userId,
-      roles_id_rol: 0
+      id: 0,
+      proyectsIdProject: this.project.id,
+      userIdUser: this.userLoging.usersList[0].userId,
+      rolesIdRol: 0
     }
+    //
+    this.projectList.addProjects(this.project).subscribe(data => {
+      this.form.reset();
+      //this.projectList.projectsMaster.push(this.project);
+    })
+    this.memberList.addProjectUser(this.relationProject).subscribe(data => {
+      //this.memberList.projectMembers.push(this.relationProject)
+      this.projectList.loadProjects();
+      this.reloadForm();
+      this.router.navigate(['/']);
+    })
 
-    this.newProject.emit(this.project);
-    this.memberList.projectMembers.push(this.relationProject)
-    console.log(this.project);
-    this.reloadForm();
+
+    this.memberList.getListProjectUser().subscribe(data => {
+      this.memberList.projectMembers = data;
+    })
+    this.projectList.getListProjects().subscribe(data => {
+      this.projectList.projectsMaster = data;
+      this.projectList.loadProjects();
+    })
   }
 
   random(min: number, max: number) {

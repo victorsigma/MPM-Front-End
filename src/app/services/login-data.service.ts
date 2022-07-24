@@ -8,6 +8,7 @@ export class LoginDataService {
 
   isLogin: boolean = false;
   usersList: UserData[] = [];
+  
   constructor() {
   }
 }

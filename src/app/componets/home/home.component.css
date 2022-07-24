@@ -2,3 +2,7 @@
     border: white solid;
     color: white;
 }
+
+a {
+    cursor: pointer;
+}
