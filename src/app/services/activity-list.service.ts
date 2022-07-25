@@ -14,7 +14,8 @@ import { ProjectDataService } from './project-data.service';
 export class ActivityListService {
 
   //private myAppUrl = 'http://localhost:3000/'
-  private myAppUrl = 'https://localhost:7172/'
+  private myAppUrl = 'http://localhost:8080/'
+  //private myAppUrl = 'https://localhost:7172/'
   private myApiUrl = 'api/Activities/'
 
   activitiesMaster: ActivityData[] = []

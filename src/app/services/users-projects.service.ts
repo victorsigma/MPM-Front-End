@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
 export class UsersProjectsService {
 
   //private myAppUrl = 'http://localhost:3000/'
-  private myAppUrl = 'https://localhost:7172/'
+  private myAppUrl = 'http://localhost:8080/'
+  //private myAppUrl = 'https://localhost:7172/'
   private myApiUrl = 'api/ProjectsHasUser/'
 
   projectMembers: ProjectsHasUser[] = []

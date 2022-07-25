@@ -10,7 +10,8 @@ import { Observable } from 'rxjs';
 export class UsersListService {
 
   //private myAppUrl = 'http://localhost:3000/'
-  private myAppUrl = 'https://localhost:7172/'
+  private myAppUrl = 'http://localhost:8080/'
+  //private myAppUrl = 'https://localhost:7172/'
   private myApiUrl = 'api/Users/'
 
   encryptionKey: string = '77767b40-fedc-11ec-b939-0242ac120002';
