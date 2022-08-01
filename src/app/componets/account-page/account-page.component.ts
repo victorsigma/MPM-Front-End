@@ -34,24 +34,28 @@ export class AccountPageComponent implements OnInit {
 
 
   updateName() {
-    if (this.formName.get('userName')?.value === this.formName.get('userNameConfirm')?.value) {
-      if (this.userList.usersList.filter(data => {
-        return data.userName === this.formName.get('userNameConfirm')?.value
-      }).length == 0) {
-        //this.userList.usersList[this.userList.usersList.indexOf(this.loginData.usersList[0])].userName = this.formName.get('userNameConfirm')?.value;
-        this.loginData.usersList[0].userName = this.formName.get('userNameConfirm')?.value;
-
-        this.userList.updateUser(this.loginData.usersList[0].userId, this.loginData.usersList[0]).subscribe(data => {
-          this.toastr.info('Successfully registered.', 'Operation Completed');
+    if(!(/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(this.formName.get('userName')?.value))) {
+      if (this.formName.get('userName')?.value === this.formName.get('userNameConfirm')?.value) {
+        if (this.userList.usersList.filter(data => {
+          return data.userName === this.formName.get('userNameConfirm')?.value
+        }).length == 0) {
+          //this.userList.usersList[this.userList.usersList.indexOf(this.loginData.usersList[0])].userName = this.formName.get('userNameConfirm')?.value;
+          this.loginData.usersList[0].userName = this.formName.get('userNameConfirm')?.value;
+  
+          this.userList.updateUser(this.loginData.usersList[0].userId, this.loginData.usersList[0]).subscribe(data => {
+            this.toastr.info('Successfully registered.', 'Operation Completed');
+            this.reloadForms();
+          })
+        } else {
           this.reloadForms();
-        })
+          this.toastr.error('Exists Username.', 'Operation Canceled');
+        }
       } else {
         this.reloadForms();
-        this.toastr.error('Exists Username.', 'Operation Canceled');
+        this.toastr.error('Incorrect data.', 'Operation Canceled');
       }
     } else {
-      this.reloadForms();
-      this.toastr.error('Incorrect data.', 'Operation Canceled');
+      this.toastr.error('You cannot use an email address as a user.', 'Operation Canceled');
     }
   }
 

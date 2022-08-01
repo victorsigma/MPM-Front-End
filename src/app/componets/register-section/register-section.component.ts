@@ -43,25 +43,33 @@ export class RegisterSectionComponent implements OnInit {
       phoneNumber: this.form.get('phone')?.value
     }
 
-    this.users = this.userList.usersList.filter((obj) => {
-      return obj.userMail == this.form.get('email')?.value
-    })
-    if (this.users[0] == undefined) {
-      this.users = this.userList.usersList.filter((obj) => {
-        return obj.userName == this.form.get('user')?.value
-      })
-      if (this.users[0] == undefined) {
-        //this.userList.usersList.push(this.user);
-        this.userList.addUser(this.user).subscribe(data => {
-          this.toastr.success('Successfully registered.', 'Operation Completed');
-          this.userList.getList();
-          this.form.reset();
+    if(!(/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(this.form.get('user')?.value))) {
+      if(/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(this.form.get('email')?.value)) {
+        this.users = this.userList.usersList.filter((obj) => {
+          return obj.userMail == this.form.get('email')?.value
         })
+        if (this.users[0] == undefined) {
+          this.users = this.userList.usersList.filter((obj) => {
+            return obj.userName == this.form.get('user')?.value
+          })
+          if (this.users[0] == undefined) {
+            //this.userList.usersList.push(this.user);
+            this.userList.addUser(this.user).subscribe(data => {
+              this.toastr.success('Successfully registered.', 'Operation Completed');
+              this.userList.getList();
+              this.form.reset();
+            })
+          } else {
+            this.toastr.error('The user is already registered.', 'Operation Canceled');
+          }
+        } else {
+          this.toastr.error('The mail has already been registered.', 'Operation Canceled');
+        }
       } else {
-        this.toastr.error('The user is already registered.', 'Operation Canceled');
-      }
+        this.toastr.error('This is not a valid email address..', 'Operation Canceled');
+      } 
     } else {
-      this.toastr.error('The mail has already been registered.', 'Operation Canceled');
+      this.toastr.error('You cannot use an email address as a user.', 'Operation Canceled');
     }
 
     this.form = new FormGroup({

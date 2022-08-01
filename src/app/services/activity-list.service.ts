@@ -13,9 +13,10 @@ import { ProjectDataService } from './project-data.service';
 })
 export class ActivityListService {
 
-  //private myAppUrl = 'http://localhost:3000/'
-  private myAppUrl = 'http://localhost:8080/'
-  //private myAppUrl = 'https://localhost:7172/'
+  //private myAppUrl = 'http://192.168.1.66:3000/'//JavaScript Servidor
+  //private myAppUrl = 'http://localhost:3000/'//JavaScript
+  private myAppUrl = 'http://192.168.0.165:8080/'//Java
+  //private myAppUrl = 'https://localhost:7172/'//C#
   private myApiUrl = 'api/Activities/'
 
   activitiesMaster: ActivityData[] = []
