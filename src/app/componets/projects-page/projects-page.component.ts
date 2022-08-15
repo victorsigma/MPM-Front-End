@@ -4,6 +4,7 @@ import { ProjectData } from '../../models/projects';
 import { ProjectListService } from '../../services/project-list.service';
 import { LoginDataService } from '../../services/login-data.service';
 import { UsersProjectsService } from 'src/app/services/users-projects.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-projects-page',
@@ -12,7 +13,10 @@ import { UsersProjectsService } from 'src/app/services/users-projects.service';
 })
 export class ProjectsPageComponent implements OnInit {
   createProject: Subject<ProjectData> = new Subject<ProjectData>();
-  constructor(public projectList: ProjectListService, public loginData:LoginDataService) {
+  constructor(public projectList: ProjectListService, public loginData:LoginDataService, private route:Router) {
+    if(!loginData.isLogin) {
+      this.route.navigate(['/'])
+    }
   }
 
   ngOnInit(): void {

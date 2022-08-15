@@ -5,34 +5,34 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="createProjectLabel">Create Project</h5>
-                <button type="button" class="btn-close"
+                <button type="button" class="btn-close btn-close-white"
                     data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form [formGroup]="form" (ngSubmit)="createProject()">
                     <div class="mb-3">
                         <label class="form-label" for="projectName">Project name</label>
-                        <input class="form-control" id="projectName"
+                        <input class="text" id="projectName"
                             name="projectName" type="text" required
                             formControlName="title" maxlength="30" placeholder="Project name"/>
                     </div>
                     <div class="mb-3">
                         <label for="projectDescription"
                             class="form-label">Project description</label>
-                        <textarea class="form-control"
+                        <textarea class="textarea"
                             id="projectDescription" rows="3" required
                             formControlName="subtitle" maxlength="150" placeholder="Project description"></textarea>
                     </div>
                     <div class="mb-3">
                         <label class="control-label" for="dateEnd">Completion
                             date</label>
-                        <input class="form-control" id="dateEnd" name="dateEnd"
+                        <input class="text" id="dateEnd" name="dateEnd"
                             placeholder="MM/DD/YYYY" type="date" formControlName="dateEnd" required />
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary"
+                        <button type="button" class="btn button-close"
                             data-bs-dismiss="modal">Close</button>
-                        <button type="submit" [disabled]="!this.form.valid" class="btn btn-primary"
+                        <button type="submit" [disabled]="!this.form.valid" class="btn button-create"
                             data-bs-dismiss="modal">Create Project</button>
                     </div>
                 </form>

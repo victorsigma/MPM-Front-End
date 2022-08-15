@@ -63,19 +63,24 @@ export class AddProjectComponent implements OnInit {
     })
     this.memberList.addProjectUser(this.relationProject).subscribe(data => {
       //this.memberList.projectMembers.push(this.relationProject)
-      this.projectList.loadProjects();
       this.reloadForm();
-      this.router.navigate(['/']);
     })
 
+    
+    
+    //this.router.navigate(['/projects']);
 
-    this.memberList.getListProjectUser().subscribe(data => {
-      this.memberList.projectMembers = data;
+
+    this.memberList.getListProjectUser().subscribe(async data => {
+      this.memberList.projectMembers = await data;
     })
-    this.projectList.getListProjects().subscribe(data => {
-      this.projectList.projectsMaster = data;
-      this.projectList.loadProjects();
+    this.projectList.getListProjects().subscribe(async data => {
+      this.projectList.projectsMaster = await data;
     })
+
+    this.projectList.loadProjects();
+    this.projectList.loadProjects();
+    this.router.navigate(['/']);
   }
 
   random(min: number, max: number) {

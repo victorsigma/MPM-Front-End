@@ -1,3 +1,13 @@
 .btn-del-member {
     float: right;
 }
+
+.alert-primary {
+    --bs-alert-color: #000000;
+    --bs-alert-bg: #000000;
+    --bs-alert-border-color: #ffffff;
+}
+
+.alert {
+    color: #ffffff;
+}

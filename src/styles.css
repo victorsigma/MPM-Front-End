@@ -8,3 +8,7 @@
 ::-webkit-scrollbar-thumb{
     background: rgb(67, 67, 68);
 }
+
+body {
+    background-color: #202124;
+}

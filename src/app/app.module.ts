@@ -24,6 +24,7 @@ import { ProjectMembersComponent } from './componets/project-members/project-mem
 import { MemberItemComponent } from './componets/member-item/member-item.component';
 import { MoreActivityComponent } from './componets/more-activity/more-activity.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DeleteProjectComponent } from './componets/delete-project/delete-project.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProjectOptionsComponent,
     ProjectMembersComponent,
     MemberItemComponent,
-    MoreActivityComponent
+    MoreActivityComponent,
+    DeleteProjectComponent
   ],
   imports: [
     BrowserModule,

@@ -4,24 +4,24 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="addActivityLabel">Add Activity</h5>
-                <button type="button" class="btn-close"
+                <button type="button" class="btn-close btn-close-white"
                     data-bs-dismiss="modal" (click)="addCancel()" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form [formGroup]="form" (ngSubmit)="addActivity()">
                     <div class="mb-3">
                         <label class="form-label" for="nameActivity">Activity name</label>
-                        <input class="form-control" required formControlName="title" maxlength="30" type="text" placeholder="Name Activity"/>
+                        <input class="text" required formControlName="title" maxlength="30" type="text" placeholder="Name Activity"/>
                     </div>
                     <div class="mb-3">
                         <label for="descriptionActivity"
                             class="form-label">Description Activity</label>
-                        <textarea class="form-control" required formControlName="subtitle"
+                        <textarea class="textarea" required formControlName="subtitle"
                             id="descriptionActivity" rows="3" maxlength="150" placeholder="Description Activity"></textarea>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="statusActivity">Status</label>
-                        <select formControlName="status" class="form-select" id="statusActivity" name="statusActivity">
+                        <select formControlName="status" class="text" id="statusActivity" name="statusActivity">
                             <option value="1" selected >Unassigned</option>
                             <option value="2">In progress</option>
                             <option value="3">Completed</option>
@@ -58,12 +58,12 @@
                     <div class="mb-3">
                         <label class="control-label" for="dateEnd">Completion
                             date</label>
-                        <input formControlName="dateEnd" required class="form-control" id="dateEnd" name="dateEnd" placeholder="MM/DD/YYYY" type="date"/>
+                        <input formControlName="dateEnd" required class="text" id="dateEnd" name="dateEnd" placeholder="MM/DD/YYYY" type="date"/>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary"
+                        <button type="button" class="btn button-close"
                             data-bs-dismiss="modal" (click)="addCancel()">Close</button>
-                        <button type="submit" [disabled]="!this.form.valid" class="btn btn-primary" data-bs-dismiss="modal">Add Activity</button>
+                        <button type="submit" [disabled]="!this.form.valid" class="btn button-save" data-bs-dismiss="modal">Add Activity</button>
                     </div>
                 </form>
             </div>

@@ -17,16 +17,31 @@ export class MemberItemComponent implements OnInit {
   users: UserData[] = [];
   user: UserData = new UserData;
   userRol: string = '';
-  constructor(private emitter: UpdateDataService, private userFilter: UsersListService, private memberList:UsersProjectsService) { 
-    this.emitter.emitter.subscribe(() => {
-      this.updateDate();
-    });
+  constructor(private emitter: UpdateDataService, private userFilter: UsersListService, private memberList:UsersProjectsService) {
+    this.users = this.userFilter.usersList.filter(data => {
+      return data.userId == this.member.userIdUser
+    })
+
+    this.user = this.users[0];
+
+    if (this.member.rolesIdRol == 0) {
+      this.userRol = 'Leader'
+    }
+
+    if (this.member.rolesIdRol == 1) {
+      this.userRol = 'Analyst'
+    }
+
+    if (this.member.rolesIdRol == 2) {
+      this.userRol = 'Designer'
+    }
+
+    if (this.member.rolesIdRol == 3) {
+      this.userRol = 'Programmer'
+    }
   }
 
   ngOnInit(): void {
-  }
-
-  updateDate() {
     this.users = this.userFilter.usersList.filter(data => {
       return data.userId == this.member.userIdUser
     })

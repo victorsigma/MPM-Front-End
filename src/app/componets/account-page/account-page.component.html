@@ -1,5 +1,5 @@
 <div *ngIf="loginData.isLogin">
-    <nav class="nv-projct navbar">
+    <nav class="nv-projct navbar navbar-dark">
         <div class="container-fluid content-project">
             <h1 class="navbar-brand">Account</h1>
         </div>
@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="mb-1">
                                     <label class="form-label" for="name">Username</label>
-                                    <input class="form-control" name="name"
+                                    <input class="text-disabled" name="name"
                                         type="text" disabled
                                         placeholder="{{loginData.usersList[0].userName}}"
                                         />
@@ -42,7 +42,7 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="email">Email
                                         address</label>
-                                    <input class="form-control" name="email"
+                                    <input class="text-disabled" name="email"
                                         type="text" disabled
                                         placeholder="{{loginData.usersList[0].userMail}}"
                                         />
@@ -50,7 +50,7 @@
                                 <div class="mb-3">
                                     <label for="password"
                                         class="form-label">Password</label>
-                                    <input type="password" class="form-control"
+                                    <input type="password" class="text-disabled"
                                         disabled placeholder="*******">
                                 </div>
                             </form>
@@ -69,16 +69,16 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="name-update">Username</label>
-                            <input class="form-control" id="name-update"
+                            <input class="text" id="name-update"
                                 name="name-update"
                                 type="text" formControlName="userName"
                                 placeholder="{{loginData.usersList[0].userName}}"
                                 required/>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="name-update">Confirm
+                            <label class="form-label" for="name-update-c">Confirm
                                 Username</label>
-                            <input class="form-control" id="name-update"
+                            <input class="text" id="name-update-c"
                                 name="name-update"
                                 type="text" formControlName="userNameConfirm"
                                 placeholder="{{loginData.usersList[0].userName}}"
@@ -87,8 +87,7 @@
                         <div class="list-group card-body">
                             <button type="submit"
                                 [disabled]="!this.formName.valid" class="btn
-                                btn-primary" class="btn
-                                btn-primary">Update</button>
+                                button-update">Update</button>
                         </div>
                     </form>
                     <hr>
@@ -96,7 +95,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="email-update">Email
                                 address</label>
-                            <input class="form-control" id="email-update"
+                            <input class="text" id="email-update"
                                 name="email-update"
                                 type="email" formControlName="userEmail"
                                 placeholder="{{loginData.usersList[0].userMail}}"
@@ -106,7 +105,7 @@
                             <label class="form-label" for="c-email-update">Confirm
                                 Email
                                 address</label>
-                            <input class="form-control" id="c-email-update"
+                            <input class="text" id="c-email-update"
                                 name="c-email-update"
                                 type="email" formControlName="userEmailConfirm"
                                 placeholder="{{loginData.usersList[0].userMail}}"
@@ -115,8 +114,7 @@
                         <div class="list-group card-body">
                             <button type="submit"
                                 [disabled]="!this.formEmail.valid" class="btn
-                                btn-primary" class="btn
-                                btn-primary">Update</button>
+                                button-update">Update</button>
                         </div>
                     </form>
                     <hr>
@@ -124,7 +122,7 @@
                         (ngSubmit)="updatePassword()">
                         <div class="mb-3">
                             <label for="password-update" class="form-label">Password</label>
-                            <input type="password" class="form-control"
+                            <input type="password" class="text"
                                 id="password-update"
                                 formControlName="userPassword"
                                 placeholder="Password" required>
@@ -132,7 +130,7 @@
                         <div class="mb-3">
                             <label for="c-password-update" class="form-label">Confirm
                                 Password</label>
-                            <input type="password" class="form-control"
+                            <input type="password" class="text"
                                 id="c-password-update"
                                 formControlName="userPasswordConfirm"
                                 placeholder="Password" required>
@@ -140,8 +138,7 @@
                         <div class="list-group card-body">
                             <button type="submit"
                                 [disabled]="!this.formPassword.valid" class="btn
-                                btn-primary" class="btn
-                                btn-primary">Update</button>
+                                button-update">Update</button>
                         </div>
                     </form>
                     <br>

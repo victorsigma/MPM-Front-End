@@ -1,8 +1,77 @@
-.btn-ghost {
-    border: white solid;
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+* {
+    color: white;
+    
+}
+
+.text-sub {
     color: white;
 }
 
-a {
+
+.button-login {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: white;
+    border: none;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
     cursor: pointer;
+    outline: none;
+    margin-right: 5px;
+    border-radius: 10px;
+    border: solid #0dedfd 3px;
+}
+
+.button-login:hover {
+    box-shadow: 0px 15px 20px #0dedfd;
+    transform: translateY(2px);
+}
+
+.button-login:active {
+    border: solid rgb(127, 0, 253) 3px;
+    box-shadow: 0px 15px 20px rgb(127, 0, 253);
+}
+
+.button-register {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: white;
+    background-color: #0dedfd00;
+    border: none;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    margin-right: 5px;
+    border-radius: 10px;
+    border: solid rgb(127, 0, 253) 3px;
+}
+
+.button-register:hover {
+    box-shadow: 0px 15px 20px rgb(127, 0, 253);
+    transform: translateY(2px);
+}
+
+.button-register:active {
+    border: solid #0dedfd 3px;
+    box-shadow: 0px 15px 20px #0dedfd;
+}
+
+
+.btn-ghost {
+    border: transparent solid 3px;
+    color: transparent;
+    background-color: transparent;
+    box-shadow: none;
 }

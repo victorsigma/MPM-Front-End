@@ -42,45 +42,6 @@
     -webkit-text-fill-color: rgb(255, 255, 255);
 }
 
-
-
-.textarea {
-    display: block;
-    width: 100%;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    color: rgb(255, 255, 255);
-    background-color: transparent;
-    border-radius: 0;
-    transition: all 0.3s ease 0s;
-    cursor: text;
-    outline: none;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border: #fff solid 2px;
-    min-height: 50px;
-}
-
-.textarea:hover {
-    color: #fff;
-    border: #fd9048 solid 2px;
-    transition: border 0.2s linear;
-}
-
-.textarea::after {
-    border: #fd9048 solid 2px;
-    color: #fff;
-}
-
-.textarea:-webkit-autofill,
-.textarea:-webkit-autofill:hover,
-.textarea:-webkit-autofill:focus,
-.textarea:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 50px #202124 inset;
-    -webkit-text-fill-color: rgb(255, 255, 255);
-}
-
 .modal-header {
     border-bottom: #ffffff 1px solid;
 }
@@ -122,22 +83,6 @@ option {
     border-bottom: #fd9048 solid 2px;
 }
 
-
-
-
-.button-change:hover {
-    box-shadow: 0px 15px 20px #fd9048;
-}
-
-.button-change:active {
-    border: solid #0d6efd 3px;
-    box-shadow: 0px 15px 20px #0d6efd;
-}
-
-.button-change {
-    color: white;
-    border: solid #fd9048 3px;
-}
 
 .button-close:hover {
     box-shadow: 0px 15px 20px #0395ce;

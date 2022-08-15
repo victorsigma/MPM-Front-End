@@ -1,3 +1,7 @@
+* {
+    color: white;
+}
+
 .container {
     padding: 1em;
 }
@@ -11,8 +15,9 @@
 }
 
 .content-project {
-    border-top: black 2px solid;
-    border-bottom: black 2px solid;
+    border-top: white 2px solid;
+    border-bottom: white 2px solid;
+    color: white;
 }
 
 .content-project h1 {
@@ -21,4 +26,110 @@
 
 .account-container {
     width: 100%;
+}
+
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: var(--bs-nav-pills-link-active-color);
+    background-color: transparent;
+    border: 3px rgb(74, 206, 140) solid;
+    box-shadow: 0px 15px 20px rgb(74, 206, 140);
+}
+
+.nav-pills .nav-link {
+    background: 0 0;
+    border: 0;
+    border-radius: var(--bs-nav-pills-border-radius);
+    border: 3px rgb(252, 196, 92) solid;
+}
+
+.nav-link {
+    display: block;
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+    font-size: var(--bs-nav-link-font-size);
+    font-weight: var(--bs-nav-link-font-weight);
+    color: rgb(252, 196, 92);
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+
+
+.text {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    border-radius: 0;
+    transition: all 0.3s ease 0s;
+    cursor: text;
+    outline: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: #fff solid 2px;
+}
+
+.text:hover {
+    color: #fff;
+    border-bottom: rgb(74, 206, 140) solid 2px;
+    transition: border 0.2s linear;
+}
+
+.text::after {
+    border-bottom: rgb(74, 206, 140) solid 2px;
+    color: #fff;
+}
+
+.text:-webkit-autofill,
+.text:-webkit-autofill:hover,
+.text:-webkit-autofill:focus,
+.text:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 50px #202124 inset;
+    -webkit-text-fill-color: rgb(255, 255, 255);
+}
+
+
+.button-update:hover {
+    box-shadow: 0px 15px 20px rgb(252, 196, 92);
+}
+
+.button-update:active {
+    border: solid rgb(74, 206, 140) 3px;
+}
+
+.button-update {
+    color: white;
+    border: solid rgb(252, 196, 92) 3px;
+}
+
+.text-disabled {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    border-radius: 0;
+    transition: all 0.3s ease 0s;
+    cursor: default;
+    outline: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: #fff solid 2px;
+}
+
+.text-disabled::after {
+    border-bottom: rgb(74, 206, 140) solid 2px;
+    color: #fff;
+}
+
+::-ms-reveal {
+    color: white;
+}
+
+::-ms-reveal {
+    filter: invert(100%);
 }

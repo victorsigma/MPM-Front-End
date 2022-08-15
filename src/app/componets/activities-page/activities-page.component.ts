@@ -10,6 +10,7 @@ import { LoginDataService } from '../../services/login-data.service';
 import { UpdateDataService } from '../../services/update-data.service';
 import { UsersProjectsService } from 'src/app/services/users-projects.service';
 import { ProjectsHasUser } from 'src/app/models/projectsHasUser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-activities-page',
@@ -37,7 +38,8 @@ export class ActivitiesPageComponent implements OnInit {
     public loginData: LoginDataService,
     private emitter: UpdateDataService,
     private members: UpdateDataService,
-    private userMember: UsersProjectsService
+    private userMember: UsersProjectsService,
+    private route:Router
   ) {
     this.filterRol();
     this.project = this.projectData.project;
@@ -45,6 +47,10 @@ export class ActivitiesPageComponent implements OnInit {
     this.loginRol = this.userMember.projectMembers.filter(data => {
       return data.proyectsIdProject == projectData.project.id && data.userIdUser == loginData.usersList[0].userId
     })
+
+    if(!loginData.isLogin) {
+      this.route.navigate(['/'])
+    }
   }
 
   ngOnInit(): void {

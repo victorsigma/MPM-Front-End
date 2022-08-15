@@ -22,8 +22,8 @@ export class UsersProjectsService {
   }
 
   getList() {
-    this.getListProjectUser().subscribe(data=> {
-      this.projectMembers = data;
+    this.getListProjectUser().subscribe(async data=> {
+      this.projectMembers = await data;
     })
   }
 

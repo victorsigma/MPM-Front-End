@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="editActivityLabel">{{dataServiceModal.activity.title}}</h5>
-                <button type="button" class="btn-close"
+                <button type="button" class="btn-close btn-close-white"
                     data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -12,19 +12,19 @@
                     <div class="mb-3">
                         <label class="form-label" for="nameActivity">Change
                             activity name</label>
-                        <input class="form-control" id="nameActivity"
+                        <input class="text" id="nameActivity"
                             name="nameActivity"
                             type="text" formControlName="title" placeholder="{{dataServiceModal.activity.title}}"/>
                     </div>
                     <div class="mb-3">
                         <label for="descriptionActivity"
                             class="form-label">Change description</label>
-                        <textarea class="form-control"
+                        <textarea class="textarea"
                             id="descriptionActivity" rows="3" formControlName="subtitle" placeholder="{{dataServiceModal.activity.subtitle}}"></textarea>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Change status</label>
-                        <select formControlName="status" class="form-select" aria-label="Default
+                        <select formControlName="status" class="text" aria-label="Default
                             select example">
                             <option value="1" [selected]="dataServiceModal.activity.status == 1">Unassigned</option>
                             <option value="2" [selected]="dataServiceModal.activity.status == 2">In progress</option>
@@ -34,26 +34,26 @@
                     <div class="mb-1">
                         <label class="form-label">Participating roles</label>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 checkbox-div">
                         <input type="checkbox" [checked]="dataServiceModal.activity.leader" disabled
                             class="form-check-input"
                             id="checkleader">
                         <label class="form-check-label"
                             for="checkleader">Leader</label>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 checkbox-div">
                         <input type="checkbox" formControlName="rolesListAnalyst" [checked]="dataServiceModal.activity.analyst" class="form-check-input"
                             id="checkanalyst">
                         <label class="form-check-label"
-                            for="checkanalyst">Analyst</label>
+                            for="checkanalyst"> Analyst</label>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 checkbox-div">
                         <input type="checkbox" formControlName="rolesListDesigner" [checked]="dataServiceModal.activity.designer" class="form-check-input"
                             id="checkdesigner">
                         <label class="form-check-label"
                             for="checkdesigner">Designer</label>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 checkbox-div">
                         <input type="checkbox" formControlName="rolesListProgrammer" [checked]="dataServiceModal.activity.programmer" class="form-check-input"
                             id="checkprogrammer">
                         <label class="form-check-label"
@@ -64,16 +64,16 @@
                             date</label>
                             <br>
                             <label class="control-label" for="date">Actual date {{dataServiceModal.activity.dateEnd}}</label>
-                        <input formControlName="dateEnd" class="form-control" id="date"
+                        <input formControlName="dateEnd" class="text" id="date"
                             name="date" placeholder="MM/DD/YYYY"
                             type="date"/>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger"
+                        <button type="button" class="btn button-delete"
                             data-bs-dismiss="modal" (click)="removeActivity()">Remove</button>
-                        <button type="button" class="btn btn-secondary"
+                        <button type="button" class="btn button-close"
                             data-bs-dismiss="modal">Close</button>
-                        <button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Save
+                        <button type="submit" data-bs-dismiss="modal" class="btn button-change">Save
                             changes</button>
                     </div>
                 </form>

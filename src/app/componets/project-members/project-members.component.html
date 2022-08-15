@@ -5,7 +5,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="projectMembersLabel">Members
                     List</h5>
-                <button type="button" class="btn-close"
+                <button type="button" class="btn-close btn-close-white"
                     data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
@@ -20,13 +20,13 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label" for="userName">Username</label>
-                        <input class="form-control" id="userName"
+                        <input class="text" id="userName"
                             name="userName" formControlName="userName" required
-                            type="text" />
+                            type="text" placeholder="name"/>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Select Rol</label>
-                        <select class="form-select" formControlName="userRol" aria-label="Default
+                        <select class="text" formControlName="userRol" aria-label="Default
                             select example">
                             <option value="1">Analyst</option>
                             <option value="2">Designer</option>
@@ -34,12 +34,12 @@
                         </select>
                     </div>
                     <div class="list-group card-body">
-                        <button type="submit" data-bs-dismiss="modal" [disabled]="!this.form.valid" data-bs-dismiss="modal" class="btn btn-primary">Submit</button>
+                        <button type="submit" data-bs-dismiss="modal" [disabled]="!this.form.valid" class="btn button-submit">Submit</button>
                     </div>
                 </form>
             </div>
             <div class="modal-footer list-group card-body">
-                <button type="button" class="btn btn-secondary"
+                <button type="button" class="btn button-close"
                     data-bs-dismiss="modal">Close</button>
             </div>
         </div>

@@ -5,7 +5,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="projectOptionsLabel">Project
                     Options</h5>
-                <button type="button" (click)="updateForm()" class="btn-close"
+                <button type="button" (click)="updateForm()" class="btn-close btn-close-white"
                     data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -13,20 +13,20 @@
                     <div class="mb-3">
                         <label class="form-label" for="nameProject">Change
                             project name</label>
-                        <input class="form-control" id="nameProject"
+                        <input class="text" id="nameProject"
                             name="nameProject"
                             type="text" formControlName="title" placeholder="{{project.title}}"/>
                     </div>
                     <div class="mb-3">
                         <label for="descriptionProject"
                             class="form-label">Change description</label>
-                        <textarea class="form-control"
+                        <textarea class="textarea"
                             id="descriptionProject" rows="3" formControlName="subtitle" placeholder="{{project.subtitle}}"></textarea>
                     </div>
                     <div class="mb-3">
                         <label class="control-label" for="dateStart">Start
                             date</label>
-                        <input class="form-control" disabled id="dateStart"
+                        <input class="text" disabled id="dateStart"
                             name="dateStart" placeholder="MM/DD/YYYY"
                             type="text" value="{{project.dateStart}}" />
                     </div>
@@ -35,14 +35,18 @@
                             date</label>
                         <br>
                         <label class="control-label" for="dateEnd">Actual date {{project.dateEnd}}</label>
-                        <input class="form-control" id="dateEnd"
+                        <input class="text" id="dateEnd"
                             name="dateEnd" placeholder="MM/DD/YYYY"
                             type="date" formControlName="dateEnd"/>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" (click)="updateForm()" class="btn btn-secondary"
+                        <button type="button" class="btn button-delete"
+                            data-bs-dismiss="modal" 
+                            data-bs-toggle="modal"
+                            data-bs-target="#deleteProject">Delete</button>
+                        <button type="button" (click)="updateForm()" class="btn button-close"
                             data-bs-dismiss="modal">Close</button>
-                        <button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Save
+                        <button type="submit" data-bs-dismiss="modal" class="btn button-change">Save
                             changes</button>
                     </div>
                 </form>

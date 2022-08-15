@@ -46,8 +46,8 @@ export class ProjectListService {
   }
 
   getList() {
-    this.getListProjects().subscribe(data => {
-      this.projectsMaster = data;
+    this.getListProjects().subscribe(async data => {
+      this.projectsMaster = await data;
     })
   }
 
@@ -57,6 +57,10 @@ export class ProjectListService {
 
   updateProjects(id: string, project: ProjectData) {
     return this.http.put(this.myAppUrl + this.myApiUrl+id, project)
+  }
+
+  removeProjects(id: string) {
+    return this.http.delete(this.myAppUrl + this.myApiUrl + id)
   }
 }
 

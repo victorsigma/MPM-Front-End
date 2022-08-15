@@ -1,5 +1,5 @@
 <div *ngIf="loginData.isLogin">
-    <nav class="nv-projct navbar">
+    <nav class="nv-projct navbar navbar-dark">
         <div class="container-fluid content-project">
             <h1 class="navbar-brand">{{project.title}}</h1>
             <ul class="navbar-nav d-flex">
@@ -12,7 +12,7 @@
                         data-bs-target="#projectMembers">Members</button>
                     <button class="button-options"
                         data-bs-toggle="modal"
-                        data-bs-target="#addActivity">Add <i class="fa-solid fa-plus"></i></button>
+                        data-bs-target="#addActivity" (click)="updateMembers()" >Add <i class="fa-solid fa-plus"></i></button>
                 </li>
             </ul>
         </div>
@@ -22,7 +22,7 @@
     <div class="d-flex align-items-start nav-ver-margin">
         <div class="nav flex-column nav-pills me-3" id="v-pills-tab"
             role="tablist" aria-orientation="vertical">
-            <h2>
+            <h2 class="header-a">
                 Activities
             </h2>
             <button class="nav-link nav-link-margin active"
@@ -80,4 +80,5 @@
     <app-add-activity (newActivity)="newActivity($event)" [project]="project"></app-add-activity>
     <app-project-options [project]="project"></app-project-options>
     <app-project-members [project]="project"></app-project-members>
+    <app-delete-project [project]="project"></app-delete-project>
 </div>
