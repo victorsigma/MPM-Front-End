@@ -10,8 +10,8 @@ import { Observable } from 'rxjs';
 export class UsersListService {
 
   //private myAppUrl = 'http://192.168.1.66:3000/'//JavaScript Servidor
-  //private myAppUrl = 'http://localhost:3000/'//JavaScript
-  private myAppUrl = 'http://localhost:8080/'//Java
+  private myAppUrl = 'http://localhost:3000/'//JavaScript
+  //private myAppUrl = 'http://localhost:8080/'//Java
   //private myAppUrl = 'https://localhost:7172/'//C#
   private myApiUrl = 'api/Users/'
 
