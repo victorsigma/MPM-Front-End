@@ -1,5 +1,12 @@
 # MPMFrontEnd
 
+##Integrantes
+
+Victor Andrés Garay Montes
+Martin Gabriel Godinez Morales
+Omar Alejandro Lozada Zuñiga
+Daniela Esmeralda Méndez
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.6.
 
 ## Development server
