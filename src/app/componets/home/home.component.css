@@ -75,3 +75,21 @@ a {
     background-color: transparent;
     box-shadow: none;
 }
+
+.img-thumbnail {
+    background-color: black;
+    border: white 1px solid;
+    transition: all 0.3s ease 0s;
+}
+
+.img-thumbnail:hover {
+    border: greenyellow 1px solid;
+    box-shadow: 0px 15px 20px greenyellow;
+    transform: translateY(-7px);
+}
+
+.img-thumbnail:active {
+    border: white 1px solid;
+    box-shadow: 0px 15px 20px white;
+    transform: translateY(-7px);
+}

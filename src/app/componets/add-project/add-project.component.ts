@@ -79,7 +79,6 @@ export class AddProjectComponent implements OnInit {
     })
 
     this.projectList.loadProjects();
-    this.projectList.loadProjects();
     this.router.navigate(['/']);
   }
 

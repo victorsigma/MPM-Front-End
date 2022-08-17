@@ -14,9 +14,15 @@ export class HeaderComponent implements OnInit {
   isLogin: boolean;
   constructor(private router:Router, public loginData:LoginDataService, private projectList:ProjectListService) {
     this.isLogin = this.loginData.isLogin;
+    if(this.loginData.isLogin) {
+      this.projectList.loadProjects();
+    }
   }
 
   ngOnInit(): void {
+    if(this.loginData.isLogin) {
+      this.projectList.loadProjects();
+    }
   }
 
 

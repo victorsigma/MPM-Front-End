@@ -17,9 +17,14 @@ export class ProjectsPageComponent implements OnInit {
     if(!loginData.isLogin) {
       this.route.navigate(['/'])
     }
+    if(this.loginData.isLogin) {
+      this.projectList.loadProjects();
+    }
   }
 
   ngOnInit(): void {
-    this.projectList.loadProjects();
+    if(this.loginData.isLogin) {
+      this.projectList.loadProjects();
+    }
   }
 }

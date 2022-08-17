@@ -54,6 +54,18 @@
 }
 
 
+.nav-link-delete {
+    border: 3px #ce0303 solid;
+    color: #ce0303;
+}
+
+.nav-pills .nav-link-delete {
+    background: 0 0;
+    border: 0;
+    border-radius: var(--bs-nav-pills-border-radius);
+    border: 3px #ce0303  solid;
+}
+
 .text {
     display: block;
     width: 100%;

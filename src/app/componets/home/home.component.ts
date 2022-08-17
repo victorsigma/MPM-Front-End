@@ -14,10 +14,15 @@ export class HomeComponent implements OnInit {
   isLogin: boolean;
   constructor(public loginData: LoginDataService, private router:Router, private projectData: ProjectDataService, private projectList: ProjectListService) { 
     this.isLogin = this.loginData.isLogin;
+    if(this.loginData.isLogin) {
+      this.projectList.loadProjects();
+    }
   }
 
   ngOnInit(): void {
-    
+    if(this.loginData.isLogin) {
+      this.projectList.loadProjects();
+    }
   }
 
 

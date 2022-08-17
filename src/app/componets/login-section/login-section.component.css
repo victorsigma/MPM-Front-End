@@ -10,6 +10,7 @@
 
 .button-login:active {
     border: solid rgb(127, 0, 253) 3px;
+    box-shadow: 0px 15px 20px rgb(127, 0, 253);
 }
 
 .form-text {
@@ -17,6 +18,7 @@
 }
 
 .button-login {
+    transition: all 0.3s ease 0s;
     color: white;
     border: solid #0dedfd 3px;
 }
