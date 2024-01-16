@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { ActivityDataService } from '../../services/activity-data.service';
 import { ActivityListService } from 'src/app/services/activity-list.service';
 import { UpdateDataService } from 'src/app/services/update-data.service';
@@ -19,14 +19,14 @@ export class EditorActivityComponent implements OnInit {
 
 
   activity: ActivityData = new ActivityData();
-  form: FormGroup = new FormGroup({
-    title: new FormControl(),
-    subtitle: new FormControl(),
-    status: new FormControl(),
-    dateEnd: new FormControl(),
-    rolesListAnalyst: new FormControl(),
-    rolesListDesigner: new FormControl(),
-    rolesListProgrammer: new FormControl()
+  form: UntypedFormGroup = new UntypedFormGroup({
+    title: new UntypedFormControl(),
+    subtitle: new UntypedFormControl(),
+    status: new UntypedFormControl(),
+    dateEnd: new UntypedFormControl(),
+    rolesListAnalyst: new UntypedFormControl(),
+    rolesListDesigner: new UntypedFormControl(),
+    rolesListProgrammer: new UntypedFormControl()
   })
   constructor(
     public dataServiceModal: ActivityDataService, 
@@ -85,14 +85,14 @@ export class EditorActivityComponent implements OnInit {
   }
 
   reloadForm() {
-    this.form = new FormGroup({
-      title: new FormControl(),
-      subtitle: new FormControl(),
-      status: new FormControl(this.dataServiceModal.activity.status),
-      dateEnd: new FormControl(),
-      rolesListAnalyst: new FormControl(this.dataServiceModal.activity.analyst),
-      rolesListDesigner: new FormControl(this.dataServiceModal.activity.designer),
-      rolesListProgrammer: new FormControl(this.dataServiceModal.activity.programmer)
+    this.form = new UntypedFormGroup({
+      title: new UntypedFormControl(),
+      subtitle: new UntypedFormControl(),
+      status: new UntypedFormControl(this.dataServiceModal.activity.status),
+      dateEnd: new UntypedFormControl(),
+      rolesListAnalyst: new UntypedFormControl(this.dataServiceModal.activity.analyst),
+      rolesListDesigner: new UntypedFormControl(this.dataServiceModal.activity.designer),
+      rolesListProgrammer: new UntypedFormControl(this.dataServiceModal.activity.programmer)
     })
   }
 }

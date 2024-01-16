@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import {v4 as uuidv4} from 'uuid';
 import { ActivityData } from '../../models/ativities';
@@ -12,21 +12,21 @@ import { ProjectData } from 'src/app/models/projects';
 })
 export class AddActivityComponent implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   activity: ActivityData = new ActivityData();
   @Output() newActivity: EventEmitter<ActivityData> = new EventEmitter();
   @Input() project:ProjectData = new ProjectData();
 
   constructor(private toastr: ToastrService) {
-    this.form = new FormGroup(
+    this.form = new UntypedFormGroup(
       {
-        title: new FormControl(),
-        subtitle: new FormControl(),
-        status: new FormControl(1),
-        dateEnd: new FormControl(),
-        rolesListAnalyst: new FormControl(false),
-        rolesListDesigner: new FormControl(false),
-        rolesListProgrammer: new FormControl(false)
+        title: new UntypedFormControl(),
+        subtitle: new UntypedFormControl(),
+        status: new UntypedFormControl(1),
+        dateEnd: new UntypedFormControl(),
+        rolesListAnalyst: new UntypedFormControl(false),
+        rolesListDesigner: new UntypedFormControl(false),
+        rolesListProgrammer: new UntypedFormControl(false)
       }
     );
   }
@@ -63,15 +63,15 @@ export class AddActivityComponent implements OnInit {
   }
 
   reloadForm() {
-    this.form = new FormGroup(
+    this.form = new UntypedFormGroup(
       {
-        title: new FormControl(),
-        subtitle: new FormControl(),
-        status: new FormControl(1),
-        dateEnd: new FormControl(),
-        rolesListAnalyst: new FormControl(false),
-        rolesListDesigner: new FormControl(false),
-        rolesListProgrammer: new FormControl(false)
+        title: new UntypedFormControl(),
+        subtitle: new UntypedFormControl(),
+        status: new UntypedFormControl(1),
+        dateEnd: new UntypedFormControl(),
+        rolesListAnalyst: new UntypedFormControl(false),
+        rolesListDesigner: new UntypedFormControl(false),
+        rolesListProgrammer: new UntypedFormControl(false)
       }
     );
   }

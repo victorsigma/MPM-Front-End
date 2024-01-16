@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { AES, enc } from 'crypto-js';
 import { ProjectData } from 'src/app/models/projects';
 import { ProjectsHasUser } from 'src/app/models/projectsHasUser';
@@ -22,8 +22,8 @@ export class DeleteProjectComponent implements OnInit {
   @Input() project: ProjectData = new ProjectData();
   members: ProjectsHasUser[] = [];
   activities: ActivityData[] = [];
-  form: FormGroup = new FormGroup({
-    password: new FormControl
+  form: UntypedFormGroup = new UntypedFormGroup({
+    password: new UntypedFormControl
   });
   constructor(
     private userLoging: LoginDataService,
@@ -68,8 +68,8 @@ export class DeleteProjectComponent implements OnInit {
   }
 
   reloadForm() {
-    this.form = new FormGroup({
-      password: new FormControl
+    this.form = new UntypedFormGroup({
+      password: new UntypedFormControl
     });
   }
 }

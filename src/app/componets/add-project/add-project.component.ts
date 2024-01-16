@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import {v4 as uuidv4} from 'uuid';
 import { ProjectData } from '../../models/projects';
 import { ProjectDataService } from '../../services/project-data.service';
@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 })
 export class AddProjectComponent implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   project: ProjectData = new ProjectData();
   relationProject: ProjectsHasUser = new ProjectsHasUser();
 
@@ -28,11 +28,11 @@ export class AddProjectComponent implements OnInit {
     private projectList:ProjectListService,
     private router:Router
     ) {
-    this.form = new FormGroup(
+    this.form = new UntypedFormGroup(
       {
-        title: new FormControl(),
-        subtitle: new FormControl(),
-        dateEnd: new FormControl()
+        title: new UntypedFormControl(),
+        subtitle: new UntypedFormControl(),
+        dateEnd: new UntypedFormControl()
       }
     );
   }
@@ -87,11 +87,11 @@ export class AddProjectComponent implements OnInit {
   }
 
   reloadForm() {
-    this.form = new FormGroup(
+    this.form = new UntypedFormGroup(
       {
-        title: new FormControl(),
-        subtitle: new FormControl(),
-        dateEnd: new FormControl()
+        title: new UntypedFormControl(),
+        subtitle: new UntypedFormControl(),
+        dateEnd: new UntypedFormControl()
       }
     );
   }

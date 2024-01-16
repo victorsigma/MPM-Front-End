@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { UsersProjectsService } from '../../services/users-projects.service';
 import { ProjectData } from 'src/app/models/projects';
 import { ProjectsHasUser } from '../../models/projectsHasUser';
@@ -17,9 +17,9 @@ export class ProjectMembersComponent implements OnInit {
   @Input() project:ProjectData = new ProjectData();
 
   members: ProjectsHasUser[] = [];
-  form: FormGroup = new FormGroup({
-    userName: new FormControl(),
-    userRol: new FormControl(1)
+  form: UntypedFormGroup = new UntypedFormGroup({
+    userName: new UntypedFormControl(),
+    userRol: new UntypedFormControl(1)
   });
 
   memberData: UserData[] = [];
@@ -64,9 +64,9 @@ export class ProjectMembersComponent implements OnInit {
     }
 
     this.newMember = new ProjectsHasUser();
-    this.form = new FormGroup({
-      userName: new FormControl(),
-      userRol: new FormControl(1)
+    this.form = new UntypedFormGroup({
+      userName: new UntypedFormControl(),
+      userRol: new UntypedFormControl(1)
     });
   }
 }

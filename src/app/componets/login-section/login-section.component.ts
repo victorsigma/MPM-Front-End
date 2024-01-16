@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { AES, enc } from 'crypto-js';
 import { ToastrService } from 'ngx-toastr';
 import { LoginDataService } from '../../services/login-data.service';
@@ -16,9 +16,9 @@ export class LoginSectionComponent implements OnInit {
 
   isLogin: boolean = false;
   users: UserData[] = [];
-  form: FormGroup = new FormGroup({
-    user: new FormControl(),
-    password: new FormControl()
+  form: UntypedFormGroup = new UntypedFormGroup({
+    user: new UntypedFormControl(),
+    password: new UntypedFormControl()
   });
 
   @Output() loginDate: EventEmitter<null> = new EventEmitter();
@@ -70,9 +70,9 @@ export class LoginSectionComponent implements OnInit {
 
 
   reloadForm() {
-    this.form = new FormGroup({
-      user: new FormControl(),
-      password: new FormControl()
+    this.form = new UntypedFormGroup({
+      user: new UntypedFormControl(),
+      password: new UntypedFormControl()
     });
   }
 

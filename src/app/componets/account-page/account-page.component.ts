@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { AES } from 'crypto-js';
 import { ToastrService } from 'ngx-toastr';
 import { LoginDataService } from '../../services/login-data.service';
@@ -12,19 +12,19 @@ import { UsersListService } from '../../services/users-list.service';
 })
 export class AccountPageComponent implements OnInit {
 
-  formName: FormGroup = new FormGroup({
-    userName: new FormControl(),
-    userNameConfirm: new FormControl()
+  formName: UntypedFormGroup = new UntypedFormGroup({
+    userName: new UntypedFormControl(),
+    userNameConfirm: new UntypedFormControl()
   })
 
-  formEmail: FormGroup = new FormGroup({
-    userEmail: new FormControl(),
-    userEmailConfirm: new FormControl()
+  formEmail: UntypedFormGroup = new UntypedFormGroup({
+    userEmail: new UntypedFormControl(),
+    userEmailConfirm: new UntypedFormControl()
   })
 
-  formPassword: FormGroup = new FormGroup({
-    userPassword: new FormControl(),
-    userPasswordConfirm: new FormControl()
+  formPassword: UntypedFormGroup = new UntypedFormGroup({
+    userPassword: new UntypedFormControl(),
+    userPasswordConfirm: new UntypedFormControl()
   })
   constructor(public loginData: LoginDataService, private userList: UsersListService, private toastr: ToastrService) {
   }
@@ -102,19 +102,19 @@ export class AccountPageComponent implements OnInit {
   }
 
   reloadForms() {
-    this.formName = new FormGroup({
-      userName: new FormControl(),
-      userNameConfirm: new FormControl()
+    this.formName = new UntypedFormGroup({
+      userName: new UntypedFormControl(),
+      userNameConfirm: new UntypedFormControl()
     })
 
-    this.formEmail = new FormGroup({
-      userEmail: new FormControl(),
-      userEmailConfirm: new FormControl()
+    this.formEmail = new UntypedFormGroup({
+      userEmail: new UntypedFormControl(),
+      userEmailConfirm: new UntypedFormControl()
     })
 
-    this.formPassword = new FormGroup({
-      userPassword: new FormControl(),
-      userPasswordConfirm: new FormControl()
+    this.formPassword = new UntypedFormGroup({
+      userPassword: new UntypedFormControl(),
+      userPasswordConfirm: new UntypedFormControl()
     })
   }
 }

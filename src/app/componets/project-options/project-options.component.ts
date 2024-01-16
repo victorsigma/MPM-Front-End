@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProjectData } from 'src/app/models/projects';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { ProjectListService } from '../../services/project-list.service';
 
 @Component({
@@ -12,10 +12,10 @@ export class ProjectOptionsComponent implements OnInit {
 
   @Input() project:ProjectData = new ProjectData();
 
-  form: FormGroup = new FormGroup({
-    title: new FormControl(),
-    subtitle: new FormControl(),
-    dateEnd: new FormControl(),
+  form: UntypedFormGroup = new UntypedFormGroup({
+    title: new UntypedFormControl(),
+    subtitle: new UntypedFormControl(),
+    dateEnd: new UntypedFormControl(),
   });
   constructor(private projectList:ProjectListService) {
     this.updateForm();
@@ -50,10 +50,10 @@ export class ProjectOptionsComponent implements OnInit {
   }
 
   updateForm() {
-    this.form= new FormGroup({
-      title: new FormControl(),
-      subtitle: new FormControl(),
-      dateEnd: new FormControl(),
+    this.form= new UntypedFormGroup({
+      title: new UntypedFormControl(),
+      subtitle: new UntypedFormControl(),
+      dateEnd: new UntypedFormControl(),
     });
   }
 }

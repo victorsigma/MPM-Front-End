@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { AES } from 'crypto-js';
 import { ToastrService } from 'ngx-toastr';
 import { UserData } from '../../models/users';
@@ -16,18 +16,18 @@ export class RegisterSectionComponent implements OnInit {
 
   users: UserData[] = [];
   user: UserData = new UserData();
-  form: FormGroup = new FormGroup({
-    user: new FormControl(),
-    email: new FormControl(),
-    phone: new FormControl(),
-    password: new FormControl()
+  form: UntypedFormGroup = new UntypedFormGroup({
+    user: new UntypedFormControl(),
+    email: new UntypedFormControl(),
+    phone: new UntypedFormControl(),
+    password: new UntypedFormControl()
   });
   constructor(private userList: UsersListService, private toastr: ToastrService) { 
-    this.form = new FormGroup({
-      user: new FormControl(),
-      email: new FormControl(),
-      phone: new FormControl(),
-      password: new FormControl()
+    this.form = new UntypedFormGroup({
+      user: new UntypedFormControl(),
+      email: new UntypedFormControl(),
+      phone: new UntypedFormControl(),
+      password: new UntypedFormControl()
     });
   }
 
@@ -72,11 +72,11 @@ export class RegisterSectionComponent implements OnInit {
       this.toastr.error('You cannot use an email address as a user.', 'Operation Canceled');
     }
 
-    this.form = new FormGroup({
-      user: new FormControl(),
-      email: new FormControl(),
-      phone: new FormControl(),
-      password: new FormControl()
+    this.form = new UntypedFormGroup({
+      user: new UntypedFormControl(),
+      email: new UntypedFormControl(),
+      phone: new UntypedFormControl(),
+      password: new UntypedFormControl()
     });
   }
 }
