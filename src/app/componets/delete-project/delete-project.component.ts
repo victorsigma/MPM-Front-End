@@ -1,12 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { AES, enc } from 'crypto-js';
 import { ProjectData } from 'src/app/models/projects';
 import { ProjectsHasUser } from 'src/app/models/projectsHasUser';
 import { LoginDataService } from 'src/app/services/login-data.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 import { UsersProjectsService } from 'src/app/services/users-projects.service';
-import { UsersListService } from '../../services/users-list.service';
 import { Router } from '@angular/router';
 import { ActivityListService } from '../../services/activity-list.service';
 import { ActivityData } from '../../models/ativities';
@@ -26,8 +24,7 @@ export class DeleteProjectComponent implements OnInit {
     password: new UntypedFormControl
   });
   constructor(
-    private userLoging: LoginDataService,
-    private userList: UsersListService,
+    private loginService: LoginDataService,
     private projectList: ProjectListService,
     private memberList: UsersProjectsService,
     private activityList: ActivityListService,
@@ -64,7 +61,7 @@ export class DeleteProjectComponent implements OnInit {
   }
 
   validation(): boolean {
-    return (AES.decrypt(this.userLoging.usersList[0].password, this.userList.encryptionKey).toString(enc.Utf8) === this.form.get('password')?.value)
+    return true //(AES.decrypt(this.loginService.usersList[0].password, this.userList.encryptionKey).toString(enc.Utf8) === this.form.get('password')?.value)
   }
 
   reloadForm() {

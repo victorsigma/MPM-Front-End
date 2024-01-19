@@ -20,6 +20,8 @@
     "@angular/platform-browser-dynamic": "^16.2.11",
     "@angular/router": "^16.2.11",
     "crypto-js": "^4.1.1",
+    "jwt-decode": "^4.0.0",
+    "ngx-cookie-service": "^17.0.1",
     "ngx-toastr": "^17.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

@@ -1,19 +1,21 @@
-<div class="modal fade" id="loginModal" tabindex="-1"
-    aria-labelledby="loginModalLabe1" aria-hidden="true" data-bs-backdrop="static">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel">Login</h5>
-                <button type="button" class="btn-close btn-close-white"
-                    data-bs-dismiss="modal" aria-label="Close" (click)="isLoginDataFalse()"></button>
+<div class="login-component">
+    <div class="slider">
+        <div class="img">
+            <img routerLink="/" src="assets/img/mpm-logo-dark.png" alt="">
+        </div>
+    </div>
+    <div class="login" id="loginModal">
+        <div class="login-content">
+            <div class="login-header">
+                <h1 class="modal-title" id="loginModalLabel">Login</h1>
             </div>
-
-            <div class="modal-body">
-                <form [formGroup]="form" (ngSubmit)="isLoginDataTrue()">
+        
+            <div class="login-body">
+                <form [formGroup]="form" (ngSubmit)="loginSend()">
                     <div class="mb-3">
                         <label for="Email" class="form-label">Email
                             address - Username</label>
-                        <input formControlName="user" type="email" class="text"
+                        <input formControlName="userNameOrEmail" type="email" class="text"
                             id="Email name"
                             aria-describedby="emailHelp">
                         <div id="emailHelp" class="form-text">We'll never share
@@ -25,7 +27,7 @@
                         <input class="text" type="password" formControlName="password" id="Password">
                     </div>
                     <div class="list-group card-body">
-                        <button type="submit" class="btn button-login" data-bs-dismiss="modal">Login</button>
+                        <button type="submit" class="btn button-login" [disabled]="form.invalid">Login</button>
                     </div>
                 </form>
             </div>

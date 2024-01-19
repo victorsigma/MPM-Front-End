@@ -17,7 +17,7 @@ export class ActivityListService {
   private myAppUrl = 'http://localhost:3000/'//JavaScript
   //private myAppUrl = 'http://localhost:8080/'//Java
   //private myAppUrl = 'https://localhost:7172/'//C#
-  private myApiUrl = 'api/Activities/'
+  private myApiUrl = 'api/activities/'
 
   activitiesMaster: ActivityData[] = []
 
@@ -56,23 +56,7 @@ export class ActivityListService {
   }
 
   filterRol() {
-    //this.getList();
-    this.loginRol = this.userMember.projectMembers.filter(data => {
-      return data.proyectsIdProject == this.projectData.project.id && data.userIdUser == this.loginData.usersList[0].userId
-    })
-
-    if (this.loginRol[0].rolesIdRol == 0) {
-      this.leaderActivitis();
-    }
-    if (this.loginRol[0].rolesIdRol == 1) {
-      this.analystActivitis();
-    }
-    if (this.loginRol[0].rolesIdRol == 2) {
-      this.designerActivitis();
-    }
-    if (this.loginRol[0].rolesIdRol == 3) {
-      this.programmerActivitis();
-    }
+    
   }
 
   leaderActivitis() {

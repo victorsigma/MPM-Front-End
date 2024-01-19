@@ -16,7 +16,6 @@ a {
 .button-login {
     padding: 1.3em 3em;
     font-size: 12px;
-    text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 500;
     color: white;
@@ -27,23 +26,22 @@ a {
     outline: none;
     margin-right: 5px;
     border-radius: 10px;
-    border: solid #0dedfd 3px;
+    border: solid #4930cd 3px;
 }
 
 .button-login:hover {
-    box-shadow: 0px 15px 20px #0dedfd;
+    box-shadow: 0px 15px 20px #4930cd;
     transform: translateY(2px);
 }
 
-.button-login:active {
-    border: solid rgb(127, 0, 253) 3px;
-    box-shadow: 0px 15px 20px rgb(127, 0, 253);
+.button-login:focus {
+    border: solid #00008e 3px;
+    box-shadow: 0px 15px 20px #00008e;
 }
 
 .button-register {
     padding: 1.3em 3em;
     font-size: 12px;
-    text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 500;
     color: white;
@@ -55,17 +53,17 @@ a {
     outline: none;
     margin-right: 5px;
     border-radius: 10px;
-    border: solid rgb(127, 0, 253) 3px;
+    border: solid #00008e 3px;
 }
 
 .button-register:hover {
-    box-shadow: 0px 15px 20px rgb(127, 0, 253);
+    box-shadow: 0px 15px 20px #00008e;
     transform: translateY(2px);
 }
 
-.button-register:active {
-    border: solid #0dedfd 3px;
-    box-shadow: 0px 15px 20px #0dedfd;
+.button-register:focus {
+    border: solid #4930cd 3px;
+    box-shadow: 0px 15px 20px #4930cd;
 }
 
 

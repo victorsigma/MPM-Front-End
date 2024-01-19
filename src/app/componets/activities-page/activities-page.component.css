@@ -3,8 +3,7 @@
 }
 
 .content-project {
-    border-top: white 2px solid;
-    border-bottom: white 2px solid;
+    border-top: white 1px solid;
 }
 
 .content-project h1 {
@@ -27,7 +26,7 @@
     font-weight: 500;
     color: #ffffff;
     background-color: transparent;
-    border: #fd9048 3px solid;
+    border: #4930cd 3px solid;
     border-radius: 10px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
@@ -37,13 +36,13 @@
 }
 
 .button-options:hover {
-    box-shadow: 0px 15px 20px #fd9048;
+    box-shadow: 0px 15px 20px #4930cd;
     color: #fff;
 }
 
 .button-options:active {
-    border: #fd0d0d 3px solid;
-    box-shadow: 0px 15px 20px #fd0d0d;
+    border: #00008e 3px solid;
+    box-shadow: 0px 15px 20px #00008e;
 }
 
 
@@ -53,15 +52,15 @@
     transition: all 0.3s ease 0s;
     color: var(--bs-nav-pills-link-active-color);
     background-color: transparent;
-    border: 3px rgb(3, 170, 87) solid;
-    box-shadow: 0px 15px 20px rgb(3, 170, 87);
+    border: 3px #6347ee solid;
+    box-shadow: 0px 15px 20px #6347ee;
 }
 
 .nav-pills .nav-link {
     background: 0 0;
     border: 0;
     border-radius: var(--bs-nav-pills-border-radius);
-    border: 3px rgb(255, 0, 119) solid;
+    border: 3px #8861ff solid;
 }
 
 .nav-link {
@@ -69,7 +68,7 @@
     padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
     font-size: var(--bs-nav-link-font-size);
     font-weight: var(--bs-nav-link-font-weight);
-    color: rgb(255, 0, 119);
+    color: #ffffff;
     text-decoration: none;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 }

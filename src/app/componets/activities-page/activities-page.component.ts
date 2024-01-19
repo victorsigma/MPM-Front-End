@@ -35,7 +35,7 @@ export class ActivitiesPageComponent implements OnInit {
     private dataActivities: ActivityDataService,
     public projectData: ProjectDataService,
     public activityList: ActivityListService,
-    public loginData: LoginDataService,
+    public loginService: LoginDataService,
     private emitter: UpdateDataService,
     private members: UpdateDataService,
     private userMember: UsersProjectsService,
@@ -43,14 +43,6 @@ export class ActivitiesPageComponent implements OnInit {
   ) {
     this.filterRol();
     this.project = this.projectData.project;
-
-    this.loginRol = this.userMember.projectMembers.filter(data => {
-      return data.proyectsIdProject == projectData.project.id && data.userIdUser == loginData.usersList[0].userId
-    })
-
-    if(!loginData.isLogin) {
-      this.route.navigate(['/'])
-    }
   }
 
   ngOnInit(): void {

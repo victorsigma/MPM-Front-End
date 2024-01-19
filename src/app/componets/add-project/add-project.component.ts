@@ -23,7 +23,7 @@ export class AddProjectComponent implements OnInit {
   @Output() newProject: EventEmitter<ProjectData> = new EventEmitter();
   constructor(
     public projectId: ProjectDataService, 
-    private userLoging:LoginDataService, 
+    private loginService:LoginDataService, 
     private memberList:UsersProjectsService, 
     private projectList:ProjectListService,
     private router:Router
@@ -53,7 +53,7 @@ export class AddProjectComponent implements OnInit {
     this.relationProject = {
       id: 0,
       proyectsIdProject: this.project.id,
-      userIdUser: this.userLoging.usersList[0].userId,
+      userIdUser: '',
       rolesIdRol: 0
     }
     //

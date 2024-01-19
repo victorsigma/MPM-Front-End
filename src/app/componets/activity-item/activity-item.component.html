@@ -1,4 +1,4 @@
-<div class="card-aling card-center" *ngIf="activity.projectId == project.id && loginData.isLogin">
+<div class="card-aling card-center" *ngIf="activity.projectId == project.id && loginService.isLogin()">
     <div class="card">
         <img src="./assets/img/card/{{activity.src}}.jpg"
             class="card-img-top" alt="...">

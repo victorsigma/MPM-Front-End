@@ -12,7 +12,7 @@ export class UsersProjectsService {
   private myAppUrl = 'http://localhost:3000/'//JavaScript
   //private myAppUrl = 'http://localhost:8080/'//Java
   //private myAppUrl = 'https://localhost:7172/'//C#
-  private myApiUrl = 'api/ProjectsHasUser/'
+  private myApiUrl = 'api/projectsHasUser/'
 
   projectMembers: ProjectsHasUser[] = []
   constructor(private http:HttpClient) { }

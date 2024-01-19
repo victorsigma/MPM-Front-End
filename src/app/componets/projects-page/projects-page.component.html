@@ -1,7 +1,7 @@
-<div *ngIf="loginData.isLogin">
+<div *ngIf="loginService.isLogin()">
     <div>
         <nav class="navbar navbar-dark">
-            <div class="container-fluid content-project">
+            <div class="container-fluid content-project" style="padding-inline: 25px; padding-block: 5px;">
                 <h1 class="navbar-brand">Projects</h1>
                 <ul class="navbar-nav d-flex">
                     <li class="nav-item">

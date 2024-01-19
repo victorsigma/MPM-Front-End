@@ -13,18 +13,9 @@ import { Router } from '@angular/router';
 })
 export class ProjectsPageComponent implements OnInit {
   createProject: Subject<ProjectData> = new Subject<ProjectData>();
-  constructor(public projectList: ProjectListService, public loginData:LoginDataService, private route:Router) {
-    if(!loginData.isLogin) {
-      this.route.navigate(['/'])
-    }
-    if(this.loginData.isLogin) {
-      this.projectList.loadProjects();
-    }
+  constructor(public projectList: ProjectListService, public loginService:LoginDataService, private route:Router) {
   }
 
   ngOnInit(): void {
-    if(this.loginData.isLogin) {
-      this.projectList.loadProjects();
-    }
   }
 }

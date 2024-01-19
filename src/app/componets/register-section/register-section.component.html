@@ -1,14 +1,16 @@
-<div class="modal fade" id="registerModal" tabindex="-1"
-    aria-labelledby="registerModalLabe1" aria-hidden="true" data-bs-backdrop="static">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="registerModalLabel">Register</h5>
-                <button type="button" class="btn-close btn-close-white"
-                    data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="login-component">
+    <div class="slider">
+        <div class="img">
+            <img routerLink="/" src="assets/img/mpm-logo-dark.png" alt="">
+        </div>
+    </div>
+    <div class="login" id="loginModal">
+        <div class="login-content">
+            <div class="login-header">
+                <h1 class="modal-title" id="registerModalLabel">Register</h1>
             </div>
 
-            <div class="modal-body">
+            <div class="login-body">
                 <form [formGroup]="form" (ngSubmit)="isRegisterDataTrue()">
                     <div class="mb-3">
                         <label for="newUserName" class="form-label">User Name</label>

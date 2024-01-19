@@ -14,37 +14,27 @@
                 id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"
-                            routerLink="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/projects" (click)="reloadProjects()"  [class.disabled]="isLogin == false">Projects</a>
+                        <a class="nav-link active" routerLink="/projects" (click)="reloadProjects()" *ngIf="loginService.isLogin()" >Projects</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav d-flex" *ngIf="isLogin == false">
+                <ul class="navbar-nav d-flex" *ngIf="!loginService.isLogin()">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
-                            href="" data-bs-toggle="modal"
-                            data-bs-target="#registerModal">Register</a>
+                            href=""  routerLink="register">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" data-bs-toggle="modal"
-                        data-bs-target="#loginModal">Login</a>
+                        <a class="nav-link active" href=""routerLink="login">Login</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav d-flex" *ngIf="isLogin == true">
+                <ul class="navbar-nav d-flex" *ngIf="loginService.isLogin()">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"
-                        routerLink="/" (click)="logout()">Logout</a>
+                        <button class="nav-link active" aria-current="page" style="background-color: transparent; border: none;" (click)="logout()">Logout</button>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/account">Account</a>
+                        <a class="nav-link active" routerLink="/account">Account</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 </header>
-
-<app-register-section></app-register-section>
-<app-login-section (loginDate)="loginDate()"></app-login-section>

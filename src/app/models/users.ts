@@ -5,3 +5,18 @@ export class UserData {
     userMail: string = '';
     phoneNumber: string = '';
 }
+
+export class User {
+    userName: string = '';
+    userMail: string = '';
+    phoneNumber: string = '';
+}
+
+export class Login {
+    userNameOrEmail: string = '';
+    password: string = '';
+}
+
+export class Jwt {
+    token: string = '';
+}

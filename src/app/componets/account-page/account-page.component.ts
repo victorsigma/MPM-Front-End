@@ -3,7 +3,7 @@ import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { AES } from 'crypto-js';
 import { ToastrService } from 'ngx-toastr';
 import { LoginDataService } from '../../services/login-data.service';
-import { UsersListService } from '../../services/users-list.service';
+import { User } from 'src/app/models/users';
 
 @Component({
   selector: 'app-account-page',
@@ -26,7 +26,11 @@ export class AccountPageComponent implements OnInit {
     userPassword: new UntypedFormControl(),
     userPasswordConfirm: new UntypedFormControl()
   })
-  constructor(public loginData: LoginDataService, private userList: UsersListService, private toastr: ToastrService) {
+
+  public user: User = new User()
+
+  constructor(public loginService: LoginDataService, private toastr: ToastrService) {
+    
   }
 
   ngOnInit(): void {
@@ -34,7 +38,7 @@ export class AccountPageComponent implements OnInit {
 
 
   updateName() {
-    if(!(/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(this.formName.get('userName')?.value))) {
+    /*if(!(/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(this.formName.get('userName')?.value))) {
       if (this.formName.get('userName')?.value === this.formName.get('userNameConfirm')?.value) {
         if (this.userList.usersList.filter(data => {
           return data.userName === this.formName.get('userNameConfirm')?.value
@@ -56,11 +60,11 @@ export class AccountPageComponent implements OnInit {
       }
     } else {
       this.toastr.error('You cannot use an email address as a user.', 'Operation Canceled');
-    }
+    }*/
   }
 
   updateEmail() {
-    if (/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(this.formEmail.get('userEmail')?.value)) {
+    /*if (/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(this.formEmail.get('userEmail')?.value)) {
       if (this.formEmail.get('userEmail')?.value === this.formEmail.get('userEmailConfirm')?.value) {
         if (this.userList.usersList.filter(data => {
           return data.userMail === this.formEmail.get('userEmailConfirm')?.value
@@ -82,11 +86,11 @@ export class AccountPageComponent implements OnInit {
     } else {
       this.reloadForms();
       this.toastr.error('Incorrect data.', 'Operation Canceled');
-    }
+    }*/
   }
 
   updatePassword() {
-    if (this.formPassword.get('userPassword')?.value === this.formPassword.get('userPasswordConfirm')?.value) {
+    /*if (this.formPassword.get('userPassword')?.value === this.formPassword.get('userPasswordConfirm')?.value) {
       //this.userList.usersList[this.userList.usersList.indexOf(this.loginData.usersList[0])].password = AES.encrypt(this.formPassword.get('userPasswordConfirm')?.value, this.userList.encryptionKey).toString();
 
       this.loginData.usersList[0].password = AES.encrypt(this.formPassword.get('userPasswordConfirm')?.value, this.userList.encryptionKey).toString();
@@ -98,7 +102,7 @@ export class AccountPageComponent implements OnInit {
     } else {
       this.reloadForms();
       this.toastr.error('Incorrect data.', 'Operation Canceled');
-    }
+    }*/
   }
 
   reloadForms() {

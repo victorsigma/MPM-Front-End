@@ -14,7 +14,7 @@ export class ProjectListService {
   private myAppUrl = 'http://localhost:3000/'//JavaScript
   //private myAppUrl = 'http://localhost:8080/'//Java
   //private myAppUrl = 'https://localhost:7172/'//C#
-  private myApiUrl = 'api/Projects/'
+  private myApiUrl = 'api/projects/'
 
   projectsMaster: ProjectData[] = []
 
@@ -23,18 +23,18 @@ export class ProjectListService {
   constructor(private loginData: LoginDataService, private memberList: UsersProjectsService, private http: HttpClient) { }
 
   loadProjects() {
-    this.memberList.getList();
-    this.getList();
+    // this.memberList.getList();
+    // this.getList();
     
-    if(this.projects.length != 0) {
-      this.reseatProjects();
-    }
-    this.memberList.projectMembers.filter(data => { return data.userIdUser == this.loginData.usersList[0].userId }).forEach(elemet => {
-      this.getProject = this.projectsMaster.filter(data => {
-        return data.id == elemet.proyectsIdProject
-      })
-      this.projects.push(this.getProject[0])
-    });
+    // if(this.projects.length != 0) {
+    //   this.reseatProjects();
+    // }
+    // this.memberList.projectMembers.filter(data => { return data.userIdUser == this.loginData.usersList[0].userId }).forEach(elemet => {
+    //   this.getProject = this.projectsMaster.filter(data => {
+    //     return data.id == elemet.proyectsIdProject
+    //   })
+    //   this.projects.push(this.getProject[0])
+    // });
   }
 
   reseatProjects() {

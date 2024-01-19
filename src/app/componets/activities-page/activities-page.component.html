@@ -1,7 +1,7 @@
-<div *ngIf="loginData.isLogin">
+<div *ngIf="loginService.isLogin()">
     <nav class="nv-projct navbar navbar-dark">
-        <div class="container-fluid content-project">
-            <h1 class="navbar-brand">{{project.title}}</h1>
+        <div class="container-fluid content-project" style="padding: 6px;">
+            <h1 class="navbar-brand">{{project.title}} - Activities</h1>
             <ul class="navbar-nav d-flex">
                 <li class="nav-item" *ngIf="loginRol[0].rolesIdRol == 0">
                     <button class="button-options"
@@ -22,9 +22,6 @@
     <div class="d-flex align-items-start nav-ver-margin">
         <div class="nav flex-column nav-pills me-3" id="v-pills-tab"
             role="tablist" aria-orientation="vertical">
-            <h2 class="header-a">
-                Activities
-            </h2>
             <button class="nav-link nav-link-margin active"
                 id="v-pills-unassigned-tab"
                 data-bs-toggle="pill" data-bs-target="#v-pills-unassigned"

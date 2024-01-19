@@ -4,13 +4,13 @@
     border: solid #ffffff 3px;
 }
 
-.button-register:hover {
-    box-shadow: 0px 15px 20px rgb(127, 0, 253);
+.button-login:hover {
+    box-shadow: 0px 15px 20px #f1c0ff;
 }
 
-.button-register:active {
-    border: solid #0dedfd 3px;
-    box-shadow: 0px 15px 20px #0dedfd;
+.button-login:active {
+    border: solid #f1c0ff 3px;
+    box-shadow: 0px 15px 20px #ffffff;
 }
 
 .form-text {
@@ -20,7 +20,7 @@
 .button-register {
     transition: all 0.3s ease 0s;
     color: white;
-    border: solid rgb(127, 0, 253) 3px;
+    border: solid #f1c0ff 3px;
 }
 
 .form-control {
@@ -45,15 +45,13 @@
     border-bottom: #fff solid 2px;
 }
 
-.text:hover {
+.text::after {
+    border-bottom: #6347ee solid 2px;
     color: #fff;
-    border-bottom: rgb(127, 0, 253) solid 2px;
-    transition: border 0.2s linear;
 }
 
-.text::after {
-    border-bottom: rgb(127, 0, 253) solid 2px;
-    color: #fff;
+.text:focus {
+    border-bottom: #6347ee solid 2px;
 }
 
 .text:-webkit-autofill,
@@ -74,4 +72,56 @@
 
 ::-ms-reveal {
     filter: invert(100%);
+}
+
+
+.login {
+    margin-top: 10%;
+    width: 40%;
+    padding: 20px;
+}
+
+.login-content {
+    color: #fff;
+}
+
+.login-header {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.login-component {
+    height: 100%;
+    display: flex;
+    width: 100%;
+}
+
+.slider {
+    margin: 0 auto;
+    color: white;
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+@media (max-width: 992px) {
+
+    .login-component {
+        height: 100%;
+        display: block;
+        width: 100%;
+    }
+
+    .slider {
+        width: 100%;
+        padding-top: 5px;
+    }
+
+    .login {
+        width: 100%;
+        padding: 20px;
+        margin-top: 10px;
+    }
 }

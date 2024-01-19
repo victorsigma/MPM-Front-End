@@ -11,31 +11,20 @@ import { ProjectListService } from '../../services/project-list.service';
 })
 export class HomeComponent implements OnInit {
 
-  isLogin: boolean;
-  constructor(public loginData: LoginDataService, private router:Router, private projectData: ProjectDataService, private projectList: ProjectListService) { 
-    this.isLogin = this.loginData.isLogin;
-    if(this.loginData.isLogin) {
-      this.projectList.loadProjects();
-    }
+  constructor(public loginService: LoginDataService, private router:Router, private projectData: ProjectDataService, private projectList: ProjectListService) { 
   }
 
   ngOnInit(): void {
-    if(this.loginData.isLogin) {
-      this.projectList.loadProjects();
-    }
+
   }
 
 
   openProjects() {
-    if(this.loginData.isLogin) {
-      this.router.navigate(['/projects']);
-    } else {
-      this.router.navigate(['/']);
-    }
+
   }
 
   openActivity() {
-    if(this.loginData.isLogin) {
+    if(this.loginService.isLogin()) {
       this.projectList.loadProjects();
       console.log(this.projectList.projects.length)
       console.log(this.random(0,this.projectList.projects.length))

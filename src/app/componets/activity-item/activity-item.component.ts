@@ -18,7 +18,7 @@ export class ActivityItemComponent implements OnInit {
   @Input() project:ProjectData = new ProjectData();
   @Input() loginRol: ProjectsHasUser = new ProjectsHasUser();
   @Output() update:EventEmitter<null> = new EventEmitter<null>();
-  constructor(private dataServiceModal: ActivityDataService, public loginData: LoginDataService) { 
+  constructor(private dataServiceModal: ActivityDataService, public loginService: LoginDataService) { 
   }
 
   ngOnInit(): void {

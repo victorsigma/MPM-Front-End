@@ -12,7 +12,7 @@ import { LoginDataService } from '../../services/login-data.service';
 export class ProjectItemComponent implements OnInit {
 
   @Input() project:ProjectData = new ProjectData();
-  constructor(private router:Router, private projectData: ProjectDataService, public loginData: LoginDataService) { 
+  constructor(private router:Router, private projectData: ProjectDataService, public loginService: LoginDataService) { 
     this.projectData.project = this.project;
   }
 

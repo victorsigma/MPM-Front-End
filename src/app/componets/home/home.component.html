@@ -3,22 +3,14 @@
         <div class="row">
             <div class="col-xl-8">
                 <h1 class="bd-title mt-0">My Proyect Manager</h1>
-                <p class="bd-lead">This is only a test page for the
-                    creation of a front end.</p>
+                <p class="bd-lead">Where your ideas find their way.</p>
                 <div class="d-flex flex-column flex-md-row gap-3">
-                    <a
-                        href="registro.html"
-                        class="btn button-register" data-bs-toggle="modal"
-                        data-bs-target="#registerModal"
-                        [class.btn-ghost]="isLogin
-                        == true" [class.disabled]="isLogin == true">
+                    <a routerLink="register"
+                        class="btn button-register" [class.btn-ghost]="loginService.isLogin()" [class.disabled]="loginService.isLogin()">
                         Create Account
                     </a>
-                    <a
-                        href="inicio_secion.html"
-                        class="btn button-login" data-bs-toggle="modal"
-                        data-bs-target="#loginModal" [class.btn-ghost]="isLogin
-                        == true" [class.disabled]="isLogin == true">
+                    <a routerLink="login"
+                        class="btn button-login" [class.btn-ghost]="loginService.isLogin()" [class.disabled]="loginService.isLogin()">
                         Login Account
                     </a>
                 </div>
@@ -36,7 +28,7 @@
                     tool.</p>
             </div>
 
-            <div class="col-lg-9">
+            <div class="col-lg-9" style="padding-right: 0px; padding-left: 0px;">
                 <div class="row">
                     <div class="col-sm-6 col-md-4 mb-3">
                         <a class="d-block" (click)="openProjects()">
@@ -105,6 +97,6 @@
     </div>
     <footer class="container">
         <p class="float-end"><a href="#">Back to top</a></p>
-        <p>&copy; 2022–2022</p>
+        <p>&copy; 2022–2024</p>
     </footer>
 </main>

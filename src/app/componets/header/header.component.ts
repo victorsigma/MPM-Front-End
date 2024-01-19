@@ -11,29 +11,19 @@ import { ProjectListService } from '../../services/project-list.service';
 })
 export class HeaderComponent implements OnInit {
 
-  isLogin: boolean;
-  constructor(private router:Router, public loginData:LoginDataService, private projectList:ProjectListService) {
-    this.isLogin = this.loginData.isLogin;
-    if(this.loginData.isLogin) {
-      this.projectList.loadProjects();
-    }
+  constructor(private router:Router, public loginService:LoginDataService, private projectList:ProjectListService) {
   }
 
   ngOnInit(): void {
-    if(this.loginData.isLogin) {
-      this.projectList.loadProjects();
-    }
+
   }
 
 
   logout(): void {
-    this.loginData.isLogin = false;
-    this.loginData.usersList = [];
-    this.updateLogin();
+    this.loginService.loggout()
   }
 
   updateLogin(): void {
-    this.isLogin = this.loginData.isLogin;
     this.router.navigate(['/reload']);
   }
 
