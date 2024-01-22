@@ -16,14 +16,14 @@ export class RegisterSectionComponent implements OnInit {
   users: UserData[] = [];
   user: UserData = new UserData();
   form: FormGroup = new FormGroup({
-    user: new FormControl('', [Validators.required]),
+    user: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(15), Validators.pattern(/^[a-zA-Z0-9]+$/)]),
     email: new FormControl('', [Validators.email, Validators.required]),
     phone: new FormControl('', [Validators.minLength(10), Validators.maxLength(10), Validators.required]),
     password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[0-9]).{6,}$/)])
   });
   constructor(private userList: UsersListService, private toastr: ToastrService) { 
     this.form = new FormGroup({
-      user: new FormControl('', [Validators.required]),
+      user: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(15), Validators.pattern(/^[a-zA-Z0-9]+$/)]),
       email: new FormControl('', [Validators.email, Validators.required]),
       phone: new FormControl('', [Validators.minLength(10), Validators.maxLength(10), Validators.required]),
       password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[0-9]).{6,}$/)])
@@ -75,7 +75,7 @@ export class RegisterSectionComponent implements OnInit {
     })
 
     this.form = new FormGroup({
-      user: new FormControl('', [Validators.required]),
+      user: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(15), Validators.pattern(/^[a-zA-Z0-9]+$/)]),
       email: new FormControl('', [Validators.email, Validators.required]),
       phone: new FormControl('', [Validators.minLength(10), Validators.maxLength(10), Validators.required]),
       password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[0-9]).{6,}$/)])

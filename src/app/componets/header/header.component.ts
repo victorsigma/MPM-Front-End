@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserData } from 'src/app/models/users';
 import { LoginDataService } from '../../services/login-data.service';
 import { ProjectListService } from '../../services/project-list.service';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-header',
@@ -11,11 +12,17 @@ import { ProjectListService } from '../../services/project-list.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router:Router, public loginService:LoginDataService, private projectList:ProjectListService) {
+  public isMobile: boolean = false;
+
+  constructor(private router:Router, public loginService:LoginDataService, private projectList:ProjectListService, private breakpointObserver: BreakpointObserver) {
+    this.breakpointObserver.observe('(max-width: 992px)')
+    .subscribe(result => {
+      this.isMobile = result.matches;
+      console.log(this.isMobile)
+    });
   }
 
   ngOnInit(): void {
-
   }
 
 

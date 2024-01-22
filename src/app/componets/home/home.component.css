@@ -21,22 +21,21 @@ a {
     color: white;
     border: none;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
+    transition: all 0.5s ease 0s;
     cursor: pointer;
     outline: none;
     margin-right: 5px;
     border-radius: 10px;
-    border: solid #4930cd 3px;
+    border: solid #4930cd 2px;
 }
 
 .button-login:hover {
-    box-shadow: 0px 15px 20px #4930cd;
-    transform: translateY(2px);
+    box-shadow: 0px 5px 20px #4930cd;
 }
 
 .button-login:focus {
-    border: solid #00008e 3px;
-    box-shadow: 0px 15px 20px #00008e;
+    border: solid #00008e 2px;
+    box-shadow: 0px 5px 20px #00008e;
 }
 
 .button-register {
@@ -48,27 +47,26 @@ a {
     background-color: #0dedfd00;
     border: none;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
+    transition: all 0.5s ease 0s;
     cursor: pointer;
     outline: none;
     margin-right: 5px;
     border-radius: 10px;
-    border: solid #00008e 3px;
+    border: solid #00008e 2px;
 }
 
 .button-register:hover {
-    box-shadow: 0px 15px 20px #00008e;
-    transform: translateY(2px);
+    box-shadow: 0px 5px 20px #00008e;
 }
 
 .button-register:focus {
-    border: solid #4930cd 3px;
-    box-shadow: 0px 15px 20px #4930cd;
+    border: solid #4930cd 2px;
+    box-shadow: 0px 5px 20px #4930cd;
 }
 
 
 .btn-ghost {
-    border: transparent solid 3px;
+    border: transparent solid 2px;
     color: transparent;
     background-color: transparent;
     box-shadow: none;

@@ -12,3 +12,82 @@
 body {
     background-color: #202124;
 }
+
+.modal-content {
+    background-color: #202124;
+    color: white;
+    border: none #ffffff 1px;
+}
+
+.text {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    border-radius: 0;
+    transition: all 0.3s ease 0s;
+    cursor: text;
+    outline: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: #fff solid 2px;
+}
+
+.text::after {
+    border-bottom: #6347ee solid 2px;
+    color: #fff;
+}
+
+.text:focus {
+    border-bottom: #6347ee solid 2px;
+}
+
+
+.text:-webkit-autofill,
+.text:-webkit-autofill:hover,
+.text:-webkit-autofill:focus,
+.text:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 50px #202124 inset;
+    -webkit-text-fill-color: rgb(255, 255, 255);
+}
+
+.text:disabled {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    border-radius: 0;
+    transition: all 0.3s ease 0s;
+    cursor: default;
+    outline: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: #fff solid 2px;
+}
+
+.text:disabled::after {
+    border-bottom: rgb(74, 206, 140) solid 2px;
+    color: #fff;
+}
+
+
+.btn-update:hover {
+    border: solid #f1c0ff 2px;
+    box-shadow: 0px 15px 20px #f1c0ff;
+}
+
+.btn-update:focus {
+    border: solid #d2a0ff 2px !important;
+    box-shadow: 0px 15px 20px #d2a0ff;
+}
+
+.btn-update {
+    color: white;
+    border: solid #f1c0ff 2px;
+}

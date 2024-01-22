@@ -15,11 +15,13 @@
                     <div class="mb-3">
                         <label for="newUserName" class="form-label">User Name</label>
                         <input type="text" class="text"
-                            id="newUserName" formControlName="user" required>
+                            id="newUserName" formControlName="user" required maxlength="15">
+                            <div id="emailHelp" *ngIf="form.get('user')?.hasError('minlength') && form.get('user')?.value != ''" class="form-text">The number of characters is 8 and maximum 15.</div>
+                            <div id="emailHelp" *ngIf="form.get('user')?.hasError('maxlength') && form.get('user')?.value != ''" class="form-text">The number of characters is 8 and maximum 15.</div>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email
-                            address</label>
+                            Address</label>
                         <input type="email" class="text"
                             id="email" formControlName="email" required>
                     </div>
