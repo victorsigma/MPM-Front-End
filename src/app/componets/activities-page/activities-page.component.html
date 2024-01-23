@@ -47,27 +47,27 @@
                 role="tabpanel"
                 aria-labelledby="v-pills-unassigned-tab" tabindex="0">
                 <div class="container-fluid">
-                    <app-activity-item (update)="updateData()" *ngFor="let activity of activityList.activitiesUn" [activity]="activity" [project]="project" [loginRol]="loginRol[0]"></app-activity-item>
+                    <app-activity-item (update)="updateData()" *ngFor="let activity of activities" [activity]="activity" [project]="project" [loginRol]="loginRol[0]"></app-activity-item>
                 </div>
             </div>
             <div class="tab-pane fade" id="v-pills-in-progress"
                 role="tabpanel"
                 aria-labelledby="v-pills-in-progress-tab" tabindex="0">
                 <div class="container-fluid">
-                    <app-activity-item (update)="updateData()" *ngFor="let activity of activityList.activitiesIn" [activity]="activity" [project]="project" [loginRol]="loginRol[0]"></app-activity-item>
+                    <app-activity-item (update)="updateData()" *ngFor="let activity of activities" [activity]="activity" [project]="project" [loginRol]="loginRol[0]"></app-activity-item>
                 </div>
             </div>
             <div class="tab-pane fade" id="v-pills-completed"
                 role="tabpanel"
                 aria-labelledby="v-pills-completed-tab" tabindex="0">
                 <div class="container-fluid">
-                    <app-activity-item (update)="updateData()" *ngFor="let activity of activityList.activitiesCm" [activity]="activity" [project]="project" [loginRol]="loginRol[0]"></app-activity-item>
+                    <app-activity-item (update)="updateData()" *ngFor="let activity of activities" [activity]="activity" [project]="project" [loginRol]="loginRol[0]"></app-activity-item>
                 </div>
             </div>
             <div class="tab-pane fade" id="v-pills-all" role="tabpanel"
                 aria-labelledby="v-pills-all-tab" tabindex="0">
                 <div class="container-fluid">
-                    <app-activity-item (update)="updateData()" *ngFor="let activity of activityList.activities" [activity]="activity" [project]="project" [loginRol]="loginRol[0]"></app-activity-item>
+                    <app-activity-item (update)="updateData()" *ngFor="let activity of activities" [activity]="activity" [project]="project" [loginRol]="loginRol[0]"></app-activity-item>
                 </div>
             </div>
         </div>

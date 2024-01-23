@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="moreActivityLabel">{{dataServiceModal.activity.title}}</h5>
+                <h5 class="modal-title" id="moreActivityLabel">{{'dataServiceModal.activity.title'}}</h5>
                 <button type="button" class="btn-close btn-close-white"
                     data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -13,47 +13,47 @@
                         <label class="form-label" for="nameActivity">Activity name</label>
                         <input class="text" id="nameActivity"
                             name="nameActivity"
-                            type="text" disabled value="{{dataServiceModal.activity.title}}"/>
+                            type="text" disabled value="{{'dataServiceModal.activity.title'}}"/>
                     </div>
                     <div class="mb-3">
                         <label for="descriptionActivity"
                             class="form-label">Description</label>
                         <textarea class="textarea"
-                            id="descriptionActivity" rows="3" disabled value="{{dataServiceModal.activity.subtitle}}"></textarea>
+                            id="descriptionActivity" rows="3" disabled value="{{'dataServiceModal.activity.subtitle'}}"></textarea>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Status</label>
                         <select class="text" aria-label="Default
                             select example" disabled>
-                            <option value="1" [selected]="dataServiceModal.activity.status == 1">Unassigned</option>
-                            <option value="2" [selected]="dataServiceModal.activity.status == 2">In progress</option>
-                            <option value="3" [selected]="dataServiceModal.activity.status == 3">Completed</option>
+                            <option value="1" [selected]="'dataServiceModal.activity.status == 1'">Unassigned</option>
+                            <option value="2" [selected]="'dataServiceModal.activity.status == 2'">In progress</option>
+                            <option value="3" [selected]="'dataServiceModal.activity.status == 3'">Completed</option>
                         </select>
                     </div>
                     <div class="mb-1">
                         <label class="form-label">Participating roles</label>
                     </div>
                     <div class="mb-3">
-                        <input type="checkbox" [checked]="dataServiceModal.activity.leader" disabled
+                        <input type="checkbox" [checked]="'dataServiceModal.activity.leader'" disabled
                             class="form-check-input"
                             id="checkleader">
                         <label class="form-check-label"
                             for="checkleader">Leader</label>
                     </div>
                     <div class="mb-3">
-                        <input type="checkbox" [checked]="dataServiceModal.activity.analyst" disabled class="form-check-input"
+                        <input type="checkbox" [checked]="'dataServiceModal.activity.analyst'" disabled class="form-check-input"
                             id="checkanalyst">
                         <label class="form-check-label"
                             for="checkanalyst">Analyst</label>
                     </div>
                     <div class="mb-3">
-                        <input type="checkbox" [checked]="dataServiceModal.activity.designer" disabled class="form-check-input"
+                        <input type="checkbox" [checked]="'dataServiceModal.activity.designer'" disabled class="form-check-input"
                             id="checkdesigner">
                         <label class="form-check-label"
                             for="checkdesigner">Designer</label>
                     </div>
                     <div class="mb-3">
-                        <input type="checkbox" [checked]="dataServiceModal.activity.programmer" disabled class="form-check-input"
+                        <input type="checkbox" [checked]="'dataServiceModal.activity.programmer'" disabled class="form-check-input"
                             id="checkprogrammer">
                         <label class="form-check-label"
                             for="checkprogrammer">Programmer</label>
@@ -63,7 +63,7 @@
                             date</label>
                         <input disabled class="text" id="date"
                             name="date"
-                            type="text" value="{{dataServiceModal.activity.dateEnd}}"/>
+                            type="text" value="{{'dataServiceModal.activity.dateEnd'}}"/>
                     </div>
                 </form>
             </div>

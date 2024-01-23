@@ -35,7 +35,7 @@ export class LoginDataService {
     this.status = true;
     this.token = user;
 
-    localStorage.setItem("token", user.token);
+    localStorage.setItem('token', user.token);
     location.reload()
   }
 
@@ -44,7 +44,7 @@ export class LoginDataService {
   }
 
   private getUser(): Jwt {
-    const user: Jwt = { 'token': localStorage.getItem("token") || '' }
+    const user: Jwt = { 'token': localStorage.getItem('token') || '' }
     return user;
   }
 
@@ -53,7 +53,7 @@ export class LoginDataService {
   }
 
   public loggout() {
-    localStorage.removeItem("token");
+    localStorage.removeItem('token');
     location.reload()
   }
 

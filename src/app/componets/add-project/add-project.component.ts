@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
-import {v4 as uuidv4} from 'uuid';
 import { ProjectData } from '../../models/projects';
 import { ProjectDataService } from '../../services/project-data.service';
 import { LoginDataService } from '../../services/login-data.service';
@@ -8,6 +7,8 @@ import { ProjectsHasUser } from '../../models/projectsHasUser';
 import { UsersProjectsService } from 'src/app/services/users-projects.service';
 import { ProjectListService } from '../../services/project-list.service';
 import { Router } from '@angular/router';
+import { error } from 'console';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-project',
@@ -23,10 +24,8 @@ export class AddProjectComponent implements OnInit {
   @Output() newProject: EventEmitter<ProjectData> = new EventEmitter();
   constructor(
     public projectId: ProjectDataService, 
-    private loginService:LoginDataService, 
-    private memberList:UsersProjectsService, 
     private projectList:ProjectListService,
-    private router:Router
+    public toastr: ToastrService
     ) {
     this.form = new UntypedFormGroup(
       {
@@ -42,44 +41,20 @@ export class AddProjectComponent implements OnInit {
 
   createProject(): void {
     this.project = {
-      id: uuidv4(),
+      id: '',
       title: this.form.get('title')?.value,
       subtitle: this.form.get('subtitle')?.value,
       src: 'img_'+this.random(1, 7),
       dateStart: new Date(),
-      dateEnd: new Date(new Date(this.form.get('dateEnd')?.value))
+      dateEnd: new Date(new Date(this.form.get('dateEnd')?.value)),
+      owner: ''
     };
 
-    this.relationProject = {
-      id: 0,
-      proyectsIdProject: this.project.id,
-      userIdUser: '',
-      rolesIdRol: 0
-    }
-    //
     this.projectList.addProjects(this.project).subscribe(data => {
-      this.form.reset();
-      //this.projectList.projectsMaster.push(this.project);
+      location.reload()
+    }, error => {
+      this.toastr.error('Error creating the project')
     })
-    this.memberList.addProjectUser(this.relationProject).subscribe(data => {
-      //this.memberList.projectMembers.push(this.relationProject)
-      this.reloadForm();
-    })
-
-    
-    
-    //this.router.navigate(['/projects']);
-
-
-    this.memberList.getListProjectUser().subscribe(async data => {
-      this.memberList.projectMembers = await data;
-    })
-    this.projectList.getListProjects().subscribe(async data => {
-      this.projectList.projectsMaster = await data;
-    })
-
-    this.projectList.loadProjects();
-    this.router.navigate(['/']);
   }
 
   random(min: number, max: number) {

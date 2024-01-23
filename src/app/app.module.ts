@@ -23,8 +23,10 @@ import { ProjectOptionsComponent } from './componets/project-options/project-opt
 import { ProjectMembersComponent } from './componets/project-members/project-members.component';
 import { MemberItemComponent } from './componets/member-item/member-item.component';
 import { MoreActivityComponent } from './componets/more-activity/more-activity.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { DeleteProjectComponent } from './componets/delete-project/delete-project.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { ProjectDataService } from './services/project-data.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,14 @@ import { DeleteProjectComponent } from './componets/delete-project/delete-projec
     ToastrModule.forRoot(), // ToastrModule added
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+      deps: [ProjectDataService]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

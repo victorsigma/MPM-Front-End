@@ -1,20 +1,18 @@
-<div *ngIf="loginService.isLogin()">
-    <div>
-        <nav class="navbar navbar-dark">
-            <div class="container-fluid content-project" style="padding-inline: 25px; padding-block: 5px;">
-                <h1 class="navbar-brand">Projects</h1>
-                <ul class="navbar-nav d-flex">
-                    <li class="nav-item">
-                        <button class="button-options"
-                            data-bs-toggle="modal"
-                            data-bs-target="#createProject" >Create <i class="fa-solid fa-plus"></i></button>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+<div>
+    <nav class="nv-projct navbar navbar-dark border-bottom">
+        <div class="container-fluid content-project">
+            <h1 class="navbar-brand navbar-title">&nbsp;&nbsp;&nbsp;Projects&nbsp;&nbsp;</h1>
+            <ul class="navbar-nav d-flex">
+                <li class="nav-item">
+                    <button class="button-options"
+                        data-bs-toggle="modal"
+                        data-bs-target="#createProject" >Create <i class="fa-solid fa-plus"></i></button>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="container-fluid">
-        <app-project-item *ngFor="let project of projectList.projects" [project]="project"></app-project-item>
+        <app-project-item *ngFor="let project of projectList" [project]="project"></app-project-item>
     </div>
     <app-add-project></app-add-project>
 </div>

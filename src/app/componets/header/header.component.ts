@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
     this.breakpointObserver.observe('(max-width: 992px)')
     .subscribe(result => {
       this.isMobile = result.matches;
-      console.log(this.isMobile)
     });
   }
 

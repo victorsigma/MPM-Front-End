@@ -1,7 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { ActivityDataService } from '../../services/activity-data.service';
-import { ActivityListService } from 'src/app/services/activity-list.service';
 import { UpdateDataService } from 'src/app/services/update-data.service';
 import { ActivityData } from '../../models/ativities';
 
@@ -30,7 +29,7 @@ export class EditorActivityComponent implements OnInit {
   })
   constructor(
     public dataServiceModal: ActivityDataService, 
-    public activityList: ActivityListService,
+    public activityData: ActivityDataService,
     private emitter: UpdateDataService
   )
     {
@@ -44,7 +43,7 @@ export class EditorActivityComponent implements OnInit {
   }
 
   editActivity() {
-    this.activity = this.dataServiceModal.activity;
+    //this.activity = this.dataServiceModal.activity;
 
     if (this.form.get('title')?.value != null) {
       //this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf(this.dataServiceModal.activity)].title = this.form.get('title')?.value;
@@ -75,24 +74,23 @@ export class EditorActivityComponent implements OnInit {
       this.activity.dateEnd = new Date(new Date(this.form.get('dateEnd')?.value));
     }
 
-    this.activityList.filterRol();
     this.updateActivity.emit(this.activity);
     this.reloadForm();
   }
 
   removeActivity() {
-    this.deletActivity.emit(this.dataServiceModal.activity.id);
+    //this.deletActivity.emit(this.dataServiceModal.activity.id);
   }
 
   reloadForm() {
-    this.form = new UntypedFormGroup({
-      title: new UntypedFormControl(),
-      subtitle: new UntypedFormControl(),
-      status: new UntypedFormControl(this.dataServiceModal.activity.status),
-      dateEnd: new UntypedFormControl(),
-      rolesListAnalyst: new UntypedFormControl(this.dataServiceModal.activity.analyst),
-      rolesListDesigner: new UntypedFormControl(this.dataServiceModal.activity.designer),
-      rolesListProgrammer: new UntypedFormControl(this.dataServiceModal.activity.programmer)
-    })
+    // this.form = new UntypedFormGroup({
+    //   title: new UntypedFormControl(),
+    //   subtitle: new UntypedFormControl(),
+    //   status: new UntypedFormControl(this.dataServiceModal.activity.status),
+    //   dateEnd: new UntypedFormControl(),
+    //   rolesListAnalyst: new UntypedFormControl(this.dataServiceModal.activity.analyst),
+    //   rolesListDesigner: new UntypedFormControl(this.dataServiceModal.activity.designer),
+    //   rolesListProgrammer: new UntypedFormControl(this.dataServiceModal.activity.programmer)
+    // })
   }
 }

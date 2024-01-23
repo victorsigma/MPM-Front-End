@@ -5,7 +5,6 @@ import { ActivityData } from '../../models/ativities';
 import { ActivityDataService } from '../../services/activity-data.service';
 import { ProjectData } from 'src/app/models/projects';
 import { ProjectDataService } from 'src/app/services/project-data.service';
-import { ActivityListService } from '../../services/activity-list.service';
 import { LoginDataService } from '../../services/login-data.service';
 import { UpdateDataService } from '../../services/update-data.service';
 import { UsersProjectsService } from 'src/app/services/users-projects.service';
@@ -34,7 +33,7 @@ export class ActivitiesPageComponent implements OnInit {
     private toastr: ToastrService,
     private dataActivities: ActivityDataService,
     public projectData: ProjectDataService,
-    public activityList: ActivityListService,
+    public activityData: ActivityDataService,
     public loginService: LoginDataService,
     private emitter: UpdateDataService,
     private members: UpdateDataService,
@@ -50,33 +49,32 @@ export class ActivitiesPageComponent implements OnInit {
   }
 
   newActivity(activity: ActivityData) {
-    this.activityList.activitiesMaster.push(activity);
 
-    this.activityList.addActivity(activity).subscribe(data => {
-      this.filterRol();
-      this.toastr.info(activity.subtitle, 'Add ' + activity.title);
-    })
+    // this.activityList.addActivity(activity).subscribe(data => {
+    //   this.filterRol();
+    //   this.toastr.info(activity.subtitle, 'Add ' + activity.title);
+    // })
   }
 
   deletActivity(id: string) {
-    this.activityList.removeActivity(id).subscribe(data => {
-      this.filterRol();
-      this.toastr.error('The activity was eliminated.', 'Remove Activity');
-    })
+    // this.activityList.removeActivity(id).subscribe(data => {
+    //   this.filterRol();
+    //   this.toastr.error('The activity was eliminated.', 'Remove Activity');
+    // })
   }
 
   updateActivity(activity: ActivityData) {
-    this.activityList.updateActivity(activity.id, activity).subscribe(data => {
-      this.filterRol();
-    })
+    // this.activityList.updateActivity(activity.id, activity).subscribe(data => {
+    //   this.filterRol();
+    // })
   }
 
   filterRol() {
-    this.activityList.getListActivities().subscribe(data => {
-      this.activityList.activitiesMaster = data;
-      this.dataActivities.activities = this.activityList.activitiesMaster;
-      this.activityList.filterRol();
-    })
+    // this.activityList.getListActivities().subscribe(data => {
+    //   this.activityList.activitiesMaster = data;
+    //   this.dataActivities.activities = this.activityList.activitiesMaster;
+    //   this.activityList.filterRol();
+    // })
   }
 
   updateData() {

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { filter, Subject } from 'rxjs';
 import { ProjectData } from '../../models/projects';
-import { ProjectListService } from '../../services/project-list.service';
 import { LoginDataService } from '../../services/login-data.service';
-import { UsersProjectsService } from 'src/app/services/users-projects.service';
 import { Router } from '@angular/router';
+import { ProjectDataService } from 'src/app/services/project-data.service';
 
 @Component({
   selector: 'app-projects-page',
@@ -13,9 +12,16 @@ import { Router } from '@angular/router';
 })
 export class ProjectsPageComponent implements OnInit {
   createProject: Subject<ProjectData> = new Subject<ProjectData>();
-  constructor(public projectList: ProjectListService, public loginService:LoginDataService, private route:Router) {
+
+  public projectList: ProjectData[] = []; 
+
+  constructor(public projectData: ProjectDataService) {
+    this.projectData.getListProjects().subscribe((data: ProjectData[]) => {
+      this.projectList = data;
+    })
   }
 
   ngOnInit(): void {
+
   }
 }

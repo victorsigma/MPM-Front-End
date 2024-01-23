@@ -6,8 +6,8 @@ import { LoginDataService } from 'src/app/services/login-data.service';
 import { ProjectListService } from 'src/app/services/project-list.service';
 import { UsersProjectsService } from 'src/app/services/users-projects.service';
 import { Router } from '@angular/router';
-import { ActivityListService } from '../../services/activity-list.service';
 import { ActivityData } from '../../models/ativities';
+import { ActivityDataService } from '../../services/activity-data.service';
 
 @Component({
   selector: 'app-delete-project',
@@ -27,7 +27,7 @@ export class DeleteProjectComponent implements OnInit {
     private loginService: LoginDataService,
     private projectList: ProjectListService,
     private memberList: UsersProjectsService,
-    private activityList: ActivityListService,
+    private activityData: ActivityDataService,
     private route: Router
   ) {
   }
@@ -40,16 +40,16 @@ export class DeleteProjectComponent implements OnInit {
       this.members = this.memberList.projectMembers.filter(memberList => {
         return memberList.proyectsIdProject == this.project.id;
       })
-      this.activities = this.activityList.activitiesMaster.filter(activityList => {
-        return activityList.projectId == this.project.id;
-      })
+      // this.activities = this.activityData.activitiesMaster.filter(activityData: any => {
+      //   return activityData.projectId == this.project.id;
+      // })
 
       this.members.forEach(element => {
         this.memberList.removeProjectUser(element.id).subscribe();
       })
 
       this.activities.forEach(element => {
-        this.activityList.removeActivity(element.id).subscribe();
+        this.activityData.removeActivity(element.id).subscribe();
       })
 
       this.projectList.removeProjects(this.project.id).subscribe(()=> {
