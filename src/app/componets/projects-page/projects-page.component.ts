@@ -4,6 +4,7 @@ import { ProjectData } from '../../models/projects';
 import { LoginDataService } from '../../services/login-data.service';
 import { Router } from '@angular/router';
 import { ProjectDataService } from 'src/app/services/project-data.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-projects-page',
@@ -15,7 +16,8 @@ export class ProjectsPageComponent implements OnInit {
 
   public projectList: ProjectData[] = []; 
 
-  constructor(public projectData: ProjectDataService) {
+  constructor(private projectData: ProjectDataService, private titleService: Title) {
+    this.titleService.setTitle(`MPM - Projects`)
     this.projectData.getListProjects().subscribe((data: ProjectData[]) => {
       this.projectList = data;
     })

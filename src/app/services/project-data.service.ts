@@ -22,6 +22,10 @@ export class ProjectDataService {
     return this.http.get<Array<ProjectData>>(this.myAppUrl + this.myApiUrl)
   }
 
+  getProjectById(id: string): Observable<any> {
+    return this.http.get<any>(this.myAppUrl + this.myApiUrl + id)
+  }
+
   addProjects(project: ProjectData) {
     return this.http.post(this.myAppUrl + this.myApiUrl, project)
   }

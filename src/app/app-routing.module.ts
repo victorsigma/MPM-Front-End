@@ -21,7 +21,7 @@ const routes: Routes = [
     canActivate: [LoginGuard]
   },
   {
-    path: 'activities',
+    path: 'activities/:idProject',
     component: ActivitiesPageComponent,
     canActivate: [LoginGuard]
   },

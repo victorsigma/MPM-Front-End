@@ -4,6 +4,7 @@ import { AES } from 'crypto-js';
 import { ToastrService } from 'ngx-toastr';
 import { UserData } from '../../models/users';
 import { UsersListService } from 'src/app/services/users-list.service';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class RegisterSectionComponent implements OnInit {
     phone: new FormControl('', [Validators.minLength(10), Validators.maxLength(10), Validators.required]),
     password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[0-9]).{6,}$/)])
   });
-  constructor(private userList: UsersListService, private toastr: ToastrService) { 
+  constructor(private userList: UsersListService, private toastr: ToastrService, private titleService: Title) {
+    this.titleService.setTitle(`MPM - Register`)
     this.form = new FormGroup({
       user: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(15), Validators.pattern(/^[a-zA-Z0-9]+$/)]),
       email: new FormControl('', [Validators.email, Validators.required]),

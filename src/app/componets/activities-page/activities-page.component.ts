@@ -7,9 +7,9 @@ import { ProjectData } from 'src/app/models/projects';
 import { ProjectDataService } from 'src/app/services/project-data.service';
 import { LoginDataService } from '../../services/login-data.service';
 import { UpdateDataService } from '../../services/update-data.service';
-import { UsersProjectsService } from 'src/app/services/users-projects.service';
-import { ProjectsHasUser } from 'src/app/models/projectsHasUser';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { error } from 'console';
 
 @Component({
   selector: 'app-activities-page',
@@ -17,10 +17,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./activities-page.component.css']
 })
 export class ActivitiesPageComponent implements OnInit {
-  project: ProjectData = new ProjectData();
+  project: ProjectData | undefined = undefined;
 
   public update: Subject<void> = new Subject<void>();
-  loginRol: ProjectsHasUser[] = [];
+  loginRol: number | undefined = undefined;
 
   activitiesMaster: ActivityData[] = []
 
@@ -37,15 +37,24 @@ export class ActivitiesPageComponent implements OnInit {
     public loginService: LoginDataService,
     private emitter: UpdateDataService,
     private members: UpdateDataService,
-    private userMember: UsersProjectsService,
-    private route:Router
+    private activeRoute: ActivatedRoute,
+    private titleService: Title,
+    private router:Router
   ) {
-    this.filterRol();
-    this.project = this.projectData.project;
+    const { idProject }= this.activeRoute.snapshot.params
+
+    this.projectData.getProjectById(idProject).subscribe((data: any) => {
+      this.project = data.project as ProjectData;
+      this.loginRol = data.rol.idRol;
+      this.titleService.setTitle(`MPM - ${this.project.title}`)
+      console.log(data)
+    }, error => {
+      console.log(error)
+      this.router.navigate(['/'])
+    })
   }
 
   ngOnInit(): void {
-    this.filterRol()
   }
 
   newActivity(activity: ActivityData) {

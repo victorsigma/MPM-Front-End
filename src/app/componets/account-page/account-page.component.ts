@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { LoginDataService } from '../../services/login-data.service';
 import { User } from 'src/app/models/users';
 import { Modal } from 'bootstrap';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -43,7 +44,8 @@ export class AccountPageComponent implements OnInit {
 
   public isAriaExpanded: boolean = false;
 
-  constructor(public loginService: LoginDataService, private toastr: ToastrService, private breakpointObserver: BreakpointObserver) {
+  constructor(public loginService: LoginDataService, private toastr: ToastrService, private breakpointObserver: BreakpointObserver, private titleService: Title) {
+    this.titleService.setTitle(`MPM - Account`)
     this.breakpointObserver.observe('(max-width: 992px)')
     .subscribe(result => {
       this.isMobile = result.matches;

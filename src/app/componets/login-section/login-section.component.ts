@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { LoginDataService } from '../../services/login-data.service';
 import { Login, UserData } from '../../models/users';
 import { ProjectListService } from '../../services/project-list.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login-section',
@@ -20,40 +21,14 @@ export class LoginSectionComponent implements OnInit {
   });
 
   @Output() loginDate: EventEmitter<null> = new EventEmitter();
-  constructor(private loginService: LoginDataService, private toastr: ToastrService, private projectList: ProjectListService) {
+  constructor(private loginService: LoginDataService, private toastr: ToastrService, private titleService: Title) {
+    this.titleService.setTitle(`MPM - Login`)
   }
 
   ngOnInit(): void {
   }
 
   loginSend(): void {
-    /*if (/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(this.form.get('user')?.value)){
-      this.users = this.userList.usersList.filter((obj) => {
-        return obj.userMail == this.form.get('user')?.value
-      })
-      if (this.users[0] != undefined) {
-        if (AES.decrypt(this.users[0].password,this.userList.encryptionKey).toString(enc.Utf8) == this.form.get('password')?.value) {
-          this.loggingUser();
-        } else {
-          //this.toastr.error('Incorrect data connection error.', 'Operation Canceled');
-        }
-      } else {
-        //this.toastr.error('Incorrect data connection error.', 'Operation Canceled');
-      }
-    } else {
-      this.users = this.userList.usersList.filter((obj) => {
-        return obj.userName == this.form.get('user')?.value
-      })
-      if (this.users[0] != undefined) {
-        if (AES.decrypt(this.users[0].password,this.userList.encryptionKey).toString(enc.Utf8) == this.form.get('password')?.value) {
-          this.loggingUser();
-        } else {
-          //this.toastr.error('Incorrect data connection error.', 'Operation Canceled');
-        }
-      } else {
-        //this.toastr.error('Incorrect data connection error.', 'Operation Canceled');
-      }
-    }*/
     const user: Login = this.form?.value
 
     console.log(this.form.get('password')?.valid)
@@ -61,7 +36,7 @@ export class LoginSectionComponent implements OnInit {
     this.loginService.login(user).subscribe((data)=> {
       this.loginService.setToken(data);
     }, (error) => {
-      console.log(error)
+      this.toastr.error('Incorrect data connection error.', 'Operation Canceled');
     })
 
     this.reloadForm();
