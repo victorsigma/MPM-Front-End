@@ -27,6 +27,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { DeleteProjectComponent } from './componets/delete-project/delete-project.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ProjectDataService } from './services/project-data.service';
+import { ErrorPageComponent } from './componets/error-page/error-page.component';
+import { ActivitiesListComponent } from './componets/activities-list/activities-list.component';
+import { ActivityDataService } from './services/activity-data.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,9 @@ import { ProjectDataService } from './services/project-data.service';
     ProjectMembersComponent,
     MemberItemComponent,
     MoreActivityComponent,
-    DeleteProjectComponent
+    DeleteProjectComponent,
+    ErrorPageComponent,
+    ActivitiesListComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +69,12 @@ import { ProjectDataService } from './services/project-data.service';
       useClass: AuthInterceptor,
       multi: true,
       deps: [ProjectDataService]
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+      deps: [ActivityDataService]
     }
   ],
   bootstrap: [AppComponent]

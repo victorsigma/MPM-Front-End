@@ -1,69 +1,61 @@
-<div class="modal fade" id="addActivity" tabindex="-1"
-    aria-labelledby="addActivityLabel" aria-hidden="true" data-bs-backdrop="static">
+<div class="modal fade" id="addActivity" tabindex="-1" aria-labelledby="addActivityLabel" aria-hidden="true"
+    data-bs-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addActivityLabel">Add Activity</h5>
-                <button type="button" class="btn-close btn-close-white"
-                    data-bs-dismiss="modal" (click)="addCancel()" aria-label="Close"></button>
+                <h5 class="modal-title">Add Activity</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" (click)="addCancel()"
+                    aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form [formGroup]="form" (ngSubmit)="addActivity()">
                     <div class="mb-3">
-                        <label class="form-label" for="nameActivity">Activity name</label>
-                        <input class="text" required formControlName="title" maxlength="30" type="text" placeholder="Name Activity"/>
+                        <label class="form-label">Activity name</label>
+                        <input class="text" required formControlName="title" maxlength="30" type="text"
+                            placeholder="Name Activity" />
                     </div>
                     <div class="mb-3">
-                        <label for="descriptionActivity"
-                            class="form-label">Description Activity</label>
-                        <textarea class="textarea" required formControlName="subtitle"
-                            id="descriptionActivity" rows="3" maxlength="150" placeholder="Description Activity"></textarea>
+                        <label class="form-label">Description Activity</label>
+                        <textarea class="textarea" required formControlName="subtitle" rows="3" maxlength="150"
+                            placeholder="Description Activity"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="statusActivity">Status</label>
-                        <select formControlName="status" class="text" id="statusActivity" name="statusActivity">
-                            <option value="1" selected >Unassigned</option>
-                            <option value="2">In progress</option>
-                            <option value="3">Completed</option>
+                        <label class="form-label">Status</label>
+                        <select formControlName="status" class="text" name="statusActivity">
+                            <option *ngFor="let item of statusType; let i = index" [value]="item.Id">{{item.statusName}}
+                            </option>
                         </select>
                     </div>
                     <div class="mb-1">
                         <label class="form-label">Participating roles</label>
                     </div>
                     <div class="mb-3">
-                        <input type="checkbox" checked disabled
-                            class="form-check-input"
-                            id="leadeCheck">
-                        <label class="form-check-label"
-                            for="leadeCheck">Leader</label>
+                        <input type="checkbox" checked disabled class="form-check-input">
+                        <label class="form-check-label" for="leadeCheck">Leader</label>
                     </div>
                     <div class="mb-3">
-                        <input formControlName="rolesListAnalyst" type="checkbox" class="form-check-input"
-                            id="analystCheck">
-                        <label class="form-check-label"
-                            for="analystCheck">Analyst</label>
+                        <input formControlName="rolesListAnalyst" type="checkbox" class="form-check-input">
+                        <label class="form-check-label" for="analystCheck">Analyst</label>
                     </div>
                     <div class="mb-3">
-                        <input formControlName="rolesListDesigner" type="checkbox" class="form-check-input"
-                            id="designerCheck">
-                        <label class="form-check-label"
-                            for="designerCheck">Designer</label>
+                        <input formControlName="rolesListDesigner" type="checkbox" class="form-check-input">
+                        <label class="form-check-label" for="designerCheck">Designer</label>
                     </div>
                     <div class="mb-3">
-                        <input formControlName="rolesListProgrammer" type="checkbox" class="form-check-input"
-                            id="exampleCheck4">
-                        <label class="form-check-label"
-                            for="exampleCheck4">Programmer</label>
+                        <input formControlName="rolesListProgrammer" type="checkbox" class="form-check-input">
+                        <label class="form-check-label" for="exampleCheck4">Programmer</label>
                     </div>
                     <div class="mb-3">
                         <label class="control-label" for="dateEnd">Completion
                             date</label>
-                        <input formControlName="dateEnd" required class="text" id="dateEnd" name="dateEnd" placeholder="MM/DD/YYYY" type="date"/>
+                        <input formControlName="dateEnd" required class="text" name="dateEnd"
+                            placeholder="MM/DD/YYYY" type="date" />
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn button-close"
-                            data-bs-dismiss="modal" (click)="addCancel()">Close</button>
-                        <button type="submit" [disabled]="!this.form.valid" class="btn button-save" data-bs-dismiss="modal">Add Activity</button>
+                        <button type="button" class="btn button-close" data-bs-dismiss="modal"
+                            (click)="addCancel()">Close</button>
+                        <button type="submit" [disabled]="!this.form.valid" class="btn button-save"
+                            data-bs-dismiss="modal">Add Activity</button>
                     </div>
                 </form>
             </div>

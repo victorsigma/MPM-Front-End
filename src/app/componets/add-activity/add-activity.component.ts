@@ -1,9 +1,10 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import {v4 as uuidv4} from 'uuid';
-import { ActivityData } from '../../models/ativities';
+import { ActivityData, activityStatusData } from '../../models/ativities';
 import { ProjectData } from 'src/app/models/projects';
+import { ActivityDataService } from '../../services/activity-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-activity',
@@ -12,23 +13,39 @@ import { ProjectData } from 'src/app/models/projects';
 })
 export class AddActivityComponent implements OnInit {
 
-  form: UntypedFormGroup;
+  form: UntypedFormGroup = new UntypedFormGroup(
+    {
+      title: new UntypedFormControl(),
+      subtitle: new UntypedFormControl(),
+      status: new UntypedFormControl(1),
+      dateEnd: new UntypedFormControl(),
+      rolesListAnalyst: new UntypedFormControl(false),
+      rolesListDesigner: new UntypedFormControl(false),
+      rolesListProgrammer: new UntypedFormControl(false)
+    }
+  );
   activity: ActivityData = new ActivityData();
+  statusType: Array<activityStatusData> = [];
+  private url: string[] = []
   @Output() newActivity: EventEmitter<ActivityData> = new EventEmitter();
   @Input() project:ProjectData = new ProjectData();
 
-  constructor(private toastr: ToastrService) {
-    this.form = new UntypedFormGroup(
-      {
-        title: new UntypedFormControl(),
-        subtitle: new UntypedFormControl(),
-        status: new UntypedFormControl(1),
-        dateEnd: new UntypedFormControl(),
-        rolesListAnalyst: new UntypedFormControl(false),
-        rolesListDesigner: new UntypedFormControl(false),
-        rolesListProgrammer: new UntypedFormControl(false)
-      }
-    );
+  constructor(private toastr: ToastrService, private activityService: ActivityDataService, private router: Router) {
+    this.url = this.router.url.split('/')
+    this.activityService.getActivityStatusType().subscribe((data) => {
+      this.statusType = data;
+      this.form = new UntypedFormGroup(
+        {
+          title: new UntypedFormControl(),
+          subtitle: new UntypedFormControl(),
+          status: new UntypedFormControl(1),
+          dateEnd: new UntypedFormControl(),
+          rolesListAnalyst: new UntypedFormControl(false),
+          rolesListDesigner: new UntypedFormControl(false),
+          rolesListProgrammer: new UntypedFormControl(false)
+        }
+      );
+    })
   }
 
   ngOnInit(): void {
@@ -36,7 +53,7 @@ export class AddActivityComponent implements OnInit {
 
   addActivity(): void {
     this.activity = {
-      id: uuidv4()/*this.activityId.activity*/,
+      id: '',
       title: this.form.get('title')?.value,
       subtitle: this.form.get('subtitle')?.value,
       src: 'img_'+this.random(1, 7),
@@ -46,11 +63,12 @@ export class AddActivityComponent implements OnInit {
       analyst: this.form.get('rolesListAnalyst')?.value,
       designer: this.form.get('rolesListDesigner')?.value,
       programmer: this.form.get('rolesListProgrammer')?.value,
-      projectId: this.project.id
+      projectId: this.url[2]
     }
 
-    this.newActivity.emit(this.activity);
-    this.reloadForm();
+    this.activityService.addActivity(this.activity).subscribe(() => {
+      location.reload()
+    })
   }
 
   addCancel() {

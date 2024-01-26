@@ -1,14 +1,14 @@
-<div class="card-aling card-center" *ngIf="activity.projectId == project.id && loginService.isLogin()">
+<div class="card-aling card-center">
     <div class="card">
         <img src="./assets/img/card/{{activity.src}}.jpg"
             class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{activity.title}}</h5>
             <p class="card-text text-subtitle">{{activity.subtitle}}</p>
-            <button *ngIf="loginRol == 0" class="button"
+            <button *ngIf="userRol == 0" class="button"
                 data-bs-toggle="modal" data-bs-target="#editActivity" (click)="onModalData()"> Edit
                 activity</button>
-            <button *ngIf="loginRol != 0" class="button"
+            <button *ngIf="userRol != 0" class="button"
                 data-bs-toggle="modal" data-bs-target="#moreActivity" (click)="onModalData()"> More</button>
         </div>
     </div>

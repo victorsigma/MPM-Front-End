@@ -21,6 +21,6 @@ export class ProjectItemComponent implements OnInit {
 
   openActivities(): void {
     this.projectData.project = this.project;
-    this.router.navigate(['activities', this.project.id]);
+    this.router.navigate(['project', this.project.id]);
   }
 }

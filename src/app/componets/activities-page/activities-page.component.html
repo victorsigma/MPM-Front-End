@@ -3,76 +3,43 @@
         <div class="container-fluid content-project">
             <h1 class="navbar-brand">{{project.title}} - Activities</h1>
             <ul class="navbar-nav d-flex">
-                <li class="nav-item" *ngIf="loginRol == 0">
-                    <button class="button-options"
-                        data-bs-toggle="modal"
+                <li class="nav-item" *ngIf="userRol == 0">
+                    <button class="button-options" data-bs-toggle="modal"
                         data-bs-target="#projectOptions">Options</button>
-                    <button class="button-options" (click)="updateMembers()"
-                        data-bs-toggle="modal"
+                    <button class="button-options" (click)="updateMembers()" data-bs-toggle="modal"
                         data-bs-target="#projectMembers">Members</button>
-                    <button class="button-options"
-                        data-bs-toggle="modal"
-                        data-bs-target="#addActivity" (click)="updateMembers()" >Add <i class="fa-solid fa-plus"></i></button>
+                    <button class="button-options" data-bs-toggle="modal" data-bs-target="#addActivity"
+                        (click)="updateMembers()">Add <i class="fa-solid fa-plus"></i></button>
                 </li>
             </ul>
         </div>
     </nav>
-    
-    
+
+
     <div class="d-flex align-items-start nav-ver-margin">
-        <div class="nav flex-column nav-pills me-3" id="v-pills-tab"
-            role="tablist" aria-orientation="vertical">
-            <button class="nav-link nav-link-margin active"
-                id="v-pills-unassigned-tab"
-                data-bs-toggle="pill" data-bs-target="#v-pills-unassigned"
-                type="button" role="tab" aria-controls="v-pills-unassigned"
-                aria-selected="false">Unassigned</button>
-            <button class="nav-link nav-link-margin"
-                id="v-pills-in-progress-tab"
-                data-bs-toggle="pill" data-bs-target="#v-pills-in-progress"
-                type="button" role="tab" aria-controls="v-pills-in-progress"
-                aria-selected="false">In progress</button>
-            <button class="nav-link nav-link-margin"
-                id="v-pills-completed-tab"
-                data-bs-toggle="pill" data-bs-target="#v-pills-completed"
-                type="button" role="tab" aria-controls="v-pills-completed"
-                aria-selected="false">Completed</button>
-            <button class="nav-link nav-link-margin" id="v-pills-all-tab"
-                data-bs-toggle="pill" data-bs-target="#v-pills-all"
-                type="button" role="tab" aria-controls="v-pills-all"
-                aria-selected="false">All</button>
+        
+        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link nav-link-margin" [class.active]="!status" (click)="goToParentRoute()" id="v-pills-all-tab" type="button">All</button>
+            <button class="nav-link nav-link-margin" [class.active]="status == 1" routerLink="unassigned" id="v-pills-unassigned-tab"
+                type="button">Unassigned</button>
+            <button class="nav-link nav-link-margin" [class.active]="status == 2" routerLink="inprogress" id="v-pills-in-progress-tab"
+                type="button">In progress</button>
+            <button class="nav-link nav-link-margin" [class.active]="status == 3" routerLink="completed" id="v-pills-completed-tab"
+                type="button">Completed</button>
+            <button class="nav-link nav-link-margin" [class.active]="status == 4" routerLink="pause" id="v-pills-pause-tab" type="button">Pause</button>
         </div>
         <div class="tab-content" id="v-pills-tabContent">
-            <div class="tab-pane fade show active" id="v-pills-unassigned"
-                role="tabpanel"
+            <div class="tab-pane fade show active" id="v-pills-unassigned" role="tabpanel"
                 aria-labelledby="v-pills-unassigned-tab" tabindex="0">
                 <div class="container-fluid">
-                    <app-activity-item (update)="updateData()" *ngFor="let activity of activities" [activity]="activity" [project]="project" [loginRol]="loginRol"></app-activity-item>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="v-pills-in-progress"
-                role="tabpanel"
-                aria-labelledby="v-pills-in-progress-tab" tabindex="0">
-                <div class="container-fluid">
-                    <app-activity-item (update)="updateData()" *ngFor="let activity of activities" [activity]="activity" [project]="project" [loginRol]="loginRol"></app-activity-item>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="v-pills-completed"
-                role="tabpanel"
-                aria-labelledby="v-pills-completed-tab" tabindex="0">
-                <div class="container-fluid">
-                    <app-activity-item (update)="updateData()" *ngFor="let activity of activities" [activity]="activity" [project]="project" [loginRol]="loginRol"></app-activity-item>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="v-pills-all" role="tabpanel"
-                aria-labelledby="v-pills-all-tab" tabindex="0">
-                <div class="container-fluid">
-                    <app-activity-item (update)="updateData()" *ngFor="let activity of activities" [activity]="activity" [project]="project" [loginRol]="loginRol"></app-activity-item>
+                    <app-activities-list *ngIf="!status"></app-activities-list>
+                    <router-outlet *ngIf="status"></router-outlet>
                 </div>
             </div>
         </div>
     </div>
-    <app-editor-activity (deletActivity)="deletActivity($event)" (updateActivity)="updateActivity($event)"></app-editor-activity>
+    <app-editor-activity (deletActivity)="deletActivity($event)"
+        (updateActivity)="updateActivity($event)"></app-editor-activity>
     <app-more-activity></app-more-activity>
     <app-add-activity (newActivity)="newActivity($event)" [project]="project"></app-add-activity>
     <app-project-options [project]="project"></app-project-options>

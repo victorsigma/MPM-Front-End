@@ -10,5 +10,10 @@ export class ActivityData {
     designer: boolean = false;
     programmer: boolean = false;
     projectId: string = '';
-    
+}
+
+
+export class activityStatusData {
+    Id: number = 0;
+    statusName: string = '';
 }

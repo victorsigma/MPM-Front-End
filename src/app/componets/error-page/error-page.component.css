@@ -1,0 +1,30 @@
+.error-container {
+    text-align: center;
+}
+
+.error-code {
+    font-size: 120px;
+    font-weight: bold;
+    margin: 0;
+    color: #ffffff;
+}
+
+.error-message {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.back-to-home {
+    color: white;
+    border: solid #f1c0ff 2px;
+}
+
+.btn-update {
+    color: white;
+    border: solid #f1c0ff 2px;
+}
+
+.back-to-home:hover {
+    border: solid #f1c0ff 2px;
+    box-shadow: 0px 15px 20px #f1c0ff;
+}

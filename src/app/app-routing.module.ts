@@ -9,6 +9,9 @@ import { LoginSectionComponent } from './componets/login-section/login-section.c
 import { RegisterSectionComponent } from './componets/register-section/register-section.component';
 import { LoginGuard } from './guards/login.guard';
 import { NoLoginGuard } from './guards/no-login.guard';
+import { EditorActivityComponent } from './componets/editor-activity/editor-activity.component';
+import { ErrorPageComponent } from './componets/error-page/error-page.component';
+import { ActivitiesListComponent } from './componets/activities-list/activities-list.component';
 
 const routes: Routes = [
   {
@@ -21,9 +24,32 @@ const routes: Routes = [
     canActivate: [LoginGuard]
   },
   {
-    path: 'activities/:idProject',
+    path: 'project/:idProject',
     component: ActivitiesPageComponent,
-    canActivate: [LoginGuard]
+    canActivate: [LoginGuard],
+    children: [
+      {
+        path: 'unassigned',
+        component: ActivitiesListComponent
+      },
+      {
+        path: 'inprogress',
+        component: ActivitiesListComponent
+      },
+      {
+        path: 'completed',
+        component: ActivitiesListComponent
+      },
+      {
+        path: 'pause',
+        component: ActivitiesListComponent
+      }
+    ]
+  },
+  {
+    path: 'project/:idProject/activity',
+    component: LoginSectionComponent,
+    canActivate: [LoginGuard],
   },
   {
     path: 'reload',
@@ -44,7 +70,12 @@ const routes: Routes = [
     component: RegisterSectionComponent,
     canActivate: [NoLoginGuard]
   },
-  { path: '**', redirectTo: '' }
+  { path: '**', component: ErrorPageComponent },
+  { path: 'error', component: ErrorPageComponent },
+  {
+    path: 'project/:idProject/error',
+    component: ErrorPageComponent
+  }
 ];
 
 @NgModule({

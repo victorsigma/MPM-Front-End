@@ -15,8 +15,7 @@ export class ActivityItemComponent implements OnInit {
   data = new ActivityData();
 
   @Input() activity:ActivityData = new ActivityData();
-  @Input() project:ProjectData = new ProjectData();
-  @Input() loginRol: number | undefined = undefined;
+  @Input() userRol: number | undefined = undefined;
   @Output() update:EventEmitter<null> = new EventEmitter<null>();
   constructor(private dataServiceModal: ActivityDataService, public loginService: LoginDataService) { 
   }

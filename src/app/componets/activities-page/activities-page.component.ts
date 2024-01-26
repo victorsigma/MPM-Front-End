@@ -20,7 +20,7 @@ export class ActivitiesPageComponent implements OnInit {
   project: ProjectData | undefined = undefined;
 
   public update: Subject<void> = new Subject<void>();
-  loginRol: number | undefined = undefined;
+  userRol: number | undefined = undefined;
 
   activitiesMaster: ActivityData[] = []
 
@@ -28,6 +28,8 @@ export class ActivitiesPageComponent implements OnInit {
   activitiesUn: ActivityData[] = [];
   activitiesIn: ActivityData[] = [];
   activitiesCm: ActivityData[] = [];
+
+  status: number = 0;
 
   constructor(
     private toastr: ToastrService,
@@ -39,22 +41,42 @@ export class ActivitiesPageComponent implements OnInit {
     private members: UpdateDataService,
     private activeRoute: ActivatedRoute,
     private titleService: Title,
-    private router:Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
-    const { idProject }= this.activeRoute.snapshot.params
+    const { idProject } = this.activeRoute.snapshot.params
 
     this.projectData.getProjectById(idProject).subscribe((data: any) => {
       this.project = data.project as ProjectData;
-      this.loginRol = data.rol.idRol;
+      this.userRol = data.rol.idRol;
+      loginService.rol = data.rol.idRol;
       this.titleService.setTitle(`MPM - ${this.project.title}`)
-      console.log(data)
     }, error => {
       console.log(error)
-      this.router.navigate(['/'])
+      this.router.navigate(['project', idProject, 'error']);
     })
   }
 
   ngOnInit(): void {
+    this.router.events.subscribe((data) => {
+      switch (this.router.url.split('/')[3]) {
+        case undefined:
+          this.status = 0;
+          break;
+        case 'unassigned':
+          this.status = 1;
+          break;
+        case 'inprogress':
+          this.status = 2;
+          break;
+        case 'completed':
+          this.status = 3;
+          break;
+        case 'pause':
+          this.status = 4;
+          break;
+      }
+    })
   }
 
   newActivity(activity: ActivityData) {
@@ -92,5 +114,13 @@ export class ActivitiesPageComponent implements OnInit {
 
   updateMembers() {
     this.members.emitirEvento();
+  }
+
+  goToParentRoute() {
+    // Obtén el valor del parámetro idProject de la ruta actual
+    const idProject = this.route.snapshot.paramMap.get('idProject');
+
+    // Navega a la ruta padre manteniendo el parámetro idProject
+    this.router.navigate(['project', idProject]);
   }
 }

@@ -11,9 +11,10 @@ export class LoginDataService {
 
 
   private myAppUrl = 'http://localhost:3000/'
-  private myApiUrl = 'api/login'
+  private myApiUrl = 'api/Login'
 
-  status: boolean = false;
+  public status: boolean = false;
+  public rol: number = 6;
   private token: Jwt = new Jwt();
   
   constructor(private http: HttpClient) {
