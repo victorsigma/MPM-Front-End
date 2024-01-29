@@ -24,7 +24,7 @@ body {
     width: 100%;
     padding: .375rem .75rem;
     font-size: 1rem;
-    color: rgb(255, 255, 255);
+    color: #ffffff;
     background-color: transparent;
     border-radius: 0;
     transition: all 0.3s ease 0s;
@@ -45,13 +45,18 @@ body {
     border-bottom: #6347ee solid 2px;
 }
 
+.text:hover {
+    border-bottom: #6347ee solid 2px;
+}
+
+
 
 .text:-webkit-autofill,
 .text:-webkit-autofill:hover,
 .text:-webkit-autofill:focus,
 .text:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 50px #202124 inset;
-    -webkit-text-fill-color: rgb(255, 255, 255);
+    -webkit-text-fill-color: #ffffff;
 }
 
 .text:disabled {
@@ -59,7 +64,7 @@ body {
     width: 100%;
     padding: .375rem .75rem;
     font-size: 1rem;
-    color: rgb(255, 255, 255);
+    color: #ffffff;
     background-color: transparent;
     border-radius: 0;
     transition: all 0.3s ease 0s;
@@ -68,7 +73,7 @@ body {
     border-top: none;
     border-right: none;
     border-left: none;
-    border-bottom: #fff solid 2px;
+    border-bottom: #6347ee solid 2px;
 }
 
 .text:disabled::after {
@@ -77,17 +82,209 @@ body {
 }
 
 
+.select {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    border-radius: 0;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: #fff solid 2px;
+    background-color: #202124;
+}
+
+.select::after {
+    border-bottom: #6347ee solid 2px;
+    color: #fff;
+}
+
+.select:focus {
+    border-bottom: #6347ee solid 2px;
+    outline: none;
+}
+
+.select:hover {
+    border-bottom: #6347ee solid 2px;
+}
+
+/* Remove these lines if not needed */
+
+
+
+.date {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: transparent;
+    border-radius: 0;
+    transition: all 0.3s ease 0s;
+    cursor: text;
+    outline: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: #fff solid 2px;
+}
+
+.date::-webkit-calendar-picker-indicator {
+    cursor: pointer !important;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z"/></svg>');
+}
+
+.date:focus::-webkit-calendar-picker-indicator {
+    cursor: pointer !important;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="%239cb811" d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z"/></svg>');
+}
+
+.date::after {
+    border-bottom: #6347ee solid 2px;
+    color: #fff;
+}
+
+.date:focus {
+    border-bottom: #6347ee solid 2px;
+}
+
+.date:hover {
+    border-bottom: #6347ee solid 2px;
+}
+
+
 .btn-update:hover {
-    border: solid #f1c0ff 2px;
-    box-shadow: 0px 15px 20px #f1c0ff;
+    border: solid #b080ff 2px;
+    box-shadow: 0px 5px 20px #b080ff;
 }
 
 .btn-update:focus {
-    border: solid #d2a0ff 2px !important;
-    box-shadow: 0px 15px 20px #d2a0ff;
+    border: solid #b080ff 2px !important;
+    box-shadow: 0px 5px 20px #b080ff;
 }
 
 .btn-update {
     color: white;
     border: solid #f1c0ff 2px;
+}
+
+
+
+.btn-delete:hover {
+    border: solid #5c0303 2px;
+    box-shadow: 0px 5px 20px #5c0303;
+}
+
+.btn-delete:focus {
+    border: solid #5c0303 2px !important;
+    box-shadow: 0px 5px 20px #5c0303;
+}
+
+.btn-delete {
+    color: white;
+    border: solid #ce0303 2px;
+}
+
+
+.btn-item:hover {
+    border: solid #b080ff 2px;
+    box-shadow: 0px 5px 20px #b080ff;
+}
+
+.btn-item:focus {
+    border: solid #b080ff 2px !important;
+    box-shadow: 0px 5px 20px #b080ff;
+}
+
+.btn-item {
+    color: white;
+    border: solid #f1c0ff 2px;
+    padding: 0.7em 3em;
+    background-color: transparent;
+    border-radius: 10px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn-item-ghost{
+    color: transparent;
+    border: solid transparent 2px;
+    padding: 0.7em 3em;
+    background-color: transparent;
+    border-radius: 10px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    cursor: default;
+}
+
+.button-options {
+    padding: 0.8em 2em;
+    letter-spacing: 2.5px;
+    color: #ffffff;
+    background-color: transparent;
+    border: #4930cd 2px solid;
+    border-radius: 10px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    margin-right: 5px;
+}
+
+.button-options:hover {
+    border: #00008e 2px solid;
+    box-shadow: 0px 5px 20px #00008e;
+    color: #fff;
+}
+
+.button-options:focus {
+    border: #00008e 2px solid;
+    box-shadow: 0px 5px 20px #00008e;
+}
+
+
+.nav-pills .nav-activity.active, .nav-pills .show>.nav-activity {
+    transition: all 0.3s ease 0s;
+    color: var(--bs-nav-pills-link-active-color);
+    background-color: transparent;
+    border: 2px #b080ff solid;
+    box-shadow: 0px 5px 20px #b080ff;
+}
+
+.nav-pills .nav-activity {
+    background: 0 0;
+    border: 0;
+    border-radius: var(--bs-nav-pills-border-radius);
+    border: 2px #8861ff solid;
+}
+
+.nav-activity {
+    display: block;
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+    font-size: var(--bs-nav-link-font-size);
+    font-weight: var(--bs-nav-link-font-weight);
+    color: #ffffff;
+    text-decoration: none;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, transform 0.3s;
+    min-width: 117.91px;
+}
+
+.nav-activity:hover {
+    transform: translateY(-1px);
+    color: #ffffff;
+}
+
+.nav-activity-margin {
+    margin-top: 20px;
+}
+
+.nav-ver-margin {
+    margin-left: 10px;
 }

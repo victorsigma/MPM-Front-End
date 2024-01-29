@@ -21,7 +21,6 @@ export class LoginDataService {
     if(this.getUser().token != '') {
       this.token = this.getUser()
       this.status = true;
-      console.log(this.getUserInfo())
     } else {
       this.status = false;
       this.token = new Jwt()

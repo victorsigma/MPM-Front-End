@@ -1,13 +1,22 @@
-.btn-del-member {
-    float: right;
+.card-aling {
+    margin: 1em;
+    float: left;
 }
 
-.alert-primary {
-    --bs-alert-color: #000000;
-    --bs-alert-bg: #000000;
-    --bs-alert-border-color: #ffffff;
+.card {
+    width: 18rem;
+    min-height: 278.13px;
 }
 
-.alert {
-    color: #ffffff;
+.text-subtitle {
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+
+.card {
+    background-color: transparent;
+    border: white solid 2px;
+    color: white;
+    text-align: center;
 }

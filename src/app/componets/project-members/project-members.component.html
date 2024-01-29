@@ -1,46 +1,34 @@
-<div class="modal fade" id="projectMembers" tabindex="-1"
-    aria-labelledby="projectMembersLabe1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="projectMembersLabel">Members
-                    List</h5>
-                <button type="button" class="btn-close btn-close-white"
-                    data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+<div *ngIf="project">
+    <nav class="nv-projct navbar navbar-dark border-bottom">
+        <div class="container-fluid content-project">
+            <h1 class="navbar-brand">{{project.title}} - Member's</h1>
+            <ul class="navbar-nav d-flex">
+                <li class="nav-item">
+                    <button class="button-options" data-bs-toggle="modal"
+                        data-bs-target="#projectOptions">Options</button>
+                    <button class="button-options" routerLink="../">Activities</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-            <div class="modal-body">
-                <div class="menbers-container">
-                    <app-member-item *ngFor="let member of members" [member]="member" (updateMembers)="updateMembers()"> </app-member-item>
+
+    <div class="d-flex align-items-start nav-ver-margin">
+
+        <div class="nav flex-column nav-pills me-3 col-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-activity nav-activity-margin" id="v-pills-all-tab" type="button" [class.active]="!active" (click)="goToParentRoute()">Member's</button>
+            <button class="nav-activity nav-activity-margin" [class.active]="active" routerLink="add" id="v-pills-unassigned-tab"
+                type="button">Add <i class="fa-solid fa-plus fa-xs"></i></button>
+        </div>
+        <div class="tab-content" [class.w-100]="active" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-information" role="tabpanel"
+                aria-labelledby="v-pills-information-tab" tabindex="0">
+                <div class="container">
+                    <div *ngIf="!active">
+                        <app-member-item *ngFor="let item of memberData" [member]="item"></app-member-item>
+                    </div>
+                    <router-outlet></router-outlet>
                 </div>
-                <hr>
-                <form [formGroup]="form" (ngSubmit)="addMember()">
-                    <div class="mb-1">
-                        <label class="form-label" for="userName">Add Member</label>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="userName">Username</label>
-                        <input class="text" id="userName"
-                            name="userName" formControlName="userName" required
-                            type="text" placeholder="name"/>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Select Rol</label>
-                        <select class="text" formControlName="userRol" aria-label="Default
-                            select example">
-                            <option value="1">Analyst</option>
-                            <option value="2">Designer</option>
-                            <option value="3">Programmer</option>
-                        </select>
-                    </div>
-                    <div class="list-group card-body">
-                        <button type="submit" data-bs-dismiss="modal" [disabled]="!this.form.valid" class="btn button-submit">Submit</button>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer list-group card-body">
-                <button type="button" class="btn button-close"
-                    data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

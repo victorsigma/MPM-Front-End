@@ -28,4 +28,8 @@ export class ActivityItemComponent implements OnInit {
     this.update.emit();
     //this.data = this.dataServiceModal.activity;
   }
+
+  public isLeader() {
+    return this.userRol == 0;
+  }
 }

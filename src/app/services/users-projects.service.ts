@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ProjectsHasUser } from '../models/projectsHasUser';
+import { PostProjectsHasUser, ProjectsHasUser } from '../models/projectsHasUser';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -27,7 +27,7 @@ export class UsersProjectsService {
     })
   }
 
-  addProjectUser(projectUser: ProjectsHasUser) {
+  addProjectUser(projectUser: PostProjectsHasUser) {
     return this.http.post(this.myAppUrl + this.myApiUrl, projectUser)
   }
 

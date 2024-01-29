@@ -30,6 +30,7 @@ import { ProjectDataService } from './services/project-data.service';
 import { ErrorPageComponent } from './componets/error-page/error-page.component';
 import { ActivitiesListComponent } from './componets/activities-list/activities-list.component';
 import { ActivityDataService } from './services/activity-data.service';
+import { AddMemberComponent } from './componets/add-member/add-member.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { ActivityDataService } from './services/activity-data.service';
     MoreActivityComponent,
     DeleteProjectComponent,
     ErrorPageComponent,
-    ActivitiesListComponent
+    ActivitiesListComponent,
+    AddMemberComponent
   ],
   imports: [
     BrowserModule,

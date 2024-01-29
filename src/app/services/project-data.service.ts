@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ProjectData } from '../models/projects';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { PostProjectsHasUser } from '../models/projectsHasUser';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class ProjectDataService {
   //private myAppUrl = 'http://localhost:8080/'//Java
   //private myAppUrl = 'https://localhost:7172/'//C#
   private myApiUrl = 'api/projects/'
+  private myApiUrlHas = 'api/projectsHasUser'
 
   project:ProjectData = new ProjectData();
   constructor(private http: HttpClient) { }
@@ -36,5 +38,18 @@ export class ProjectDataService {
 
   removeProjects(id: string) {
     return this.http.delete(this.myAppUrl + this.myApiUrl + id)
+  }
+
+  addProjectUser(projectUser: PostProjectsHasUser) {
+    return this.http.post(this.myAppUrl + this.myApiUrlHas, projectUser)
+  }
+
+  getListProjectUser(idProject: string): Observable<any> {
+    return this.http.get(this.myAppUrl + this.myApiUrlHas + `?project=${idProject}`)
+  }
+
+  removeProjectUser(userName: string, idProject: string): Observable<any> {
+    console.log(this.myAppUrl + this.myApiUrlHas + `?project=${idProject}&user=${userName}`)
+    return this.http.delete(this.myAppUrl + this.myApiUrlHas + `?project=${idProject}&user=${userName}`)
   }
 }

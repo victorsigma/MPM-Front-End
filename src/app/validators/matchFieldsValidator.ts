@@ -1,4 +1,4 @@
-import { AbstractControl, ValidatorFn, FormGroup, ValidationErrors } from '@angular/forms';
+import { FormGroup, ValidationErrors } from '@angular/forms';
 
 const matchFieldsValidator = (field1: string, field2: string) => {
     return (formGroup: FormGroup): ValidationErrors | null => {

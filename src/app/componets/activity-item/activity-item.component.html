@@ -5,10 +5,10 @@
         <div class="card-body">
             <h5 class="card-title">{{activity.title}}</h5>
             <p class="card-text text-subtitle">{{activity.subtitle}}</p>
-            <button *ngIf="userRol == 0" class="button"
+            <button *ngIf="isLeader()" class="btn-item"
                 data-bs-toggle="modal" data-bs-target="#editActivity" (click)="onModalData()"> Edit
                 activity</button>
-            <button *ngIf="userRol != 0" class="button"
+            <button *ngIf="!isLeader()" class="btn-item"
                 data-bs-toggle="modal" data-bs-target="#moreActivity" (click)="onModalData()"> More</button>
         </div>
     </div>

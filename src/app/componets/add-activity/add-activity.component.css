@@ -4,46 +4,6 @@
     border: solid #ffffff 3px;
 }
 
-
-
-.text {
-    display: block;
-    width: 100%;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    color: rgb(255, 255, 255);
-    background-color: transparent;
-    border-radius: 0;
-    transition: all 0.3s ease 0s;
-    cursor: text;
-    outline: none;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border-bottom: #fff solid 2px;
-}
-
-.text:hover {
-    color: #fff;
-    border-bottom: #fd9048 solid 2px;
-    transition: border 0.2s linear;
-}
-
-.text::after {
-    border-bottom: #fd9048 solid 2px;
-    color: #fff;
-}
-
-.text:-webkit-autofill,
-.text:-webkit-autofill:hover,
-.text:-webkit-autofill:focus,
-.text:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 50px #202124 inset;
-    -webkit-text-fill-color: rgb(255, 255, 255);
-}
-
-
-
 .textarea {
     display: block;
     width: 100%;

@@ -12,6 +12,8 @@ import { NoLoginGuard } from './guards/no-login.guard';
 import { EditorActivityComponent } from './componets/editor-activity/editor-activity.component';
 import { ErrorPageComponent } from './componets/error-page/error-page.component';
 import { ActivitiesListComponent } from './componets/activities-list/activities-list.component';
+import { ProjectMembersComponent } from './componets/project-members/project-members.component';
+import { AddMemberComponent } from './componets/add-member/add-member.component';
 
 const routes: Routes = [
   {
@@ -43,6 +45,17 @@ const routes: Routes = [
       {
         path: 'pause',
         component: ActivitiesListComponent
+      }
+    ]
+  },
+  {
+    path: 'project/:idProject/members',
+    component: ProjectMembersComponent,
+    canActivate: [LoginGuard],
+    children: [
+      {
+        path: 'add',
+        component: AddMemberComponent
       }
     ]
   },

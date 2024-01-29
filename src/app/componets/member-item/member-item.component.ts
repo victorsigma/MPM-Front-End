@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { UserData } from '../../models/users';
-import { ProjectsHasUser } from 'src/app/models/projectsHasUser';
-import { UpdateDataService } from 'src/app/services/update-data.service';
-import { UsersListService } from '../../services/users-list.service';
-import { UsersProjectsService } from 'src/app/services/users-projects.service';
+import { ProjectUserData } from 'src/app/models/projectsHasUser';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { ProjectDataService } from 'src/app/services/project-data.service';
+import unMatchFieldsValidator from 'src/app/validators/unMatchRoleValidators';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-member-item',
@@ -12,64 +12,54 @@ import { UsersProjectsService } from 'src/app/services/users-projects.service';
 })
 export class MemberItemComponent implements OnInit {
 
-  @Input() member:ProjectsHasUser = new ProjectsHasUser();
-  @Output() updateMembers:EventEmitter<null> = new EventEmitter<null>();
-  users: UserData[] = [];
-  user: UserData = new UserData;
-  userRol: string = '';
-  constructor(private emitter: UpdateDataService, private userFilter: UsersListService, private memberList:UsersProjectsService) {
-    this.users = this.userFilter.usersList.filter(data => {
-      return data.userId == this.member.userIdUser
-    })
+  @Input() member: ProjectUserData = new ProjectUserData();
+  @Output() updateMembers: EventEmitter<null> = new EventEmitter<null>();
 
-    this.user = this.users[0];
 
-    if (this.member.rolesIdRol == 0) {
-      this.userRol = 'Leader'
-    }
 
-    if (this.member.rolesIdRol == 1) {
-      this.userRol = 'Analyst'
-    }
+  actualRole: number = 0;
 
-    if (this.member.rolesIdRol == 2) {
-      this.userRol = 'Designer'
-    }
+  public form: UntypedFormGroup = new UntypedFormGroup({
+    userRole: new UntypedFormControl(0, [unMatchFieldsValidator(this.actualRole)])
+  });
 
-    if (this.member.rolesIdRol == 3) {
-      this.userRol = 'Programmer'
-    }
+  constructor(private projectData: ProjectDataService, private activeRoute: ActivatedRoute) {
+
   }
 
   ngOnInit(): void {
-    this.users = this.userFilter.usersList.filter(data => {
-      return data.userId == this.member.userIdUser
-    })
-
-    this.user = this.users[0];
-
-    if (this.member.rolesIdRol == 0) {
-      this.userRol = 'Leader'
-    }
-
-    if (this.member.rolesIdRol == 1) {
-      this.userRol = 'Analyst'
-    }
-
-    if (this.member.rolesIdRol == 2) {
-      this.userRol = 'Designer'
-    }
-
-    if (this.member.rolesIdRol == 3) {
-      this.userRol = 'Programmer'
+    switch (this.member.rolName) {
+      case 'Analyst':
+        this.actualRole = 1;
+        this.form = new UntypedFormGroup({
+          userRole: new UntypedFormControl(1, [unMatchFieldsValidator(this.actualRole)])
+        });
+        break;
+      case 'Designer':
+        this.actualRole = 1;
+        this.form = new UntypedFormGroup({
+          userRole: new UntypedFormControl(2, [unMatchFieldsValidator(this.actualRole)])
+        });
+        break;
+      case 'Programmer':
+        this.actualRole = 1;
+        this.form = new UntypedFormGroup({
+          userRole: new UntypedFormControl(3, [unMatchFieldsValidator(this.actualRole)])
+        });
+        break;
     }
   }
 
   deletedMember() {
-    this.memberList.projectMembers.splice(this.memberList.projectMembers.indexOf(this.member), 1);
-    this.memberList.removeProjectUser(this.member.id).subscribe(data => {
-      this.memberList.getList();
+    const { idProject } = this.activeRoute.snapshot.params
+    this.projectData.removeProjectUser(this.member.userName, idProject).subscribe(() => {
+      location.reload()
     })
-    this.updateMembers.emit();
+  }
+
+  updateMember() {
+    if(this.actualRole != this.form.get('userRole')?.value) {
+
+    }
   }
 }

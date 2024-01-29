@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Subject } from 'rxjs';
 import { ActivityData } from '../../models/ativities';
 import { ActivityDataService } from '../../services/activity-data.service';
 import { ProjectData } from 'src/app/models/projects';
 import { ProjectDataService } from 'src/app/services/project-data.service';
 import { LoginDataService } from '../../services/login-data.service';
-import { UpdateDataService } from '../../services/update-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { error } from 'console';
 
 @Component({
   selector: 'app-activities-page',
@@ -18,27 +15,14 @@ import { error } from 'console';
 })
 export class ActivitiesPageComponent implements OnInit {
   project: ProjectData | undefined = undefined;
-
-  public update: Subject<void> = new Subject<void>();
   userRol: number | undefined = undefined;
-
-  activitiesMaster: ActivityData[] = []
-
   activities: ActivityData[] = [];
-  activitiesUn: ActivityData[] = [];
-  activitiesIn: ActivityData[] = [];
-  activitiesCm: ActivityData[] = [];
-
   status: number = 0;
 
   constructor(
-    private toastr: ToastrService,
-    private dataActivities: ActivityDataService,
     public projectData: ProjectDataService,
     public activityData: ActivityDataService,
     public loginService: LoginDataService,
-    private emitter: UpdateDataService,
-    private members: UpdateDataService,
     private activeRoute: ActivatedRoute,
     private titleService: Title,
     private router: Router,
@@ -108,19 +92,18 @@ export class ActivitiesPageComponent implements OnInit {
     // })
   }
 
-  updateData() {
-    this.emitter.emitirEvento();
-  }
-
-  updateMembers() {
-    this.members.emitirEvento();
-  }
-
   goToParentRoute() {
     // Obtén el valor del parámetro idProject de la ruta actual
     const idProject = this.route.snapshot.paramMap.get('idProject');
 
     // Navega a la ruta padre manteniendo el parámetro idProject
     this.router.navigate(['project', idProject]);
+  }
+
+  goToMemberRoute() {
+    const idProject = this.route.snapshot.paramMap.get('idProject');
+
+    // Navega a la ruta padre manteniendo el parámetro idProject
+    this.router.navigate(['project', idProject, 'members']);
   }
 }

@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
-import { UsersProjectsService } from '../../services/users-projects.service';
 import { ProjectData } from 'src/app/models/projects';
-import { ProjectsHasUser } from '../../models/projectsHasUser';
-import { UpdateDataService } from 'src/app/services/update-data.service';
-import { UsersListService } from '../../services/users-list.service';
-import { UserData } from '../../models/users';
+import { PostProjectsHasUser, ProjectUserData, ProjectsHasUser } from '../../models/projectsHasUser';
+import { ProjectDataService } from 'src/app/services/project-data.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LoginDataService } from 'src/app/services/login-data.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-project-members',
@@ -13,60 +13,58 @@ import { UserData } from '../../models/users';
   styleUrls: ['./project-members.component.css']
 })
 export class ProjectMembersComponent implements OnInit {
+  public memberData: ProjectUserData[] = [];
 
-  @Input() project:ProjectData = new ProjectData();
+  private idProject: string = ''
 
-  members: ProjectsHasUser[] = [];
-  form: UntypedFormGroup = new UntypedFormGroup({
-    userName: new UntypedFormControl(),
-    userRol: new UntypedFormControl(1)
-  });
+  project: ProjectData | undefined = undefined;
+  
+  public active: number = 0;
+  constructor(
+    public projectData: ProjectDataService,
+    public loginService: LoginDataService,
+    private activeRoute: ActivatedRoute,
+    private titleService: Title,
+    private router: Router,
+    private route: ActivatedRoute
+    ) {
+    const { idProject } = this.activeRoute.snapshot.params
 
-  memberData: UserData[] = [];
-  newMember: ProjectsHasUser = new ProjectsHasUser();
+    this.projectData.getProjectById(idProject).subscribe((data: any) => {
+      this.project = data.project as ProjectData;
+      loginService.rol = data.rol.idRol;
+      if(data.rol.idRol != 0) {
+        this.router.navigate(['project', idProject, 'error']);
+      }
+      this.titleService.setTitle(`MPM - ${this.project.title}`)
+    }, error => {
+      console.log(error)
+      this.router.navigate(['project', idProject, 'error']);
+    })
 
-  test: ProjectsHasUser[] = [];
-  constructor(public memberList:UsersProjectsService, private emitter: UpdateDataService, private userList: UsersListService) {
-    this.emitter.emitter.subscribe(() => {
-      this.reloadMembers();
-    });
-  }
-
-  ngOnInit(): void {
-  }
-
-  updateMembers() {
-    this.reloadMembers();
-  }
-
-  reloadMembers() {
-    this.members = this.memberList.projectMembers.filter(memberList=> {
-      return memberList.proyectsIdProject == this.project.id
+    this.projectData.getListProjectUser(idProject).subscribe((data: any) => {
+      this.memberData = data;
     })
   }
 
-  addMember() {
-    this.memberData = this.userList.usersList.filter(obj => { return obj.userName == this.form.get('userName')?.value});
-    if (this.memberData.length != 0) {
-      if (this.memberList.projectMembers.filter(data=> { return data.proyectsIdProject == this.project.id && data.userIdUser == this.memberData[0].userId}).length == 0) {
-        this.newMember.proyectsIdProject = this.project.id;
-        this.newMember.userIdUser = this.memberData[0].userId;
-        this.newMember.rolesIdRol = this.form.get('userRol')?.value;
-        //this.memberList.projectMembers.push(this.newMember);
-        this.memberList.addProjectUser(this.newMember).subscribe(data => {
-          this.memberList.getList();
-        })
-      } else {
-        console.log('Usuario Registrado')
+  ngOnInit(): void {
+    this.router.events.subscribe((data) => {
+      switch (this.router.url.split('/')[4]) {
+        case undefined:
+          this.active = 0;
+          break;
+        case 'add':
+          this.active = 1;
+          break;
       }
-    } else {
-      console.log('Usuario No Existente')
-    }
+    })
+  }
+  
+  goToParentRoute() {
+    // Obtén el valor del parámetro idProject de la ruta actual
+    const idProject = this.route.snapshot.paramMap.get('idProject');
 
-    this.newMember = new ProjectsHasUser();
-    this.form = new UntypedFormGroup({
-      userName: new UntypedFormControl(),
-      userRol: new UntypedFormControl(1)
-    });
+    // Navega a la ruta padre manteniendo el parámetro idProject
+    this.router.navigate(['project', idProject, 'members']);
   }
 }

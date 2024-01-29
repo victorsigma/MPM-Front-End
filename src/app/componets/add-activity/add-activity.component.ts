@@ -28,7 +28,7 @@ export class AddActivityComponent implements OnInit {
   statusType: Array<activityStatusData> = [];
   private url: string[] = []
   @Output() newActivity: EventEmitter<ActivityData> = new EventEmitter();
-  @Input() project:ProjectData = new ProjectData();
+  @Input() project:ProjectData | undefined = new ProjectData();
 
   constructor(private toastr: ToastrService, private activityService: ActivityDataService, private router: Router) {
     this.url = this.router.url.split('/')
