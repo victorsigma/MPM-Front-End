@@ -34,12 +34,12 @@ export class ProjectMembersComponent implements OnInit {
       this.project = data.project as ProjectData;
       loginService.rol = data.rol.idRol;
       if(data.rol.idRol != 0) {
-        this.router.navigate(['project', idProject, 'error']);
+        this.router.navigate(['project', idProject, 'error'], {queryParams: { status: 404}});
       }
       this.titleService.setTitle(`MPM - ${this.project.title}`)
     }, error => {
       console.log(error)
-      this.router.navigate(['project', idProject, 'error']);
+      this.router.navigate(['project', idProject, 'error'], {queryParams: { status: error.status}});
     })
 
     this.projectData.getListProjectUser(idProject).subscribe((data: any) => {

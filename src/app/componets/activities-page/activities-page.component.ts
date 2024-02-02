@@ -36,8 +36,7 @@ export class ActivitiesPageComponent implements OnInit {
       loginService.rol = data.rol.idRol;
       this.titleService.setTitle(`MPM - ${this.project.title}`)
     }, error => {
-      console.log(error)
-      this.router.navigate(['project', idProject, 'error']);
+      this.router.navigate(['project', idProject, 'error'], {queryParams: { status: error.status}});
     })
   }
 

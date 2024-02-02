@@ -14,6 +14,7 @@ import { ErrorPageComponent } from './componets/error-page/error-page.component'
 import { ActivitiesListComponent } from './componets/activities-list/activities-list.component';
 import { ProjectMembersComponent } from './componets/project-members/project-members.component';
 import { AddMemberComponent } from './componets/add-member/add-member.component';
+import { ErrorGuard } from './guards/error.guard';
 
 const routes: Routes = [
   {
@@ -83,7 +84,7 @@ const routes: Routes = [
     component: RegisterSectionComponent,
     canActivate: [NoLoginGuard]
   },
-  { path: '**', component: ErrorPageComponent },
+  { path: '**', component: ErrorPageComponent, canActivate: [ErrorGuard] },
   { path: 'error', component: ErrorPageComponent },
   {
     path: 'project/:idProject/error',
