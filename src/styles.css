@@ -10,13 +10,18 @@
 }
 
 body {
-    background-color: #202124;
+    background-color: #1a1a1a;
 }
 
 .modal-content {
     background-color: #202124;
     color: white;
     border: none #ffffff 1px;
+}
+
+.mpm-logo {
+    cursor: pointer;
+    max-width: 100%;
 }
 
 .text {
@@ -287,4 +292,234 @@ body {
 
 .nav-ver-margin {
     margin-left: 10px;
+}
+
+.btn-icon {
+    padding: 0px;
+    border-radius: 20px;
+    min-width: 40px;
+    min-height: 40px;
+}
+
+.btn-icon:disabled {
+    padding: 0px;
+    border-radius: 20px;
+    min-width: 40px;
+    min-height: 40px;
+    border: transparent;
+}
+
+.btn-icon img {
+    max-width: 40px;
+    border-radius: 20px;
+}
+
+.user-icon {
+    padding-block: 10px !important;
+    padding-inline: 15px !important;
+    margin: 0px;
+}
+
+.user-icon img {
+    max-width: 40px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.btn-toggler {
+    min-height: 40px;
+    min-width: 40px;
+    border-radius: 20px;
+    justify-content: center;
+    text-align: center;
+}
+
+.btn-toggler:hover {
+    background-color: #50505057 !important;
+}
+
+
+.nav-item-offcanvas .nav-link {
+    padding-inline: 13px !important;
+    border-radius: 10px;
+    max-height: 40px;
+    text-align: left;
+    margin-block: 2px !important;
+}
+
+.nav-item-offcanvas-s .nav-link {
+    padding-inline: 2px !important;
+    text-align: center;
+}
+
+.nav-item-offcanvas .active {
+    background-color: #f1c0ff;
+    color: black !important;
+}
+
+.nav-item-offcanvas .nav-link:hover {
+    background-color: #f1c0ff;
+    color: black;
+}
+
+.dropdown-divider {
+    background-color: rgb(87, 87, 87);
+    height: 0.2px !important;
+    width: 100%;
+    margin: 1px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.card-aling {
+    margin: 1em;
+    float: left;
+}
+
+.card-aling-u {
+    margin: 1em;
+    float: left;
+    cursor: pointer;
+}
+
+.card-aling-p {
+    margin: 1em;
+    float: left;
+    cursor: pointer;
+}
+
+.text-subtitle {
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+
+.card-u {
+    background-color: transparent;
+    border: transparent solid 2px;
+    width: 15rem;
+}
+
+.card-p {
+    background-color: transparent;
+    border: transparent solid 2px;
+    width: 23rem;
+}
+
+.card-p p {
+    font-size: small;
+    color: #ffffff7c;
+}
+
+.card-u p {
+    font-size: small;
+    color: #ffffff7c;
+}
+
+.card-p h5 {
+    font-size: larger;
+    color: white;
+}
+
+.card-u h5 {
+    font-size: larger;
+    color: white;
+}
+
+.card-p img {
+    border-radius: 10px;
+    transition: all 0.3s ease 0s;
+}
+
+.card-u img {
+    border-radius: 50%;
+    transition: all 0.3s ease 0s;
+}
+
+.card-p:hover img {
+    transform: translateY(-4px);
+}
+
+.card-aling-u .card-u:hover img {
+    transform: translateY(-4px);
+}
+
+@media (max-width: 1202px) {
+    .card-p {
+        width: 22.5rem;
+    }
+}
+
+@media (max-width: 1066px) {
+    .card-p {
+        width: 21.5rem;
+    }
+}
+
+@media (max-width: 998px) {
+    .card-p {
+        width: 19.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .card-p {
+        width: 17.5rem;
+    }
+}
+
+@media (max-width: 955px) {
+    .card-p {
+        width: 16.5rem;
+    }
+}
+
+@media (max-width: 910px) {
+    .card-p {
+        width: 24.5rem;
+    }
+}
+
+@media (max-width: 871px) {
+    .card-p {
+        width: 23.5rem;
+    }
+}
+
+
+@media (max-width: 839px) {
+    .card-p {
+        width: 20.5rem;
+    }
+}
+
+
+@media (max-width: 759px) {
+    .card-p {
+        width: 18.5rem;
+    }
+}
+
+@media (max-width: 695px) {
+    .card-p {
+        width: 18rem;
+    }
+}
+
+@media (max-width: 679px) {
+    .card-p {
+        width: 17rem;
+    }
+}
+
+@media (max-width: 649px) {
+    .card-p {
+        width: 16rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .card-p {
+        width: 100%;
+    }
 }

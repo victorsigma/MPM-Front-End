@@ -1,0 +1,151 @@
+<header class="p-nav">
+    <nav class="navbar navbar-dark navbar-expand-lg">
+        <div class="container-fluid navbar-header">
+            <button class="btn-toggler" type="button" aria-label="Toggle navigation"
+                [attr.data-bs-toggle]="isMobile ? 'offcanvas' : null" data-bs-target="#offcanvasExample"
+                (click)="sliderChange()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <img class="navbar-brand" [class.m-title]="isMobile" id="offcanvasExampleLabel"
+                src="assets/img/mpm-logo-dark.png" alt="mpm-logo" routerLink="/" style="max-height: 40px;">
+            <li *ngIf="loginService.isLogin() && isMobile" class="dropdown">
+                <a class="btn btn-icon" data-bs-toggle="dropdown" #btnIconMobile data-bs-auto-close="outside"><img
+                        src="{{iconPathSmall+userIcon}}" alt="..."></a>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li>
+                        <p class="user-icon">
+                            <img src="{{iconPathSmall+userIcon}}" alt="...">{{userName}}
+                        </p>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" routerLink="/account" (click)="btnIconMobile.click()"><i
+                                class="fa-regular fa-user fa-sm"></i>&nbsp;&nbsp;Account</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><button class="dropdown-item" (click)="logout()"><i
+                                class="fa-solid fa-arrow-right-from-bracket fa-sm"></i>&nbsp;&nbsp;Logout</button></li>
+                </ul>
+            </li>
+            <li *ngIf="!loginService.isLogin() && isMobile" class="dropdown">
+                <button disabled class="btn btn-icon" data-bs-toggle="dropdown"></button>
+            </li>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                </ul>
+                <ul class="navbar-nav d-flex" *ngIf="!loginService.isLogin()">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="" routerLink="register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="" routerLink="login">Login</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav d-flex" *ngIf="loginService.isLogin() && !isMobile">
+                    <li class="dropdown">
+                        <a class="btn btn-icon" data-bs-toggle="dropdown" #btnIcon data-bs-auto-close="outside"><img
+                                src="{{iconPathSmall+userIcon}}" alt="..."></a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li>
+                                <p class="user-icon">
+                                    <img src="{{iconPathSmall+userIcon}}" alt="...">{{userName}}
+                                </p>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" routerLink="/account" (click)="btnIcon.click()"><i
+                                        class="fa-regular fa-user fa-sm"></i>&nbsp;&nbsp;Account</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><button class="dropdown-item" (click)="logout()"><i
+                                        class="fa-solid fa-arrow-right-from-bracket fa-sm"></i>&nbsp;&nbsp;Logout</button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div *ngIf="!isMobile" class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="slider-flex" [class.slider-min]="slideStyle">
+            <div class="d-flex flex-column align-items-center align-items-sm-start text-white min-vh-90 sticky-top">
+                <ul class="navbar-nav me-auto mb-lg-0 pt-2 align-items-center align-items-sm-start w-100" id="menu">
+                    <li class="nav-item-offcanvas w-100" [class.nav-item-offcanvas-s]="slideStyle"
+                        *ngFor="let item of paths">
+                        <app-path-button-full [item]="item" [slideStyle]="slideStyle"></app-path-button-full>
+                    </li>
+                </ul>
+                <ul class="navbar-nav me-auto mb-lg-0 pt-2 align-items-center align-items-sm-start w-100" id="menu"
+                    *ngIf="!loginService.isLogin()">
+                    <li class="nav-item-offcanvas w-100" [class.nav-item-offcanvas-s]="slideStyle">
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li class="nav-item-offcanvas w-100" [class.nav-item-offcanvas-s]="slideStyle">
+                        <a class="nav-link w-100" title="Ctrl+S" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{exact: true}" routerLink="register"><span *ngIf="!slideStyle">
+                                &nbsp;</span><i class="fa-solid fa-user-plus fa-sm"></i>
+                            <span class="ms-1 d-none d-sm-inline" *ngIf="!slideStyle">
+                                Register
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item-offcanvas w-100" [class.nav-item-offcanvas-s]="slideStyle">
+                        <a class="nav-link w-100" title="Ctrl+S" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{exact: true}" routerLink="login"><span *ngIf="!slideStyle">
+                                &nbsp;</span><i class="fa-solid fa-user fa-sm"></i>
+                            <span class="ms-1 d-none d-sm-inline" *ngIf="!slideStyle">
+                                Login
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <button class="btn-toggler" type="button" aria-label="Toggle navigation" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasExample">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <img class="offcanvas-title" id="offcanvasExampleLabel" src="assets/img/mpm-logo-dark.png" alt="mpm-logo"
+            routerLink="" style="max-height: 40px;">
+    </div>
+    <div class="offcanvas-body">
+        <div id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item-offcanvas" *ngFor="let item of paths">
+                    <app-path-button-small [item]="item" [slideStyle]="slideStyle"></app-path-button-small>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav d-flex" *ngIf="!loginService.isLogin()">
+                <li class="nav-item-offcanvas">
+                    <hr class="dropdown-divider">
+                </li>
+                <li class="nav-item-offcanvas">
+                    <a class="nav-link" aria-current="page" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact: true}" routerLink="register"><i
+                            class="fa-solid fa-user-plus fa-sm"></i>&nbsp;&nbsp;Register</a>
+                </li>
+                <li class="nav-item-offcanvas">
+                    <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                        routerLink="login"><i class="fa-solid fa-user fa-sm"></i>&nbsp;&nbsp;Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

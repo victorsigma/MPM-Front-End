@@ -1,0 +1,33 @@
+<div class="login-component">
+    <div class="slider">
+        <div>
+            <img class="mpm-logo" routerLink="/" src="assets/img/mpm-logo-dark.png" alt="...">
+        </div>
+    </div>
+    <div class="login" id="loginModal">
+        <div class="login-content">
+            <div class="login-header">
+                <h1 class="modal-title" id="loginModalLabel">Login</h1>
+            </div>
+        
+            <div class="login-body">
+                <form [formGroup]="form" (ngSubmit)="loginSend()">
+                    <div class="mb-3">
+                        <label for="Email" class="form-label">Email
+                            Address - User Name</label>
+                        <input formControlName="userNameOrEmail" type="email" class="text"
+                            id="Email name"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label>Password</label>
+                        <input class="text" type="password" formControlName="password" id="Password">
+                    </div>
+                    <div class="list-group card-body">
+                        <button type="submit" class="btn button-login" [disabled]="form.invalid">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

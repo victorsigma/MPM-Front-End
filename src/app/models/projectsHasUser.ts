@@ -1,8 +1,8 @@
 
 export class ProjectUserData {
     userName: string = '';
+    userIcon: string = '';
     rolName: string = '';
-    src: string = '';
 }
 
 export class ProjectsHasUser {

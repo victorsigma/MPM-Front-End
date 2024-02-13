@@ -1,0 +1,97 @@
+* {
+    color: white;
+}
+
+.container {
+    padding: 1em;
+}
+
+.nav-link-margin {
+    margin-top: 20px;
+}
+
+.nav-ver-margin {
+    margin-left: 10px;
+}
+
+.content-project {
+    color: white;
+}
+
+.content-project h1 {
+    font-size: 30px;
+}
+
+.account-container {
+    width: 100%;
+}
+
+::-ms-reveal {
+    color: white;
+}
+
+::-ms-reveal {
+    filter: invert(100%);
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    /*justify-content: space-evenly;*/
+    margin-top: 20px;
+}
+
+.input-info {
+    display: flex;
+}
+
+.cont-edit-btn {
+    text-align: center;
+    padding-inline: 20px;
+    padding-block: 20px;
+}
+
+@media (max-width: 1128px) {
+    .cont-edit-btn {
+        padding-inline: 5px;
+        padding-block: 20px;
+    }
+}
+
+@media (max-width: 992px) {
+
+    .navbar-title {
+        width: 100% !important;
+        text-align: center;
+        padding-bottom: 0px !important;
+        margin-right: 0px !important;
+        font-size: 1.2rem !important;
+        user-select: none;
+        cursor: pointer;
+    }
+
+    .nav-flex {
+        display: block !important;
+    }
+
+    .nav-ver-margin {
+        margin-left: 0px;
+    }
+
+    .cont-edit-btn {
+        padding-inline: 0px;
+        padding-block: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .input-group {
+        display: block !important;
+    }
+    .input-info {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+}

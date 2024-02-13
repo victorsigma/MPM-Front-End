@@ -1,0 +1,30 @@
+<a *ngIf="item.type == 'home'" class="nav-link w-100" routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact: true}" [routerLink]="item.path"><span *ngIf="!slideStyle">
+        &nbsp;</span><i [class]="item.icon"></i>
+    <span class="ms-1 d-none d-sm-inline" *ngIf="!slideStyle">
+        {{item.title}}
+    </span>
+</a>
+<a *ngIf="item.type == 'button' && isLogin" class="nav-link w-100" routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact: true}" [routerLink]="item.path"><span *ngIf="!slideStyle">
+        &nbsp;</span><i [class]="item.icon"></i>
+    <span class="ms-1 d-none d-sm-inline" *ngIf="!slideStyle">
+        {{item.title}}
+    </span>
+
+</a>
+<a *ngIf="item.type == 'first-child-button' && isLogin" class="nav-link w-100" routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact: true}" [routerLink]="[patherPath]"><span *ngIf="!slideStyle">
+        &nbsp;</span><i [class]="item.icon"></i>
+    <span class="ms-1 d-none d-sm-inline" *ngIf="!slideStyle">
+        {{item.title}}
+    </span>
+</a>
+<a *ngIf="item.type == 'child-button' && isLogin" class="nav-link w-100" routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact: true}" [routerLink]="[patherPath, item.path]"><span *ngIf="!slideStyle">
+        &nbsp;</span><i [class]="item.icon"></i>
+    <span class="ms-1 d-none d-sm-inline" *ngIf="!slideStyle">
+        {{item.title}}
+    </span>
+</a>
+<hr *ngIf="item.type == 'hr'" class="dropdown-divider">

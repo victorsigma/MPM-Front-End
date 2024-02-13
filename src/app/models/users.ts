@@ -10,6 +10,7 @@ export class User {
     userName: string = '';
     userMail: string = '';
     phoneNumber: string = '';
+    userIcon: string = '';
 }
 
 export class Login {

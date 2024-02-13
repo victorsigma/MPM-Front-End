@@ -3,34 +3,40 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './componets/header/header.component';
-import { HomeComponent } from './componets/home/home.component';
-import { ProjectItemComponent } from './componets/project-item/project-item.component';
-import { ProjectsPageComponent } from './componets/projects-page/projects-page.component';
-import { RegisterSectionComponent } from './componets/register-section/register-section.component';
-import { LoginSectionComponent } from './componets/login-section/login-section.component';
-import { ActivitiesPageComponent } from './componets/activities-page/activities-page.component';
-import { ActivityItemComponent } from './componets/activity-item/activity-item.component';
-import { EditorActivityComponent } from './componets/editor-activity/editor-activity.component';
-import { AddActivityComponent } from './componets/add-activity/add-activity.component';
+import { HeaderComponent } from './components/header/header.component';
+import { HomeComponent } from './components/home/home.component';
+import { ProjectItemComponent } from './components/project-item/project-item.component';
+import { ProjectsPageComponent } from './components/projects-page/projects-page.component';
+import { RegisterSectionComponent } from './components/register-section/register-section.component';
+import { LoginSectionComponent } from './components/login-section/login-section.component';
+import { ActivitiesPageComponent } from './components/activities-page/activities-page.component';
+import { ActivityItemComponent } from './components/activity-item/activity-item.component';
+import { EditorActivityComponent } from './components/editor-activity/editor-activity.component';
+import { AddActivityComponent } from './components/add-activity/add-activity.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { AddProjectComponent } from './componets/add-project/add-project.component';
-import { WhiteComponent } from './componets/white/white.component';
-import { AccountPageComponent } from './componets/account-page/account-page.component';
-import { ProjectOptionsComponent } from './componets/project-options/project-options.component';
-import { ProjectMembersComponent } from './componets/project-members/project-members.component';
-import { MemberItemComponent } from './componets/member-item/member-item.component';
-import { MoreActivityComponent } from './componets/more-activity/more-activity.component';
+import { AddProjectComponent } from './components/add-project/add-project.component';
+import { WhiteComponent } from './components/white/white.component';
+import { AccountPageComponent } from './components/account-page/account-page.component';
+import { ProjectOptionsComponent } from './components/project-options/project-options.component';
+import { ProjectMembersComponent } from './components/project-members/project-members.component';
+import { MemberItemComponent } from './components/member-item/member-item.component';
+import { MoreActivityComponent } from './components/more-activity/more-activity.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { DeleteProjectComponent } from './componets/delete-project/delete-project.component';
+import { DeleteProjectComponent } from './components/delete-project/delete-project.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ProjectDataService } from './services/project-data.service';
-import { ErrorPageComponent } from './componets/error-page/error-page.component';
-import { ActivitiesListComponent } from './componets/activities-list/activities-list.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { ActivitiesListComponent } from './components/activities-list/activities-list.component';
 import { ActivityDataService } from './services/activity-data.service';
-import { AddMemberComponent } from './componets/add-member/add-member.component';
+import { AddMemberComponent } from './components/add-member/add-member.component';
+import { SecurityAccountComponent } from './components/security-account/security-account.component';
+import { InformationAccountComponent } from './components/information-account/information-account.component';
+import { MembersListComponent } from './components/members-list/members-list.component';
+import { PathButtonFullComponent } from './components/path-button-full/path-button-full.component';
+import { PathButtonSmallComponent } from './components/path-button-small/path-button-small.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +61,13 @@ import { AddMemberComponent } from './componets/add-member/add-member.component'
     DeleteProjectComponent,
     ErrorPageComponent,
     ActivitiesListComponent,
-    AddMemberComponent
+    AddMemberComponent,
+    SecurityAccountComponent,
+    InformationAccountComponent,
+    MembersListComponent,
+    PathButtonFullComponent,
+    PathButtonSmallComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

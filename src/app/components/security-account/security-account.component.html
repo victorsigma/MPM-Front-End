@@ -1,0 +1,58 @@
+<div class="tab-pane fade show active" id="v-pills-information" role="tabpanel"
+    aria-labelledby="v-pills-information-tab" tabindex="0">
+    <div class="container">
+        <div class="row">
+            <div>
+                <form>
+                    <div class="input-group w-100">
+                        <div class="col-6 input-info">
+                            <div class="col-10">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="text" disabled placeholder="*******">
+                            </div>
+                            <div class="col-2 cont-edit-btn">
+                                <button class="btn btn-lg" type="button" (click)="editPasswordModal()">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="editModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">{{modal.title}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="modal.type == 'password'" id="editPassword">
+                    <form [formGroup]="formPassword" (ngSubmit)="updatePassword()">
+                        <div class="mb-3">
+                            <label class="form-label" for="password-update">User Password</label>
+                            <input class="text" id="password-update" name="password-update" type="password"
+                                formControlName="userPassword" placeholder="*******" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="password-update-c">Confirm
+                                new User Password</label>
+                            <input class="text" id="password-update-c" name="password-update" type="password"
+                                formControlName="userPasswordConfirm" placeholder="*******" required />
+                        </div>
+                        <div class="list-group card-body">
+                            <button type="submit" [disabled]="this.formPassword.invalid" class="btn
+                                btn-update">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

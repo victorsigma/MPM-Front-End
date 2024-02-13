@@ -1,9 +1,0 @@
-.navbar {
-    background-color: #1a1a1a;
-}
-
-.btn-toggler {
-    border: none;
-    background-color: transparent;
-    font-size: var(--bs-navbar-toggler-font-size);
-}
