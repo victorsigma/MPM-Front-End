@@ -19,8 +19,11 @@ import { SecurityAccountComponent } from './components/security-account/security
 import { ProjectGuard } from './guards/project.guard';
 import { InformationAccountComponent } from './components/information-account/information-account.component';
 import { MembersListComponent } from './components/members-list/members-list.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
-export const routes: Routes = [
+
+
+const routes: Routes = [
   {
     path: '',
     component: HomeComponent
@@ -92,7 +95,7 @@ export const routes: Routes = [
       },
       {
         path: 'profile',
-        component: InformationAccountComponent
+        component: ProfileComponent
       },
       {
         path: 'security',
@@ -117,6 +120,27 @@ export const routes: Routes = [
     component: ErrorPageComponent
   }
 ];
+
+const myRoutes = Object.freeze(JSON.parse(JSON.stringify(routes)));
+
+export const replacePaths = (url: string) => {
+  const childRouteNames: string[] = [];
+
+  // Iterar sobre las rutas y agregar nombres de rutas hijas al array
+  for (const route of myRoutes) {
+      if (route.children) {
+          for (const childRoute of route.children) {
+              childRouteNames.push(`${childRoute.path}`);
+          }
+      }
+  }
+
+  // Iterar sobre los nombres de las rutas hijas y reemplazar si se encuentran en el input
+  for (const childRouteName of childRouteNames) {
+      url = url.replace(childRouteName, '');
+  }
+  return url;
+}
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

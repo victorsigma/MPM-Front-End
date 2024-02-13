@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { replacePaths } from 'src/app/libs/paths';
+import { replacePaths } from 'src/app/app-routing.module';
 import { PostProjectsHasUser } from 'src/app/models/projectsHasUser';
 import { ProjectDataService } from 'src/app/services/project-data.service';
 

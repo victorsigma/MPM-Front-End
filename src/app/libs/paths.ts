@@ -1,5 +1,3 @@
-import { routes } from "../app-routing.module"
-
 export const patherPaths = {
 
 }
@@ -137,7 +135,7 @@ export const accountPaths = [
     },
     {
         title: 'Information',
-        icon: 'fa-regular fa-user fa-sm',
+        icon: 'fa-solid fa-user fa-sm',
         path: '',
         type: 'first-child-button'
     },
@@ -154,23 +152,3 @@ export const accountPaths = [
         type: 'child-button'
     },
 ]
-
-
-export const replacePaths = (url: string) => {
-    const childRouteNames: string[] = [];
-
-    // Iterar sobre las rutas y agregar nombres de rutas hijas al array
-    for (const route of routes) {
-        if (route.children) {
-            for (const childRoute of route.children) {
-                childRouteNames.push(`${childRoute.path}`);
-            }
-        }
-    }
-
-    // Iterar sobre los nombres de las rutas hijas y reemplazar si se encuentran en el input
-    for (const childRouteName of childRouteNames) {
-        url = url.replace(childRouteName, '');
-    }
-    return url;
-}

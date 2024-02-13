@@ -82,13 +82,7 @@ import { ProfileComponent } from './components/profile/profile.component';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
-      deps: [ProjectDataService]
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-      deps: [ActivityDataService]
+      deps: [ProjectDataService, ActivityDataService]
     }
   ],
   bootstrap: [AppComponent]

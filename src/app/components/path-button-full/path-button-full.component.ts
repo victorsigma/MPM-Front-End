@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { replacePaths } from 'src/app/libs/paths';
+import { replacePaths } from 'src/app/app-routing.module';
 import { LoginDataService } from 'src/app/services/login-data.service';
 
 @Component({
