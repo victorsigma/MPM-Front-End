@@ -27,8 +27,8 @@ export class LoginDataService {
     }
   }
 
-  public login(user: Login): Observable<Jwt> {
-    return this.http.post<Jwt>(this.myAppUrl + this.myApiUrl, user)
+  public login(user: Login, isRemember: boolean): Observable<Jwt> {
+    return this.http.post<Jwt>(`${this.myAppUrl}${this.myApiUrl}?remember=${isRemember}`, user)
   }
 
   public setToken(user: Jwt): void {

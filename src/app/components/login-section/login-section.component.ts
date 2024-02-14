@@ -17,7 +17,8 @@ export class LoginSectionComponent implements OnInit {
   users: UserData[] = [];
   form: FormGroup = new FormGroup({
     userNameOrEmail: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[0-9]).{6,}$/)])
+    password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[0-9]).{6,}$/)]),
+    remember: new FormControl()
   });
 
   @Output() loginDate: EventEmitter<null> = new EventEmitter();
@@ -29,11 +30,14 @@ export class LoginSectionComponent implements OnInit {
   }
 
   loginSend(): void {
-    const user: Login = this.form?.value
+    const user: Login = {
+      userNameOrEmail: this.form.get('userNameOrEmail')?.value,
+      password: this.form.get('password')?.value
+    }
 
-    console.log(this.form.get('password')?.valid)
+    const isRemember: boolean = this.form.get('remember')?.value;
 
-    this.loginService.login(user).subscribe((data)=> {
+    this.loginService.login(user, isRemember).subscribe((data)=> {
       this.loginService.setToken(data);
     }, (error) => {
       this.toastr.error('Incorrect data connection error.', 'Operation Canceled');
@@ -50,7 +54,8 @@ export class LoginSectionComponent implements OnInit {
   reloadForm() {
     this.form = new FormGroup({
       userNameOrEmail: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[0-9]).{6,}$/)])
+      password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[0-9]).{6,}$/)]),
+      remember: new FormControl()
     });
   }
 }

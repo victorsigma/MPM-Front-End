@@ -16,7 +16,7 @@
     top: 100%;
     left: -255px;
     margin-top: var(--bs-dropdown-spacer);
-    background-color: #272727;
+    background-color: var(--modal-dark-color);
     border: none;
     border-radius: 10px;
     width: 300px;
@@ -31,11 +31,11 @@
 }
 
 .dropdown-item:active {
-    background-color: #1a1a1a67;
+    background-color: var(--dark-color)67;
 }
 
 .offcanvas {
-    background-color: #1a1a1a;
+    background-color: var(--dark-color);
     max-width: 240px;
 }
 

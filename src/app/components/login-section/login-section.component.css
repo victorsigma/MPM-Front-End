@@ -5,11 +5,11 @@
 }
 
 .button-login:hover {
-    box-shadow: 0px 5px 20px #b080ff;
+    box-shadow: 0px 5px 20px var(--more-color);
 }
 
 .button-login:active {
-    border: solid #f1c0ff 2px;
+    border: solid var(--primary-color) 2px;
 }
 
 .form-text {
@@ -19,7 +19,7 @@
 .button-login {
     transition: all 0.5s ease 0s;
     color: white;
-    border: solid #f1c0ff 2px;
+    border: solid var(--primary-color) 2px;
 }
 
 .form-control {
