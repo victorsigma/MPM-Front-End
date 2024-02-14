@@ -13,14 +13,18 @@ export class ProjectGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      
+    this.loginService.verifyLogin().subscribe((data) => {
+      if (!data.value) {
+        this.loginService.loggout();
+      }
+    })
     if (!this.loginService.isLogin()) {
       this.router.navigate(['login']);
       return false;
     } else {
       // Obtener el idProject de la URL actual
       const idProject = route.paramMap.get('idProject');
-      
+
       // Verificar si ya estamos en la ruta hija "all"
       if (state.url.includes('/all')) {
         return true; // Si ya estamos en "all", permitimos la activación de la ruta

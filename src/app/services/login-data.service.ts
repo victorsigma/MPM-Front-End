@@ -10,8 +10,9 @@ import { jwtDecode } from 'jwt-decode';
 export class LoginDataService {
 
 
-  private myAppUrl = 'http://localhost:3000/'
-  private myApiUrl = 'api/Login'
+  private myAppUrl = 'http://localhost:3000/';
+  private myApiUrl = 'api/Login';
+  private myApiUrlV = 'api/verifyLogin'; 
 
   public status: boolean = false;
   public rol: number = 6;
@@ -29,6 +30,10 @@ export class LoginDataService {
 
   public login(user: Login, isRemember: boolean): Observable<Jwt> {
     return this.http.post<Jwt>(`${this.myAppUrl}${this.myApiUrl}?remember=${isRemember}`, user)
+  }
+
+  public verifyLogin(): Observable<{value: boolean}> {
+    return this.http.post<{value: boolean}>(`${this.myAppUrl}${this.myApiUrlV}`, this.getToken())
   }
 
   public setToken(user: Jwt): void {
