@@ -4,6 +4,7 @@ import { LoginDataService } from './login-data.service';
 import { UsersProjectsService } from './users-projects.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs';
 export class ProjectListService {
 
   //private myAppUrl = 'http://192.168.1.66:3000/'//JavaScript Servidor
-  private myAppUrl = 'http://localhost:3000/'//JavaScript
+  private myAppUrl = environment.apiKey//JavaScript
   //private myAppUrl = 'http://localhost:8080/'//Java
   //private myAppUrl = 'https://localhost:7172/'//C#
   private myApiUrl = 'api/projects/'

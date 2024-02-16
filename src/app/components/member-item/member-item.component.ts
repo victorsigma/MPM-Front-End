@@ -4,6 +4,7 @@ import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { ProjectDataService } from 'src/app/services/project-data.service';
 import unMatchFieldsValidator from 'src/app/validators/unMatchRoleValidators';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-member-item',
@@ -14,7 +15,7 @@ export class MemberItemComponent implements OnInit {
 
   @Input() member: ProjectUserData = new ProjectUserData();
   @Output() updateMembers: EventEmitter<null> = new EventEmitter<null>();
-  public iconPathFull: string = 'http://localhost:3000/api/user-icon/full/'
+  public iconPathFull: string = `${environment.apiKey}api/user-icon/full/`
 
 
   actualRole: number = 0;

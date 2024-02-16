@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site": "my-project-manager-mpm",
+    "public": "dist/mpm-front-end",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

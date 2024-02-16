@@ -54,20 +54,15 @@ body {
     border-top: none;
     border-right: none;
     border-left: none;
-    border-bottom: #fff solid 2px;
-}
-
-.text::after {
-    border-bottom: var(--secondary-color) solid 2px;
-    color: #fff;
+    border-bottom: #fff solid 1px;
 }
 
 .text:focus {
-    border-bottom: var(--secondary-color) solid 2px;
+    border-bottom: var(--secondary-color) solid 1px;
 }
 
 .text:hover {
-    border-bottom: var(--secondary-color) solid 2px;
+    border-bottom: var(--secondary-color) solid 1px;
 }
 
 
@@ -94,12 +89,50 @@ body {
     border-top: none;
     border-right: none;
     border-left: none;
-    border-bottom: var(--secondary-color) solid 2px;
+    border-bottom: var(--secondary-color) solid 1px;
 }
 
 .text:disabled::after {
-    border-bottom: rgb(74, 206, 140) solid 2px;
+    border-bottom: rgb(74, 206, 140) solid 1px;
     color: #fff;
+}
+
+
+.textarea {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    border-radius: 0;
+    transition: all 0.3s ease 0s;
+    cursor: text;
+    outline: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border: #fff solid 1px;
+    min-height: 50px;
+}
+
+.textarea:hover {
+    color: #fff;
+    border: var(--secondary-color) solid 1px;
+    transition: border 0.2s linear;
+}
+
+.textarea:focus {
+    border: var(--secondary-color) solid 1px;
+    color: #fff;
+}
+
+.textarea:-webkit-autofill,
+.textarea:-webkit-autofill:hover,
+.textarea:-webkit-autofill:focus,
+.textarea:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 50px #202124 inset;
+    -webkit-text-fill-color: rgb(255, 255, 255);
 }
 
 
@@ -117,7 +150,12 @@ body {
     border-right: none;
     border-left: none;
     border-bottom: #fff solid 2px;
-    background-color: #202124;
+    background-color: transparent;
+}
+
+option {
+    background-color: var(--modal-dark-color) !important;
+    cursor: pointer;
 }
 
 .select::after {
@@ -181,12 +219,10 @@ body {
 
 .btn-update:hover {
     border: solid var(--more-color) 2px;
-    box-shadow: 0px 5px 20px var(--more-color);
 }
 
 .btn-update:focus {
     border: solid var(--more-color) 2px !important;
-    box-shadow: 0px 5px 20px var(--more-color);
 }
 
 .btn-update {
@@ -260,14 +296,12 @@ body {
 }
 
 .button-options:hover {
-    border: var(--danger-colorr) 2px solid;
-    box-shadow: 0px 5px 20px var(--danger-colorr);
+    border: var(--success-color) 2px solid;
     color: #fff;
 }
 
 .button-options:focus {
-    border: var(--danger-colorr) 2px solid;
-    box-shadow: 0px 5px 20px var(--danger-colorr);
+    border: var(--success-color) 2px solid;
 }
 
 
@@ -480,9 +514,21 @@ body {
 .checkbox input[type="checkbox"]:checked {
     background-color: var(--success-color);
     border: 1px transparent solid;
-    box-shadow: 2px 2px 10px var(--more-color);
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" height="6" width="4.5" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>');
 }
+
+.checkbox input[type="checkbox"]:disabled:checked {
+    background-color: var(--options-color);
+    border: 1px #494949 solid;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" height="6" width="4.5" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>');
+}
+
+.checkbox input[type="checkbox"]:disabled {
+    background-color: var(--success-color);
+    border: 1px #494949 solid;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" height="6" width="4.5" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>');
+}
+
 
 @media (max-width: 1202px) {
     .card-p {

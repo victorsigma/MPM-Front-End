@@ -29,10 +29,8 @@
                         <input class="date" id="dateEnd" name="dateEnd"
                             placeholder="MM/DD/YYYY" type="date" formControlName="dateEnd" required />
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn button-close"
-                            data-bs-dismiss="modal">Close</button>
-                        <button type="submit" [disabled]="!this.form.valid" class="btn button-create"
+                    <div class="list-group card-body">
+                        <button type="submit" [disabled]="!this.form.valid" class="btn btn-update"
                             data-bs-dismiss="modal">Create Project</button>
                     </div>
                 </form>

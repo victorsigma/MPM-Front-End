@@ -3,6 +3,7 @@ import { Jwt, Login, User } from '../models/users';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { jwtDecode } from 'jwt-decode';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { jwtDecode } from 'jwt-decode';
 export class LoginDataService {
 
 
-  private myAppUrl = 'http://localhost:3000/';
+  private myAppUrl = environment.apiKey;
   private myApiUrl = 'api/Login';
   private myApiUrlV = 'api/verifyLogin'; 
 

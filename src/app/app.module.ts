@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AngularFireModule } from '@angular/fire/compat'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +38,7 @@ import { MembersListComponent } from './components/members-list/members-list.com
 import { PathButtonFullComponent } from './components/path-button-full/path-button-full.component';
 import { PathButtonSmallComponent } from './components/path-button-small/path-button-small.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     AppRoutingModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    HttpClientModule
+    HttpClientModule, 
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [
     {

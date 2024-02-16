@@ -138,13 +138,13 @@ export const accountPaths = [
         icon: 'fa-solid fa-user fa-sm',
         path: '',
         type: 'first-child-button'
-    },
+    }/*,
     {
         title: 'Profile',
         icon: 'fa-solid fa-user-pen fa-sm',
         path: 'profile',
         type: 'child-button'
-    },
+    }*/,
     {
         title: 'Security',
         icon: 'fa-solid fa-lock fa-sm',

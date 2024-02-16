@@ -4,6 +4,7 @@ import { LoginDataService } from '../../services/login-data.service';
 import { ProjectListService } from '../../services/project-list.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { accountPaths, defaultPaths, membersPaths, projectPaths, projectsPaths } from 'src/app/libs/paths';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
   public isMobile: boolean = false;
   public userIcon: string = '';
   public userName: string = '';
-  public iconPathSmall: string = 'http://localhost:3000/api/user-icon/small/'
+  public iconPathSmall: string = `${environment.apiKey}api/user-icon/small/`
   public slideStyle: boolean = false;
   public paths: any = defaultPaths;
   public patherPath: string = ''

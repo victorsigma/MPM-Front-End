@@ -29,21 +29,21 @@
                     <div class="mb-1">
                         <label class="form-label">Participating roles</label>
                     </div>
-                    <div class="mb-3">
-                        <input type="checkbox" checked disabled class="form-check-input">
+                    <div class="mb-3 checkbox">
+                        <input type="checkbox" checked disabled>
                         <label class="form-check-label" for="leadeCheck">Leader</label>
                     </div>
-                    <div class="mb-3">
-                        <input formControlName="rolesListAnalyst" type="checkbox" class="form-check-input">
+                    <div class="mb-3 checkbox">
+                        <input formControlName="rolesListAnalyst" type="checkbox" id="analystCheck">
                         <label class="form-check-label" for="analystCheck">Analyst</label>
                     </div>
-                    <div class="mb-3">
-                        <input formControlName="rolesListDesigner" type="checkbox" class="form-check-input">
+                    <div class="mb-3 checkbox">
+                        <input formControlName="rolesListDesigner" type="checkbox" id="designerCheck">
                         <label class="form-check-label" for="designerCheck">Designer</label>
                     </div>
-                    <div class="mb-3">
-                        <input formControlName="rolesListProgrammer" type="checkbox" class="form-check-input">
-                        <label class="form-check-label" for="exampleCheck4">Programmer</label>
+                    <div class="mb-3 checkbox">
+                        <input formControlName="rolesListProgrammer" type="checkbox" id="programmerCheck">
+                        <label class="form-check-label" for="programmerCheck">Programmer</label>
                     </div>
                     <div class="mb-3">
                         <label class="control-label" for="dateEnd">Completion
@@ -51,10 +51,8 @@
                         <input formControlName="dateEnd" required class="date" name="dateEnd"
                             placeholder="MM/DD/YYYY" type="date" />
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn button-close" data-bs-dismiss="modal"
-                            (click)="addCancel()">Close</button>
-                        <button type="submit" [disabled]="!this.form.valid" class="btn button-save"
+                    <div class="list-group card-body">
+                        <button type="submit" [disabled]="!this.form.valid" class="btn btn-update"
                             data-bs-dismiss="modal">Add Activity</button>
                     </div>
                 </form>

@@ -34,8 +34,8 @@ a {
 }
 
 .button-login:focus {
-    border: solid var(--danger-colorr) 2px;
-    box-shadow: 0px 5px 20px var(--danger-colorr);
+    border: solid var(--danger-color) 2px;
+    box-shadow: 0px 5px 20px var(--danger-color);
 }
 
 .button-register {
@@ -52,11 +52,11 @@ a {
     outline: none;
     margin-right: 5px;
     border-radius: 10px;
-    border: solid var(--danger-colorr) 2px;
+    border: solid var(--danger-color) 2px;
 }
 
 .button-register:hover {
-    box-shadow: 0px 5px 20px var(--danger-colorr);
+    box-shadow: 0px 5px 20px var(--danger-color);
 }
 
 .button-register:focus {
