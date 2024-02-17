@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ProjectDataService } from '../../services/project-data.service';
 import { ProjectListService } from '../../services/project-list.service';
 import { Title } from '@angular/platform-browser';
+import { ProjectData } from 'src/app/models/projects';
 
 @Component({
   selector: 'app-home',
@@ -27,17 +28,27 @@ export class HomeComponent implements OnInit {
 
   openActivity() {
     if(this.loginService.isLogin()) {
-      this.projectList.loadProjects();
-      console.log(this.projectList.projects.length)
-      console.log(this.random(0,this.projectList.projects.length))
-      this.projectData.project = this.projectList.projects[this.random(0,(this.projectList.projects.length-1))];
-      this.router.navigate(['/activities']);
+      this.projectList.getListProjects().subscribe((data: Array<ProjectData>) => {
+        const id = data[0].id;
+        this.router.navigate(['/project', id]);
+      })
     } else {
       this.router.navigate(['/']);
     }
   }
 
-  random(min: number, max: number) {
-    return Math.round(Math.floor(Math.random() * (max - min + 1) + min))
+  openMembers() {
+    if(this.loginService.isLogin()) {
+      this.projectList.getListProjects().subscribe((data: Array<ProjectData>) => {
+        const id = data[0].id;
+        this.router.navigate(['/project', id, 'members']);
+      })
+    } else {
+      this.router.navigate(['/']);
+    }
   }
+
+  // random(min: number, max: number) {
+  //   return Math.round(Math.floor(Math.random() * (max - min + 1) + min))
+  // }
 }

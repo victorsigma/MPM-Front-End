@@ -16,6 +16,8 @@ export class ActivityDataService {
   //private myAppUrl = 'https://localhost:7172/'//C#
   private myApiUrl = 'api/activities'
 
+  private modalActivity = new ActivityData();
+
   constructor(private http: HttpClient) { }
 
   getListActivities(idProject: string, status?: string): Observable<Array<ActivityData>> {
@@ -40,5 +42,13 @@ export class ActivityDataService {
 
   getProjectRol(id: string) {
     return this.http.get(this.myAppUrl + 'api/UserRol/' + id)
+  }
+
+  setModalActivity(activity: ActivityData) {
+    this.modalActivity = activity;
+  }
+
+  getModalActivity() {
+    return this.modalActivity;
   }
 }

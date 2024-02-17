@@ -17,7 +17,7 @@ export class EditorActivityComponent implements OnInit {
   @Output() updateActivity: EventEmitter<ActivityData> = new EventEmitter();
 
 
-  activity: ActivityData = new ActivityData();
+  public activity: ActivityData = new ActivityData();
   form: UntypedFormGroup = new UntypedFormGroup({
     title: new UntypedFormControl(),
     subtitle: new UntypedFormControl(),
@@ -39,7 +39,7 @@ export class EditorActivityComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.activity = this.dataServiceModal.getModalActivity()
   }
 
   editActivity() {

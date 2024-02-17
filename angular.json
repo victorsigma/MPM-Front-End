@@ -104,5 +104,8 @@
       }
     }
   },
-  "defaultProject": "MPM-Front-End"
+  "defaultProject": "MPM-Front-End",
+  "cli": {
+    "analytics": "b45d6e7a-769b-4a9d-ab57-030ddc5614b2"
+  }
 }

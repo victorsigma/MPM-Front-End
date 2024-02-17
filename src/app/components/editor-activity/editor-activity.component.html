@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">{{'dataServiceModal.activity.title'}}</h5>
+                <h5 class="modal-title">{{dataServiceModal.getModalActivity().title}}</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
@@ -13,44 +13,39 @@
                         <label class="form-label" for="nameActivity">Change
                             activity name</label>
                         <input class="text" type="text" formControlName="title"
-                            placeholder="{{'dataServiceModal.activity.title'}}" />
+                            placeholder="{{dataServiceModal.getModalActivity().title}}" />
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Change description</label>
                         <textarea class="textarea" rows="3" formControlName="subtitle"
-                            placeholder="{{'dataServiceModal.activity.subtitle'}}"></textarea>
+                            placeholder="{{dataServiceModal.getModalActivity().subtitle}}"></textarea>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Change status</label>
                         <select formControlName="status" class="text" aria-label="Default
                             select example">
-                            <option value="1" [selected]="'dataServiceModal.activity.status == 1'">Unassigned</option>
-                            <option value="2" [selected]="'dataServiceModal.activity.status == 2'">In progress</option>
-                            <option value="3" [selected]="'dataServiceModal.activity.status == 3'">Completed</option>
-                            <option value="4" [selected]="'dataServiceModal.activity.status == 4'">Pause</option>
+                            <option value="1" [selected]="dataServiceModal.getModalActivity().status == 1">Unassigned</option>
+                            <option value="2" [selected]="dataServiceModal.getModalActivity().status == 2">In progress</option>
+                            <option value="3" [selected]="dataServiceModal.getModalActivity().status == 3">Completed</option>
+                            <option value="4" [selected]="dataServiceModal.getModalActivity().status == 4">Pause</option>
                         </select>
                     </div>
                     <div class="mb-1">
                         <label class="form-label">Participating roles</label>
                     </div>
-                    <div class="mb-3 checkbox-div">
-                        <input type="checkbox" [checked]="'dataServiceModal.activity.leader'" disabled
-                            class="form-check-input">
-                        <label class="form-check-label" for="checkleader">Leader</label>
-                    </div>
-                    <div class="mb-3 checkbox-div">
-                        <input type="checkbox" formControlName="rolesListAnalyst"
-                            [checked]="'dataServiceModal.activity.analyst'" class="form-check-input">
+                    <div class="mb-3 checkbox">
+                        <input type="checkbox" id="checkanalystedit" formControlName="rolesListAnalyst"
+                            [checked]="dataServiceModal.getModalActivity().analyst">
                         <label class="form-check-label" for="checkanalystedit"> Analyst</label>
                     </div>
-                    <div class="mb-3 checkbox-div">
-                        <input type="checkbox" formControlName="rolesListDesigner"
-                            [checked]="'dataServiceModal.activity.designer'" class="form-check-input">
+                    <div class="mb-3 checkbox">
+                        <input type="checkbox" id="checkdesigneredit" formControlName="rolesListDesigner"
+                            [checked]="dataServiceModal.getModalActivity().designer">
                         <label class="form-check-label" for="checkdesigneredit">Designer</label>
                     </div>
-                    <div class="mb-3 checkbox-div">
-                        <input type="checkbox" formControlName="rolesListProgrammer"
-                            [checked]="'dataServiceModal.activity.programmer'" class="form-check-input">
+                    <div class="mb-3 checkbox">
+                        <input type="checkbox" id="checkprogrammeredit" formControlName="rolesListProgrammer"
+                            [checked]="dataServiceModal.getModalActivity().programmer">
                         <label class="form-check-label" for="checkprogrammeredit">Programmer</label>
                     </div>
                     <div class="mb-3">
@@ -58,8 +53,8 @@
                             date</label>
                         <br>
                         <label class="control-label" for="date">Actual date
-                            {{'dataServiceModal.activity.dateEnd'}}</label>
-                        <input formControlName="dateEnd" class="text" name="date" placeholder="MM/DD/YYYY"
+                            {{dataServiceModal.getModalActivity().dateEnd}}</label>
+                        <input formControlName="dateEnd" class="date" name="date" placeholder="MM/DD/YYYY"
                             type="date" />
                     </div>
                     <div class="modal-footer">
