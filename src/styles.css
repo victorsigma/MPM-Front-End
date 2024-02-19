@@ -609,3 +609,19 @@ option {
         width: 100%;
     }
 }
+
+/*Footer red social*/
+.social-media-links {
+    display: flex;
+    justify-content: center; 
+    gap: 20px; 
+}
+
+.social-media-links a {
+    color: #000; 
+    text-decoration: none; 
+}
+
+.social-media-links a:hover, .social-media-links a:focus {
+    color: #555; 
+}
