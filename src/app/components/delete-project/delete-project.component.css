@@ -1,7 +1,7 @@
 .modal-content {
     background-color: #202124;
-    color: white;
-    border: solid #ffffff 3px;
+    color: var(--text-color);
+    border: solid var(--text-color) 3px;
 }
 
 
@@ -20,18 +20,18 @@
     border-top: none;
     border-right: none;
     border-left: none;
-    border-bottom: #fff solid 2px;
+    border-bottom: var(--text-color) solid 2px;
 }
 
 .text:hover {
-    color: #fff;
+    color: var(--text-color);
     border-bottom: #fd9048 solid 2px;
     transition: border 0.2s linear;
 }
 
 .text::after {
     border-bottom: #fd9048 solid 2px;
-    color: #fff;
+    color: var(--text-color);
 }
 
 .text:-webkit-autofill,
@@ -43,11 +43,11 @@
 }
 
 .modal-header {
-    border-bottom: #ffffff 1px solid;
+    border-bottom: var(--text-color) 1px solid;
 }
 
 ::-webkit-calendar-picker-indicator {
-    color: white;
+    color: var(--text-color);
 }
 
 ::-webkit-calendar-picker-indicator {
@@ -57,7 +57,7 @@
 option {
     font-weight: normal;
     display: block;
-    white-space: nowrap;
+    white: nowrap;
     min-height: 1.2em;
     padding: 0px 2px 1px;
     background-color: #202124;
@@ -70,13 +70,13 @@ option {
 }
 
 .form-check-input {
-    background-color: white;
+    background-color: var(--text-color);
     border-color: rgb(162, 0, 255);
     border-radius: 45px;
 }
 
 .checkbox-div {
-    border-bottom: #fff solid 2px;
+    border-bottom: var(--text-color) solid 2px;
 }
 
 .checkbox-div:hover {
@@ -94,7 +94,7 @@ option {
 }
 
 .button-close {
-    color: white;
+    color: var(--text-color);
     border: solid #0395ce 3px;
 }
 
@@ -108,6 +108,6 @@ option {
 }
 
 .button-delete {
-    color: white;
+    color: var(--text-color);
     border: solid #ce0303 3px;
 }

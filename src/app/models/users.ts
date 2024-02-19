@@ -11,6 +11,7 @@ export class User {
     userMail: string = '';
     phoneNumber: string = '';
     userIcon: string = '';
+    selectedTheme: string = '';
 }
 
 export class Login {

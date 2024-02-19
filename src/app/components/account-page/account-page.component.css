@@ -1,5 +1,5 @@
 * {
-    color: white;
+    color: var(--text-color);
 }
 
 .container {
@@ -15,7 +15,7 @@
 }
 
 .content-project {
-    color: white;
+    color: var(--text-color);
 }
 
 .content-project h1 {
@@ -27,7 +27,7 @@
 }
 
 ::-ms-reveal {
-    color: white;
+    color: var(--text-color);
 }
 
 ::-ms-reveal {

@@ -5,10 +5,10 @@ export class ActivityData {
     src:string = '';
     status: number = 0;
     dateEnd: Date = new Date();
-    leader: boolean =  true;
-    analyst: boolean =  false;
-    designer: boolean = false;
-    programmer: boolean = false;
+    leader: any;
+    analyst: any;
+    designer: any;
+    programmer: any;
     projectId: string = '';
 }
 

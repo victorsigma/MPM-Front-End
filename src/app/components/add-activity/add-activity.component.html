@@ -4,8 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Add Activity</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" (click)="addCancel()"
-                    aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="addCancel()"></button>
             </div>
             <div class="modal-body">
                 <form [formGroup]="form" (ngSubmit)="addActivity()">
@@ -21,7 +20,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Status</label>
-                        <select formControlName="status" class="text" name="statusActivity">
+                        <select formControlName="status" class="select" name="statusActivity">
                             <option *ngFor="let item of statusType; let i = index" [value]="item.Id">{{item.statusName}}
                             </option>
                         </select>

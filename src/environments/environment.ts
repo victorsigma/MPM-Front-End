@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiKey: 'https://mpm-back-end-node.onrender.com/',
+  apiKey: 'http://localhost:3000/',
   firebase: {
     apiKey: "AIzaSyDLs2IILUyZacHTk1wLe3-xFZUyWqDtzL0",
     authDomain: "skin-pack-creator.firebaseapp.com",

@@ -1,7 +1,7 @@
 <div class="login-component">
     <div class="slider">
         <div>
-            <img class="mpm-logo" routerLink="/" src="assets/img/mpm-logo-dark.png" alt="">
+            <img class="mpm-logo" routerLink="/" [src]="appIcon" alt="">
         </div>
     </div>
     <div class="login" id="loginModal">
@@ -14,29 +14,56 @@
                 <form [formGroup]="form" (ngSubmit)="isRegisterDataTrue()">
                     <div class="mb-3">
                         <label for="newUserName" class="form-label">User Name</label>
-                        <input type="text" class="text"
-                            id="newUserName" formControlName="user" required maxlength="15">
-                            <div id="emailHelp" *ngIf="form.get('user')?.hasError('minlength') && form.get('user')?.value != ''" class="form-text">The number of characters is 8 and maximum 15.</div>
-                            <div id="emailHelp" *ngIf="form.get('user')?.hasError('maxlength') && form.get('user')?.value != ''" class="form-text">The number of characters is 8 and maximum 15.</div>
+                        <input type="text" class="text" id="newUserName" formControlName="user" required maxlength="15">
+                        <div *ngIf="form.get('user')?.hasError('minlength') && !form.get('user')?.hasError('pattern') && form.get('user')?.value != ''"
+                            class="form-text error">The number of characters is 5 and maximum 15.</div>
+                        <div *ngIf="form.get('user')?.hasError('pattern') && !form.get('user')?.hasError('minlength') && form.get('user')?.value != ''"
+                            class="form-text error">You can only use letters and numbers for your username.</div>
+                        <div *ngIf="form.get('user')?.hasError('pattern') && form.get('user')?.hasError('minlength') && form.get('user')?.value != ''"
+                            class="form-text error">The number of characters is 5 and maximum 15 and you can only use letters
+                            and numbers for your username.</div>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email
                             Address</label>
-                        <input type="email" class="text"
-                            id="email" formControlName="email" required>
+                        <input type="email" class="text" id="email" formControlName="email" required>
+                        <div *ngIf="form.get('email')?.hasError('email') && form.get('email')?.value != ''"
+                            class="form-text error">Not a valid email address.</div>
                     </div>
                     <div class="mb-3">
                         <label for="phoneNumber" class="form-label">Phone Number</label>
-                        <input type="text" value="" class="text"
-                            id="phoneNumber" formControlName="phone" required>
+                        <div class="d-flex">
+                            <div class="col-4"><select name="lada" id="phoneLada" class="select">
+                                    <option *ngFor="let item of ladas" [selected]="item.lada == '52' ? true : false"
+                                        [value]="item.lada">{{item.lada}}</option>
+                                </select></div>
+                            <div class="col-8" style="padding-left: 10px;"><input type="tel" value="" class="text"
+                                    id="phoneNumber" formControlName="phone" required minlength="10" maxlength="10">
+                            </div>
+                        </div>
+                        <div *ngIf="form.get('phone')?.hasError('minlength') && !form.get('phone')?.hasError('pattern') && form.get('phone')?.value != ''"
+                            class="form-text error">The number of characters does not match.</div>
+                        <div *ngIf="form.get('phone')?.hasError('pattern') && !form.get('phone')?.hasError('minlength') && form.get('phone')?.value != ''"
+                            class="form-text error">Not a valid number.</div>
+                        <div *ngIf="form.get('phone')?.hasError('pattern') && form.get('phone')?.hasError('minlength') && form.get('phone')?.value != ''"
+                            class="form-text error">The number of characters does not match and is not a valid number.</div>
                     </div>
                     <div class="mb-3">
                         <label for="newPassword" class="form-label">Password</label>
-                        <input type="password" class="text"
-                            id="newPassword" formControlName="password" required>
+                        <input type="password" class="text" id="newPassword" formControlName="password" required>
+                        <div *ngIf="form.get('password')?.hasError('minlength') && !form.get('password')?.hasError('pattern') && form.get('password')?.value != ''"
+                            class="form-text error">The password is invalid. The number of characters is 6</div>
+                        <div *ngIf="form.get('password')?.hasError('pattern') && !form.get('password')?.hasError('minlength') && form.get('password')?.value != ''"
+                            class="form-text error">The password is invalid. It must contain at least one number and must not
+                            contain commas, quotation marks, braces, square brackets or blank spaces.</div>
+                        <div *ngIf="form.get('password')?.hasError('pattern') && form.get('password')?.hasError('minlength') && form.get('password')?.value != ''"
+                            class="form-text error">The password is invalid. The number of characters is 6 and must contain at
+                            least one number and must not contain commas, quotation marks, braces, brackets or blank
+                            spaces.</div>
                     </div>
                     <div class="list-group card-body">
-                        <button type="submit" [disabled]="!this.form.valid" data-bs-dismiss="modal" class="btn button-register">Submit</button>
+                        <button type="submit" [disabled]="!this.form.valid" data-bs-dismiss="modal"
+                            class="btn button-register">Submit</button>
                     </div>
                 </form>
             </div>

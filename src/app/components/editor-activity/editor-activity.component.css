@@ -1,15 +1,7 @@
-::-webkit-calendar-picker-indicator {
-    color: white;
-}
-
-::-webkit-calendar-picker-indicator {
-    filter: invert(100%);
-}
-
 option {
     font-weight: normal;
     display: block;
-    white-space: nowrap;
+    white: nowrap;
     min-height: 1.2em;
     padding: 0px 2px 1px;
     background-color: #202124;
@@ -26,7 +18,7 @@ option {
 }
 
 .button-change {
-    color: white;
+    color: var(--text-color);
     border: solid #fd9048 3px;
 }
 
@@ -40,7 +32,7 @@ option {
 }
 
 .button-close {
-    color: white;
+    color: var(--text-color);
     border: solid #0395ce 3px;
 }
 
@@ -54,7 +46,7 @@ option {
 }
 
 .button-delete {
-    color: white;
+    color: var(--text-color);
     border: solid #ce0303 3px;
 }
 
