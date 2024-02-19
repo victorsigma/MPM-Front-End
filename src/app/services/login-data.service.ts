@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { jwtDecode } from 'jwt-decode';
 import { environment } from 'src/environments/environment';
+import { icon, theme } from '../models/profile';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,8 @@ export class LoginDataService {
   private myAppUrl = environment.apiKey;
   private myApiUrl = 'api/Login';
   private myApiUrlV = 'api/verifyLogin'; 
+  private myApiUrlC = 'api/changeTheme'; 
+  private myApiUrlI = 'api/changeIcon'; 
 
   public status: boolean = false;
   public rol: number = 6;
@@ -31,6 +34,22 @@ export class LoginDataService {
 
   public login(user: Login, isRemember: boolean): Observable<Jwt> {
     return this.http.post<Jwt>(`${this.myAppUrl}${this.myApiUrl}?remember=${isRemember}`, user)
+  }
+
+  public changeTheme(theme: theme): Observable<Jwt> {
+    const newTheme = {
+      theme: theme,
+      token: this.getToken().token
+    }
+    return this.http.post<Jwt>(`${this.myAppUrl}${this.myApiUrlC}`, newTheme)
+  }
+
+  public changeIcon(icon: icon): Observable<Jwt> {
+    const newIcon = {
+      icon: icon,
+      token: this.getToken().token
+    }
+    return this.http.post<Jwt>(`${this.myAppUrl}${this.myApiUrlI}`, newIcon)
   }
 
   public verifyLogin(): Observable<{value: boolean}> {

@@ -20,9 +20,11 @@ export class LoginSectionComponent implements OnInit {
     password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[0-9]).{6,}$/)]),
     remember: new FormControl()
   });
+  appIcon: string = '';
 
   @Output() loginDate: EventEmitter<null> = new EventEmitter();
   constructor(private loginService: LoginDataService, private toastr: ToastrService, private titleService: Title) {
+    this.appIcon = document.body.getAttribute('data-bs-theme') == 'dark' ? 'assets/img/mpm-logo-dark.png' : 'assets/img/mpm-logo-light.png';
     this.titleService.setTitle(`MPM - Login`)
   }
 

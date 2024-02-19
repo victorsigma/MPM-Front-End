@@ -1,30 +1,73 @@
 <div class="container">
     <div class="avatar border-bottom">
-        <div class="avatar-icon" data-bs-toggle="modal" data-bs-target="#editIcon">
+        <div class="avatar-icon avatar-icon-edit" (click)="showIcons = !showIcons">
             <img class="icon" [src]="iconPathFull+userIcon" alt="...">
         </div>
 
         <h1>{{userName}}</h1>
     </div>
-    <div class="themes">
 
-    </div>
 </div>
 
+<div class="content" *ngIf="showIcons">
+    <div class="icons" >
+        <h2>Icons</h2>
+    
+        <div class="centered-content">
+            <div *ngFor="let item of icons" class="card-aling-p card-center" (click)="changeIcon(item)">
+                <div class="avatar-icon-min">
+                    <img class="icon-min" [src]="iconPathFull+item.id+'.jpg'" alt="{{item.iconName}}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content" *ngIf="!showIcons">
+    <div class="themes">
+        <h2>Themes</h2>
+    
+        <div>
+            <div *ngFor="let item of themes" class="card-aling-p card-center" (click)="testTheme(item)">
+                <div class="card card-p">
+                    <img src="{{themePath}}{{item.themeName}}.jpeg"
+                        class="card-img-top" alt="{{item.themeName}}">
+                    <div class="card-body upper-firt">
+                        <h5 class="card-title">{{item.themeName}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+
+
 <!-- Modal -->
-<div class="modal fade" id="editIcon" tabindex="-1" aria-labelledby="editIconLabel" aria-hidden="true">
+<div class="modal fade" id="changeIcon" tabindex="-1" aria-labelledby="editIconLabel" aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="editIconLabel">Modal title</h1>
+                <h1 class="modal-title fs-5" id="editIconLabel">Are you sure you want to change the icon?</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                ...
+            <div class="modal-body d-flex" style="justify-content: flex-end;">
+                <button type="button" class="btn btn-delete" data-bs-dismiss="modal" style="margin-right: 6px;">Canncel</button>
+                <button type="button" class="btn btn-update" data-bs-dismiss="modal" (click)="confirmIcon()">Save changes</button>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="changeTheme" tabindex="-1" aria-labelledby="editIconLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="editIconLabel">Are you sure you want to change the theme?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="cancelTheme()"></button>
+            </div>
+            <div class="modal-body d-flex" style="justify-content: flex-end;">
+                <button type="button" class="btn btn-delete" data-bs-dismiss="modal" (click)="cancelTheme()" style="margin-right: 6px;">Canncel</button>
+                <button type="button" class="btn btn-update" data-bs-dismiss="modal" (click)="confirmTheme()">Save changes</button>
             </div>
         </div>
     </div>

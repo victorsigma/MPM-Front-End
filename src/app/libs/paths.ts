@@ -14,10 +14,7 @@ export const defaultPaths = [
         icon: 'fa-solid fa-diagram-project fa-sm',
         path: './projects',
         type: 'button'
-    }/*,
-    {
-        type: 'hr'
-    }*/
+    }
 ]
 
 export const projectsPaths = [
@@ -32,10 +29,7 @@ export const projectsPaths = [
         icon: 'fa-solid fa-diagram-project fa-sm',
         path: './projects',
         type: 'button'
-    }/*,
-    {
-        type: 'hr'
-    }*/
+    }
 ]
 
 
@@ -138,13 +132,13 @@ export const accountPaths = [
         icon: 'fa-solid fa-user fa-sm',
         path: '',
         type: 'first-child-button'
-    }/*,
+    },
     {
         title: 'Profile',
         icon: 'fa-solid fa-user-pen fa-sm',
         path: 'profile',
         type: 'child-button'
-    }*/,
+    },
     {
         title: 'Security',
         icon: 'fa-solid fa-lock fa-sm',

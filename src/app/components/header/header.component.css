@@ -16,7 +16,7 @@
     top: 100%;
     left: -255px;
     margin-top: var(--bs-dropdown-spacer);
-    background-color: var(--modal-dark-color);
+    background-color: var(--modal-color);
     border: none;
     border-radius: 10px;
     width: 300px;
@@ -30,12 +30,13 @@
     margin-right: 0px;
 }
 
-.dropdown-item:active {
-    background-color: var(--dark-color)67;
+.dropdown-item:hover {
+    background-color: var(--backgroud-color);
+    color: var(--menu-text-color);
 }
 
 .offcanvas {
-    background-color: var(--dark-color);
+    background-color: var(--backgroud-color);
     max-width: 240px;
 }
 
@@ -45,7 +46,7 @@
 
 .slider-min {
     max-width: 74px;
-    padding: 3px;
+    padding-inline: 3px;
 }
 
 .offcanvas-header {

@@ -1,11 +1,3 @@
-::-webkit-calendar-picker-indicator {
-    color: white;
-}
-
-::-webkit-calendar-picker-indicator {
-    filter: invert(100%);
-}
-
 option {
     font-weight: normal;
     display: block;
@@ -18,7 +10,7 @@ option {
 
 
 .checkbox-div {
-    border-bottom: #fff solid 2px;
+    border-bottom: var(--text-color) solid 2px;
 }
 
 .checkbox-div:hover {
@@ -38,7 +30,7 @@ option {
 }
 
 .button-save {
-    color: white;
+    color: var(--text-color);
     border: solid #fd9048 3px;
 }
 
@@ -52,6 +44,6 @@ option {
 }
 
 .button-close {
-    color: white;
+    color: var(--text-color);
     border: solid #0395ce 3px;
 }

@@ -1,14 +1,12 @@
 <form [formGroup]="form" (ngSubmit)="addMember()">
-    <div class="mb-3" style="padding-block: 2%;">
+    <div class="mb-3">
         <label class="form-label" for="userName">User Name or Email</label>
         <input class="text" id="userName" name="userName" formControlName="userName" required type="text"
             placeholder="Enter User Name or Email" aria-describedby="userNameHelp" />
+    <div id="userNameHelp" class="form-text">Enter a user name or e-mail address.</div>
     </div>
 
-    <!-- Include a div for additional information -->
-    <div id="userNameHelp" class="form-text">Enter your unique user name or email address.</div>
-
-    <div class="mb-3" style="padding-block: 2%;">
+    <div class="mb-3">
         <label class="form-label" for="userRole">Select Role</label>
         <select class="select" formControlName="userRole" id="userRole" aria-label="Select User Role">
             <option value="1">Analyst</option>

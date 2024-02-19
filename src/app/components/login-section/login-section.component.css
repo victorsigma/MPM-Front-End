@@ -1,11 +1,11 @@
 .modal-content {
     background-color: #202124;
-    color: white;
-    border: solid #ffffff 2px;
+    color: var(--text-color);
+    border: solid var(--text-color) 2px;
 }
 
 .button-login:hover {
-    box-shadow: 0px 5px 20px var(--more-color);
+    border: solid var(--text-color) 2px;
 }
 
 .button-login:active {
@@ -13,12 +13,12 @@
 }
 
 .form-text {
-    color: white;
+    color: var(--text-color);
 }
 
 .button-login {
     transition: all 0.5s ease 0s;
-    color: white;
+    color: var(--text-color);
     border: solid var(--primary-color) 2px;
 }
 
@@ -28,11 +28,11 @@
 }
 
 .modal-header {
-    border-bottom: #ffffff 1px solid;
+    border-bottom: var(--text-color) 1px solid;
 }
 
 ::-ms-reveal {
-    color: white;
+    color: var(--text-color);
 }
 
 ::-ms-reveal {
@@ -47,7 +47,7 @@
 }
 
 .login-content {
-    color: #fff;
+    color: var(--text-color);
 }
 
 .login-header {
@@ -63,7 +63,7 @@
 
 .slider {
     margin: 0 auto;
-    color: white;
+    color: var(--text-color);
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /* Center horizontally */

@@ -1,5 +1,5 @@
 .header-a {
-    color: white;
+    color: var(--text-color);
 }
 
 .content-project h1 {

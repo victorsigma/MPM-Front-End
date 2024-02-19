@@ -35,17 +35,17 @@
                     </div>
                     <div class="mb-3 checkbox">
                         <input type="checkbox" id="checkanalystedit" formControlName="rolesListAnalyst"
-                            [checked]="dataServiceModal.getModalActivity().analyst">
+                            [checked]="dataServiceModal.getModalActivity().analyst.data[0]">
                         <label class="form-check-label" for="checkanalystedit"> Analyst</label>
                     </div>
                     <div class="mb-3 checkbox">
                         <input type="checkbox" id="checkdesigneredit" formControlName="rolesListDesigner"
-                            [checked]="dataServiceModal.getModalActivity().designer">
+                            [checked]="dataServiceModal.getModalActivity().designer.data[0]">
                         <label class="form-check-label" for="checkdesigneredit">Designer</label>
                     </div>
                     <div class="mb-3 checkbox">
                         <input type="checkbox" id="checkprogrammeredit" formControlName="rolesListProgrammer"
-                            [checked]="dataServiceModal.getModalActivity().programmer">
+                            [checked]="dataServiceModal.getModalActivity().programmer.data[0]">
                         <label class="form-check-label" for="checkprogrammeredit">Programmer</label>
                     </div>
                     <div class="mb-3">
