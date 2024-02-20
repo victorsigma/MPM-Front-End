@@ -14,7 +14,9 @@ import { Title } from '@angular/platform-browser';
 export class ProjectsPageComponent implements OnInit {
   createProject: Subject<ProjectData> = new Subject<ProjectData>();
 
-  public projectList: ProjectData[] = []; 
+  public projectList: ProjectData[] = [];
+//fitro de busqueda
+  public searchTerm: string = '';
 
   constructor(private projectData: ProjectDataService, private titleService: Title) {
     this.titleService.setTitle(`MPM - Projects`)
@@ -26,4 +28,10 @@ export class ProjectsPageComponent implements OnInit {
   ngOnInit(): void {
 
   }
+  get filteredProjects(): ProjectData[] {
+    return this.projectList.filter(project =>
+      project.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
+  
 }

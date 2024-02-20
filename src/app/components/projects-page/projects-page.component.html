@@ -12,7 +12,8 @@
         </div>
     </nav>
     <div class="container-fluid">
-        <app-project-item *ngFor="let project of projectList" [project]="project"></app-project-item>
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar proyectos..." class="text mb-3">
+        <app-project-item *ngFor="let project of filteredProjects" [project]="project"></app-project-item>
     </div>
     <app-add-project></app-add-project>
 </div>

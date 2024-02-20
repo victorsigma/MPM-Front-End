@@ -14,7 +14,7 @@ import { ActivitiesPageComponent } from './components/activities-page/activities
 import { ActivityItemComponent } from './components/activity-item/activity-item.component';
 import { EditorActivityComponent } from './components/editor-activity/editor-activity.component';
 import { AddActivityComponent } from './components/add-activity/add-activity.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AddProjectComponent } from './components/add-project/add-project.component';
@@ -78,6 +78,7 @@ import { environment } from 'src/environments/environment';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
     HttpClientModule, 
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [

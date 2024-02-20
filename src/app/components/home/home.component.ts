@@ -5,6 +5,8 @@ import { ProjectDataService } from '../../services/project-data.service';
 import { ProjectListService } from '../../services/project-list.service';
 import { Title } from '@angular/platform-browser';
 import { ProjectData } from 'src/app/models/projects';
+import { LangService } from 'src/app/services/lang.service';
+import { Lang } from 'src/app/models/lang';
 
 @Component({
   selector: 'app-home',
@@ -13,9 +15,12 @@ import { ProjectData } from 'src/app/models/projects';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public loginService: LoginDataService, private router:Router, private projectData: ProjectDataService, private projectList: ProjectListService, private titleService: Title) { 
+  public lang: Lang = new Lang();
+  constructor(public loginService: LoginDataService, private router:Router, private projectData: ProjectDataService, private projectList: ProjectListService, private titleService: Title, private langService: LangService) { 
     this.titleService.setTitle(`MPM - Home`)
+    this.lang = this.langService.getLang();
   }
+
 
   ngOnInit(): void {
 

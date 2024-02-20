@@ -2,22 +2,23 @@
     <div class="container-xxl bd-gutter pt-md-1 pb-md-4">
         <div class="row">
             <div class="col-xl-8">
-                <h1 class="bd-title mt-0">My Proyect Manager</h1>
-                <p class="bd-lead">Where your ideas find their way.</p>
+                <h1 class="bd-title mt-0">{{lang.home_title}}</h1>
+                <p class="bd-lead">{{lang.home_slogan}}</p>
                 <div class="d-flex flex-column flex-md-row gap-3">
                     <a routerLink="register"
                         class="btn button-register" [class.btn-ghost]="loginService.isLogin()" [class.disabled]="loginService.isLogin()">
-                        Create Account
+                        {{lang.home_register}}
                     </a>
                     <a routerLink="login"
                         class="btn button-login" [class.btn-ghost]="loginService.isLogin()" [class.disabled]="loginService.isLogin()">
-                        Login Account
+                        {{lang.home_login}}
                     </a>
                 </div>
             </div>
         </div>
     </div>
 </header>
+
 <main class="bd-content order-1 py-5" id="content">
     <div class="container-xxl bd-gutter">
 
@@ -104,6 +105,7 @@
             <a href="https://www.facebook.com/profile.php?id=61556829230300" class="social-icon" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-facebook"></i> <!-- Icono de Facebook -->
             </a>
+            &nbsp;
             <a href="https://twitter.com/mpm98390" class="social-icon" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-twitter"></i> <!-- Icono de Twitter -->
             </a>
