@@ -20,6 +20,7 @@ import { ProjectGuard } from './guards/project.guard';
 import { InformationAccountComponent } from './components/information-account/information-account.component';
 import { MembersListComponent } from './components/members-list/members-list.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 
 
@@ -118,6 +119,16 @@ const routes: Routes = [
   {
     path: 'project/:idProject/error',
     component: ErrorPageComponent
+  },
+  {
+    path: 'projects',
+    component: ProjectsPageComponent,
+    canActivate: [LoginGuard],
+    data: { breadcrumb: 'Projects' }
+  },
+  {
+    path:'about-us',
+    component: AboutUsComponent,
   }
 ];
 
