@@ -16,7 +16,7 @@ import { Lang } from 'src/app/models/lang';
 export class HomeComponent implements OnInit {
 
   public lang: Lang = new Lang();
-  constructor(public loginService: LoginDataService, private router:Router, private projectData: ProjectDataService, private projectList: ProjectListService, private titleService: Title, private langService: LangService) { 
+  constructor(public loginService: LoginDataService, private router: Router, private projectData: ProjectDataService, private projectList: ProjectListService, private titleService: Title, private langService: LangService) {
     this.titleService.setTitle(`MPM - Home`)
     this.lang = this.langService.getLang();
   }
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   }
 
   openActivity() {
-    if(this.loginService.isLogin()) {
+    if (this.loginService.isLogin()) {
       this.projectList.getListProjects().subscribe((data: Array<ProjectData>) => {
         const id = data[0].id;
         this.router.navigate(['/project', id]);
@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
   }
 
   openMembers() {
-    if(this.loginService.isLogin()) {
+    if (this.loginService.isLogin()) {
       this.projectList.getListProjects().subscribe((data: Array<ProjectData>) => {
         const id = data[0].id;
         this.router.navigate(['/project', id, 'members']);

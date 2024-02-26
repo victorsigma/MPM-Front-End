@@ -5,6 +5,8 @@ import { ProjectListService } from '../../services/project-list.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { accountPaths, defaultPaths, membersPaths, projectPaths, projectsPaths } from 'src/app/libs/paths';
 import { environment } from 'src/environments/environment';
+import { Lang } from 'src/app/models/lang';
+import { LangService } from 'src/app/services/lang.service';
 
 @Component({
   selector: 'app-header',
@@ -22,7 +24,9 @@ export class HeaderComponent implements OnInit {
   public patherPath: string = ''
   public appIcon: string = '';
 
-  constructor(private router:Router, public loginService:LoginDataService, private projectList:ProjectListService, private breakpointObserver: BreakpointObserver) {
+  public lang: Lang = new Lang();
+  constructor(private router:Router, public loginService:LoginDataService, private projectList:ProjectListService, private breakpointObserver: BreakpointObserver, private langService: LangService) {
+    this.lang = this.langService.getLang();
     this.appIcon = document.body.getAttribute('data-bs-theme') == 'dark' ? 'assets/img/mpm-logo-dark.png' : 'assets/img/mpm-logo-light.png';
     this.slideStyle = localStorage.getItem('slideStyle') == 'true' ? true : false;
     this.breakpointObserver.observe('(max-width: 992px)')

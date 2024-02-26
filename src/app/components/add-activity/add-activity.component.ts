@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { ActivityData, activityStatusData } from '../../models/ativities';
+import { ActivityData, ActivityDataPost, activityStatusData } from '../../models/ativities';
 import { ProjectData } from 'src/app/models/projects';
 import { ActivityDataService } from '../../services/activity-data.service';
 import { Router } from '@angular/router';
@@ -24,7 +24,7 @@ export class AddActivityComponent implements OnInit {
       rolesListProgrammer: new UntypedFormControl(false)
     }
   );
-  activity: ActivityData = new ActivityData();
+  activity: ActivityDataPost = new ActivityDataPost();
   statusType: Array<activityStatusData> = [];
   private url: string[] = []
   @Output() newActivity: EventEmitter<ActivityData> = new EventEmitter();
@@ -34,17 +34,6 @@ export class AddActivityComponent implements OnInit {
     this.url = this.router.url.split('/')
     this.activityService.getActivityStatusType().subscribe((data) => {
       this.statusType = data;
-      this.form = new UntypedFormGroup(
-        {
-          title: new UntypedFormControl(),
-          subtitle: new UntypedFormControl(),
-          status: new UntypedFormControl(1),
-          dateEnd: new UntypedFormControl(),
-          rolesListAnalyst: new UntypedFormControl(false),
-          rolesListDesigner: new UntypedFormControl(false),
-          rolesListProgrammer: new UntypedFormControl(false)
-        }
-      );
     })
   }
 
@@ -72,7 +61,7 @@ export class AddActivityComponent implements OnInit {
   }
 
   addCancel() {
-    this.toastr.error('Activity addition cancelled.', 'Operation Canceled');
+    //this.toastr.error('Activity addition cancelled.', 'Operation Canceled');
     this.reloadForm();
   }
 

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Modal } from 'bootstrap';
+import { Lang } from 'src/app/models/lang';
+import { LangService } from 'src/app/services/lang.service';
 import matchFieldsValidator from 'src/app/validators/matchFieldsValidator';
 
 @Component({
@@ -17,9 +19,10 @@ export class SecurityAccountComponent {
   }, {validators: matchFieldsValidator('userPassword', 'userPasswordConfirm') as ValidatorFn})
 
   public modal = { title: '', type: '' }
+  public lang: Lang = new Lang()
 
-  constructor() {
-    
+  constructor(private langService: LangService) {
+    this.lang = this.langService.getLang();
   }
 
   updatePassword() {
@@ -39,7 +42,7 @@ export class SecurityAccountComponent {
   }
 
   editPasswordModal() {
-    this.modal.title = 'Confirm user password change';
+    this.modal.title = this.lang.change_password;
     this.modal.type = 'password'
     const editModal = new Modal(document.getElementById('editModal') as Element);
     editModal.show(document.body)

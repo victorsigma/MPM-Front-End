@@ -13,7 +13,7 @@ export class LangService {
     this.browserLang = navigator.language;
 
     console.log(this.browserLang);
-    if(this.browserLang == 'es-MX' || this.browserLang == 'es-ES' || this.browserLang == 'es-419') {
+    if(this.browserLang.includes('es')) {
       this.lang = esMX;
     } else {
       this.lang = enEN;

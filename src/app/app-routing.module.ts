@@ -114,8 +114,6 @@ const routes: Routes = [
     component: RegisterSectionComponent,
     canActivate: [NoLoginGuard]
   },
-  { path: '**', component: ErrorPageComponent, canActivate: [ErrorGuard] },
-  { path: 'error', component: ErrorPageComponent },
   {
     path: 'project/:idProject/error',
     component: ErrorPageComponent
@@ -127,9 +125,12 @@ const routes: Routes = [
     data: { breadcrumb: 'Projects' }
   },
   {
-    path:'about-us',
+    path:'about',
     component: AboutUsComponent,
-  }
+    canActivate: [LoginGuard]
+  },
+  { path: '**', component: ErrorPageComponent, canActivate: [ErrorGuard] },
+  { path: 'error', component: ErrorPageComponent },
 ];
 
 const myRoutes = Object.freeze(JSON.parse(JSON.stringify(routes)));

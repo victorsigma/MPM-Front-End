@@ -28,20 +28,22 @@ export class ActivitiesPageComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    const { idProject } = this.activeRoute.snapshot.params
+    
 
+
+  }
+
+  ngOnInit(): void {
+    const { idProject } = this.activeRoute.snapshot.params
     this.projectData.getProjectById(idProject).subscribe((data: any) => {
-      this.project = data.project as ProjectData;
+      this.project = data.project as ProjectData || new ProjectData();
       this.userRol = data.rol.idRol;
-      loginService.rol = data.rol.idRol;
+      this.loginService.rol = data.rol.idRol;
       this.idProject = idProject;
       this.titleService.setTitle(`MPM - ${this.project.title}`)
     }, error => {
       this.router.navigate(['project', idProject, 'error'], {queryParams: { status: error.status}});
     })
-  }
-
-  ngOnInit(): void {
   }
 
   newActivity(activity: ActivityData) {

@@ -5,6 +5,8 @@ import { LoginDataService } from '../../services/login-data.service';
 import { Login, UserData } from '../../models/users';
 import { ProjectListService } from '../../services/project-list.service';
 import { Title } from '@angular/platform-browser';
+import { LangService } from 'src/app/services/lang.service';
+import { Lang } from 'src/app/models/lang';
 
 @Component({
   selector: 'app-login-section',
@@ -22,10 +24,12 @@ export class LoginSectionComponent implements OnInit {
   });
   appIcon: string = '';
 
+  public lang: Lang = new Lang();
   @Output() loginDate: EventEmitter<null> = new EventEmitter();
-  constructor(private loginService: LoginDataService, private toastr: ToastrService, private titleService: Title) {
+  constructor(private loginService: LoginDataService, private toastr: ToastrService, private titleService: Title, private langService: LangService) {
     this.appIcon = document.body.getAttribute('data-bs-theme') == 'dark' ? 'assets/img/mpm-logo-dark.png' : 'assets/img/mpm-logo-light.png';
     this.titleService.setTitle(`MPM - Login`)
+    this.lang = this.langService.getLang();
   }
 
   ngOnInit(): void {

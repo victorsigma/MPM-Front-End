@@ -1,0 +1,16 @@
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+* {
+    color: var(--text-color);
+}
+
+.links {
+    user-select: none;
+}
+
+.active {
+    color: rgb(66, 164, 255);
+}

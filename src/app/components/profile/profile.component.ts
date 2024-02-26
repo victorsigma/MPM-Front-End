@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Modal } from 'bootstrap';
+import { Lang } from 'src/app/models/lang';
 import { icon, theme } from 'src/app/models/profile';
+import { LangService } from 'src/app/services/lang.service';
 import { LoginDataService } from 'src/app/services/login-data.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { environment } from 'src/environments/environment';
@@ -21,7 +23,9 @@ export class ProfileComponent {
   private newTheme: theme = new theme();
   private newIcon: icon = new icon();
 
-  constructor(public loginService:LoginDataService, private themeService: ProfileService) {
+  public lang: Lang = new Lang()
+  constructor(public loginService:LoginDataService, private themeService: ProfileService, private langService: LangService) {
+    this.lang = this.langService.getLang();
     this.themeService.getThemes().subscribe((data) => {
       this.themes = data;
     })

@@ -16,7 +16,7 @@ export class AppComponent {
       localStorage.setItem('theme', this.loginService.getUserInfo().selectedTheme)
       document.body.setAttribute('data-bs-theme', this.loginService.getUserInfo().selectedTheme)
     } else {
-      document.body.setAttribute('data-bs-theme', localStorage.getItem('theme') ? `${localStorage.getItem('theme')}` : 'light')
+      document.body.setAttribute('data-bs-theme', localStorage.getItem('theme') ? `${localStorage.getItem('theme')}` : 'dark')
     }
     this.breakpointObserver.observe('(max-width: 992px)')
     .subscribe(result => {

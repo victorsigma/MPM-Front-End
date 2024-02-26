@@ -25,7 +25,6 @@ export class ActivityItemComponent implements OnInit {
 
   onModalData(): void {
     this.dataServiceModal.setModalActivity(this.activity);
-    console.log(this.activity)
     this.update.emit();
   }
 

@@ -1,19 +1,21 @@
 <div>
     <nav class="nv-projct navbar navbar-dark">
         <div class="container-fluid content-project">
-            <h1 class="navbar-brand navbar-title">&nbsp;&nbsp;&nbsp;Projects&nbsp;&nbsp;</h1>
+            <h1 class="navbar-brand navbar-title">{{lang.projects}}</h1>
             <ul class="navbar-nav d-flex">
                 <li class="nav-item">
                     <button class="button-options"
                         data-bs-toggle="modal"
-                        data-bs-target="#createProject" >Create <i class="fa-solid fa-plus fa-xs"></i></button>
+                        data-bs-target="#createProject" >{{lang.projects_create}} <i class="fa-solid fa-plus fa-xs"></i></button>
                 </li>
             </ul>
         </div>
     </nav>
     <div class="container-fluid">
-        <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar proyectos..." class="text mb-3">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="{{lang.projects_search}}" class="text mb-3">
         <app-project-item *ngFor="let project of filteredProjects" [project]="project"></app-project-item>
     </div>
     <app-add-project></app-add-project>
 </div>
+
+<app-load-screen></app-load-screen>

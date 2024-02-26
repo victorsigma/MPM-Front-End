@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { UntypedFormGroup, UntypedFormControl, ValidatorFn, Validators } from '@angular/forms';
-import matchFieldsValidator from 'src/app/validators/matchFieldsValidator';
 import { ToastrService } from 'ngx-toastr';
 import { LoginDataService } from '../../services/login-data.service';
-import { User } from 'src/app/models/users';
-import { Modal } from 'bootstrap';
 import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { LangService } from 'src/app/services/lang.service';
+import { Lang } from 'src/app/models/lang';
 
 
 @Component({
@@ -21,8 +18,10 @@ export class AccountPageComponent implements OnInit {
 
   public isAriaExpanded: boolean = false;
 
-  constructor(public loginService: LoginDataService, private toastr: ToastrService, private breakpointObserver: BreakpointObserver, private titleService: Title, private router: Router) {
+  public lang: Lang = new Lang()
+  constructor(public loginService: LoginDataService, private toastr: ToastrService, private breakpointObserver: BreakpointObserver, private titleService: Title, private langService: LangService) {
     this.titleService.setTitle(`MPM - Account`)
+    this.lang = this.langService.getLang()
     this.breakpointObserver.observe('(max-width: 992px)')
     .subscribe(result => {
       this.isMobile = result.matches;

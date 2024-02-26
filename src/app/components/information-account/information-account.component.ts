@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Modal } from 'bootstrap';
+import { Lang } from 'src/app/models/lang';
 import { User } from 'src/app/models/users';
+import { LangService } from 'src/app/services/lang.service';
 import { LoginDataService } from 'src/app/services/login-data.service';
 import matchFieldsValidator from 'src/app/validators/matchFieldsValidator';
 
@@ -31,8 +33,9 @@ export class InformationAccountComponent {
 
   public user: User = new User()
 
-  constructor(public loginService: LoginDataService) {
-
+  public lang: Lang = new Lang()
+  constructor(public loginService: LoginDataService, private langService: LangService) {
+    this.lang = this.langService.getLang()
   }
 
   updateName() {
@@ -88,21 +91,21 @@ export class InformationAccountComponent {
   }
 
   editNameModal() {
-    this.modal.title = 'Confirm user name change';
+    this.modal.title = this.lang.change_user_name;
     this.modal.type = 'name'
     const editModal = new Modal(document.getElementById('editModal') as Element);
     editModal.show(document.body)
   }
 
   editEmailModal() {
-    this.modal.title = 'Confirm user email change';
+    this.modal.title = this.lang.change_email_address;
     this.modal.type = 'email'
     const editModal = new Modal(document.getElementById('editModal') as Element);
     editModal.show(document.body)
   }
 
   editPhoneModal() {
-    this.modal.title = 'Confirm user phone change';
+    this.modal.title = this.lang.change_phone;
     this.modal.type = 'phone'
     const editModal = new Modal(document.getElementById('editModal') as Element);
     editModal.show(document.body)

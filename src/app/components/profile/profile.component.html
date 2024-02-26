@@ -11,7 +11,7 @@
 
 <div class="content" *ngIf="showIcons">
     <div class="icons" >
-        <h2>Icons</h2>
+        <h2>{{lang.icons}}</h2>
     
         <div class="centered-content">
             <div *ngFor="let item of icons" class="card-aling-p card-center" (click)="changeIcon(item)">
@@ -24,7 +24,7 @@
 </div>
 <div class="content" *ngIf="!showIcons">
     <div class="themes">
-        <h2>Themes</h2>
+        <h2>{{lang.themes}}</h2>
     
         <div>
             <div *ngFor="let item of themes" class="card-aling-p card-center" (click)="testTheme(item)">
@@ -47,12 +47,12 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="editIconLabel">Are you sure you want to change the icon?</h1>
+                <h1 class="modal-title fs-5" id="editIconLabel">{{lang.change_icon}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body d-flex" style="justify-content: flex-end;">
-                <button type="button" class="btn btn-delete" data-bs-dismiss="modal" style="margin-right: 6px;">Canncel</button>
-                <button type="button" class="btn btn-update" data-bs-dismiss="modal" (click)="confirmIcon()">Save changes</button>
+                <button type="button" class="btn btn-delete" data-bs-dismiss="modal" style="margin-right: 6px;">{{lang.action_cancel}}</button>
+                <button type="button" class="btn btn-update" data-bs-dismiss="modal" (click)="confirmIcon()">{{lang.action_save_changes}}</button>
             </div>
         </div>
     </div>
@@ -62,12 +62,12 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="editIconLabel">Are you sure you want to change the theme?</h1>
+                <h1 class="modal-title fs-5" id="editIconLabel">{{lang.change_theme}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="cancelTheme()"></button>
             </div>
             <div class="modal-body d-flex" style="justify-content: flex-end;">
-                <button type="button" class="btn btn-delete" data-bs-dismiss="modal" (click)="cancelTheme()" style="margin-right: 6px;">Canncel</button>
-                <button type="button" class="btn btn-update" data-bs-dismiss="modal" (click)="confirmTheme()">Save changes</button>
+                <button type="button" class="btn btn-delete" data-bs-dismiss="modal" (click)="cancelTheme()" style="margin-right: 6px;">{{lang.action_cancel}}</button>
+                <button type="button" class="btn btn-update" data-bs-dismiss="modal" (click)="confirmTheme()">{{lang.action_save_changes}}</button>
             </div>
         </div>
     </div>

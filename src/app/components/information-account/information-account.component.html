@@ -7,7 +7,7 @@
                     <div class="input-group w-100">
                         <div class="col-6 input-info">
                             <div class="col-10">
-                                <label class="form-label" for="name">User Name</label>
+                                <label class="form-label" for="name">{{lang.user_name}}</label>
                                 <input class="text" name="name" type="text" disabled
                                     placeholder="{{loginService.getUserInfo().userName}}" />
                             </div>
@@ -20,8 +20,7 @@
 
                         <div class="col-6 input-info">
                             <div class="col-10">
-                                <label class="form-label" for="email">Email
-                                    address</label>
+                                <label class="form-label" for="email">{{lang.email_address}}</label>
                                 <input class="text" name="email" type="text" disabled
                                     placeholder="{{loginService.getUserInfo().userMail}}" />
                             </div>
@@ -36,7 +35,7 @@
                     <div class="input-group w-100">
                         <div class="col-6 input-info">
                             <div class="col-10">
-                                <label for="phone" class="form-label">Phone</label>
+                                <label for="phone" class="form-label">{{lang.phone}}</label>
                                 <input type="tel" class="text" disabled
                                     placeholder="{{loginService.getUserInfo().phoneNumber}}">
                             </div>
@@ -66,63 +65,60 @@
                 <div *ngIf="modal.type == 'name'" id="editName">
                     <form [formGroup]="formName" (ngSubmit)="updateName()">
                         <div class="mb-3">
-                            <label class="form-label" for="name-update">User Name</label>
+                            <label class="form-label" for="name-update">{{lang.user_name}}</label>
                             <input class="text" id="name-update" name="name-update" type="text"
                                 formControlName="userName" placeholder="{{loginService.getUserInfo().userName}}"
                                 required />
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="name-update-c">Confirm
-                                new User Name</label>
+                            <label class="form-label" for="name-update-c">{{lang.new_user_name}}</label>
                             <input class="text" id="name-update-c" name="name-update" type="text"
                                 formControlName="userNameConfirm" placeholder="{{loginService.getUserInfo().userName}}"
                                 required />
                         </div>
                         <div class="list-group card-body">
                             <button type="submit" [disabled]="this.formName.invalid" class="btn
-                                btn-update">Update</button>
+                                btn-update">{{lang.action_update}}</button>
                         </div>
                     </form>
                 </div>
                 <div *ngIf="modal.type == 'email'" id="editEmail">
                     <form [formGroup]="formEmail" (ngSubmit)="updateEmail()">
                         <div class="mb-3">
-                            <label class="form-label" for="name-update">Email address</label>
+                            <label class="form-label" for="name-update">{{lang.email_address}}</label>
                             <input class="text" id="email-update" name="name-update" type="text"
                                 formControlName="userEmail" placeholder="{{loginService.getUserInfo().userMail}}"
                                 required />
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="name-update-c">Confirm
-                                new Email address</label>
+                            <label class="form-label" for="name-update-c">{{lang.new_email}}</label>
                             <input class="text" id="email-update-c" name="email-update" type="text"
                                 formControlName="userEmailConfirm" placeholder="{{loginService.getUserInfo().userMail}}"
                                 required />
                         </div>
                         <div class="list-group card-body">
                             <button type="submit" [disabled]="this.formEmail.invalid" class="btn
-                                btn-update">Update</button>
+                                btn-update">{{lang.action_update}}</button>
                         </div>
                     </form>
                 </div>
                 <div *ngIf="modal.type == 'phone'" id="editPhone">
                     <form [formGroup]="formPhone" (ngSubmit)="updatePhone()">
                         <div class="mb-3">
-                            <label class="form-label" for="phone-update">User Phone</label>
+                            <label class="form-label" for="phone-update">{{lang.phone}}</label>
                             <input class="text" id="phone-update" name="phone-update" type="text"
                                 formControlName="userPhone" placeholder="{{loginService.getUserInfo().phoneNumber}}"
                                 required />
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="phone-update-c">Confirm
-                                new User Name</label>
+                            <label class="form-label" for="phone-update-c">{{lang.new_phone}}</label>
                             <input class="text" id="phone-update-c" name="phone-update" type="text"
                                 formControlName="userPhoneConfirm"
                                 placeholder="{{loginService.getUserInfo().phoneNumber}}" required />
                         </div>
                         <div class="list-group card-body">
                             <button type="submit" [disabled]="this.formPhone.invalid" class="btn
-                                btn-update">Update</button>
+                                btn-update">{{lang.action_update}}</button>
                         </div>
                     </form>
                 </div>

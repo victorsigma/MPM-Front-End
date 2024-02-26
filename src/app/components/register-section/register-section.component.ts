@@ -5,6 +5,8 @@ import { UserData } from '../../models/users';
 import { UsersListService } from 'src/app/services/users-list.service';
 import { Title } from '@angular/platform-browser';
 import { ladas } from 'src/app/libs/ladas';
+import { LangService } from 'src/app/services/lang.service';
+import { Lang } from 'src/app/models/lang';
 
 
 @Component({
@@ -31,9 +33,11 @@ export class RegisterSectionComponent implements OnInit {
   });
   appIcon: string = '';
 
-  constructor(private userList: UsersListService, private toastr: ToastrService, private titleService: Title) {
+  public lang: Lang = new Lang();
+  constructor(private userList: UsersListService, private toastr: ToastrService, private titleService: Title, private langService: LangService) {
     this.appIcon = document.body.getAttribute('data-bs-theme') == 'dark' ? 'assets/img/mpm-logo-dark.png' : 'assets/img/mpm-logo-light.png';
     this.titleService.setTitle(`MPM - Register`)
+    this.lang = this.langService.getLang();
     this.form = new FormGroup({
       user: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(15), Validators.pattern(/^[a-zA-Z0-9]+$/)]),
       email: new FormControl('', [Validators.email, Validators.required]),

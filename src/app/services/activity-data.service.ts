@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivityData } from '../models/ativities';
+import { ActivityData, ActivityDataPost } from '../models/ativities';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { LoginDataService } from './login-data.service';
@@ -28,7 +28,7 @@ export class ActivityDataService {
     return this.http.get(this.myAppUrl + this.myApiUrl + `-status`)
   }
 
-  addActivity(activity: ActivityData) {
+  addActivity(activity: ActivityDataPost) {
     return this.http.post(this.myAppUrl + this.myApiUrl, activity)
   }
 

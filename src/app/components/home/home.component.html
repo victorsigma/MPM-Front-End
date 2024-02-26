@@ -20,100 +20,74 @@
 </header>
 
 <main class="bd-content order-1 py-5" id="content">
-    <div class="container-xxl bd-gutter">
+    <div class="container-xl bd-gutter">
 
         <div class="row g-lg-5 mb-5">
             <div class="bd-content col-lg-3">
-                <h2 id="snippets">Create projects</h2>
-                <p>Create a team project with this project management
-                    tool.</p>
+                <h2 id="snippets">{{lang.home_create_projects}}</h2>
+                <p>{{lang.home_create_team_project_tool}}</p>
             </div>
 
-            <div class="col-lg-9" style="padding-right: 0px; padding-left: 0px;">
+            <div class="col-lg-8">
                 <div class="row">
-                    <div class="col-sm-6 col-md-4 mb-3">
+                    <div class="p-2 col-sm-4 col-md-4 mb-2">
                         <a class="d-block" routerLink="projects">
                             <img class="img-thumbnail mb-3"
                                 src="./assets/img/caps/projects.png"
-                                alt="" width="480" height="300">
-                            <h3 class="h5 mb-1">Projects</h3>
+                                alt="">
+                            <h3 class="h5 mb-1">{{lang.projects}}</h3>
                         </a>
-                        <p class="text-sub">Create several projects at
-                            once.</p>
+                        <p class="text-sub">{{lang.home_create_several_projects}}</p>
                     </div>
 
 
-                    <div class="col-sm-6 col-md-4 mb-3">
+                    <div class="p-2 col-sm-4 col-md-4 mb-2">
                         <a class="d-block"
                             (click)="openActivity()">
                             <img class="img-thumbnail mb-3"
                                 src="./assets/img/caps/activities.png"
-                                alt="" width="480" height="300">
-                            <h3 class="h5 mb-1">Activities</h3>
+                                alt="">
+                            <h3 class="h5 mb-1">{{lang.activities}}</h3>
                         </a>
-                        <p class="text-sub">Create activities for each
-                            of your projects.</p>
+                        <p class="text-sub">{{lang.home_create_activities}}</p>
                     </div>
 
 
-                    <div class="col-sm-6 col-md-4 mb-3">
+                    <div class="p-2 col-sm-4 col-md-4 mb-2">
                         <a class="d-block"
                             (click)="openActivity()">
                             <img class="img-thumbnail mb-3"
                                 src="./assets/img/caps/change_project.png"
-                                alt="" width="480" height="300">
-                            <h3 class="h5 mb-1">Modify your project</h3>
+                                alt="">
+                            <h3 class="h5 mb-1">{{lang.home_modify_project}}</h3>
                         </a>
-                        <p class="text-sub">Make changes to modify
-                            your project.</p>
+                        <p class="text-sub">{{lang.home_make_changes_modify_project}}</p>
                     </div>
 
 
-                    <div class="col-sm-6 col-md-4 mb-3">
+                    <div class="p-2 col-sm-4 col-md-4 mb-2">
                         <a class="d-block"
                             (click)="openMembers()">
                             <img class="img-thumbnail mb-3"
                                 src="./assets/img/caps/add_remove_member.png"
-                                alt="" width="480" height="300">
-                            <h3 class="h5 mb-1">Add and remove Members</h3>
+                                alt="">
+                            <h3 class="h5 mb-1">{{lang.home_add_remove_members}}</h3>
                         </a>
-                        <p class="text-sub">You can add or remove your
-                            project members.</p>
+                        <p class="text-sub">{{lang.home_add_remove_project_members}}</p>
                     </div>
-                    <div class="col-sm-6 col-md-4 mb-3">
+                    <div class="p-2 col-sm-4 col-md-4 mb-2">
                         <a class="d-block"
                             (click)="openActivity()">
                             <img class="img-thumbnail mb-3"
                                 src="./assets/img/caps/edit_activity.png"
-                                alt="" width="480" height="300">
-                            <h3 class="h5 mb-1">Changes activity
-                                elements</h3>
+                                alt="">
+                            <h3 class="h5 mb-1">{{lang.home_change_activity_elements}}</h3>
                         </a>
-                        <p class="text-sub">You can edit elements of
-                            your activities in a simple way.</p>
+                        <p class="text-sub">{{lang.home_edit_activity_elements}}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <footer class="container">
-        <p class="float-end">
-            <a href="#">Back to top</a>
-        </p>
-        <p>&copy; 2022–2024</p>
-        <p>
-            <a href="https://www.facebook.com/profile.php?id=61556829230300" class="social-icon" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-facebook"></i> <!-- Icono de Facebook -->
-            </a>
-            &nbsp;
-            <a href="https://twitter.com/mpm98390" class="social-icon" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-twitter"></i> <!-- Icono de Twitter -->
-            </a>
-            &nbsp;
-            <a routerLink="about-us" target="_blank">¿Quiénes Somos?</a>
-
-        </p>
-        
-
-    </footer>
+    <app-footer></app-footer>
 </main>

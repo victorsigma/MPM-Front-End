@@ -40,6 +40,8 @@ import { PathButtonSmallComponent } from './components/path-button-small/path-bu
 import { ProfileComponent } from './components/profile/profile.component';
 import { environment } from 'src/environments/environment';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LoadScreenComponent } from './components/load-screen/load-screen.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,9 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     PathButtonFullComponent,
     PathButtonSmallComponent,
     ProfileComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    FooterComponent,
+    LoadScreenComponent
   ],
   imports: [
     BrowserModule,
