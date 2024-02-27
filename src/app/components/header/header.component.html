@@ -8,6 +8,7 @@
             </button>
             <img class="navbar-brand" [class.m-title]="isMobile" id="offcanvasExampleLabel"
                 [src]="appIcon" alt="mpm-logo" routerLink="/" style="max-height: 40px;">
+                <app-breadcrumbs></app-breadcrumbs>
             <li *ngIf="loginService.isLogin() && isMobile" class="dropdown">
                 <a class="btn btn-icon" data-bs-toggle="dropdown" #btnIconMobile data-bs-auto-close="outside"><img
                         src="{{iconPathSmall+userIcon}}" alt="..."></a>

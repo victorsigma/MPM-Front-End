@@ -22,57 +22,61 @@ import { MembersListComponent } from './components/members-list/members-list.com
 import { ProfileComponent } from './components/profile/profile.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 
+import { enEN, esMX } from "./libs/langs";
 
+const browserLang = navigator.language;
+
+const lang = browserLang.includes('es') ? esMX : enEN;
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,data:{titulo:lang.pather_home}
   },
   {
     path: 'projects',
-    component: ProjectsPageComponent,
+    component: ProjectsPageComponent,data:{titulo:lang.pather_projects},
     canActivate: [LoginGuard]
   },
   {
     path: 'project/:idProject',
-    component: ActivitiesPageComponent,
+    component: ActivitiesPageComponent,data:{titulo:lang.pather_all},
     canActivate: [LoginGuard],
     children: [
       {
         path: '',
-        component: ActivitiesListComponent
+        component: ActivitiesListComponent, data:{titulo:lang.pather_all}
       },
       {
         path: 'unassigned',
-        component: ActivitiesListComponent
+        component: ActivitiesListComponent, data:{titulo:lang.pather_unassigned},
       },
       {
         path: 'inprogress',
-        component: ActivitiesListComponent
+        component: ActivitiesListComponent, data:{titulo:lang.pather_in_progress},
       },
       {
         path: 'completed',
-        component: ActivitiesListComponent
+        component: ActivitiesListComponent,data:{titulo:lang.pather_completed}
       },
       {
         path: 'pause',
-        component: ActivitiesListComponent
+        component: ActivitiesListComponent, data:{titulo:lang.pather_pause}
       }
     ]
   },
   {
     path: 'project/:idProject/members',
-    component: ProjectMembersComponent,
+    component: ProjectMembersComponent,data:{titulo:lang.pather_members},
     canActivate: [LoginGuard],
     children: [
       {
         path: '',
-        component: MembersListComponent
+        component: MembersListComponent, data:{titulo:lang.pather_members},
       },
       {
         path: 'add',
-        component: AddMemberComponent
+        component: AddMemberComponent,data:{titulo:lang.pather_add}
       }
     ]
   },
@@ -87,50 +91,49 @@ const routes: Routes = [
   },
   {
     path: 'account',
-    component: AccountPageComponent,
+    component: AccountPageComponent,data:{titulo:lang.pather_information},
     canActivate: [LoginGuard],
     children: [
       {
         path: '',
-        component: InformationAccountComponent
+        component: InformationAccountComponent,data:{titulo:lang.pather_information}
       },
       {
         path: 'profile',
-        component: ProfileComponent
+        component: ProfileComponent, data:{titulo:lang.pather_profile}
       },
       {
         path: 'security',
-        component: SecurityAccountComponent
+        component: SecurityAccountComponent, data:{titulo:lang.pather_security}
       }
     ]
   },
   {
     path: 'login',
-    component: LoginSectionComponent,
+    component: LoginSectionComponent,data:{titulo:lang.login},
     canActivate: [NoLoginGuard]
   },
   {
     path: 'register',
-    component: RegisterSectionComponent,
+    component: RegisterSectionComponent,data:{titulo:lang.register},
     canActivate: [NoLoginGuard]
   },
   {
-    path: 'project/:idProject/error',
+    path: 'project/:idProject/error',data:{titulo:lang.pather_error},
     component: ErrorPageComponent
   },
   {
     path: 'projects',
-    component: ProjectsPageComponent,
+    component: ProjectsPageComponent,data:{titulo:lang.pather_projects},
     canActivate: [LoginGuard],
-    data: { breadcrumb: 'Projects' }
   },
   {
     path:'about',
-    component: AboutUsComponent,
+    component: AboutUsComponent,data:{titulo:lang.footer_about_us},
     canActivate: [LoginGuard]
   },
   { path: '**', component: ErrorPageComponent, canActivate: [ErrorGuard] },
-  { path: 'error', component: ErrorPageComponent },
+  { path: 'error', component: ErrorPageComponent, data:{titulo:lang.pather_error} },
 ];
 
 const myRoutes = Object.freeze(JSON.parse(JSON.stringify(routes)));

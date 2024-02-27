@@ -42,6 +42,8 @@ import { environment } from 'src/environments/environment';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoadScreenComponent } from './components/load-screen/load-screen.component';
+import { RouterModule } from '@angular/router';
+import { BreadcrumbcrumbComponent } from './components/breadcrumb/breadcrumb';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,8 @@ import { LoadScreenComponent } from './components/load-screen/load-screen.compon
     ProfileComponent,
     AboutUsComponent,
     FooterComponent,
-    LoadScreenComponent
+    LoadScreenComponent,
+    BreadcrumbcrumbComponent
   ],
   imports: [
     BrowserModule,
@@ -85,6 +88,7 @@ import { LoadScreenComponent } from './components/load-screen/load-screen.compon
     ToastrModule.forRoot(), // ToastrModule added
     HttpClientModule, 
     FormsModule,
+    RouterModule,
     AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [
