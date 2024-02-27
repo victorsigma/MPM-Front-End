@@ -45,9 +45,17 @@ export class ProjectsPageComponent implements OnInit {
     this.loadScreenModal.hide();
   }
 
-  get filteredProjects(): ProjectData[] {
+  /*get filteredProjects(): ProjectData[] {
     return this.projectList.filter(project =>
       project.title.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
+  }*/
+  get filteredProjects(): ProjectData[] {
+    return this.projectList.filter(project =>
+      project.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      project.subtitle.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      project.owner.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
   }
+  
 }
