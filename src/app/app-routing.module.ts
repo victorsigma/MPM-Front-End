@@ -24,6 +24,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 
 import { enEN, esMX } from "./libs/langs";
 import { SitemapComponent } from './components/sitemap/sitemap.component';
+import { PrivacynoticeComponent } from './components/privacynotice/privacynotice.component';
 
 const browserLang = navigator.language;
 
@@ -136,6 +137,11 @@ const routes: Routes = [
   {
     path:'sitemap',
     component: SitemapComponent,data:{titulo:lang.pather_sitemap},
+    canActivate: [LoginGuard]
+  },
+  {
+    path:'privacite',
+    component: PrivacynoticeComponent,data:{titulo:lang.pather_privacite},
     canActivate: [LoginGuard]
   },
   { path: '**', component: ErrorPageComponent, canActivate: [ErrorGuard] },

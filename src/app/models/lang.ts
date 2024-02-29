@@ -36,6 +36,7 @@ export class Lang {
     pather_security: string = '';
     pather_sitemap: string = '';
     pather_error: string = '';
+    pather_privacite: string = '';
 
 
     // Textos de la página de projectos
