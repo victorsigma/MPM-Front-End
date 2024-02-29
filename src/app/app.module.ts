@@ -44,6 +44,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoadScreenComponent } from './components/load-screen/load-screen.component';
 import { RouterModule } from '@angular/router';
 import { BreadcrumbcrumbComponent } from './components/breadcrumb/breadcrumb';
+import { SitemapComponent } from './components/sitemap/sitemap.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { BreadcrumbcrumbComponent } from './components/breadcrumb/breadcrumb';
     AboutUsComponent,
     FooterComponent,
     LoadScreenComponent,
-    BreadcrumbcrumbComponent
+    BreadcrumbcrumbComponent,
+    SitemapComponent
   ],
   imports: [
     BrowserModule,

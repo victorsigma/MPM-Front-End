@@ -23,6 +23,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 
 import { enEN, esMX } from "./libs/langs";
+import { SitemapComponent } from './components/sitemap/sitemap.component';
 
 const browserLang = navigator.language;
 
@@ -130,6 +131,11 @@ const routes: Routes = [
   {
     path:'about',
     component: AboutUsComponent,data:{titulo:lang.footer_about_us},
+    canActivate: [LoginGuard]
+  },
+  {
+    path:'sitemap',
+    component: SitemapComponent,data:{titulo:lang.pather_sitemap},
     canActivate: [LoginGuard]
   },
   { path: '**', component: ErrorPageComponent, canActivate: [ErrorGuard] },

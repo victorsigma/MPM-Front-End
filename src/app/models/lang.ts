@@ -34,6 +34,7 @@ export class Lang {
     pather_information: string = '';
     pather_profile: string = '';
     pather_security: string = '';
+    pather_sitemap: string = '';
     pather_error: string = '';
 
 
