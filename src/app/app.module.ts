@@ -46,6 +46,8 @@ import { RouterModule } from '@angular/router';
 import { BreadcrumbcrumbComponent } from './components/breadcrumb/breadcrumb';
 import { SitemapComponent } from './components/sitemap/sitemap.component';
 import { PrivacynoticeComponent } from './components/privacynotice/privacynotice.component';
+import { RecaptchaModule } from "ng-recaptcha";
+
 
 @NgModule({
   declarations: [
@@ -86,6 +88,7 @@ import { PrivacynoticeComponent } from './components/privacynotice/privacynotice
   ],
   imports: [
     BrowserModule,
+    RecaptchaModule,
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule, // required animations module

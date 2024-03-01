@@ -9,13 +9,12 @@
             <div class="login-header">
                 <h1 class="modal-title" id="loginModalLabel">{{lang.login}}</h1>
             </div>
-        
+
             <div class="login-body">
                 <form [formGroup]="form" (ngSubmit)="loginSend()">
                     <div class="mb-3">
                         <label for="Email" class="form-label">{{lang.email_address}} - {{lang.user_name}}</label>
-                        <input formControlName="userNameOrEmail" type="email" class="text"
-                            id="Email name"
+                        <input formControlName="userNameOrEmail" type="email" class="text" id="Email name"
                             aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
@@ -26,7 +25,12 @@
                         <input type="checkbox" formControlName="remember" id="Remember">
                         <label for="Remember">{{lang.remember}}</label>
                     </div>
+                    <br>
+                    <div class="captcha-container">
+                        <re-captcha (resolved)="resolved($event)" siteKey="6Lfwv4YpAAAAAM7h7Z7uzVgP5wsAYzUn_r1yRP8l"></re-captcha>
+                    </div>
                     <div class="list-group card-body">
+                        <br>
                         <button type="submit" class="btn button-login" [disabled]="form.invalid">{{lang.login}}</button>
                     </div>
                 </form>

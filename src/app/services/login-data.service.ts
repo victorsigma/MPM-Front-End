@@ -56,6 +56,10 @@ export class LoginDataService {
     return this.http.post<{value: boolean}>(`${this.myAppUrl}${this.myApiUrlV}`, this.getToken())
   }
 
+  public verifyCapcha(verifyToken: any): Observable<{success: boolean}> {
+    return this.http.post<{success: boolean}>('https://www.google.com/recaptcha/api/siteverify', verifyToken)
+  }
+
   public setToken(user: Jwt): void {
     this.status = true;
     this.token = user;

@@ -88,4 +88,9 @@
         padding: 20px;
         margin-top: 10px;
     }
+    .captcha-container{
+        display: flex;
+        justify-content: space-around
+    }
+   
 }

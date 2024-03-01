@@ -17,6 +17,7 @@ export class LoginSectionComponent implements OnInit {
 
   isLogin: boolean = false;
   users: UserData[] = [];
+  captchaResponse: boolean = false;
   form: FormGroup = new FormGroup({
     userNameOrEmail: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[0-9]).{6,}$/)]),
@@ -63,5 +64,13 @@ export class LoginSectionComponent implements OnInit {
       password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[0-9]).{6,}$/)]),
       remember: new FormControl()
     });
+  }
+
+  resolved(captchaResponse: any) {
+    console.log(captchaResponse)
+    this.loginService.verifyCapcha({secret: '6Lfwv4YpAAAAAM7h7Z7uzVgP5wsAYzUn_r1yRP8l', response: captchaResponse}).subscribe((data) => {
+      this.captchaResponse = data.success;
+      console.log(data);
+    })
   }
 }
