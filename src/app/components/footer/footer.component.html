@@ -3,26 +3,28 @@
         <p class="d-flex">
             <a (click)="gotoTop()">{{lang.footer_back_to_up}}</a>
         </p>
-        <p class="d-flex">
-            
-        </p>
+        <div class="d-flex">
+            <a routerLink="/sitemap" (click)="gotoTop()" rel="noopener noreferrer" routerLinkActive="active">
+                {{lang.pather_sitemap}}
+            </a>
+            <p>&nbsp;|&nbsp;</p>
+            <a routerLink="/privacy" (click)="gotoTop()" rel="noopener noreferrer" routerLinkActive="active">
+                {{lang.pather_privacy}}
+            </a>
+        </div>
     </div>
     <p>&copy; 2022–2024</p>
     <p class="links">
-        <a href="https://www.facebook.com/profile.php?id=61556829230300" class="social-icon" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.facebook.com/profile.php?id=61556829230300" class="social-icon" target="_blank"
+            rel="noopener noreferrer">
             <i class="fab fa-facebook"></i> <!-- Icono de Facebook -->
         </a>
         &nbsp;
         <a href="https://twitter.com/mpm98390" class="social-icon" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-twitter"></i> <!-- Icono de Twitter -->
         </a>
-        &nbsp;
+        &nbsp;|&nbsp;
         <a routerLink="/about" (click)="gotoTop()" routerLinkActive="active">{{lang.footer_about_us}}</a>
-        <a routerLink="/sitemap" class="social-icon" target="_blank" rel="noopener noreferrer">
-            <p> Mapa del sitio</p>
-        </a> 
-        <a routerLink="/privacite" class="social-icon" target="_blank" rel="noopener noreferrer">
-        <p> Aviso de privacidad</p></a>
+
     </p>
-  
 </footer>

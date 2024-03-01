@@ -40,11 +40,14 @@
     max-width: 240px;
 }
 
+
 .slider-flex {
+    transition: max-width 0.2s ease-in-out, padding-inline 0.2s ease-in-out;
     max-width: 240px;
 }
 
 .slider-min {
+    transition: max-width 0.3s ease-in-out, padding-inline 0.3s ease-in-out;
     max-width: 74px;
     padding-inline: 3px;
 }

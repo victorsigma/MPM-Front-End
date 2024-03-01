@@ -33,52 +33,52 @@ const lang = browserLang.includes('es') ? esMX : enEN;
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,data:{titulo:lang.pather_home}
+    component: HomeComponent, data: { title: lang.pather_home }
   },
   {
     path: 'projects',
-    component: ProjectsPageComponent,data:{titulo:lang.pather_projects},
+    component: ProjectsPageComponent, data: { title: lang.pather_projects },
     canActivate: [LoginGuard]
   },
   {
     path: 'project/:idProject',
-    component: ActivitiesPageComponent,data:{titulo:lang.pather_all},
+    component: ActivitiesPageComponent, data: { title: lang.pather_all, parent: { title: lang.pather_projects, path: '/projects' } },
     canActivate: [LoginGuard],
     children: [
       {
         path: '',
-        component: ActivitiesListComponent, data:{titulo:lang.pather_all}
+        component: ActivitiesListComponent, data: { title: lang.pather_all, parent: { title: lang.pather_projects, path: '/projects' } }
       },
       {
         path: 'unassigned',
-        component: ActivitiesListComponent, data:{titulo:lang.pather_unassigned},
+        component: ActivitiesListComponent, data: { title: lang.pather_unassigned, parent: { title: lang.pather_projects, path: '/projects' } },
       },
       {
         path: 'inprogress',
-        component: ActivitiesListComponent, data:{titulo:lang.pather_in_progress},
+        component: ActivitiesListComponent, data: { title: lang.pather_in_progress, parent: { title: lang.pather_projects, path: '/projects' } },
       },
       {
         path: 'completed',
-        component: ActivitiesListComponent,data:{titulo:lang.pather_completed}
+        component: ActivitiesListComponent, data: { title: lang.pather_completed, parent: { title: lang.pather_projects, path: '/projects' } }
       },
       {
         path: 'pause',
-        component: ActivitiesListComponent, data:{titulo:lang.pather_pause}
+        component: ActivitiesListComponent, data: { title: lang.pather_pause, parent: { title: lang.pather_projects, path: '/projects' } }
       }
     ]
   },
   {
     path: 'project/:idProject/members',
-    component: ProjectMembersComponent,data:{titulo:lang.pather_members},
+    component: ProjectMembersComponent, data: { title: lang.pather_members, gfather: { title: lang.pather_projects, path: '/projects' }, parent: { title: lang.activities, path: '/..' } },
     canActivate: [LoginGuard],
     children: [
       {
         path: '',
-        component: MembersListComponent, data:{titulo:lang.pather_members},
+        component: MembersListComponent, data: { title: lang.pather_members, gfather: { title: lang.pather_projects, path: '/projects' }, parent: { title: lang.activities, path: '/..' } },
       },
       {
         path: 'add',
-        component: AddMemberComponent,data:{titulo:lang.pather_add}
+        component: AddMemberComponent, data: { title: lang.pather_add, ggfather: { title: lang.pather_projects, path: 'projects' }, gfather: { title: lang.activities, path: '/projects' }, parent: { title: lang.pather_members, path: '' } }
       }
     ]
   },
@@ -93,59 +93,56 @@ const routes: Routes = [
   },
   {
     path: 'account',
-    component: AccountPageComponent,data:{titulo:lang.pather_information},
+    component: AccountPageComponent, data: { title: lang.pather_information },
     canActivate: [LoginGuard],
     children: [
       {
         path: '',
-        component: InformationAccountComponent,data:{titulo:lang.pather_information}
+        component: InformationAccountComponent, data: { title: lang.pather_information }
       },
       {
         path: 'profile',
-        component: ProfileComponent, data:{titulo:lang.pather_profile}
+        component: ProfileComponent, data: { title: lang.pather_profile }
       },
       {
         path: 'security',
-        component: SecurityAccountComponent, data:{titulo:lang.pather_security}
+        component: SecurityAccountComponent, data: { title: lang.pather_security }
       }
     ]
   },
   {
     path: 'login',
-    component: LoginSectionComponent,data:{titulo:lang.login},
+    component: LoginSectionComponent, data: { title: lang.login },
     canActivate: [NoLoginGuard]
   },
   {
     path: 'register',
-    component: RegisterSectionComponent,data:{titulo:lang.register},
+    component: RegisterSectionComponent, data: { title: lang.register },
     canActivate: [NoLoginGuard]
   },
   {
-    path: 'project/:idProject/error',data:{titulo:lang.pather_error},
+    path: 'project/:idProject/error', data: { title: lang.pather_error },
     component: ErrorPageComponent
   },
   {
     path: 'projects',
-    component: ProjectsPageComponent,data:{titulo:lang.pather_projects},
+    component: ProjectsPageComponent, data: { title: lang.pather_projects },
     canActivate: [LoginGuard],
   },
   {
-    path:'about',
-    component: AboutUsComponent,data:{titulo:lang.footer_about_us},
-    canActivate: [LoginGuard]
+    path: 'about',
+    component: AboutUsComponent, data: { title: lang.footer_about_us }
   },
   {
-    path:'sitemap',
-    component: SitemapComponent,data:{titulo:lang.pather_sitemap},
-    canActivate: [LoginGuard]
+    path: 'sitemap',
+    component: SitemapComponent, data: { title: lang.pather_sitemap }
   },
   {
-    path:'privacite',
-    component: PrivacynoticeComponent,data:{titulo:lang.pather_privacite},
-    canActivate: [LoginGuard]
+    path: 'privacy',
+    component: PrivacynoticeComponent, data: { title: lang.pather_privacy }
   },
-  { path: '**', component: ErrorPageComponent, canActivate: [ErrorGuard] },
-  { path: 'error', component: ErrorPageComponent, data:{titulo:lang.pather_error} },
+  { path: '**', component: ErrorPageComponent, data: { title: lang.pather_error }, canActivate: [ErrorGuard] },
+  { path: 'error', component: ErrorPageComponent, data: { title: lang.pather_error } },
 ];
 
 const myRoutes = Object.freeze(JSON.parse(JSON.stringify(routes)));
@@ -155,16 +152,16 @@ export const replacePaths = (url: string) => {
 
   // Iterar sobre las rutas y agregar nombres de rutas hijas al array
   for (const route of myRoutes) {
-      if (route.children) {
-          for (const childRoute of route.children) {
-              childRouteNames.push(`${childRoute.path}`);
-          }
+    if (route.children) {
+      for (const childRoute of route.children) {
+        childRouteNames.push(`${childRoute.path}`);
       }
+    }
   }
 
   // Iterar sobre los nombres de las rutas hijas y reemplazar si se encuentran en el input
   for (const childRouteName of childRouteNames) {
-      url = url.replace(childRouteName, '');
+    url = url.replace(childRouteName, '');
   }
   return url;
 }

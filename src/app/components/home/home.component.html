@@ -42,8 +42,7 @@
 
 
                     <div class="p-2 col-sm-4 col-md-4 mb-2">
-                        <a class="d-block"
-                            (click)="openActivity()">
+                        <a class="d-block" [routerLink]="activityUrl">
                             <img class="img-thumbnail mb-3"
                                 src="./assets/img/caps/activities.png"
                                 alt="">
@@ -52,10 +51,19 @@
                         <p class="text-sub">{{lang.home_create_activities}}</p>
                     </div>
 
+                    <div class="p-2 col-sm-4 col-md-4 mb-2">
+                        <a class="d-block" [routerLink]="[activityUrl, 'members']">
+                            <img class="img-thumbnail mb-3"
+                                src="./assets/img/caps/add_remove_member.png"
+                                alt="">
+                            <h3 class="h5 mb-1">{{lang.home_add_remove_members}}</h3>
+                        </a>
+                        <p class="text-sub">{{lang.home_add_remove_project_members}}</p>
+                    </div>
+
 
                     <div class="p-2 col-sm-4 col-md-4 mb-2">
-                        <a class="d-block"
-                            (click)="openActivity()">
+                        <a class="d-block" [routerLink]="activityUrl">
                             <img class="img-thumbnail mb-3"
                                 src="./assets/img/caps/change_project.png"
                                 alt="">
@@ -64,20 +72,8 @@
                         <p class="text-sub">{{lang.home_make_changes_modify_project}}</p>
                     </div>
 
-
                     <div class="p-2 col-sm-4 col-md-4 mb-2">
-                        <a class="d-block"
-                            (click)="openMembers()">
-                            <img class="img-thumbnail mb-3"
-                                src="./assets/img/caps/add_remove_member.png"
-                                alt="">
-                            <h3 class="h5 mb-1">{{lang.home_add_remove_members}}</h3>
-                        </a>
-                        <p class="text-sub">{{lang.home_add_remove_project_members}}</p>
-                    </div>
-                    <div class="p-2 col-sm-4 col-md-4 mb-2">
-                        <a class="d-block"
-                            (click)="openActivity()">
+                        <a class="d-block"[routerLink]="activityUrl">
                             <img class="img-thumbnail mb-3"
                                 src="./assets/img/caps/edit_activity.png"
                                 alt="">

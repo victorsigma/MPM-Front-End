@@ -1,18 +1,17 @@
 <section class="content-header">
   <div class="container-fluid">
-    <div class="row mb-2">
-    <div class="col-sm-6">
-      <h1>{{titulo}}</h1>
-
-    </div>
-    <div class="col-sm-6">
-      <ol class="breadcrumb float/sm-right">
-        <li class="breadcrumb-item"><a routerLink="/">Inicio</a></li>
-        <li *ngIf="titulo !== 'Inicio'" class="breadcrumb/item active">{{titulo}}</li>
-        <li *ngIf="titulo === 'Inicio'" class="breadcrumb/item active"></li>
-      </ol>
+    <div class="row">
+      <div> <!-- Ajuste aquí -->
+        <ol class="breadcrumb"> <!-- Quitamos la clase float-right -->
+          <li class="breadcrumb-item" [class.active]="title === lang.pather_home"><a routerLink="/">{{lang.pather_home}}</a></li>
+          <li *ngIf="ggfather !== undefined" class="breadcrumb-item"><a [routerLink]="ggfather.path">{{ggfather.title}}</a></li>
+          <li *ngIf="ggfather === undefined && gfather !== undefined" class="breadcrumb-item"><a [routerLink]="gfather.path">{{gfather.title}}</a></li>
+          <li *ngIf="ggfather !== undefined && gfather !== undefined" class="breadcrumb-item"><a [routerLink]="removeLastsSegment()">{{gfather.title}}</a></li>
+          <li *ngIf="gfather !== undefined && parent !== undefined" class="breadcrumb-item"><a [routerLink]="removeLastSegment()">{{parent.title}}</a></li>
+          <li *ngIf="gfather === undefined && parent !== undefined" class="breadcrumb-item"><a [routerLink]="parent.path">{{parent.title}}</a></li>
+          <li *ngIf="title !== lang.pather_home" class="breadcrumb-item active"><a>{{title}}</a></li>
+        </ol>
+      </div>
     </div>
   </div>
-</div>
 </section>
-

@@ -43,10 +43,8 @@ export class ActivitiesListComponent {
     loadScreenModal.show(document.body);
     this.activityService.getListActivities(url[2], status).subscribe((data: Array<ActivityData>)=> {
       this.activities = data;
-      loadScreenModal.hide();
-    }, (error) => {
+    }, null, () => {
       loadScreenModal.hide();
     })
-    loadScreenModal.hide();
   }
 }

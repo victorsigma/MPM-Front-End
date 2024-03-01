@@ -36,7 +36,7 @@ export class Lang {
     pather_security: string = '';
     pather_sitemap: string = '';
     pather_error: string = '';
-    pather_privacite: string = '';
+    pather_privacy: string = '';
 
 
     // Textos de la página de projectos
@@ -84,4 +84,8 @@ export class Lang {
     password_validation_messages: { minlength: string, pattern: string, minlength_pattern: string } = { minlength: '', pattern: '', minlength_pattern: '' };
 
     loading: string = '';
+
+    //
+    error_message: string = '';
+    back_to_home: string = '';
 }

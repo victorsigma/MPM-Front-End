@@ -14,3 +14,8 @@ a {
 .active {
     color: rgb(66, 164, 255);
 }
+
+.float-end p {
+    user-select: none;
+    justify-content: flex-end;
+}

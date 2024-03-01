@@ -1,7 +1,28 @@
+<div *ngIf="!project">
+    <nav class="nv-projct navbar navbar-dark">
+        <div class="container-fluid content-project">
+            <h1 class="navbar-brand">Activities</h1>
+            <ul class="navbar-nav d-flex">
+                <li class="nav-item" *ngIf="userRol == 0">
+                    <button class="button-options">Options</button>
+                    <button class="button-options">Members</button>
+                    <button class="button-options">Add <i class="fa-solid fa-plus fa-xs"></i></button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <router-outlet></router-outlet>
+    <app-editor-activity (deletActivity)="deletActivity($event)"
+        (updateActivity)="updateActivity($event)"></app-editor-activity>
+    <app-more-activity></app-more-activity>
+</div>
+
 <div *ngIf="project">
     <nav class="nv-projct navbar navbar-dark">
         <div class="container-fluid content-project">
-            <h1 class="navbar-brand">{{project.title}} - Activities</h1>
+            <h1 class="navbar-brand">{{project.title || ''}} - Activities</h1>
             <ul class="navbar-nav d-flex">
                 <li class="nav-item" *ngIf="userRol == 0">
                     <button class="button-options" data-bs-toggle="modal"

@@ -31,8 +31,8 @@ export const enEN: Lang = {
     "pather_information": 'Information',
     "pather_profile": 'Profile',
     "pather_security": 'Security',
-    "pather_sitemap": 'sitemap',
-    "pather_privacite": 'privacite',
+    "pather_sitemap": 'Site Map',
+    "pather_privacy": 'Privacy Policy',
     "pather_error": "Error",
     "projects_create": 'Create',
     "projects_search": "Search projects...",
@@ -82,6 +82,8 @@ export const enEN: Lang = {
         "minlength_pattern": "The password is invalid. The number of characters is 6 and must contain at least one number and must not contain commas, quotation marks, braces, brackets, or blank spaces."
     },
     "loading": "Loading...",
+    "error_message": "Oops! Something went wrong.",
+    "back_to_home": "Back to Home",
 }
 
 export const esMX: Lang = {
@@ -105,18 +107,18 @@ export const esMX: Lang = {
     "activities": 'Actividades',
     "pather_home": 'Inicio',
     "pather_projects": 'Proyectos',
-    "pather_all": 'Todos',
-    "pather_unassigned": 'No asignados',
+    "pather_all": 'Todas',
+    "pather_unassigned": 'No asignadas',
     "pather_in_progress": 'En progreso',
-    "pather_completed": 'Completados',
+    "pather_completed": 'Completadas',
     "pather_pause": 'Pausa',
     "pather_members": 'Miembros',
     "pather_add": 'Agregar',
     "pather_information": 'Información',
     "pather_profile": 'Perfil',
     "pather_security": 'Seguridad',
-    "pather_sitemap": 'sitemap',
-    "pather_privacite": 'privacite',
+    "pather_sitemap": 'Mapa del sitio',
+    "pather_privacy": 'Política de privacidad',
     "pather_error": "Error",
     "projects_create": 'Crear',
     "projects_search": "Buscar proyectos...",
@@ -166,4 +168,6 @@ export const esMX: Lang = {
         "minlength_pattern": "La contraseña no es válida. El número de caracteres es 6 y debe contener al menos un número y no debe contener comas, comillas, llaves, corchetes, o espacios en blanco."
     },
     "loading": "Cargando...",
+    "error_message": "¡Uy! Algo ha salido mal.",
+    "back_to_home": "Regresar al Inicio",
 }

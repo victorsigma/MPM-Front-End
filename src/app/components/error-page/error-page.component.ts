@@ -1,6 +1,8 @@
 import { HttpStatusCode } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Lang } from 'src/app/models/lang';
+import { LangService } from 'src/app/services/lang.service';
 
 @Component({
   selector: 'app-error-page',
@@ -9,7 +11,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ErrorPageComponent {
   public status: HttpStatusCode = 500
-  constructor(private route: ActivatedRoute) {
+  public lang: Lang = new Lang();
+  constructor(private route: ActivatedRoute, private langService: LangService) {
+    this.lang = this.langService.getLang();
     this.route.queryParams.subscribe((params: any) => {
       this.status = params.status;
     })

@@ -1,71 +1,102 @@
-
- body {
-    font-family: Arial, sans-serif;
-    background: #1b1a1a;
-    color: #ffffff;
-    line-height: 1.6;
-    margin: 0;
-}
 .container {
     width: 80%;
-    margin: 20px auto;
-    max-width: 1200px;
+    max-width: 1200px; /* Agregado un máximo de ancho para mejor legibilidad en pantallas grandes */
+    margin: 0 auto; /* Centra el contenido */
 }
+
 .sitemap {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.item, .large-item {
-    border: 2px solid #fdfdfd;
+
+.item-nav {
+    cursor: pointer;
+}
+
+.item {
+    user-select: none;
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
     border-radius: 5px;
-    padding: 15px 60px;
+    padding: 15px 30px;
     margin: 5px;
-    background-color: #7da9ef;
+    background-color: var(--secondary-color);
     text-align: center;
+    
+    font-weight: bold;
+    text-decoration: none;
 }
-.large-item { 
+
+.large-item {
+    user-select: none;
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
+    border-radius: 5px;
+    padding: 15px 30px;
+    margin: 5px;
+    background-color: var(--secondary-color);
+    text-align: center;
+    
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+.large-item {
     font-size: 1.2em;
-    padding: 15px 60px; 
+    padding: 15px 60px;
 }
-.children, .sub-children {
+
+.children {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     justify-content: center;
     margin-top: 10px;
+}
+
+.sub-children {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px; /* Agregado un margen inferior para crear un espacio entre los sub-children */
 }
 .sub-item {
     margin: 0 10px;
 }
-a {
-    text-decoration: none;
-    color: #ededf4;
-    font-weight: bold;
-}
+
 
 /* Estilos responsivos */
 @media (max-width: 768px) {
     .container {
         width: 95%;
     }
+
     .large-item {
-        padding: 15px 30px; 
+        padding: 15px 30px;
     }
-    .children, .sub-children {
+
+    .children,
+    .sub-children {
         justify-content: space-around;
     }
-    .sub-item, .item {
-        margin-bottom: 10px; 
+
+    .sub-item,
+    .item {
+        margin-bottom: 10px;
     }
 }
 
 @media (max-width: 480px) {
     .large-item {
-        padding: 10px; 
+        padding: 10px;
         margin-bottom: 10px;
     }
-    .sub-item, .item {
-        width: 100%; 
-        margin: 10px 0; 
+
+    .sub-item,
+    .item {
+        width: 100%;
+        margin: 10px 0;
     }
 }

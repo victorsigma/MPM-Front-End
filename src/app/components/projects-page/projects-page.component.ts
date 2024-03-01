@@ -35,14 +35,9 @@ export class ProjectsPageComponent implements OnInit {
     this.loadScreenModal.show(document.body);
     this.projectData.getListProjects().subscribe((data: ProjectData[]) => {
       this.projectList = data;
-      this.loadScreenModal.hide();
-    }, (error) => {
+    }, null, () => {
       this.loadScreenModal.hide();
     })
-  }
-
-  ngAfterViewInit() {
-    this.loadScreenModal.hide();
   }
 
   /*get filteredProjects(): ProjectData[] {

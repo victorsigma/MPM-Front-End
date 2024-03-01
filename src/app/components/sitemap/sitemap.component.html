@@ -1,39 +1,28 @@
-<title>Mapa del sitio MPM</title>
+<nav class="nv-projct navbar navbar-dark">
+    <div class="container-fluid content-project">
+        <h1 class="navbar-brand navbar-title">Mapa del sitio MPM</h1>
+    </div>
+</nav>
 
-<body>
-    <link rel="stylesheet" href="./sitemap.component.css">
-    <div class="container">
-        <h1>Mapa del sitio MPM</h1>
-        <div class="sitemap">
-            <div class="large-item"><a href="/"></a><span>Inicio</span></div>
-            <div class="sub-children">
-                <div class="item"><a href="/projects">Proyectos</a></div>
-                <div class="item"><a href="project">Todos</a></div>
-
-                <div class="sub-children">
-                    <div class="item"><a href="/unassigned">Actividades</a></div>
-                    <div class="sub-children">
-                        <div class="item"><a href="/proyectos/actividades/asignados">Asignados</a></div>
-                        <div class="item"><a href="/inprogress">En proceso</a></div>
-                        <div class="item"><a href="/completed">Completados</a></div>
-                        <div class="item"><a href="/pause">En pausa</a></div>
-                    </div>
-                </div>
-                <div class="sub-children">
-                    <div class="item"><a href="/proyectos/agrega-elimina-miembros">Agrega y elimina miembros</a></div>
-
-                    <div class="item"><a href="/members">Miembros</a></div>
-                    <div class="item"><a href="/add">Agregar</a></div>
-                </div>
-
-            </div>
-
-            <div class="large-item"><span>Footer</span></div>
-            <div class="children">
-                <div class="item"><a href="/about">¿Quiénes somos?</a></div>
-                <div class="item"><a href="/redes-sociales">Redes sociales</a></div>
-                <div class="item"><a href="/aviso-privacidad">Aviso de privacidad</a></div>
-            </div>
+<div class="container">
+    <div class="sitemap">
+        <a class="large-item"routerLink="/">{{lang.pather_home}}</a>
+        <a class="large-item item-nav" routerLink="/projects">{{lang.projects}}</a>
+        <div class="sub-children">
+            <a class="item item-nav" [routerLink]="[activityUrl, 'unassigned']">{{lang.pather_unassigned}}</a>
+            <a class="item item-nav" [routerLink]="[activityUrl, 'inprogress']">{{lang.pather_in_progress}}</a>
+            <a class="item item-nav" [routerLink]="[activityUrl, 'completed']">{{lang.pather_completed}}</a>
+            <a class="item item-nav" [routerLink]="[activityUrl, 'pause']">{{lang.pather_pause}}</a>
+            <a class="item item-nav" [routerLink]="[activityUrl, 'members']">{{lang.pather_members}}</a>
+            <a class="item item-nav" [routerLink]="[activityUrl, 'members', 'add']">{{lang.pather_add}}</a>
+        </div>
+        <div class="large-item">Footer</div>
+        <div class="sub-children">
+            <a class="item item-nav" routerLink="/about">{{lang.footer_about_us}}</a>
+            <div class="item">Redes sociales</div>
+            <a class="item item-nav" routerLink="/privacy">{{lang.pather_privacy}}</a>
         </div>
     </div>
-</body>
+</div>
+
+<app-footer></app-footer>

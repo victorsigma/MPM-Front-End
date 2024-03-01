@@ -34,6 +34,7 @@ export class HeaderComponent implements OnInit {
       this.isMobile = result.matches;
     });
   }
+  
 
   ngOnInit(): void {
     this.userIcon = `${this.loginService.getUserInfo().userIcon}.jpg`;
@@ -53,6 +54,9 @@ export class HeaderComponent implements OnInit {
       }
       if(this.router.url.includes('account')) {
         this.paths = accountPaths;
+      }
+      if(this.router.url.includes('error')) {
+        this.paths = defaultPaths;
       }
     })
   }
