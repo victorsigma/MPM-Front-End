@@ -5,34 +5,37 @@
     <div class="container">
         <h1>Mapa del sitio MPM</h1>
         <div class="sitemap">
-            <div class="large-item"><a href="/"></a><span>Inicio</span></div>
+            <div class="large-item">
+                <a href="/"><span>Inicio</span></a>
+              </div>
+              
             <div class="sub-children">
                 <div class="item"><a href="/projects">Proyectos</a></div>
-                <div class="item"><a href="project">Todos</a></div>
+                <div class="item"><a routerLink="/projects">Todos</a></div>
 
                 <div class="sub-children">
-                    <div class="item"><a href="/unassigned">Actividades</a></div>
+                    <div class="item"><a routerLink="/unassigned">Actividades</a></div>
                     <div class="sub-children">
-                        <div class="item"><a href="/proyectos/actividades/asignados">Asignados</a></div>
-                        <div class="item"><a href="/inprogress">En proceso</a></div>
-                        <div class="item"><a href="/completed">Completados</a></div>
-                        <div class="item"><a href="/pause">En pausa</a></div>
+                        <div class="item"><a routerLink="/proyectos/actividades/asignados">Asignados</a></div>
+                        <div class="item"><a routerLink="/inprogress">En proceso</a></div>
+                        <div class="item"><a routerLink="/completed">Completados</a></div>
+                        <div class="item"><a routerLink="/pause">En pausa</a></div>
                     </div>
                 </div>
                 <div class="sub-children">
-                    <div class="item"><a href="/proyectos/agrega-elimina-miembros">Agrega y elimina miembros</a></div>
+                    <div class="item"><a routerLink="/proyectos/agrega-elimina-miembros">Agrega y elimina miembros</a></div>
 
-                    <div class="item"><a href="/members">Miembros</a></div>
-                    <div class="item"><a href="/add">Agregar</a></div>
+                    <div class="item"><a routerLink="/members">Miembros</a></div>
+                    <div class="item"><a routerLink="/add">Agregar</a></div>
                 </div>
 
             </div>
 
             <div class="large-item"><span>Footer</span></div>
             <div class="children">
-                <div class="item"><a href="/about">¿Quiénes somos?</a></div>
-                <div class="item"><a href="/redes-sociales">Redes sociales</a></div>
-                <div class="item"><a href="/aviso-privacidad">Aviso de privacidad</a></div>
+                <div class="item"><a routerLink="/about">¿Quiénes somos?</a></div>
+                <div class="item"><a href="https://www.facebook.com/profile.php?id=61556829230300">Redes sociales</a></div>
+                <div class="item"><a routerLink="/aviso-privacidad">Aviso de privacidad</a></div>
             </div>
         </div>
     </div>

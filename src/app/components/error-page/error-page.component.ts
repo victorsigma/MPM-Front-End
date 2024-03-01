@@ -8,6 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./error-page.component.css']
 })
 export class ErrorPageComponent {
+  
   public status: HttpStatusCode = 500
   constructor(private route: ActivatedRoute) {
     this.route.queryParams.subscribe((params: any) => {
