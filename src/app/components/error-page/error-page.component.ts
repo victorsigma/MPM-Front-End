@@ -10,6 +10,7 @@ import { LangService } from 'src/app/services/lang.service';
   styleUrls: ['./error-page.component.css']
 })
 export class ErrorPageComponent {
+  
   public status: HttpStatusCode = 500
   public lang: Lang = new Lang();
   constructor(private route: ActivatedRoute, private langService: LangService) {
