@@ -78,12 +78,15 @@ export class LoginDataService {
   }
 
   public getUserInfo(): User {
-    return jwtDecode<User>(this.token.token)
+    return this.token.token ? jwtDecode<User>(this.token.token) : new User();
+
   }
 
   public loggout() {
-    localStorage.removeItem('token');
-    location.reload()
+    if(localStorage.getItem('token')) {
+      localStorage.removeItem('token');
+      location.reload()
+    }
   }
 
   public isLogin(): boolean {

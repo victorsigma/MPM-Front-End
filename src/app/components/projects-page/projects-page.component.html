@@ -1,14 +1,27 @@
 <div>
-    <nav class="nv-projct navbar navbar-dark">
+    <nav class="nv-projct navbar navbar-dark col-12">
         <div class="container-fluid content-project">
-            <h1 class="navbar-brand navbar-title">{{lang.projects}}</h1>
-            <ul class="navbar-nav d-flex">
+            <h1 class="navbar-brand navbar-title" [attr.data-bs-toggle]="isMobile ? 'collapse' : null"
+                data-bs-target="#projectsOptions">
+                {{lang.projects}}</h1>
+
+            <div *ngIf="isMobile" class="collapse navbar-collapse options" id="projectsOptions">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <button class="button-options" data-bs-toggle="modal"
+                            data-bs-target="#createProject"><i class="fa-solid fa-plus"></i> {{lang.projects_create}}</button>
+                    </li>
+                </ul>
+            </div>
+
+            <ul *ngIf="!isMobile" class="navbar-nav d-flex">
                 <li class="nav-item">
-                    <button class="button-options"
-                        data-bs-toggle="modal"
-                        data-bs-target="#createProject" >{{lang.projects_create}} <i class="fa-solid fa-plus fa-xs"></i></button>
+                    <button class="button-options" data-bs-toggle="modal"
+                        data-bs-target="#createProject">{{lang.projects_create}} <i
+                            class="fa-solid fa-plus fa-xs"></i></button>
                 </li>
             </ul>
+
         </div>
     </nav>
     <div class="container-fluid">

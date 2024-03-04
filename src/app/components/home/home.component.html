@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="p-2 col-sm-4 col-md-4 mb-2">
-                        <a class="d-block" [routerLink]="[activityUrl, 'members']">
+                        <a class="d-block" [routerLink]="activityUrl != '' ? [activityUrl, 'members'] : ''">
                             <img class="img-thumbnail mb-3"
                                 src="./assets/img/caps/add_remove_member.png"
                                 alt="">

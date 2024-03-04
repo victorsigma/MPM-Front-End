@@ -12,11 +12,18 @@ export class AppComponent {
 
   public isMobile: boolean = false;
   constructor(private breakpointObserver: BreakpointObserver, private loginService: LoginDataService) {
+    this.loginService.verifyLogin().subscribe({
+      next: (data) => {
+        if(!data.value) {
+          this.loginService.loggout();
+        }
+      }
+    })
     if(this.loginService.isLogin()) {
       localStorage.setItem('theme', this.loginService.getUserInfo().selectedTheme)
       document.body.setAttribute('data-bs-theme', this.loginService.getUserInfo().selectedTheme)
     } else {
-      document.body.setAttribute('data-bs-theme', localStorage.getItem('theme') ? `${localStorage.getItem('theme')}` : 'dark')
+      document.body.setAttribute('data-bs-theme', localStorage.getItem('theme') ? `${localStorage.getItem('theme')}` : 'default')
     }
     this.breakpointObserver.observe('(max-width: 992px)')
     .subscribe(result => {

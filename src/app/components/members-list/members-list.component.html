@@ -1,2 +1,3 @@
-<app-member-item *ngFor="let item of memberData" [member]="item"></app-member-item>
+<input type="text" [(ngModel)]="searchTerm" placeholder="{{lang.members_search}}" class="text mb-3">
+<app-member-item *ngFor="let item of filteredMembers" [member]="item"></app-member-item>
 <app-load-screen></app-load-screen>

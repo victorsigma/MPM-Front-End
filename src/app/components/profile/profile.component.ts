@@ -40,8 +40,8 @@ export class ProfileComponent {
   }
 
   testTheme(theme: theme): void {
-    if(document.body.getAttribute('data-bs-theme') != theme.themeName) {
-      document.body.setAttribute('data-bs-theme', theme.themeName)
+    if(document.body.getAttribute('data-bs-theme') != theme.themeType) {
+      document.body.setAttribute('data-bs-theme', theme.themeType)
       this.newTheme = theme;
 
       const changeTheme = new Modal(document.getElementById('changeTheme') as Element);

@@ -8,6 +8,7 @@ import { Title } from '@angular/platform-browser';
 import { Lang } from 'src/app/models/lang';
 import { LangService } from 'src/app/services/lang.service';
 import { Modal } from 'bootstrap';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-projects-page',
@@ -24,19 +25,30 @@ export class ProjectsPageComponent implements OnInit {
   public lang: Lang = new Lang();
 
   private loadScreenModal!: Modal;
+  public isMobile: boolean = false;
 
-  constructor(private projectData: ProjectDataService, private titleService: Title, private langService: LangService) {
+  constructor(private projectData: ProjectDataService, private titleService: Title, private breakpointObserver: BreakpointObserver, private langService: LangService) {
     this.titleService.setTitle(`MPM - Projects`)
     this.lang = this.langService.getLang();
+    this.breakpointObserver.observe('(max-width: 992px)')
+    .subscribe(result => {
+      this.isMobile = result.matches;
+    });
   }
 
   ngOnInit(): void {
     this.loadScreenModal = new Modal(document.getElementById('loadScreen') as Element);
     this.loadScreenModal.show(document.body);
-    this.projectData.getListProjects().subscribe((data: ProjectData[]) => {
-      this.projectList = data;
-    }, null, () => {
-      this.loadScreenModal.hide();
+    this.projectData.getListProjects().subscribe({
+      next: (data: ProjectData[]) => {
+        this.projectList = data;
+      },
+      complete: () => {
+        this.loadScreenModal.hide();
+      },
+      error: () => {
+        this.loadScreenModal.hide();
+      }
     })
   }
 

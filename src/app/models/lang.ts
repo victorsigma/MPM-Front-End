@@ -88,4 +88,8 @@ export class Lang {
     //
     error_message: string = '';
     back_to_home: string = '';
+
+    //
+    activities_search: string = '';
+    members_search: string = '';
 }

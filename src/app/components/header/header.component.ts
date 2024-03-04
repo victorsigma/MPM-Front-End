@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
   public lang: Lang = new Lang();
   constructor(private router:Router, public loginService:LoginDataService, private projectList:ProjectListService, private breakpointObserver: BreakpointObserver, private langService: LangService) {
     this.lang = this.langService.getLang();
-    this.appIcon = document.body.getAttribute('data-bs-theme') == 'dark' ? 'assets/img/mpm-logo-dark.png' : 'assets/img/mpm-logo-light.png';
+    this.appIcon = document.body.getAttribute('data-bs-theme') == 'default' ? 'assets/img/mpm-logo-dark.png' : 'assets/img/mpm-logo-light.png';
     this.slideStyle = localStorage.getItem('slideStyle') == 'true' ? true : false;
     this.breakpointObserver.observe('(max-width: 992px)')
     .subscribe(result => {
