@@ -5,12 +5,12 @@
                 <h1 class="bd-title mt-0">{{lang.home_title}}</h1>
                 <p class="bd-lead">{{lang.home_slogan}}</p>
                 <div class="d-flex flex-column flex-md-row gap-3">
-                    <a routerLink="register"
-                        class="btn button-register" [class.btn-ghost]="loginService.isLogin()" [class.disabled]="loginService.isLogin()">
+                    <a routerLink="register" class="btn button-register" [class.btn-ghost]="loginService.isLogin()"
+                        [class.disabled]="loginService.isLogin()">
                         {{lang.home_register}}
                     </a>
-                    <a routerLink="login"
-                        class="btn button-login" [class.btn-ghost]="loginService.isLogin()" [class.disabled]="loginService.isLogin()">
+                    <a routerLink="login" class="btn button-login" [class.btn-ghost]="loginService.isLogin()"
+                        [class.disabled]="loginService.isLogin()">
                         {{lang.home_login}}
                     </a>
                 </div>
@@ -18,6 +18,18 @@
         </div>
     </div>
 </header>
+
+<div class="video-container">
+    <video autoplay muted loop class="video-size">
+        <source src="assets/img/publicidad.mp4" type="video/mp4">
+        Tu navegador no soporta videos HTML5.
+    </video>
+    &nbsp;
+    <video autoplay muted loop class="video-size">
+        <source src="/assets/img/publicidad_1.mp4" type="video/mp4">
+        Tu navegador no soporta videos HTML5.
+    </video>
+</div>
 
 <main class="bd-content order-1 py-5" id="content">
     <div class="container-xl bd-gutter">
@@ -32,9 +44,7 @@
                 <div class="row">
                     <div class="p-2 col-sm-4 col-md-4 mb-2">
                         <a class="d-block" routerLink="projects">
-                            <img class="img-thumbnail mb-3"
-                                src="./assets/img/caps/projects.png"
-                                alt="">
+                            <img class="img-thumbnail mb-3" src="./assets/img/caps/projects.png" alt="">
                             <h3 class="h5 mb-1">{{lang.projects}}</h3>
                         </a>
                         <p class="text-sub">{{lang.home_create_several_projects}}</p>
@@ -43,9 +53,7 @@
 
                     <div class="p-2 col-sm-4 col-md-4 mb-2">
                         <a class="d-block" [routerLink]="activityUrl">
-                            <img class="img-thumbnail mb-3"
-                                src="./assets/img/caps/activities.png"
-                                alt="">
+                            <img class="img-thumbnail mb-3" src="./assets/img/caps/activities.png" alt="">
                             <h3 class="h5 mb-1">{{lang.activities}}</h3>
                         </a>
                         <p class="text-sub">{{lang.home_create_activities}}</p>
@@ -53,9 +61,7 @@
 
                     <div class="p-2 col-sm-4 col-md-4 mb-2">
                         <a class="d-block" [routerLink]="[activityUrl, 'members']">
-                            <img class="img-thumbnail mb-3"
-                                src="./assets/img/caps/add_remove_member.png"
-                                alt="">
+                            <img class="img-thumbnail mb-3" src="./assets/img/caps/add_remove_member.png" alt="">
                             <h3 class="h5 mb-1">{{lang.home_add_remove_members}}</h3>
                         </a>
                         <p class="text-sub">{{lang.home_add_remove_project_members}}</p>
@@ -64,19 +70,15 @@
 
                     <div class="p-2 col-sm-4 col-md-4 mb-2">
                         <a class="d-block" [routerLink]="activityUrl">
-                            <img class="img-thumbnail mb-3"
-                                src="./assets/img/caps/change_project.png"
-                                alt="">
+                            <img class="img-thumbnail mb-3" src="./assets/img/caps/change_project.png" alt="">
                             <h3 class="h5 mb-1">{{lang.home_modify_project}}</h3>
                         </a>
                         <p class="text-sub">{{lang.home_make_changes_modify_project}}</p>
                     </div>
 
                     <div class="p-2 col-sm-4 col-md-4 mb-2">
-                        <a class="d-block"[routerLink]="activityUrl">
-                            <img class="img-thumbnail mb-3"
-                                src="./assets/img/caps/edit_activity.png"
-                                alt="">
+                        <a class="d-block" [routerLink]="activityUrl">
+                            <img class="img-thumbnail mb-3" src="./assets/img/caps/edit_activity.png" alt="">
                             <h3 class="h5 mb-1">{{lang.home_change_activity_elements}}</h3>
                         </a>
                         <p class="text-sub">{{lang.home_edit_activity_elements}}</p>

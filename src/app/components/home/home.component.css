@@ -87,3 +87,10 @@ a {
     box-shadow: 0px 15px 20px var(--text-color);
     transform: translateY(-7px);
 }
+.video-size {
+    width: 100%; /* Esto hará que el video se adapte al ancho de su contenedor */
+    max-width: 600px; /* Cambia este valor al ancho máximo que desees */
+    height: auto; /* Esto mantendrá la proporción del video */
+}
+
+
