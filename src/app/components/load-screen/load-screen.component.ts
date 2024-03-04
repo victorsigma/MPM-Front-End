@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Lang } from 'src/app/models/lang';
 import { LangService } from 'src/app/services/lang.service';
 
@@ -10,7 +10,14 @@ import { LangService } from 'src/app/services/lang.service';
 export class LoadScreenComponent {
 
   public lang: Lang = new Lang();
+
+  @ViewChild('closeButton', { static: false }) private closeButtonRef !: ElementRef;
   constructor(private langService: LangService) {
     this.lang = this.langService.getLang();
+  }
+
+  public closeLoadScreen() {
+    const closeButton: HTMLInputElement = this.closeButtonRef.nativeElement;
+    closeButton.click();
   }
 }

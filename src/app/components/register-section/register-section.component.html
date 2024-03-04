@@ -57,7 +57,11 @@
                     <div *ngIf="form.get('password')?.hasError('pattern') && form.get('password')?.hasError('minlength') && form.get('password')?.value != ''"
                         class="form-text error">{{lang.password_validation_messages.minlength_pattern}}</div>
                     </div>
+                    <div class="captcha-container">
+                        <re-captcha (resolved)="resolved($event)" [theme]="theme" siteKey="6Lfwv4YpAAAAAM7h7Z7uzVgP5wsAYzUn_r1yRP8l"></re-captcha>
+                    </div>
                     <div class="list-group card-body">
+                        <br>
                         <button type="submit" [disabled]="!this.form.valid" data-bs-dismiss="modal"
                             class="btn button-register">{{lang.action_submit}}</button>
                     </div>

@@ -13,6 +13,6 @@ export class PrivacynoticeComponent {
   public lang: Lang = new Lang();
   constructor(private titleService: Title, private langService: LangService) {
     this.lang = this.langService.getLang();
-    this.titleService.setTitle(`MPM - ${this.lang.pather_privacy}`)
+    this.titleService.setTitle(`MPM - Privacy Policy`)
   }
 }

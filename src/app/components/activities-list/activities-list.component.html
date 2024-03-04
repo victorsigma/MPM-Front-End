@@ -1,2 +1,3 @@
-<app-activity-item *ngFor="let activity of activities" [activity]="activity" [userRol]="userRol"></app-activity-item>
+<input type="text" [(ngModel)]="searchTerm" placeholder="{{lang.activities_search}}" class="text mb-3">
+<app-activity-item *ngFor="let activity of filteredActivities" [activity]="activity" [userRol]="userRol"></app-activity-item>
 <app-load-screen></app-load-screen>

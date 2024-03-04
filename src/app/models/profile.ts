@@ -1,6 +1,7 @@
 export class theme {
     Id: number = 0;
     themeName: string = '';
+    themeType: string = '';
 }
 
 export class icon {

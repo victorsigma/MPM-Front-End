@@ -7,6 +7,8 @@ import { ProjectListService } from '../../services/project-list.service';
 import { Title } from '@angular/platform-browser';
 import { LangService } from 'src/app/services/lang.service';
 import { Lang } from 'src/app/models/lang';
+import { theme } from 'src/app/models/profile';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login-section',
@@ -26,31 +28,40 @@ export class LoginSectionComponent implements OnInit {
   appIcon: string = '';
 
   public lang: Lang = new Lang();
+  public theme: 'dark' | 'light' = 'dark';
   @Output() loginDate: EventEmitter<null> = new EventEmitter();
   constructor(private loginService: LoginDataService, private toastr: ToastrService, private titleService: Title, private langService: LangService) {
-    this.appIcon = document.body.getAttribute('data-bs-theme') == 'dark' ? 'assets/img/mpm-logo-dark.png' : 'assets/img/mpm-logo-light.png';
+    this.appIcon = document.body.getAttribute('data-bs-theme') == 'default' ? 'assets/img/mpm-logo-dark.png' : 'assets/img/mpm-logo-light.png';
     this.titleService.setTitle(`MPM - Login`)
     this.lang = this.langService.getLang();
   }
 
   ngOnInit(): void {
+    this.theme = document.body.getAttribute('data-bs-theme') == 'default' ? 'dark' : 'light'
   }
 
   loginSend(): void {
-    const user: Login = {
-      userNameOrEmail: this.form.get('userNameOrEmail')?.value,
-      password: this.form.get('password')?.value
+    if(this.captchaResponse) {
+      const user: Login = {
+        userNameOrEmail: this.form.get('userNameOrEmail')?.value,
+        password: this.form.get('password')?.value
+      }
+  
+      const isRemember: boolean = this.form.get('remember')?.value;
+  
+      this.loginService.login(user, isRemember).subscribe({
+        next: (data)=> {
+          this.loginService.setToken(data);
+        }, 
+        error: (error) => {
+          this.toastr.error('Incorrect data connection error.', 'Operation Canceled');
+        }
+      })
+  
+      this.reloadForm();
+    } else {
+      this.toastr.error('Complete el captcha')
     }
-
-    const isRemember: boolean = this.form.get('remember')?.value;
-
-    this.loginService.login(user, isRemember).subscribe((data)=> {
-      this.loginService.setToken(data);
-    }, (error) => {
-      this.toastr.error('Incorrect data connection error.', 'Operation Canceled');
-    })
-
-    this.reloadForm();
   }
 
   ngOnDestroy(): void {
@@ -66,11 +77,7 @@ export class LoginSectionComponent implements OnInit {
     });
   }
 
-  resolved(captchaResponse: any) {
-    console.log(captchaResponse)
-    this.loginService.verifyCapcha({secret: '6Lfwv4YpAAAAAM7h7Z7uzVgP5wsAYzUn_r1yRP8l', response: captchaResponse}).subscribe((data) => {
-      this.captchaResponse = data.success;
-      console.log(data);
-    })
+  resolved(captchaResponse: string | null) {
+    this.captchaResponse = captchaResponse ? true : false;
   }
 }

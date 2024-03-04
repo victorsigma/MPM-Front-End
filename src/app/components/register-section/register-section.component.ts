@@ -24,6 +24,7 @@ export class RegisterSectionComponent implements OnInit {
     phone: new FormControl('', [Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]+$/), Validators.required]),
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[0-9])[^'",{}\[\]\s]*$/)])
   });
+  captchaResponse: boolean = false;
 
   public ladas = ladas.sort((a, b) => {
     let ladaA = a.lada.replace('+', '');
@@ -34,8 +35,9 @@ export class RegisterSectionComponent implements OnInit {
   appIcon: string = '';
 
   public lang: Lang = new Lang();
+  public theme: 'dark' | 'light' = 'dark';
   constructor(private userList: UsersListService, private toastr: ToastrService, private titleService: Title, private langService: LangService) {
-    this.appIcon = document.body.getAttribute('data-bs-theme') == 'dark' ? 'assets/img/mpm-logo-dark.png' : 'assets/img/mpm-logo-light.png';
+    this.appIcon = document.body.getAttribute('data-bs-theme') == 'default' ? 'assets/img/mpm-logo-dark.png' : 'assets/img/mpm-logo-light.png';
     this.titleService.setTitle(`MPM - Register`)
     this.lang = this.langService.getLang();
     this.form = new FormGroup({
@@ -47,16 +49,42 @@ export class RegisterSectionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.theme = document.body.getAttribute('data-bs-theme') == 'default' ? 'dark' : 'light'
   }
 
   isRegisterDataTrue(): void {
-    this.user = {
-      userId: '',
-      userName: this.form.get('user')?.value,
-      userMail: this.form.get('email')?.value,
-      password: this.form.get('password')?.value,
-      phoneNumber: this.form.get('phone')?.value
+    if(this.captchaResponse) {
+      this.user = {
+        userId: '',
+        userName: this.form.get('user')?.value,
+        userMail: this.form.get('email')?.value,
+        password: this.form.get('password')?.value,
+        phoneNumber: this.form.get('phone')?.value
+      }
+  
+  
+  
+      this.userList.addUser(this.user).subscribe(data => {
+        this.toastr.success('Successfully registered.', 'Operation Completed');
+        this.form.reset();
+      }, (error) => {
+        console.log(error)
+      })
+  
+      this.form = new FormGroup({
+        user: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(15), Validators.pattern(/^[a-zA-Z0-9]+$/)]),
+        email: new FormControl('', [Validators.email, Validators.required]),
+        phone: new FormControl('', [Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]+$/), Validators.required]),
+        password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[0-9])[^'",{}\[\]\s]*$/)])
+      });
     }
+  }
+
+  resolved(captchaResponse: string | null) {
+    this.captchaResponse = captchaResponse ? true : false;
+  }
+}
+
 
     // if(!(/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(this.form.get('user')?.value))) {
     //   if(/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(this.form.get('email')?.value)) {
@@ -82,19 +110,3 @@ export class RegisterSectionComponent implements OnInit {
     // } else {
     //   this.toastr.error('You cannot use an email address as a user.', 'Operation Canceled');
     // }
-
-    this.userList.addUser(this.user).subscribe(data => {
-      this.toastr.success('Successfully registered.', 'Operation Completed');
-      this.form.reset();
-    }, (error) => {
-      console.log(error)
-    })
-
-    this.form = new FormGroup({
-      user: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(15), Validators.pattern(/^[a-zA-Z0-9]+$/)]),
-      email: new FormControl('', [Validators.email, Validators.required]),
-      phone: new FormControl('', [Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]+$/), Validators.required]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[0-9])[^'",{}\[\]\s]*$/)])
-    });
-  }
-}

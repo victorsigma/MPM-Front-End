@@ -7,6 +7,7 @@ import { ProjectDataService } from 'src/app/services/project-data.service';
 import { LoginDataService } from '../../services/login-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-activities-page',
@@ -18,6 +19,7 @@ export class ActivitiesPageComponent implements OnInit {
   userRol: number | undefined = undefined;
   activities: ActivityData[] = [];
   public idProject: string = '';
+  public isMobile: boolean = false;
 
   constructor(
     public projectData: ProjectDataService,
@@ -26,10 +28,14 @@ export class ActivitiesPageComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private titleService: Title,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private breakpointObserver: BreakpointObserver
   ) {
     
-
+    this.breakpointObserver.observe('(max-width: 992px)')
+    .subscribe(result => {
+      this.isMobile = result.matches;
+    });
 
   }
 

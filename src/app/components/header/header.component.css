@@ -9,6 +9,7 @@
 .btn-toggler {
     border: none;
     background-color: transparent;
+    color: var(--text-color);
     font-size: var(--bs-navbar-toggler-font-size);
 }
 
@@ -33,6 +34,11 @@
 .dropdown-item:hover {
     background-color: var(--backgroud-color);
     color: var(--menu-text-color);
+    user-select: none;
+}
+
+.nav-link span {
+    user-select: none;
 }
 
 .offcanvas {

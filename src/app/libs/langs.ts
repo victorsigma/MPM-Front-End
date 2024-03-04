@@ -84,6 +84,8 @@ export const enEN: Lang = {
     "loading": "Loading...",
     "error_message": "Oops! Something went wrong.",
     "back_to_home": "Back to Home",
+    "activities_search": "Search activities...",
+    "members_search": "Search members...",
 }
 
 export const esMX: Lang = {
@@ -170,4 +172,6 @@ export const esMX: Lang = {
     "loading": "Cargando...",
     "error_message": "¡Uy! Algo ha salido mal.",
     "back_to_home": "Regresar al Inicio",
+    "activities_search": "Buscar actividades...",
+    "members_search": "Buscar miembros...",
 }
