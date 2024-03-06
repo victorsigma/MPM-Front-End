@@ -18,19 +18,6 @@
         </div>
     </div>
 </header>
-
- <!-- <div class="video-container">
-    <video autoplay muted loop class="video-size">
-        <source src="assets/img/publicidad.mp4" type="video/mp4">
-        Tu navegador no soporta videos HTML5.
-    </video>
-   
-   <video autoplay muted loop class="video-size">
-        <source src="/assets/img/publicidad_1.mp4" type="video/mp4">
-        Tu navegador no soporta videos HTML5.
-    </video>
-</div>-->
-
 <main class="bd-content order-1 py-5" id="content">
     <div class="container-xl bd-gutter">
 
@@ -61,9 +48,7 @@
 
                     <div class="p-2 col-sm-4 col-md-4 mb-2">
                         <a class="d-block" [routerLink]="activityUrl != '' ? [activityUrl, 'members'] : ''">
-                            <img class="img-thumbnail mb-3"
-                                src="./assets/img/caps/add_remove_member.png"
-                                alt="">
+                            <img class="img-thumbnail mb-3" src="./assets/img/caps/add_remove_member.png" alt="">
                             <h3 class="h5 mb-1">{{lang.home_add_remove_members}}</h3>
                         </a>
                         <p class="text-sub">{{lang.home_add_remove_project_members}}</p>
@@ -88,6 +73,57 @@
                 </div>
             </div>
         </div>
+        <div class="imge-container">
+            <source src="/src/assets/img/publicidad.jpg">
+            
+        </div>
+        
+        <div class="video-container col-12">
+            <video autoplay [muted]="'muted'" loop class="video-size">
+                <source src="/assets/img/publicidad.mp4" type="video/mp4">
+                Tu navegador no soporta videos HTML5.
+                <iframe src="https://www.youtube.com/embed/NPRqe-Y7P5A?si=yBfrzGFUFiyJ2UaX" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </video>
+            <div class="overlay-text">
+                <p>MPM representa una solución integral para la gestión y administración de proyectos, específicamente
+                    diseñada para atender las necesidades de equipos de desarrollo. Esta página web se destaca por su
+                    capacidad de simplificar la complejidad inherente a la asignación y seguimiento de proyectos y
+                    actividades. Mediante una interfaz intuitiva y fácil de usar, MPM permite a sus usuarios gestionar
+                    eficientemente las diferentes etapas de los proyectos, desde su inicio hasta su conclusión.
+    
+                    Una de las características más valoradas de MPM es su sistema de visualización de tareas, que clasifica
+                    las actividades en categorías como asignadas, en proceso, completadas y pausadas. Esta clasificación
+                    facilita a los equipos el seguimiento preciso del avance de cada proyecto, permitiendo identificar
+                    rápidamente cualquier retraso o área de mejora.
+                    Además, MPM introduce un sistema de roles detallado, donde cada miembro del equipo recibe asignaciones
+                    claras según su posición, como líder de proyecto, analista, diseñador o desarrollador. Esta asignación
+                    de roles asegura que todos los integrantes del equipo comprendan sus responsabilidades específicas,
+                    fomentando una colaboración efectiva y una comunicación fluida dentro del equipo.
+                </p>
+                <br>
+                <p>
+                La plataforma está diseñada para ofrecer un control exhaustivo sobre los proyectos, mejorando
+                significativamente la organización y la productividad del equipo. Con MPM, los líderes de proyecto
+                pueden asignar tareas de manera eficaz, monitorear el progreso en tiempo real y tomar decisiones
+                informadas basadas en datos precisos y actualizados.
+
+                En resumen, MPM no es solo una herramienta de gestión de proyectos; es un aliado estratégico que
+                transforma la forma en que los equipos de desarrollo planifican, ejecutan y monitorean sus proyectos.
+                 Al proporcionar una solución completa que abarca desde la asignación de tareas hasta el seguimiento del
+                progreso y la asignación de roles, MPM permite a los equipos alcanzar sus objetivos con
+                 mayor eficiencia, claridad y control.
+                </p>
+            </div>
+
+            <video autoplay [muted]="'muted'" loop class="video-size">
+                <source src="/assets/img/publicidad_1.mp4" type="video/mp4">
+                Tu navegador no soporta videos HTML5.
+            </video>
+        </div>
+
     </div>
     <app-footer></app-footer>
 </main>
