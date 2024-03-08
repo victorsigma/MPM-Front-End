@@ -73,8 +73,9 @@
                 </div>
             </div>
         </div>
-        <div class="text-container">
-            <p>MPM representa una solución integral para la gestión y administración de proyectos, específicamente
+        <div class="video-container col-12" [class.d-flex]="!isMobile">
+            <p class="video-text col-7" [class.col-12]="isMobile" [class.video-text-p-right]="!isMobile">
+                MPM representa una solución integral para la gestión y administración de proyectos, específicamente
                 diseñada para atender las necesidades de equipos de desarrollo. Esta página web se destaca por su
                 capacidad de simplificar la complejidad inherente a la asignación y seguimiento de proyectos y
                 actividades. Mediante una interfaz intuitiva y fácil de usar, MPM permite a sus usuarios gestionar
@@ -89,52 +90,19 @@
                 de roles asegura que todos los integrantes del equipo comprendan sus responsabilidades específicas,
                 fomentando una colaboración efectiva y una comunicación fluida dentro del equipo.
             </p>
-        </div>
-        <br>
-        <div class="text-container1">
-            <p>
-                La plataforma está diseñada para ofrecer un control exhaustivo sobre los proyectos, mejorando
-                significativamente la organización y la productividad del equipo. Con MPM, los líderes de proyecto
-                pueden asignar tareas de manera eficaz, monitorear el progreso en tiempo real y tomar decisiones
-                informadas basadas en datos precisos y actualizados.
-
-                En resumen, MPM no es solo una herramienta de gestión de proyectos; es un aliado estratégico que
-                transforma la forma en que los equipos de desarrollo planifican, ejecutan y monitorean sus proyectos.
-                Al proporcionar una solución completa que abarca desde la asignación de tareas hasta el seguimiento del
-                progreso y la asignación de roles, MPM permite a los equipos alcanzar sus objetivos con
-                mayor eficiencia, claridad y control.
-            </p>
-        </div>
-        <br>
-        <div class="video-container col-12">
-            <video autoplay [muted]="'muted'" loop class="video-size">
-                <source src="/assets/img/publicidad.mp4" type="video/mp4">
+            <video autoplay [muted]="'muted'" loop class="video-size" [class.col-4]="!isMobile"
+                [class.col-12]="isMobile">
+                <source src="https://mpm-back-end-node.onrender.com/api/videos/publicidad.mp4" type="video/mp4">
                 Tu navegador no soporta videos HTML5.
-                <iframe src="https://www.youtube.com/embed/NPRqe-Y7P5A?si=yBfrzGFUFiyJ2UaX" title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen></iframe>
             </video>
-            <div class="overlay-text">
-                <p>MPM representa una solución integral para la gestión y administración de proyectos, específicamente
-                    diseñada para atender las necesidades de equipos de desarrollo. Esta página web se destaca por su
-                    capacidad de simplificar la complejidad inherente a la asignación y seguimiento de proyectos y
-                    actividades. Mediante una interfaz intuitiva y fácil de usar, MPM permite a sus usuarios gestionar
-                    eficientemente las diferentes etapas de los proyectos, desde su inicio hasta su conclusión.
-
-                    Una de las características más valoradas de MPM es su sistema de visualización de tareas, que
-                    clasifica
-                    las actividades en categorías como asignadas, en proceso, completadas y pausadas. Esta clasificación
-                    facilita a los equipos el seguimiento preciso del avance de cada proyecto, permitiendo identificar
-                    rápidamente cualquier retraso o área de mejora.
-                    Además, MPM introduce un sistema de roles detallado, donde cada miembro del equipo recibe
-                    asignaciones
-                    claras según su posición, como líder de proyecto, analista, diseñador o desarrollador. Esta
-                    asignación
-                    de roles asegura que todos los integrantes del equipo comprendan sus responsabilidades específicas,
-                    fomentando una colaboración efectiva y una comunicación fluida dentro del equipo.
-                </p>
-                <br>
+        </div>
+        <br>
+        <div class="video-container col-12" [class.d-flex]="!isMobile" style="margin-bottom: 0px;">
+            <video *ngIf="!isMobile" autoplay [muted]="'muted'" loop class="video-size col-4">
+                <source src="https://mpm-back-end-node.onrender.com/api/videos/publicidad_1.mp4" type="video/mp4">
+                Tu navegador no soporta videos HTML5.
+            </video>
+            <div class="video-text col-7" [class.col-12]="isMobile" [class.video-text-p-left]="!isMobile">
                 <p>
                     La plataforma está diseñada para ofrecer un control exhaustivo sobre los proyectos, mejorando
                     significativamente la organización y la productividad del equipo. Con MPM, los líderes de proyecto
@@ -151,11 +119,13 @@
                 </p>
             </div>
 
-            <video autoplay [muted]="'muted'" loop class="video-size">
-                <source src="/assets/img/publicidad_1.mp4" type="video/mp4">
+            <video *ngIf="isMobile" autoplay [muted]="'muted'" loop class="video-size col-12">
+                <source src="https://mpm-back-end-node.onrender.com/api/videos/publicidad_1.mp4" type="video/mp4">
                 Tu navegador no soporta videos HTML5.
             </video>
+
         </div>
+
     </div>
     <app-footer></app-footer>
 </main>

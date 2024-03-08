@@ -5,7 +5,6 @@ a {
 
 * {
     color: var(--text-color);
-    
 }
 
 .text-sub {
@@ -88,37 +87,37 @@ a {
     transform: translateY(-7px);
 }
 .video-container {
-    position: relative;
-    display: grid;
     justify-content: center;
 }
 
 .video-size {
-    width: 100%;
-    max-width: 1000px;
-    height: auto;
-    margin-bottom: 20px;
+    width: 40%;
+    height: 100%;
     border-radius: 15px  !important;
-    filter: blur(3px); /* Aplica el efecto difuminado al video */
+    filter: blur(2px); /* Aplica el efecto difuminado al video */
 }
 
-.overlay-text {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    color: white; /* Cambia el color según necesites */
-    padding-top: 40px;
-    padding-left: 100px;
-    padding-right: 100px;
-    box-sizing: border-box;
+@media (max-width: 992px) {
+    .video-size {
+        margin-bottom: 20px;
+        width: 100%;
+        height: 100%;
+        border-radius: 15px  !important;
+        filter: blur(2px); /* Aplica el efecto difuminado al video */
+    }
+}
+
+.video-text {
     text-align: justify;
-    pointer-events: none; /* Asegura que el texto no interfiera con la reproducción del video */
+}
+
+.video-text-p-left {
+    padding-left: 15px;
+}
+
+
+.video-text-p-right {
+    padding-right: 15px;
 }
 
 
@@ -127,15 +126,5 @@ a {
     justify-content: center;
 }*/
 
-.text-container{
-    text-align: justify;
-    padding-right: 350px;
-
-}
-.text-container1{
-    text-align: justify;
-    padding-left: 350px;
-
-}
 
 
