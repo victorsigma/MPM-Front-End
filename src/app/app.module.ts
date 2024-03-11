@@ -47,6 +47,7 @@ import { BreadcrumbcrumbComponent } from './components/breadcrumb/breadcrumb';
 import { SitemapComponent } from './components/sitemap/sitemap.component';
 import { PrivacynoticeComponent } from './components/privacynotice/privacynotice.component';
 import { RecaptchaModule } from "ng-recaptcha";
+import { CarucelComponent } from './components/carucel/carucel.component';
 
 
 @NgModule({
@@ -84,7 +85,8 @@ import { RecaptchaModule } from "ng-recaptcha";
     LoadScreenComponent,
     BreadcrumbcrumbComponent,
     SitemapComponent,
-    PrivacynoticeComponent
+    PrivacynoticeComponent,
+    CarucelComponent
   ],
   imports: [
     BrowserModule,

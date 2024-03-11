@@ -1,12 +1,12 @@
-<a class="nav-link" *ngIf="item.type == 'home'" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+<a class="nav-link" *ngIf="item.type == 'home'" title="{{item.title}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
     [routerLink]="item.path"><i [class]="item.icon"></i>&nbsp;&nbsp;{{item.title}}</a>
-<a class="nav-link" *ngIf="item.type == 'button' && isLogin" routerLinkActive="active"
+<a class="nav-link" *ngIf="item.type == 'button' && isLogin" title="{{item.title}}" routerLinkActive="active"
     [routerLinkActiveOptions]="{exact: true}" [routerLink]="item.path"><i
         [class]="item.icon"></i>&nbsp;&nbsp;{{item.title}}</a>
-<a class="nav-link" *ngIf="item.type == 'first-child-button' && isLogin" routerLinkActive="active"
+<a class="nav-link" *ngIf="item.type == 'first-child-button' && isLogin" title="{{item.title}}" routerLinkActive="active"
     [routerLinkActiveOptions]="{exact: true}" [routerLink]="[patherPath]"><i
         [class]="item.icon"></i>&nbsp;&nbsp;{{item.title}}</a>
-<a class="nav-link" *ngIf="item.type == 'child-button' && isLogin" routerLinkActive="active"
+<a class="nav-link" *ngIf="item.type == 'child-button' && isLogin" title="{{item.title}}" routerLinkActive="active"
     [routerLinkActiveOptions]="{exact: true}" [routerLink]="[patherPath, item.path]"><i
         [class]="item.icon"></i>&nbsp;&nbsp;{{item.title}}</a>
 <hr *ngIf="item.type == 'hr'" class="dropdown-divider">
