@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Jwt, Login, User } from '../models/users';
+import { Jwt, Login, User, UserUpdate } from '../models/users';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { jwtDecode } from 'jwt-decode';
@@ -17,6 +17,7 @@ export class LoginDataService {
   private myApiUrlV = 'api/verifyLogin'; 
   private myApiUrlC = 'api/changeTheme'; 
   private myApiUrlI = 'api/changeIcon'; 
+  private myApiUrlU = 'api/users'; 
 
   public status: boolean = false;
   public rol: number = 6;
@@ -41,7 +42,7 @@ export class LoginDataService {
       theme: theme,
       token: this.getToken().token
     }
-    return this.http.post<Jwt>(`${this.myAppUrl}${this.myApiUrlC}`, newTheme)
+    return this.http.put<Jwt>(`${this.myAppUrl}${this.myApiUrlC}`, newTheme)
   }
 
   public changeIcon(icon: icon): Observable<Jwt> {
@@ -49,7 +50,15 @@ export class LoginDataService {
       icon: icon,
       token: this.getToken().token
     }
-    return this.http.post<Jwt>(`${this.myAppUrl}${this.myApiUrlI}`, newIcon)
+    return this.http.put<Jwt>(`${this.myAppUrl}${this.myApiUrlI}`, newIcon)
+  }
+
+  public updateUser(update: UserUpdate): Observable<Jwt> {
+    const updateUser = {
+      update: update,
+      token: this.getToken().token
+    }
+    return this.http.put<Jwt>(`${this.myAppUrl}${this.myApiUrlU}`, updateUser)
   }
 
   public verifyLogin(): Observable<{value: boolean}> {

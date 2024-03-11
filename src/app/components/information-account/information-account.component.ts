@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Modal } from 'bootstrap';
 import { Lang } from 'src/app/models/lang';
-import { User } from 'src/app/models/users';
+import { User, UserUpdate } from 'src/app/models/users';
 import { LangService } from 'src/app/services/lang.service';
 import { LoginDataService } from 'src/app/services/login-data.service';
 import matchFieldsValidator from 'src/app/validators/matchFieldsValidator';
@@ -15,7 +15,7 @@ import matchFieldsValidator from 'src/app/validators/matchFieldsValidator';
 export class InformationAccountComponent {
 
   formName: UntypedFormGroup = new UntypedFormGroup({
-    userName: new UntypedFormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(15), Validators.pattern(/^[a-zA-Z0-9]+$/)]),
+    userName: new UntypedFormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(15), Validators.pattern(/^[a-zA-Z0-9]+$/)]),
     userNameConfirm: new UntypedFormControl()
   }, {validators: [matchFieldsValidator('userName', 'userNameConfirm') as ValidatorFn]})
 
@@ -25,7 +25,7 @@ export class InformationAccountComponent {
   }, {validators: matchFieldsValidator('userEmail', 'userEmailConfirm') as ValidatorFn})
 
   formPhone: UntypedFormGroup = new UntypedFormGroup({
-    userPhone: new UntypedFormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]+$/)]),
+    userPhone: new UntypedFormControl('', [Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]+$/), Validators.required]),
     userPhoneConfirm: new UntypedFormControl()
   }, {validators: matchFieldsValidator('userPhone', 'userPhoneConfirm') as ValidatorFn})
 
@@ -39,55 +39,30 @@ export class InformationAccountComponent {
   }
 
   updateName() {
-    /*if(!(/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(this.formName.get('userName')?.value))) {
-      if (this.formName.get('userName')?.value === this.formName.get('userNameConfirm')?.value) {
-        if (this.userList.usersList.filter(data => {
-          return data.userName === this.formName.get('userNameConfirm')?.value
-        }).length == 0) {
-          //this.userList.usersList[this.userList.usersList.indexOf(this.loginData.usersList[0])].userName = this.formName.get('userNameConfirm')?.value;
-          this.loginData.usersList[0].userName = this.formName.get('userNameConfirm')?.value;
-  
-          this.userList.updateUser(this.loginData.usersList[0].userId, this.loginData.usersList[0]).subscribe(data => {
-            this.toastr.info('Successfully registered.', 'Operation Completed');
-            this.reloadForms();
-          })
-        } else {
-          this.reloadForms();
-          this.toastr.error('Exists Username.', 'Operation Canceled');
-        }
-      } else {
-        this.reloadForms();
-        this.toastr.error('Incorrect data.', 'Operation Canceled');
-      }
-    } else {
-      this.toastr.error('You cannot use an email address as a user.', 'Operation Canceled');
-    }*/
+    const userUpdate = new UserUpdate();
+    userUpdate.userName = this.formName.get('userNameConfirm')?.value;
+
+    this.loginService.updateUser(userUpdate).subscribe((data) => {
+      this.loginService.setToken(data);
+    })
   }
 
   updateEmail() {
-    /*if (/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(this.formEmail.get('userEmail')?.value)) {
-      if (this.formEmail.get('userEmail')?.value === this.formEmail.get('userEmailConfirm')?.value) {
-        if (this.userList.usersList.filter(data => {
-          return data.userMail === this.formEmail.get('userEmailConfirm')?.value
-        }).length == 0) {
-          //this.userList.usersList[this.userList.usersList.indexOf(this.loginData.usersList[0])].userMail = this.formEmail.get('userEmailConfirm')?.value;
-          this.loginData.usersList[0].userMail = this.formEmail.get('userEmailConfirm')?.value;
+    const userUpdate = new UserUpdate();
+    userUpdate.userMail = this.formEmail.get('userEmailConfirm')?.value;
 
-          this.userList.updateUser(this.loginData.usersList[0].userId, this.loginData.usersList[0]).subscribe(data => {
-            this.toastr.info('Successfully registered.', 'Operation Completed');
-            this.reloadForms();
-          })
-        } else {
-          this.toastr.error('Exists Email.', 'Operation Canceled');
-        }
-      } else {
-        this.reloadForms();
-        this.toastr.error('Incorrect data.', 'Operation Canceled');
-      }
-    } else {
-      this.reloadForms();
-      this.toastr.error('Incorrect data.', 'Operation Canceled');
-    }*/
+    this.loginService.updateUser(userUpdate).subscribe((data) => {
+      this.loginService.setToken(data);
+    })
+  }
+
+  updatePhone() {
+    const userUpdate = new UserUpdate();
+    userUpdate.phoneNumber = this.formPhone.get('userPhoneConfirm')?.value;
+
+    this.loginService.updateUser(userUpdate).subscribe((data) => {
+      this.loginService.setToken(data);
+    })
   }
 
   editNameModal() {
@@ -110,8 +85,6 @@ export class InformationAccountComponent {
     const editModal = new Modal(document.getElementById('editModal') as Element);
     editModal.show(document.body)
   }
-
-  updatePhone() {}
 
   reloadForms() {
     this.formName = new UntypedFormGroup({

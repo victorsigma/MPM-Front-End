@@ -25,7 +25,6 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { enEN, esMX } from "./libs/langs";
 import { SitemapComponent } from './components/sitemap/sitemap.component';
 import { PrivacynoticeComponent } from './components/privacynotice/privacynotice.component';
-import { CarucelComponent } from './components/carucel/carucel.component';
 import { title } from 'process';
 
 const browserLang = navigator.language;

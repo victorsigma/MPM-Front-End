@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Modal } from 'bootstrap';
 import { Lang } from 'src/app/models/lang';
+import { UserUpdate } from 'src/app/models/users';
 import { LangService } from 'src/app/services/lang.service';
+import { LoginDataService } from 'src/app/services/login-data.service';
 import matchFieldsValidator from 'src/app/validators/matchFieldsValidator';
 
 @Component({
@@ -21,24 +23,17 @@ export class SecurityAccountComponent {
   public modal = { title: '', type: '' }
   public lang: Lang = new Lang()
 
-  constructor(private langService: LangService) {
+  constructor(public loginService: LoginDataService, private langService: LangService) {
     this.lang = this.langService.getLang();
   }
 
   updatePassword() {
-    /*if (this.formPassword.get('userPassword')?.value === this.formPassword.get('userPasswordConfirm')?.value) {
-      //this.userList.usersList[this.userList.usersList.indexOf(this.loginData.usersList[0])].password = AES.encrypt(this.formPassword.get('userPasswordConfirm')?.value, this.userList.encryptionKey).toString();
+    const userUpdate = new UserUpdate();
+    userUpdate.password = this.formPassword.get('userPasswordConfirm')?.value;
 
-      this.loginData.usersList[0].password = AES.encrypt(this.formPassword.get('userPasswordConfirm')?.value, this.userList.encryptionKey).toString();
-
-      this.userList.updateUser(this.loginData.usersList[0].userId, this.loginData.usersList[0]).subscribe(data => {
-        this.toastr.info('Successfully registered.', 'Operation Completed');
-        this.reloadForms();
-      })
-    } else {
-      this.reloadForms();
-      this.toastr.error('Incorrect data.', 'Operation Canceled');
-    }*/
+    this.loginService.updateUser(userUpdate).subscribe((data) => {
+      this.loginService.setToken(data);
+    })
   }
 
   editPasswordModal() {

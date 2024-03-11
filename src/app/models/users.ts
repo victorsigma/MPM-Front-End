@@ -14,6 +14,15 @@ export class User {
     selectedTheme: string = '';
 }
 
+
+export class UserUpdate {
+    userName: string | undefined = undefined;
+    userMail: string | undefined = undefined;
+    password: string | undefined = undefined;
+    phoneNumber: string | undefined = undefined;
+}
+
+
 export class Login {
     userNameOrEmail: string = '';
     password: string = '';

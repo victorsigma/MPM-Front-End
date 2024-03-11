@@ -1,0 +1,12 @@
+.carousel-component {
+    margin-block: 30px;
+}
+
+#carouselExampleIndicators {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.carousel-item img {
+    object-fit: cover;
+}
