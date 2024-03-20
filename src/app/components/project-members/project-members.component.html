@@ -8,7 +8,7 @@
             <div *ngIf="isMobile" class="collapse navbar-collapse options" id="membersOptions">
                 <ul class="navbar-nav">
                     <button class="button-options" data-bs-toggle="modal"
-                        data-bs-target="#projectOptions"><i class="fa-solid fa-gear"></i> Options</button>
+                        data-bs-target="#projectOptions"><i class="fa-solid fa-gear"></i> {{lang.options}}</button>
                     <button class="button-options" routerLink="../"><i class="fa-solid fa-list-check"></i> {{lang.activities}}</button>
                 </ul>
             </div>
@@ -16,7 +16,7 @@
             <ul *ngIf="!isMobile" class="navbar-nav d-flex">
                 <li class="nav-item">
                     <button class="button-options" data-bs-toggle="modal"
-                        data-bs-target="#projectOptions">Options</button>
+                        data-bs-target="#projectOptions">{{lang.options}}</button>
                     <button class="button-options" routerLink="../">{{lang.activities}}</button>
                 </li>
             </ul>
@@ -24,4 +24,5 @@
     </nav>
 
     <router-outlet></router-outlet>
+    <app-project-options *ngIf="project" [project]="project"></app-project-options>
 </div>

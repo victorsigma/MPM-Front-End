@@ -8,6 +8,8 @@ import { LoginDataService } from '../../services/login-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { Lang } from 'src/app/models/lang';
+import { LangService } from 'src/app/services/lang.service';
 
 @Component({
   selector: 'app-activities-page',
@@ -20,18 +22,20 @@ export class ActivitiesPageComponent implements OnInit {
   activities: ActivityData[] = [];
   public idProject: string = '';
   public isMobile: boolean = false;
+  public lang: Lang = new Lang();
 
   constructor(
     public projectData: ProjectDataService,
     public activityData: ActivityDataService,
     public loginService: LoginDataService,
     private activeRoute: ActivatedRoute,
+    private langServive: LangService,
     private titleService: Title,
     private router: Router,
     private route: ActivatedRoute,
     private breakpointObserver: BreakpointObserver
   ) {
-    
+    this.lang = this.langServive.getLang();
     this.breakpointObserver.observe('(max-width: 992px)')
     .subscribe(result => {
       this.isMobile = result.matches;

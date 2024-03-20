@@ -15,6 +15,7 @@ export class ActivityDataService {
   //private myAppUrl = 'http://localhost:8080/'//Java
   //private myAppUrl = 'https://localhost:7172/'//C#
   private myApiUrl = 'api/activities'
+  private myApiUrlR = 'api/UserRol'
 
   private modalActivity = new ActivityData();
 
@@ -33,15 +34,15 @@ export class ActivityDataService {
   }
 
   removeActivity(id: string) {
-    return this.http.delete(this.myAppUrl + this.myApiUrl + id)
+    return this.http.delete(`${this.myAppUrl}${this.myApiUrl}/${id}`)
   }
 
-  updateActivity(id: string, activity: ActivityData) {
-    return this.http.put(this.myAppUrl + this.myApiUrl+id, activity)
+  updateActivity(id: string, activity: ActivityDataPost) {
+    return this.http.put(`${this.myAppUrl}${this.myApiUrl}/${id}`, activity)
   }
 
   getProjectRol(id: string) {
-    return this.http.get(this.myAppUrl + 'api/UserRol/' + id)
+    return this.http.get(this.myAppUrl + this.myApiUrlR + id)
   }
 
   setModalActivity(activity: ActivityData) {

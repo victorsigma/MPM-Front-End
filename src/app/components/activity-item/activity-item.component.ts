@@ -4,6 +4,7 @@ import { ActivityDataService } from 'src/app/services/activity-data.service';
 import { ProjectData } from '../../models/projects';
 import { LoginDataService } from '../../services/login-data.service';
 import { ProjectsHasUser } from '../../models/projectsHasUser';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-activity-item',
@@ -17,7 +18,7 @@ export class ActivityItemComponent implements OnInit {
   @Input() activity:ActivityData = new ActivityData();
   @Input() userRol: number | undefined = undefined;
   @Output() update:EventEmitter<null> = new EventEmitter<null>();
-  constructor(private dataServiceModal: ActivityDataService, public loginService: LoginDataService) { 
+  constructor(private dataServiceModal: ActivityDataService, public loginService: LoginDataService, public route: ActivatedRoute) { 
   }
 
   ngOnInit(): void {

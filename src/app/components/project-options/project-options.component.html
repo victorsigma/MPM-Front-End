@@ -39,14 +39,16 @@
                             name="dateEnd" placeholder="MM/DD/YYYY"
                             type="date" formControlName="dateEnd"/>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn button-delete"
+                    <!-- <div class="modal-footer" style="justify-content: space-between !important;">
+                        
+                        <button type="button" class="btn btn-delete"
                             data-bs-dismiss="modal" 
                             data-bs-toggle="modal"
-                            data-bs-target="#deleteProject">Delete</button>
-                        <button type="button" (click)="updateForm()" class="btn button-close"
-                            data-bs-dismiss="modal">Close</button>
-                        <button type="submit" data-bs-dismiss="modal" class="btn button-change">Save
+                            data-bs-target="#deleteProject"><i class="fa-solid fa-trash fa-sm"></i></button>
+                    </div> -->
+
+                    <div class="list-group card-body">
+                        <button type="submit" data-bs-dismiss="modal" class="btn btn-update">Save
                             changes</button>
                     </div>
                 </form>

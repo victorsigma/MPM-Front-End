@@ -1,4 +1,4 @@
-<div class="card-aling-p card-center" (click)="onModalData()" data-bs-toggle="modal" data-bs-target="#editActivity">
+<div class="card-aling-p card-center" (click)="onModalData()" data-bs-toggle="modal" [attr.data-bs-target]="'#editActivity'+activity.id">
     <div class="card card-p">
         <img src="./assets/img/card/{{activity.src}}.jpg"
             class="card-img-top" alt="...">
@@ -8,3 +8,5 @@
         </div>
     </div>
 </div>
+
+<app-editor-activity [activity]="activity"></app-editor-activity>

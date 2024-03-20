@@ -92,4 +92,6 @@ export class Lang {
     //
     activities_search: string = '';
     members_search: string = '';
+
+    options: string = '';
 }

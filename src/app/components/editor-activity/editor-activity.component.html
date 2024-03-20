@@ -1,11 +1,10 @@
-<div class="modal fade" id="editActivity" tabindex="-1" aria-labelledby="editActivityLabel" aria-hidden="true"
-    data-bs-backdrop="static">
+<div class="modal fade" [id]="'editActivity'+activity.id" tabindex="-1" aria-labelledby="editActivityLabel"
+    aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">{{dataServiceModal.getModalActivity().title}}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form [formGroup]="form" (ngSubmit)="editActivity()">
@@ -24,10 +23,14 @@
                         <label class="form-label">Change status</label>
                         <select formControlName="status" class="text" aria-label="Default
                             select example">
-                            <option value="1" [selected]="dataServiceModal.getModalActivity().status == 1">Unassigned</option>
-                            <option value="2" [selected]="dataServiceModal.getModalActivity().status == 2">In progress</option>
-                            <option value="3" [selected]="dataServiceModal.getModalActivity().status == 3">Completed</option>
-                            <option value="4" [selected]="dataServiceModal.getModalActivity().status == 4">Pause</option>
+                            <option value="1" [selected]="dataServiceModal.getModalActivity().status == 1">Unassigned
+                            </option>
+                            <option value="2" [selected]="dataServiceModal.getModalActivity().status == 2">In progress
+                            </option>
+                            <option value="3" [selected]="dataServiceModal.getModalActivity().status == 3">Completed
+                            </option>
+                            <option value="4" [selected]="dataServiceModal.getModalActivity().status == 4">Pause
+                            </option>
                         </select>
                     </div>
                     <div class="mb-1">
@@ -57,11 +60,11 @@
                         <input formControlName="dateEnd" class="date" name="date" placeholder="MM/DD/YYYY"
                             type="date" />
                     </div>
+
                     <div class="modal-footer">
-                        <button type="button" class="btn button-delete" data-bs-dismiss="modal"
-                            (click)="removeActivity()">Remove</button>
-                        <button type="button" class="btn button-close" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" data-bs-dismiss="modal" class="btn button-change">Save
+                        <button type="button" class="btn btn-delete" data-bs-dismiss="modal"
+                        (click)="removeActivity()"><i class="fa-solid fa-trash fa-sm"></i></button>
+                        <button type="submit" data-bs-dismiss="modal" class="btn btn-update">Save
                             changes</button>
                     </div>
                 </form>

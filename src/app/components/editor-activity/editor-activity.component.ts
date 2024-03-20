@@ -1,8 +1,8 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { ActivityDataService } from '../../services/activity-data.service';
 import { UpdateDataService } from 'src/app/services/update-data.service';
-import { ActivityData } from '../../models/ativities';
+import { ActivityData, ActivityDataPost } from '../../models/ativities';
 
 @Component({
   selector: 'app-editor-activity',
@@ -13,84 +13,110 @@ import { ActivityData } from '../../models/ativities';
 
 export class EditorActivityComponent implements OnInit {
 
-  @Output() deletActivity: EventEmitter<string> = new EventEmitter();
-  @Output() updateActivity: EventEmitter<ActivityData> = new EventEmitter();
+  @Input() public activity: ActivityData = new ActivityData();
 
-
-  public activity: ActivityData = new ActivityData();
-  form: UntypedFormGroup = new UntypedFormGroup({
-    title: new UntypedFormControl(),
-    subtitle: new UntypedFormControl(),
-    status: new UntypedFormControl(),
-    dateEnd: new UntypedFormControl(),
-    rolesListAnalyst: new UntypedFormControl(),
-    rolesListDesigner: new UntypedFormControl(),
-    rolesListProgrammer: new UntypedFormControl()
+  form: FormGroup = new FormGroup({
+    title: new FormControl(),
+    subtitle: new FormControl(),
+    status: new FormControl(),
+    dateEnd: new FormControl(),
+    rolesListAnalyst: new FormControl(),
+    rolesListDesigner: new FormControl(),
+    rolesListProgrammer: new FormControl()
   })
   constructor(
-    public dataServiceModal: ActivityDataService, 
+    public dataServiceModal: ActivityDataService,
     public activityData: ActivityDataService,
     private emitter: UpdateDataService
-  )
-    {
+  ) {
     this.emitter.emitter.subscribe(() => {
       this.reloadForm()
     });
   }
 
   ngOnInit(): void {
-    this.activity = this.dataServiceModal.getModalActivity()
+    this.form = new FormGroup({
+      title: new FormControl(),
+      subtitle: new FormControl(),
+      status: new FormControl(),
+      dateEnd: new FormControl(),
+      rolesListAnalyst: new FormControl(this.activity.analyst.data[0]),
+      rolesListDesigner: new FormControl(this.activity.designer.data[0]),
+      rolesListProgrammer: new FormControl(this.activity.programmer.data[0])
+    })
   }
 
   editActivity() {
-    //this.activity = this.dataServiceModal.activity;
+    const putActivity = new ActivityDataPost()
+    putActivity.title = this.activity.title;
+    putActivity.subtitle = this.activity.subtitle;
+    putActivity.status = this.activity.status;
+    putActivity.analyst = this.activity.analyst.data[0];
+    putActivity.designer = this.activity.designer.data[0];
+    putActivity.programmer = this.activity.programmer.data[0];
+    putActivity.dateEnd = new Date(new Date(this.activity.dateEnd));;
+    putActivity.src = this.activity.src;
+
+    console.log(this.form?.value)
 
     if (this.form.get('title')?.value != null) {
-      //this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf(this.dataServiceModal.activity)].title = this.form.get('title')?.value;
-      this.activity.title = this.form.get('title')?.value;
+      putActivity.title = this.form.get('title')?.value;
     }
 
     if (this.form.get('subtitle')?.value != null) {
-      //this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf(this.dataServiceModal.activity)].subtitle = this.form.get('subtitle')?.value;
-      this.activity.subtitle = this.form.get('subtitle')?.value;
+      putActivity.subtitle = this.form.get('subtitle')?.value;
     }
 
-    if (this.form.get('status')?.value != 0) {
-      //this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf(this.dataServiceModal.activity)].status = this.form.get('status')?.value;
-      this.activity.status = this.form.get('status')?.value;
+    if (this.form.get('status')?.value != null) {
+      putActivity.status = this.form.get('status')?.value;
     }
 
-    //this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf( this.dataServiceModal.activity )].analyst =  this.form.get('rolesListAnalyst')?.value;
-    this.activity.analyst = this.form.get('rolesListAnalyst')?.value;
+    putActivity.analyst = this.form.get('rolesListAnalyst')?.value ? true : false;
 
-    //this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf( this.dataServiceModal.activity )].designer = this.form.get('rolesListDesigner')?.value;
-    this.activity.designer = this.form.get('rolesListDesigner')?.value;
+    putActivity.designer = this.form.get('rolesListDesigner')?.value ? true : false;
 
-    //this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf( this.dataServiceModal.activity )].programmer = this.form.get('rolesListProgrammer')?.value;
-    this.activity.programmer = this.form.get('rolesListProgrammer')?.value;
+    putActivity.programmer = this.form.get('rolesListProgrammer')?.value ? true : false;
 
     if (this.form.get('dateEnd')?.value != null) {
-      //this.activityList.activitiesMaster[this.activityList.activitiesMaster.indexOf(this.dataServiceModal.activity)].dateEnd = new Date(new Date(this.form.get('dateEnd')?.value).setDate(new Date(this.form.get('dateEnd')?.value).getDate() + 1));
-      this.activity.dateEnd = new Date(new Date(this.form.get('dateEnd')?.value));
+      putActivity.dateEnd = new Date(new Date(this.form.get('dateEnd')?.value));
     }
 
-    this.updateActivity.emit(this.activity);
-    this.reloadForm();
+    this.activityData.updateActivity(this.activity.id, putActivity).subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      complete: () => {
+        location.reload();
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
   }
 
   removeActivity() {
-    //this.deletActivity.emit(this.dataServiceModal.activity.id);
+    this.activityData.removeActivity(this.activity.id).subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      complete: () => {
+        location.reload();
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
   }
 
   reloadForm() {
-    // this.form = new UntypedFormGroup({
-    //   title: new UntypedFormControl(),
-    //   subtitle: new UntypedFormControl(),
-    //   status: new UntypedFormControl(this.dataServiceModal.activity.status),
-    //   dateEnd: new UntypedFormControl(),
-    //   rolesListAnalyst: new UntypedFormControl(this.dataServiceModal.activity.analyst),
-    //   rolesListDesigner: new UntypedFormControl(this.dataServiceModal.activity.designer),
-    //   rolesListProgrammer: new UntypedFormControl(this.dataServiceModal.activity.programmer)
+    // this.form = new FormGroup({
+    //   title: new FormControl(),
+    //   subtitle: new FormControl(),
+    //   status: new FormControl(this.dataServiceModal.activity.status),
+    //   dateEnd: new FormControl(),
+    //   rolesListAnalyst: new FormControl(this.dataServiceModal.activity.analyst),
+    //   rolesListDesigner: new FormControl(this.dataServiceModal.activity.designer),
+    //   rolesListProgrammer: new FormControl(this.dataServiceModal.activity.programmer)
     // })
   }
 }

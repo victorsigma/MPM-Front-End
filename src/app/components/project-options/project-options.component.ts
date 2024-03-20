@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProjectData } from 'src/app/models/projects';
-import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { ProjectListService } from '../../services/project-list.service';
 
 @Component({
@@ -10,14 +10,14 @@ import { ProjectListService } from '../../services/project-list.service';
 })
 export class ProjectOptionsComponent implements OnInit {
 
-  @Input() project:ProjectData = new ProjectData();
+  @Input() project: ProjectData = new ProjectData();
 
-  form: UntypedFormGroup = new UntypedFormGroup({
-    title: new UntypedFormControl(),
-    subtitle: new UntypedFormControl(),
-    dateEnd: new UntypedFormControl(),
+  form: FormGroup = new FormGroup({
+    title: new FormControl(),
+    subtitle: new FormControl(),
+    dateEnd: new FormControl(),
   });
-  constructor(private projectList:ProjectListService) {
+  constructor(private projectList: ProjectListService) {
     this.updateForm();
   }
 
@@ -40,20 +40,26 @@ export class ProjectOptionsComponent implements OnInit {
       this.project.dateEnd = new Date(new Date(this.form.get('dateEnd')?.value));
     }
 
-    this.projectList.updateProjects(this.project.id, this.project).subscribe(data => {
-      this.projectList.getListProjects().subscribe(data => {
-        this.projectList.projectsMaster = data;
-        this.projectList.loadProjects();
-      })
-      this.updateForm();
+    console.log(this.project)
+
+    this.projectList.updateProjects(this.project.id, this.project).subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      complete: () => {
+        location.reload();
+      },
+      error: (err) => {
+        console.log(err);
+      }
     })
   }
 
   updateForm() {
-    this.form= new UntypedFormGroup({
-      title: new UntypedFormControl(),
-      subtitle: new UntypedFormControl(),
-      dateEnd: new UntypedFormControl(),
+    this.form = new FormGroup({
+      title: new FormControl(),
+      subtitle: new FormControl(),
+      dateEnd: new FormControl(),
     });
   }
 }

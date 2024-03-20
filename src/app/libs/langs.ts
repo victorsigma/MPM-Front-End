@@ -86,6 +86,7 @@ export const enEN: Lang = {
     "back_to_home": "Back to Home",
     "activities_search": "Search activities...",
     "members_search": "Search members...",
+    "options": "Options",
 }
 
 export const esMX: Lang = {
@@ -174,4 +175,5 @@ export const esMX: Lang = {
     "back_to_home": "Regresar al Inicio",
     "activities_search": "Buscar actividades...",
     "members_search": "Buscar miembros...",
+    "options": "Opciones",
 }

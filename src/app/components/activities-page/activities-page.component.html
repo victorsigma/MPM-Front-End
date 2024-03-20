@@ -3,16 +3,16 @@
         <div class="container-fluid content-project">
             <h1 *ngIf="project" class="navbar-brand navbar-title" [attr.data-bs-toggle]="isMobile ? 'collapse' : null"
             data-bs-target="#activitiesOptions">
-                {{project.title || ''}} - Activities</h1>
-            <h1 *ngIf="!project" class="navbar-brand  navbar-title">Activities</h1>
+                {{project.title || ''}} - {{lang.activities}}</h1>
+            <h1 *ngIf="!project" class="navbar-brand  navbar-title">{{lang.activities}}</h1>
 
             <div *ngIf="isMobile" class="collapse navbar-collapse" id="activitiesOptions">
                 <ul class="navbar-nav d-flex">
                     <li class="nav-item" *ngIf="userRol == 0">
                         <button class="button-options" data-bs-toggle="modal"
-                            data-bs-target="#projectOptions"><i class="fa-solid fa-gear"></i> Options</button>
+                            data-bs-target="#projectOptions"><i class="fa-solid fa-gear"></i> {{lang.options}}</button>
                         <button class="button-options" (click)="goToMemberRoute()"><i class="fa-solid fa-users-gear fa-xs"></i> Members</button>
-                        <button class="button-options" data-bs-toggle="modal" data-bs-target="#addActivity"><i class="fa-solid fa-plus"></i> Add</button>
+                        <button class="button-options" data-bs-toggle="modal" data-bs-target="#addActivity"><i class="fa-solid fa-plus"></i> {{lang.pather_add}}</button>
                     </li>
                 </ul>
             </div>
@@ -20,9 +20,9 @@
             <ul *ngIf="!isMobile" class="navbar-nav d-flex">
                 <li class="nav-item" *ngIf="userRol == 0">
                     <button class="button-options" data-bs-toggle="modal"
-                        data-bs-target="#projectOptions">Options</button>
+                        data-bs-target="#projectOptions">{{lang.options}}</button>
                     <button class="button-options" (click)="goToMemberRoute()">Members</button>
-                    <button class="button-options" data-bs-toggle="modal" data-bs-target="#addActivity">Add <i
+                    <button class="button-options" data-bs-toggle="modal" data-bs-target="#addActivity">{{lang.pather_add}} <i
                             class="fa-solid fa-plus fa-xs"></i></button>
                 </li>
             </ul>
@@ -31,8 +31,6 @@
 
 
     <router-outlet></router-outlet>
-    <app-editor-activity (deletActivity)="deletActivity($event)"
-        (updateActivity)="updateActivity($event)"></app-editor-activity>
     <app-more-activity></app-more-activity>
     <app-add-activity *ngIf="project" [project]="project"></app-add-activity>
     <app-project-options *ngIf="project" [project]="project"></app-project-options>

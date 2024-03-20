@@ -87,6 +87,36 @@ export const projectPaths = [
     }
 ]
 
+export const editActivitiesPaths = [
+    {
+        title: lang.pather_home,
+        icon: 'fa-solid fa-house fa-sm',
+        path: './',
+        type: 'home'
+    },
+    {
+        title: lang.projects,
+        icon: 'fa-solid fa-diagram-project fa-sm',
+        path: './projects',
+        type: 'button'
+    },
+    {
+        type: 'hr'
+    },
+    {
+        title: lang.pather_all,
+        icon: 'fa-solid fa-border-all fa-sm',
+        path: '/',
+        type: 'first-child-button'
+    },
+    {
+        title: lang.pather_all,
+        icon: 'fa-solid fa-border-all fa-sm',
+        path: '../../',
+        type: 'child-button'
+    }
+]
+
 export const membersPaths = [
     {
         title: lang.pather_home,

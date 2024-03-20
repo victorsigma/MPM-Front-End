@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { LoginDataService } from '../../services/login-data.service';
 import { ProjectListService } from '../../services/project-list.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { accountPaths, defaultPaths, membersPaths, projectPaths, projectsPaths } from 'src/app/libs/paths';
+import { accountPaths, defaultPaths, editActivitiesPaths, membersPaths, projectPaths, projectsPaths } from 'src/app/libs/paths';
 import { environment } from 'src/environments/environment';
 import { Lang } from 'src/app/models/lang';
 import { LangService } from 'src/app/services/lang.service';
