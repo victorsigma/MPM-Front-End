@@ -37,7 +37,8 @@ body {
 
 .mpm-logo {
     cursor: pointer;
-    max-width: 100%;
+    max-width: 800px;
+    height: auto;
 }
 
 .text {

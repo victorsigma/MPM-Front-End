@@ -126,6 +126,16 @@ a {
     display: grid;
     justify-content: center;
 }*/
+.container-justify{
+    text-align: justify;
+    padding-right: 20px;
+}
+
+.container-alingh{
+    text-align: justify;
+    padding-left: 20px;
+
+}
 
 
 
