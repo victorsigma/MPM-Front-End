@@ -9,54 +9,52 @@
             <div class="modal-body">
                 <form [formGroup]="form" (ngSubmit)="editActivity()">
                     <div class="mb-3">
-                        <label class="form-label" for="nameActivity">Change
-                            activity name</label>
+                        <label class="form-label" for="nameActivity">{{lang.change_activity_name}}</label>
                         <input class="text" type="text" formControlName="title"
                             placeholder="{{dataServiceModal.getModalActivity().title}}" />
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Change description</label>
+                        <label class="form-label">{{lang.change_description}}</label>
                         <textarea class="textarea" rows="3" formControlName="subtitle"
                             placeholder="{{dataServiceModal.getModalActivity().subtitle}}"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Change status</label>
+                        <label class="form-label">{{lang.change_status}}</label>
                         <select formControlName="status" class="text" aria-label="Default
                             select example">
-                            <option value="1" [selected]="dataServiceModal.getModalActivity().status == 1">Unassigned
+                            <option value="1" [selected]="dataServiceModal.getModalActivity().status == 1">{{lang.pather_unassigned}}
                             </option>
-                            <option value="2" [selected]="dataServiceModal.getModalActivity().status == 2">In progress
+                            <option value="2" [selected]="dataServiceModal.getModalActivity().status == 2">{{lang.pather_in_progress}}
                             </option>
-                            <option value="3" [selected]="dataServiceModal.getModalActivity().status == 3">Completed
+                            <option value="3" [selected]="dataServiceModal.getModalActivity().status == 3">{{lang.pather_completed}}
                             </option>
-                            <option value="4" [selected]="dataServiceModal.getModalActivity().status == 4">Pause
+                            <option value="4" [selected]="dataServiceModal.getModalActivity().status == 4">{{lang.pather_pause}}
                             </option>
                         </select>
                     </div>
                     <div class="mb-1">
-                        <label class="form-label">Participating roles</label>
+                        <label class="form-label">{{lang.participating_roles}}</label>
                     </div>
                     <div class="mb-3 checkbox">
-                        <input type="checkbox" id="checkanalystedit" formControlName="rolesListAnalyst"
+                        <input type="checkbox" [id]="'checkanalystedit'+activity.id" formControlName="rolesListAnalyst"
                             [checked]="dataServiceModal.getModalActivity().analyst.data[0]">
-                        <label class="form-check-label" for="checkanalystedit"> Analyst</label>
+                        <label class="form-check-label" [for]="'checkanalystedit'+activity.id">{{lang.analyst}}</label>
                     </div>
                     <div class="mb-3 checkbox">
-                        <input type="checkbox" id="checkdesigneredit" formControlName="rolesListDesigner"
+                        <input type="checkbox" [id]="'checkdesigneredit'+activity.id" formControlName="rolesListDesigner"
                             [checked]="dataServiceModal.getModalActivity().designer.data[0]">
-                        <label class="form-check-label" for="checkdesigneredit">Designer</label>
+                        <label class="form-check-label" [for]="'checkdesigneredit'+activity.id">{{lang.designer}}</label>
                     </div>
                     <div class="mb-3 checkbox">
-                        <input type="checkbox" id="checkprogrammeredit" formControlName="rolesListProgrammer"
+                        <input type="checkbox" [id]="'checkprogrammeredit'+activity.id" formControlName="rolesListProgrammer"
                             [checked]="dataServiceModal.getModalActivity().programmer.data[0]">
-                        <label class="form-check-label" for="checkprogrammeredit">Programmer</label>
+                        <label class="form-check-label" [for]="'checkprogrammeredit'+activity.id">{{lang.programmer}}</label>
                     </div>
                     <div class="mb-3">
-                        <label class="control-label" for="date">Completion
-                            date</label>
+                        <label class="control-label" for="date">{{lang.completion_date}}</label>
                         <br>
-                        <label class="control-label" for="date">Actual date
-                            {{dataServiceModal.getModalActivity().dateEnd}}</label>
+                        <label class="control-label" for="date">{{lang.actual_date}}
+                            {{dataServiceModal.getModalActivity().dateEnd | date:'dd-MM-yyyy'}}</label>
                         <input formControlName="dateEnd" class="date" name="date" placeholder="MM/DD/YYYY"
                             type="date" />
                     </div>
@@ -64,8 +62,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-delete" data-bs-dismiss="modal"
                         (click)="removeActivity()"><i class="fa-solid fa-trash fa-sm"></i></button>
-                        <button type="submit" data-bs-dismiss="modal" class="btn btn-update">Save
-                            changes</button>
+                        <button type="submit" data-bs-dismiss="modal" class="btn btn-update">{{lang.action_save_changes}}</button>
                     </div>
                 </form>
             </div>

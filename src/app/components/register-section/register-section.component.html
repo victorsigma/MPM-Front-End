@@ -16,17 +16,17 @@
                         <label for="newUserName" class="form-label">{{lang.user_name}}</label>
                         <input type="text" class="text" id="newUserName" formControlName="user" required maxlength="15">
                         <div *ngIf="form.get('user')?.hasError('minlength') && !form.get('user')?.hasError('pattern') && form.get('user')?.value != ''"
-                        class="form-text error">{{lang.user_validation_messages.minlength}}</div>
-                    <div *ngIf="form.get('user')?.hasError('pattern') && !form.get('user')?.hasError('minlength') && form.get('user')?.value != ''"
-                        class="form-text error">{{lang.user_validation_messages.pattern}}</div>
-                    <div *ngIf="form.get('user')?.hasError('pattern') && form.get('user')?.hasError('minlength') && form.get('user')?.value != ''"
-                        class="form-text error">{{lang.user_validation_messages.minlength_pattern}}</div>
+                            class="form-text error">{{lang.user_validation_messages.minlength}}</div>
+                        <div *ngIf="form.get('user')?.hasError('pattern') && !form.get('user')?.hasError('minlength') && form.get('user')?.value != ''"
+                            class="form-text error">{{lang.user_validation_messages.pattern}}</div>
+                        <div *ngIf="form.get('user')?.hasError('pattern') && form.get('user')?.hasError('minlength') && form.get('user')?.value != ''"
+                            class="form-text error">{{lang.user_validation_messages.minlength_pattern}}</div>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">{{lang.email_address}}</label>
                         <input type="email" class="text" id="email" formControlName="email" required>
                         <div *ngIf="form.get('email')?.hasError('email') && form.get('email')?.value != ''"
-                        class="form-text error">{{lang.email_validation_message.email}}</div>
+                            class="form-text error">{{lang.email_validation_message.email}}</div>
                     </div>
                     <div class="mb-3" style="border-bottom: solid var(--background-color) 2px;">
                         <label for="phoneNumber" class="form-label">{{lang.phone_number}}</label>
@@ -41,24 +41,25 @@
                             </div>
                         </div>
                         <div *ngIf="form.get('phone')?.hasError('minlength') && !form.get('phone')?.hasError('pattern') && form.get('phone')?.value != ''"
-                        class="form-text error">{{lang.phone_validation_messages.minlength}}</div>
-                    <div *ngIf="form.get('phone')?.hasError('pattern') && !form.get('phone')?.hasError('minlength') && form.get('phone')?.value != ''"
-                        class="form-text error">{{lang.phone_validation_messages.pattern}}</div>
-                    <div *ngIf="form.get('phone')?.hasError('pattern') && form.get('phone')?.hasError('minlength') && form.get('phone')?.value != ''"
-                        class="form-text error">{{lang.phone_validation_messages.minlength_pattern}}</div>
+                            class="form-text error">{{lang.phone_validation_messages.minlength}}</div>
+                        <div *ngIf="form.get('phone')?.hasError('pattern') && !form.get('phone')?.hasError('minlength') && form.get('phone')?.value != ''"
+                            class="form-text error">{{lang.phone_validation_messages.pattern}}</div>
+                        <div *ngIf="form.get('phone')?.hasError('pattern') && form.get('phone')?.hasError('minlength') && form.get('phone')?.value != ''"
+                            class="form-text error">{{lang.phone_validation_messages.minlength_pattern}}</div>
                     </div>
                     <div class="mb-3">
                         <label for="newPassword" class="form-label">{{lang.password}}</label>
                         <input type="password" class="text" id="newPassword" formControlName="password" required>
                         <div *ngIf="form.get('password')?.hasError('minlength') && !form.get('password')?.hasError('pattern') && form.get('password')?.value != ''"
-                        class="form-text error">{{lang.password_validation_messages.minlength}}</div>
-                    <div *ngIf="form.get('password')?.hasError('pattern') && !form.get('password')?.hasError('minlength') && form.get('password')?.value != ''"
-                        class="form-text error">{{lang.password_validation_messages.pattern}}</div>
-                    <div *ngIf="form.get('password')?.hasError('pattern') && form.get('password')?.hasError('minlength') && form.get('password')?.value != ''"
-                        class="form-text error">{{lang.password_validation_messages.minlength_pattern}}</div>
+                            class="form-text error">{{lang.password_validation_messages.minlength}}</div>
+                        <div *ngIf="form.get('password')?.hasError('pattern') && !form.get('password')?.hasError('minlength') && form.get('password')?.value != ''"
+                            class="form-text error">{{lang.password_validation_messages.pattern}}</div>
+                        <div *ngIf="form.get('password')?.hasError('pattern') && form.get('password')?.hasError('minlength') && form.get('password')?.value != ''"
+                            class="form-text error">{{lang.password_validation_messages.minlength_pattern}}</div>
                     </div>
                     <div class="captcha-container">
-                        <re-captcha (resolved)="resolved($event)" [theme]="theme" siteKey="6Lfwv4YpAAAAAM7h7Z7uzVgP5wsAYzUn_r1yRP8l"></re-captcha>
+                        <re-captcha (resolved)="resolved($event)" [theme]="theme"
+                            siteKey="6Lfwv4YpAAAAAM7h7Z7uzVgP5wsAYzUn_r1yRP8l"></re-captcha>
                     </div>
                     <div class="list-group card-body">
                         <br>

@@ -16,8 +16,8 @@ export class SecurityAccountComponent {
 
 
   formPassword: UntypedFormGroup = new UntypedFormGroup({
-    userPassword: new UntypedFormControl('', [Validators.required, Validators.pattern(/^(?=.*[0-9]).{6,}$/)]),
-    userPasswordConfirm: new UntypedFormControl()
+    userPassword: new UntypedFormControl('', [Validators.required, Validators.pattern(/^(?=.*[0-9])(?=.*[a-zA-Z].*[a-zA-Z])[^'",{}\[\]\s]*$/)]),
+    userPasswordConfirm: new UntypedFormControl('')
   }, {validators: matchFieldsValidator('userPassword', 'userPasswordConfirm') as ValidatorFn})
 
   public modal = { title: '', type: '' }
@@ -45,8 +45,8 @@ export class SecurityAccountComponent {
 
   reloadForms() {
     this.formPassword = new UntypedFormGroup({
-      userPassword: new UntypedFormControl(),
-      userPasswordConfirm: new UntypedFormControl()
-    })
+      userPassword: new UntypedFormControl('', [Validators.required, Validators.pattern(/^(?=.*[0-9])(?=.*[a-zA-Z].*[a-zA-Z])[^'",{}\[\]\s]*$/)]),
+      userPasswordConfirm: new UntypedFormControl('')
+    }, {validators: matchFieldsValidator('userPassword', 'userPasswordConfirm') as ValidatorFn})
   }
 }

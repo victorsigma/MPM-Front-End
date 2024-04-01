@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { replacePaths } from 'src/app/app-routing.module';
+import { Lang } from 'src/app/models/lang';
 import { PostProjectsHasUser } from 'src/app/models/projectsHasUser';
+import { LangService } from 'src/app/services/lang.service';
 import { ProjectDataService } from 'src/app/services/project-data.service';
 
 @Component({
@@ -16,7 +18,9 @@ export class AddMemberComponent {
     userRole: new UntypedFormControl(1)
   });
 
-  constructor(private router: Router, private projectData: ProjectDataService) {
+  public lang: Lang = new Lang();
+  constructor(private router: Router, private projectData: ProjectDataService, private langService: LangService) {
+    this.lang = this.langService.getLang();
     this.form.get('userName')?.valueChanges.subscribe(value => {
       const validators = this.getUserNameValidators(value);
       this.form.get('userName')?.setValidators(validators);

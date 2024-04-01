@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ProjectData } from 'src/app/models/projects';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ProjectListService } from '../../services/project-list.service';
+import { LangService } from 'src/app/services/lang.service';
+import { Lang } from 'src/app/models/lang';
 
 @Component({
   selector: 'app-project-options',
@@ -17,8 +19,12 @@ export class ProjectOptionsComponent implements OnInit {
     subtitle: new FormControl(),
     dateEnd: new FormControl(),
   });
-  constructor(private projectList: ProjectListService) {
+
+  public lang: Lang = new Lang();
+
+  constructor(private projectList: ProjectListService, private langService: LangService) {
     this.updateForm();
+    this.lang = this.langService.getLang();
   }
 
   ngOnInit(): void {

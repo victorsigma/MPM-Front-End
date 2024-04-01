@@ -21,13 +21,19 @@
                         <label>{{lang.password}}</label>
                         <input class="text" type="password" formControlName="password" id="Password">
                     </div>
-                    <div class="mb-2 checkbox">
-                        <input type="checkbox" formControlName="remember" id="Remember">
-                        <label for="Remember">{{lang.remember}}</label>
+
+                    <div class="mb-2 other">
+                        <div class="checkbox">
+                            <input type="checkbox" formControlName="remember" id="Remember">
+                            <label for="Remember">{{lang.remember}}</label>
+                        </div>
+                        <a [routerLink]="['/password-recovery', 'request']">{{lang.password_lost}}</a>
                     </div>
+
                     <br>
                     <div class="captcha-container">
-                        <re-captcha (resolved)="resolved($event)" [theme]="theme" siteKey="6Lfwv4YpAAAAAM7h7Z7uzVgP5wsAYzUn_r1yRP8l"></re-captcha>
+                        <re-captcha (resolved)="resolved($event)" [theme]="theme"
+                            [siteKey]="captchaKey"></re-captcha>
                     </div>
                     <div class="list-group card-body">
                         <br>

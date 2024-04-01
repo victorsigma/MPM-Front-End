@@ -5,6 +5,8 @@ import { ActivityData, ActivityDataPost, activityStatusData } from '../../models
 import { ProjectData } from 'src/app/models/projects';
 import { ActivityDataService } from '../../services/activity-data.service';
 import { Router } from '@angular/router';
+import { Lang } from 'src/app/models/lang';
+import { LangService } from 'src/app/services/lang.service';
 
 @Component({
   selector: 'app-add-activity',
@@ -25,16 +27,14 @@ export class AddActivityComponent implements OnInit {
     }
   );
   activity: ActivityDataPost = new ActivityDataPost();
-  statusType: Array<activityStatusData> = [];
   private url: string[] = []
   @Output() newActivity: EventEmitter<ActivityData> = new EventEmitter();
   @Input() project:ProjectData | undefined = new ProjectData();
 
-  constructor(private toastr: ToastrService, private activityService: ActivityDataService, private router: Router) {
+  public lang: Lang = new Lang();
+  constructor(private toastr: ToastrService, private activityService: ActivityDataService, private router: Router, private langService: LangService) {
     this.url = this.router.url.split('/')
-    this.activityService.getActivityStatusType().subscribe((data) => {
-      this.statusType = data;
-    })
+    this.lang = this.langService.getLang();
   }
 
   ngOnInit(): void {

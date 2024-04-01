@@ -26,6 +26,9 @@ import { enEN, esMX } from "./libs/langs";
 import { SitemapComponent } from './components/sitemap/sitemap.component';
 import { PrivacynoticeComponent } from './components/privacynotice/privacynotice.component';
 import { title } from 'process';
+import { PasswordRecoveryFormComponent } from './components/password-recovery-form/password-recovery-form.component';
+import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
+import { VerifyAccountComponent } from './components/verify-account/verify-account.component';
 
 const browserLang = navigator.language;
 
@@ -141,6 +144,29 @@ const routes: Routes = [
   {
     path: 'privacy',
     component: PrivacynoticeComponent, data: { title: lang.pather_privacy }
+  },
+  {
+    path: 'verify-account/:token',
+    component: VerifyAccountComponent, data: { title: lang.verify_account }
+  },
+  {
+    path: 'password-recovery',
+    canActivate: [NoLoginGuard],
+    children: [
+      {
+        path: '',
+        redirectTo: '/',
+        pathMatch: 'full'
+      },
+      {
+        path: 'request',
+        component: PasswordRecoveryFormComponent, data: { title: lang.password_recovery.request }
+      },
+      {
+        path: 'reset/:token',
+        component: PasswordRecoveryComponent, data: { title: lang.password_recovery.reset }
+      }
+    ]
   },
   { path: '**', component: ErrorPageComponent, data: { title: lang.pather_error }, canActivate: [ErrorGuard] },
   { path: 'error', component: ErrorPageComponent, data: { title: lang.pather_error } },

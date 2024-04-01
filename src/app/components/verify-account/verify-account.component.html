@@ -1,0 +1,17 @@
+<div>
+    <nav class="nv-projct navbar navbar-dark col-12">
+        <div class="container-fluid content-project">
+            <h1 class="navbar-brand navbar-title" style="cursor: default !important;">
+                {{lang.verify_account}}</h1>
+        </div>
+    </nav>
+
+    <div class="container d-flex flex-column align-items-center justify-content-center">
+        <div *ngIf="verifyStatus === 'inprocess'" class="load"></div>
+        <div *ngIf="verifyStatus === 'error'" class="status-circle error" [class.show]="show"><i class="fa-solid fa-x fa-6xl"></i></div>
+        <div *ngIf="verifyStatus === 'completed'" class="status-circle completed" [class.show]="show"><i class="fa-solid fa-check fa-6xl"></i></div>
+        <div class="title">
+            <h4>{{verifyStatus === 'inprocess' ? lang.verify_status.inprocess : verifyStatus === 'error' ? lang.verify_status.error : lang.verify_status.completed}}</h4>
+        </div>
+    </div>
+</div>
