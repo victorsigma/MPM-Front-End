@@ -42,6 +42,8 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe(() => {
       if(this.router.url === '/') {
         this.paths = defaultPaths;
+      } else if(this.router.url.includes('error')) {
+        this.paths = defaultPaths;
       } else if(this.router.url.includes('projects')) {
         this.paths = projectsPaths;
       } else if(this.router.url.includes('members')) {
@@ -52,8 +54,6 @@ export class HeaderComponent implements OnInit {
         this.paths = defaultPaths;
       } else if(this.router.url.includes('account')) {
         this.paths = accountPaths;
-      } else if(this.router.url.includes('error')) {
-        this.paths = defaultPaths;
       }
     })
   }
