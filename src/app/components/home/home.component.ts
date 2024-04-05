@@ -34,9 +34,9 @@ export class HomeComponent implements OnInit {
     }
 
     this.breakpointObserver.observe('(max-width: 992px)')
-    .subscribe(result => {
-      this.isMobile = result.matches;
-    });
+      .subscribe(result => {
+        this.isMobile = result.matches;
+      });
   }
 
 
@@ -46,4 +46,12 @@ export class HomeComponent implements OnInit {
   // random(min: number, max: number) {
   //   return Math.round(Math.floor(Math.random() * (max - min + 1) + min))
   // }
+
+  gotoTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
 }

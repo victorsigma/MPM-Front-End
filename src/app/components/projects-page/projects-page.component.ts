@@ -64,5 +64,4 @@ export class ProjectsPageComponent implements OnInit {
       project.owner.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
-  
 }
