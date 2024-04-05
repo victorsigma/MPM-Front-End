@@ -52,6 +52,7 @@ import { PasswordRecoveryFormComponent } from './components/password-recovery-fo
 import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
 import { SecurityService } from './services/security.service';
 import { VerifyAccountComponent } from './components/verify-account/verify-account.component';
+import { FadeInOutDirective } from './directives/fade-in-out.directive';
 
 
 @NgModule({
@@ -93,7 +94,8 @@ import { VerifyAccountComponent } from './components/verify-account/verify-accou
     CarouselComponent,
     PasswordRecoveryFormComponent,
     PasswordRecoveryComponent,
-    VerifyAccountComponent
+    VerifyAccountComponent,
+    FadeInOutDirective
   ],
   imports: [
     BrowserModule,
@@ -101,7 +103,7 @@ import { VerifyAccountComponent } from './components/verify-account/verify-accou
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot(), // ToastrModule added}
     HttpClientModule, 
     FormsModule,
     RouterModule,

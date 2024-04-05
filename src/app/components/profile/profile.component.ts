@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Modal } from 'bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { Lang } from 'src/app/models/lang';
 import { icon, theme } from 'src/app/models/profile';
 import { LangService } from 'src/app/services/lang.service';
@@ -15,7 +16,7 @@ import { environment } from 'src/environments/environment';
 export class ProfileComponent {
   public iconPathFull: string = `${environment.apiKey}api/user-icon/full/`
   public userIcon: string = '';
-  public userName: string =  '';
+  public userName: string = '';
   public showIcons: boolean = false;
   public icons: Array<icon> = []
   public themes: Array<theme> = []
@@ -24,7 +25,7 @@ export class ProfileComponent {
   private newIcon: icon = new icon();
 
   public lang: Lang = new Lang()
-  constructor(public loginService:LoginDataService, private themeService: ProfileService, private langService: LangService) {
+  constructor(public loginService: LoginDataService, private themeService: ProfileService, private langService: LangService, private toastr: ToastrService) {
     this.lang = this.langService.getLang();
     this.themeService.getThemes().subscribe((data) => {
       this.themes = data;
@@ -40,7 +41,7 @@ export class ProfileComponent {
   }
 
   testTheme(theme: theme): void {
-    if(document.body.getAttribute('data-bs-theme') != theme.themeType) {
+    if (document.body.getAttribute('data-bs-theme') != theme.themeType) {
       document.body.setAttribute('data-bs-theme', theme.themeType)
       this.newTheme = theme;
 
@@ -50,16 +51,22 @@ export class ProfileComponent {
   }
 
   changeIcon(icon: icon): void {
-      this.newIcon = icon;
+    this.newIcon = icon;
 
-      const changeIcon = new Modal(document.getElementById('changeIcon') as Element);
-      changeIcon.show()
+    const changeIcon = new Modal(document.getElementById('changeIcon') as Element);
+    changeIcon.show()
   }
 
 
   confirmTheme() {
-    this.loginService.changeTheme(this.newTheme).subscribe((data) => {
-      this.loginService.setToken(data);
+    this.loginService.changeTheme(this.newTheme).subscribe({
+      next: (data) => {
+        this.toastr.success(this.lang.toast.update_ok, this.lang.toast.status_complited)
+        this.loginService.setToken(data);
+      },
+      error: () => {
+        this.toastr.error(this.lang.toast.update_error, this.lang.toast.status_cancel)
+      }
     })
   }
 
@@ -69,8 +76,14 @@ export class ProfileComponent {
   }
 
   confirmIcon() {
-    this.loginService.changeIcon(this.newIcon).subscribe((data) => {
-      this.loginService.setToken(data);
+    this.loginService.changeIcon(this.newIcon).subscribe({
+      next: (data) => {
+        this.toastr.success(this.lang.toast.update_ok, this.lang.toast.status_complited)
+        this.loginService.setToken(data);
+      },
+      error: () => {
+        this.toastr.error(this.lang.toast.update_error, this.lang.toast.status_cancel)
+      }
     })
   }
 }

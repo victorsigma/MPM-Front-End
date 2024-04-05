@@ -4,7 +4,7 @@
         <div class="card-body">
             <h5 class="card-title">{{member.userName}}</h5>
             <p>
-                {{member.rolName}}
+                {{member.rolName === 'Analyst' ? lang.analyst : member.rolName === 'Designer' ? lang.designer : member.rolName === 'Programmer' ? lang.programmer : lang.leader}}
             </p>
         </div>
     </div>

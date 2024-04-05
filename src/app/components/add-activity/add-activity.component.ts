@@ -55,13 +55,18 @@ export class AddActivityComponent implements OnInit {
       projectId: this.url[2]
     }
 
-    this.activityService.addActivity(this.activity).subscribe(() => {
-      location.reload()
+    this.activityService.addActivity(this.activity).subscribe({
+      complete: () => {
+        this.toastr.success(this.lang.toast.activity_add_ok, this.lang.toast.status_complited);
+        location.reload()
+      },
+      error: () => {
+        this.toastr.success(this.lang.toast.activity_add_error, this.lang.toast.status_cancel);
+      }
     })
   }
 
   addCancel() {
-    //this.toastr.error('Activity addition cancelled.', 'Operation Canceled');
     this.reloadForm();
   }
 

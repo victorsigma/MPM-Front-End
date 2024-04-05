@@ -125,6 +125,7 @@ export class Lang {
     analyst: string = '';
     designer: string = '';
     programmer: string = '';
+    leader: string = '';
 
     change_activity_name: string = '';
     change_status: string = '';
@@ -151,4 +152,47 @@ export class Lang {
     strong_1: string = '';
     strong_2: string = '';
     strong_3: string = '';
+
+
+    toast: {
+        register_ok: string,
+        register_error: string,
+        login_error: string,
+        project_add_ok: string,
+        project_add_error: string,
+        activity_add_ok: string,
+        activity_add_error: string,
+        member_add_ok: string,
+        member_add_error: string,
+        verify_accont_ok: string,
+        verify_accont_error: string,
+        recovery_email_ok: string,
+        update_ok: string,
+        update_error: string,
+        delete_ok: string,
+        delete_error: string,
+        status_cancel: string,
+        status_complited: string,
+        capcha: string,
+    } = {
+        register_ok: '',
+        register_error: '',
+        login_error: '',
+        project_add_ok: '',
+        project_add_error: '',
+        activity_add_ok: '',
+        activity_add_error: '',
+        member_add_ok: '',
+        member_add_error: '',
+        verify_accont_ok: '',
+        verify_accont_error: '',
+        recovery_email_ok: '',
+        update_ok: '',
+        update_error: '',
+        delete_ok: '',
+        delete_error: '',
+        status_cancel: '',
+        status_complited: '',
+        capcha: ''
+    }
 }

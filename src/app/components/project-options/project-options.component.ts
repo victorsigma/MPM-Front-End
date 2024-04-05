@@ -4,6 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ProjectListService } from '../../services/project-list.service';
 import { LangService } from 'src/app/services/lang.service';
 import { Lang } from 'src/app/models/lang';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-project-options',
@@ -22,7 +23,7 @@ export class ProjectOptionsComponent implements OnInit {
 
   public lang: Lang = new Lang();
 
-  constructor(private projectList: ProjectListService, private langService: LangService) {
+  constructor(private projectList: ProjectListService, private langService: LangService, private toastr: ToastrService) {
     this.updateForm();
     this.lang = this.langService.getLang();
   }
@@ -50,13 +51,13 @@ export class ProjectOptionsComponent implements OnInit {
 
     this.projectList.updateProjects(this.project.id, this.project).subscribe({
       next: (data) => {
-        console.log(data);
+        this.toastr.success(this.lang.toast.update_ok, this.lang.toast.status_complited)
       },
       complete: () => {
         location.reload();
       },
-      error: (err) => {
-        console.log(err);
+      error: () => {
+        this.toastr.error(this.lang.toast.update_error, this.lang.toast.status_cancel)
       }
     })
   }

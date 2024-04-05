@@ -1,7 +1,7 @@
 <footer class="container">
     <div class="float-end">
         <p class="d-flex">
-            <a (click)="gotoTop()"><i class="fa-solid fa-chevron-up fa-xl"></i></a>
+            <a *ngIf="isShow" (click)="gotoTop()"><i class="fa-solid fa-chevron-up fa-xl"></i></a>
         </p>
         <div class="d-flex">
             <a routerLink="/sitemap" (click)="gotoTop()" rel="noopener noreferrer" routerLinkActive="active" title="Mapa del sitio">
@@ -24,7 +24,7 @@
             <i class="fab fa-twitter"></i> <!-- Icono de Twitter -->
         </a>
         &nbsp;|&nbsp;
-        <a routerLink="/about" (click)="gotoTop()" routerLinkActive="active" title="¿Quienes somos?">{{lang.footer_about_us}}</a>
+        <a routerLink="/about" (click)="gotoTop()" routerLinkActive="active" title="{{lang.footer_about_us}}">{{lang.footer_about_us}}</a>
 
     </p>
 </footer>

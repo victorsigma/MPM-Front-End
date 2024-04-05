@@ -66,11 +66,10 @@ export class RegisterSectionComponent implements OnInit {
   
   
       this.userList.addUser(this.user).subscribe(data => {
-        this.toastr.success('Successfully registered.', 'Operation Completed');
-        this.form.reset();
+        this.toastr.success(this.lang.toast.register_ok, this.lang.toast.status_complited);
         this.router.navigate(['/']);
       }, (error) => {
-        console.log(error)
+        this.toastr.error(this.lang.toast.register_error, this.lang.toast.status_cancel);
       })
   
       this.form = new FormGroup({

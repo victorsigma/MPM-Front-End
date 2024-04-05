@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Lang } from 'src/app/models/lang';
 import { LangService } from 'src/app/services/lang.service';
 import { LoginDataService } from 'src/app/services/login-data.service';
@@ -20,7 +21,7 @@ export class PasswordRecoveryComponent {
   appIcon: string = '';
   public lang: Lang = new Lang();
 
-  constructor(private titleService: Title, private langService: LangService, private loginService: LoginDataService, private route: ActivatedRoute, private router: Router) {
+  constructor(private titleService: Title, private langService: LangService, private loginService: LoginDataService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) {
     this.appIcon = document.body.getAttribute('data-bs-theme') == 'default' ? 'assets/img/mpm-logo-dark.png' : 'assets/img/mpm-logo-light.png';
     this.titleService.setTitle(`MPM - Password Recovery`)
     this.lang = this.langService.getLang();
@@ -36,12 +37,14 @@ export class PasswordRecoveryComponent {
       }
 
       this.loginService.passwordRecoveryReset(req, token).subscribe({
-        next: (data) => {
-          console.log(data);
+        next: () => {
+          this.toastr.success(this.lang.toast.update_ok, this.lang.toast.status_complited)
+        },
+        complete: () => {
           this.router.navigate(['/login'])
         },
-        error: (error) => {
-          console.log(error);
+        error: () => {
+          this.toastr.error(this.lang.toast.update_error, this.lang.toast.status_cancel)
         }
       })
     })

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Modal } from 'bootstrap';
+import { ToastrService } from 'ngx-toastr';
 import { Lang } from 'src/app/models/lang';
 import { UserUpdate } from 'src/app/models/users';
 import { LangService } from 'src/app/services/lang.service';
@@ -23,7 +24,7 @@ export class SecurityAccountComponent {
   public modal = { title: '', type: '' }
   public lang: Lang = new Lang()
 
-  constructor(public loginService: LoginDataService, private langService: LangService) {
+  constructor(public loginService: LoginDataService, private langService: LangService, private toastr: ToastrService) {
     this.lang = this.langService.getLang();
   }
 
@@ -31,8 +32,14 @@ export class SecurityAccountComponent {
     const userUpdate = new UserUpdate();
     userUpdate.password = this.formPassword.get('userPasswordConfirm')?.value;
 
-    this.loginService.updateUser(userUpdate).subscribe((data) => {
-      this.loginService.setToken(data);
+    this.loginService.updateUser(userUpdate).subscribe({
+      next: (data) => {
+        this.toastr.success(this.lang.toast.update_ok, this.lang.toast.status_complited)
+        this.loginService.setToken(data);
+      },
+      error: () => {
+        this.toastr.error(this.lang.toast.update_error, this.lang.toast.status_cancel)
+      }
     })
   }
 

@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { LangService } from 'src/app/services/lang.service';
 import { Lang } from 'src/app/models/lang';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-member-item',
@@ -27,7 +28,7 @@ export class MemberItemComponent implements OnInit {
   });
 
   public lang: Lang = new Lang();
-  constructor(private projectData: ProjectDataService, private activeRoute: ActivatedRoute, private langService: LangService) {
+  constructor(private projectData: ProjectDataService, private activeRoute: ActivatedRoute, private langService: LangService, private toastr: ToastrService) {
     this.lang = this.langService.getLang();
   }
 
@@ -56,13 +57,21 @@ export class MemberItemComponent implements OnInit {
 
   deletedMember() {
     const { idProject } = this.activeRoute.snapshot.params
-    this.projectData.removeProjectUser(this.member.userName, idProject).subscribe(() => {
-      location.reload()
+    this.projectData.removeProjectUser(this.member.userName, idProject).subscribe({
+      next: () => {
+        this.toastr.success(this.lang.toast.delete_ok, this.lang.toast.status_complited)
+      },
+      complete: () => {
+        location.reload()
+      },
+      error: () => {
+        this.toastr.error(this.lang.toast.delete_error, this.lang.toast.status_cancel)
+      }
     })
   }
 
   updateMember() {
-    if(this.actualRole != this.form.get('userRole')?.value) {
+    if (this.actualRole != this.form.get('userRole')?.value) {
 
     }
   }

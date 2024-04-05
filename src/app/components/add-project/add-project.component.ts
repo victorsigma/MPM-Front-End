@@ -29,7 +29,7 @@ export class AddProjectComponent implements OnInit {
   constructor(
     public projectId: ProjectDataService,
     private projectList: ProjectListService,
-    public toastr: ToastrService, 
+    public toastr: ToastrService,
     private langService: LangService
   ) {
     this.lang = this.langService.getLang();
@@ -56,10 +56,16 @@ export class AddProjectComponent implements OnInit {
       owner: ''
     };
 
-    this.projectList.addProjects(this.project).subscribe(data => {
-      location.reload()
-    }, error => {
-      this.toastr.error('Error creating the project')
+    this.projectList.addProjects(this.project).subscribe({
+      next: () => {
+        this.toastr.error(this.lang.toast.project_add_ok, this.lang.toast.status_complited)
+      },
+      complete: () => {
+        location.reload()
+      },
+      error: () => {
+        this.toastr.error(this.lang.toast.project_add_ok, this.lang.toast.status_cancel)
+      }
     })
   }
 

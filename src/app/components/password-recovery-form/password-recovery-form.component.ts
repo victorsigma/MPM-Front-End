@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { error } from 'console';
+import { ToastrService } from 'ngx-toastr';
 import { Lang } from 'src/app/models/lang';
 import { LangService } from 'src/app/services/lang.service';
 import { LoginDataService } from 'src/app/services/login-data.service';
@@ -20,7 +21,7 @@ export class PasswordRecoveryFormComponent {
   appIcon: string = '';
   public lang: Lang = new Lang();
 
-  constructor(private titleService: Title, private langService: LangService, private loginService: LoginDataService) {
+  constructor(private titleService: Title, private langService: LangService, private loginService: LoginDataService, private toastr: ToastrService) {
     this.appIcon = document.body.getAttribute('data-bs-theme') == 'default' ? 'assets/img/mpm-logo-dark.png' : 'assets/img/mpm-logo-light.png';
     this.titleService.setTitle(`MPM - Password Recovery`)
     this.lang = this.langService.getLang();
@@ -46,11 +47,11 @@ export class PasswordRecoveryFormComponent {
     }
 
     this.loginService.passwordRecoveryRequest(req).subscribe({
-      next: (data) => {
-        console.log(data);
+      next: () => {
+        this.toastr.success(this.lang.toast.recovery_email_ok, this.lang.toast.status_complited)
       },
-      error: (error) => {
-        console.log(error);
+      error: () => {
+        this.toastr.success(this.lang.toast.verify_accont_error, this.lang.toast.status_cancel)
       }
     })
   }

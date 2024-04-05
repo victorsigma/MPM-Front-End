@@ -9,6 +9,7 @@ import { SecurityService } from 'src/app/services/security.service';
 import matchFieldsValidator from 'src/app/validators/matchFieldsValidator';
 import { map } from 'rxjs';
 import { error } from 'console';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-information-account',
@@ -20,17 +21,17 @@ export class InformationAccountComponent {
   formName: UntypedFormGroup = new UntypedFormGroup({
     userName: new UntypedFormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(15), Validators.pattern(/^[a-zA-Z0-9]+$/)]),
     userNameConfirm: new UntypedFormControl('')
-  }, {validators: [matchFieldsValidator('userName', 'userNameConfirm') as ValidatorFn]})
+  }, { validators: [matchFieldsValidator('userName', 'userNameConfirm') as ValidatorFn] })
 
   formEmail: UntypedFormGroup = new UntypedFormGroup({
     userEmail: new UntypedFormControl('', [Validators.required, Validators.email]),
     userEmailConfirm: new UntypedFormControl('')
-  }, {validators: matchFieldsValidator('userEmail', 'userEmailConfirm') as ValidatorFn})
+  }, { validators: matchFieldsValidator('userEmail', 'userEmailConfirm') as ValidatorFn })
 
   formPhone: UntypedFormGroup = new UntypedFormGroup({
     userPhone: new UntypedFormControl('', [Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]+$/), Validators.required]),
     userPhoneConfirm: new UntypedFormControl('')
-  }, {validators: matchFieldsValidator('userPhone', 'userPhoneConfirm') as ValidatorFn})
+  }, { validators: matchFieldsValidator('userPhone', 'userPhoneConfirm') as ValidatorFn })
 
   public modal = { title: '', type: '' }
 
@@ -39,7 +40,7 @@ export class InformationAccountComponent {
   public lang: Lang = new Lang()
 
   public isVerify: boolean = true;
-  constructor(public loginService: LoginDataService, private langService: LangService, private securityService: SecurityService) {
+  constructor(public loginService: LoginDataService, private langService: LangService, private securityService: SecurityService, private toastr: ToastrService) {
     this.lang = this.langService.getLang()
     this.securityService.verifyAccount().subscribe({
       next: (data) => {
@@ -50,11 +51,11 @@ export class InformationAccountComponent {
 
   public verifyAccountRequest(): void {
     this.securityService.verifyAccountRequest().subscribe({
-      next: (data) => {
-        console.log(data);
+      complete: () => {
+        this.toastr.success(this.lang.toast.verify_accont_ok, this.lang.toast.status_complited)
       },
-      error: (error) => {
-        console.log(error);
+      error: () => {
+        this.toastr.success(this.lang.toast.verify_accont_error, this.lang.toast.status_cancel)
       }
     })
   }
@@ -63,8 +64,14 @@ export class InformationAccountComponent {
     const userUpdate = new UserUpdate();
     userUpdate.userName = this.formName.get('userNameConfirm')?.value;
 
-    this.loginService.updateUser(userUpdate).subscribe((data) => {
-      this.loginService.setToken(data);
+    this.loginService.updateUser(userUpdate).subscribe({
+      next: (data) => {
+        this.toastr.success(this.lang.toast.update_ok, this.lang.toast.status_complited)
+        this.loginService.setToken(data);
+      },
+      error: () => {
+        this.toastr.error(this.lang.toast.update_error, this.lang.toast.status_cancel)
+      }
     })
   }
 
@@ -72,8 +79,14 @@ export class InformationAccountComponent {
     const userUpdate = new UserUpdate();
     userUpdate.userMail = this.formEmail.get('userEmailConfirm')?.value;
 
-    this.loginService.updateUser(userUpdate).subscribe((data) => {
-      this.loginService.setToken(data);
+    this.loginService.updateUser(userUpdate).subscribe({
+      next: (data) => {
+        this.toastr.success(this.lang.toast.update_ok, this.lang.toast.status_complited)
+        this.loginService.setToken(data);
+      },
+      error: () => {
+        this.toastr.error(this.lang.toast.update_error, this.lang.toast.status_cancel)
+      }
     })
   }
 
@@ -81,8 +94,14 @@ export class InformationAccountComponent {
     const userUpdate = new UserUpdate();
     userUpdate.phoneNumber = this.formPhone.get('userPhoneConfirm')?.value;
 
-    this.loginService.updateUser(userUpdate).subscribe((data) => {
-      this.loginService.setToken(data);
+    this.loginService.updateUser(userUpdate).subscribe({
+      next: (data) => {
+        this.toastr.success(this.lang.toast.update_ok, this.lang.toast.status_complited)
+        this.loginService.setToken(data);
+      },
+      error: () => {
+        this.toastr.error(this.lang.toast.update_error, this.lang.toast.status_cancel)
+      }
     })
   }
 

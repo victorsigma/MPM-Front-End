@@ -56,13 +56,13 @@ export class LoginSectionComponent implements OnInit {
           this.loginService.setToken(data);
         }, 
         error: (error) => {
-          this.toastr.error('Incorrect data connection error.', 'Operation Canceled');
+          this.toastr.error(this.lang.toast.login_error, this.lang.toast.status_cancel);
         }
       })
   
       this.reloadForm();
     } else {
-      this.toastr.error('Complete el captcha')
+      this.toastr.error(this.lang.toast.capcha)
     }
   }
 

@@ -16,11 +16,6 @@
                 </div>
             </div>
         </div>
-        <div class="col">
-            <a routerLink="/about" (click)="gotoTop()" routerLinkActive="active" title="¿Quiénes somos?" class="about-link">
-                <i class="fas fa-users"></i> <!-- Usar el icono de información aquí -->
-            </a>
-        </div>
     </div>
 </header>
 <main class="bd-content order-1 py-5" id="content">
@@ -30,6 +25,10 @@
             <div class="bd-content col-lg-3">
                 <h2 id="snippets">{{lang.home_create_projects}}</h2>
                 <p>{{lang.home_create_team_project_tool}}</p>
+                
+                <a routerLink="/about" (click)="gotoTop()" routerLinkActive="active" title="¿Quiénes somos?" class="about-link">
+                    {{lang.footer_about_us}}
+                </a>
             </div>
 
             <div class="col-lg-8">
@@ -135,5 +134,3 @@
     </div>
 
 </main>
-
-<app-footer></app-footer>

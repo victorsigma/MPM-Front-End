@@ -19,7 +19,7 @@ export class AccountPageComponent implements OnInit {
   public isAriaExpanded: boolean = false;
 
   public lang: Lang = new Lang()
-  constructor(public loginService: LoginDataService, private toastr: ToastrService, private breakpointObserver: BreakpointObserver, private titleService: Title, private langService: LangService) {
+  constructor(public loginService: LoginDataService, private breakpointObserver: BreakpointObserver, private titleService: Title, private langService: LangService) {
     this.titleService.setTitle(`MPM - Account`)
     this.lang = this.langService.getLang()
     this.breakpointObserver.observe('(max-width: 992px)')

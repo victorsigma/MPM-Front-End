@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { replacePaths } from 'src/app/app-routing.module';
 import { Lang } from 'src/app/models/lang';
 import { PostProjectsHasUser } from 'src/app/models/projectsHasUser';
@@ -19,7 +20,7 @@ export class AddMemberComponent {
   });
 
   public lang: Lang = new Lang();
-  constructor(private router: Router, private projectData: ProjectDataService, private langService: LangService) {
+  constructor(private router: Router, private projectData: ProjectDataService, private langService: LangService, private toastr: ToastrService) {
     this.lang = this.langService.getLang();
     this.form.get('userName')?.valueChanges.subscribe(value => {
       const validators = this.getUserNameValidators(value);
@@ -38,7 +39,7 @@ export class AddMemberComponent {
 
   addMember() {
     const idProject = this.router.url.split('/')[2]
-    
+
     const newMember: PostProjectsHasUser = {
       idProject: idProject,
       userNameOrEmail: this.form.get('userName')?.value,
@@ -47,8 +48,16 @@ export class AddMemberComponent {
 
     console.log(newMember)
 
-    this.projectData.addProjectUser(newMember).subscribe(data => {
-      this.router.navigate([replacePaths(this.router.url)])
+    this.projectData.addProjectUser(newMember).subscribe({
+      next: () => {
+        this.toastr.success(this.lang.toast.member_add_ok, this.lang.toast.status_complited)
+      },
+      complete: () => {
+        this.router.navigate([replacePaths(this.router.url)])
+      },
+      error: () => {
+        this.toastr.error(this.lang.toast.member_add_error, this.lang.toast.status_cancel)
+      }
     })
 
     this.form = new UntypedFormGroup({

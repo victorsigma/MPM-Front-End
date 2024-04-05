@@ -81,3 +81,8 @@
 .min-vh-90 {
     min-height: calc(100vh - 59px);
 }
+
+.page {
+    min-height: calc(100vh - 164px);
+    box-sizing: border-box;
+}

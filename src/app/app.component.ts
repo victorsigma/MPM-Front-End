@@ -1,6 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
 import { LoginDataService } from './services/login-data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent {
   title = 'MPM-Front-End';
 
   public isMobile: boolean = false;
-  constructor(private breakpointObserver: BreakpointObserver, private loginService: LoginDataService) {
+  constructor(private breakpointObserver: BreakpointObserver, private loginService: LoginDataService, private toastr: ToastrService) {
     this.loginService.verifyLogin().subscribe({
       next: (data) => {
         if(!data.value) {

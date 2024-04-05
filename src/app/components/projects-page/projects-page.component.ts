@@ -60,8 +60,7 @@ export class ProjectsPageComponent implements OnInit {
   get filteredProjects(): ProjectData[] {
     return this.projectList.filter(project =>
       project.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      project.subtitle.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      project.owner.toLowerCase().includes(this.searchTerm.toLowerCase())
+      project.subtitle.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
 }

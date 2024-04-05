@@ -7,9 +7,10 @@
     </nav>
 
     <div class="container d-flex flex-column align-items-center justify-content-center">
-        <div *ngIf="verifyStatus === 'inprocess'" class="load"></div>
-        <div *ngIf="verifyStatus === 'error'" class="status-circle error" [class.show]="show"><i class="fa-solid fa-x fa-6xl"></i></div>
-        <div *ngIf="verifyStatus === 'completed'" class="status-circle completed" [class.show]="show"><i class="fa-solid fa-check fa-6xl"></i></div>
+        <div [verifyStatus]="verifyStatus" fadeInOut class="load">
+            <i *ngIf="verifyStatus === 'error'" class="fa-solid fa-x fa-6xl"></i>
+            <i *ngIf="verifyStatus === 'completed'" class="fa-solid fa-check fa-6xl"></i>
+        </div>
         <div class="title">
             <h4>{{verifyStatus === 'inprocess' ? lang.verify_status.inprocess : verifyStatus === 'error' ? lang.verify_status.error : lang.verify_status.completed}}</h4>
         </div>

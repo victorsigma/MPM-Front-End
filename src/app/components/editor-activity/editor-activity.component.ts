@@ -5,6 +5,7 @@ import { UpdateDataService } from 'src/app/services/update-data.service';
 import { ActivityData, ActivityDataPost } from '../../models/ativities';
 import { LangService } from 'src/app/services/lang.service';
 import { Lang } from 'src/app/models/lang';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-editor-activity',
@@ -32,7 +33,8 @@ export class EditorActivityComponent implements OnInit {
     public dataServiceModal: ActivityDataService,
     public activityData: ActivityDataService,
     private emitter: UpdateDataService,
-    private langService: LangService
+    private langService: LangService, 
+    private toastr: ToastrService
   ) {
     this.lang = this.langService.getLang();
     this.emitter.emitter.subscribe(() => {
@@ -89,27 +91,27 @@ export class EditorActivityComponent implements OnInit {
 
     this.activityData.updateActivity(this.activity.id, putActivity).subscribe({
       next: (data) => {
-        console.log(data);
+        this.toastr.success(this.lang.toast.update_ok, this.lang.toast.status_complited)
       },
       complete: () => {
         location.reload();
       },
       error: (err) => {
-        console.log(err);
+        this.toastr.error(this.lang.toast.update_error, this.lang.toast.status_cancel)
       }
     })
   }
 
   removeActivity() {
     this.activityData.removeActivity(this.activity.id).subscribe({
-      next: (data) => {
-        console.log(data);
+      next: () => {
+        this.toastr.success(this.lang.toast.delete_ok, this.lang.toast.status_complited)
       },
       complete: () => {
         location.reload();
       },
-      error: (err) => {
-        console.log(err);
+      error: () => {
+        this.toastr.error(this.lang.toast.delete_error, this.lang.toast.status_cancel)
       }
     })
   }
