@@ -18,25 +18,25 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Member - {{member.userName}}</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">{{lang.member}} - {{member.userName}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form [formGroup]="form">
                     <div class="mb-3">
-                        <label class="form-label" for="userRole">Change Role</label>
+                        <label class="form-label" for="userRole">{{lang.change_rol}}</label>
                         <select class="select" formControlName="userRole" id="userRole" aria-label="Change User Role">
-                            <option value="1">Analyst</option>
-                            <option value="2">Designer</option>
-                            <option value="3">Programmer</option>
+                            <option value="1">{{lang.analyst}}</option>
+                            <option value="2">{{lang.designer}}</option>
+                            <option value="3">{{lang.programmer}}</option>
                         </select>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-delete" (click)="deletedMember()" data-bs-dismiss="modal">Remove</button>
+                <button type="button" class="btn btn-delete" (click)="deletedMember()" data-bs-dismiss="modal">{{lang.remove}}</button>
                 <button type="button" class="btn btn-update" (click)="updateMember()" data-bs-dismiss="modal" [disabled]="form.invalid"
-                    aria-label="Update Member">Update Member</button>
+                    aria-label="Update Member">{{lang.update_member}}</button>
             </div>
         </div>
     </div>

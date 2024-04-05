@@ -17,7 +17,8 @@ export class LoginDataService {
   private myApiUrlV = 'api/verifyLogin'; 
   private myApiUrlC = 'api/changeTheme'; 
   private myApiUrlI = 'api/changeIcon'; 
-  private myApiUrlU = 'api/users'; 
+  private myApiUrlU = 'api/users';
+  private myApiUrlPR = 'api/passwordRecovery';
 
   public status: boolean = false;
   public rol: number = 6;
@@ -67,6 +68,14 @@ export class LoginDataService {
 
   public verifyCapcha(verifyToken: any): Observable<{success: boolean}> {
     return this.http.post<{success: boolean}>('https://www.google.com/recaptcha/api/siteverify', verifyToken)
+  }
+
+  public passwordRecoveryRequest(req: any): Observable<any> {
+    return this.http.post(`${this.myAppUrl}${this.myApiUrlPR}/request`, req)
+  }
+
+  public passwordRecoveryReset(req: any, token: string): Observable<any> {
+    return this.http.post(`${this.myAppUrl}${this.myApiUrlPR}/reset/${token}`, req)
   }
 
   public setToken(user: Jwt): void {

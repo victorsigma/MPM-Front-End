@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { replacePaths } from 'src/app/app-routing.module';
 import { LoginDataService } from 'src/app/services/login-data.service';
@@ -15,13 +15,11 @@ export class PathButtonFullComponent {
   public isLogin: boolean = false;
   public patherPath: string = '';
 
-  constructor(private loginService: LoginDataService, private router: Router) {
+  constructor(private loginService: LoginDataService, private router: Router, private cdr: ChangeDetectorRef) {
     this.isLogin = this.loginService.isLogin();
   }
 
   ngOnInit(): void {
-    this.router.events.subscribe(() => {
-      this.patherPath = replacePaths(this.router.url);
-    })
+    this.patherPath = replacePaths(this.router.url);
   }
 }

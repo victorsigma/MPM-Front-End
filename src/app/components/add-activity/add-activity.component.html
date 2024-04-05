@@ -3,52 +3,57 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add Activity</h5>
+                <h5 class="modal-title">{{lang.add_activity}}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="addCancel()"></button>
             </div>
             <div class="modal-body">
                 <form [formGroup]="form" (ngSubmit)="addActivity()">
                     <div class="mb-3">
-                        <label class="form-label">Activity name</label>
+                        <label class="form-label">{{lang.activity_name}}</label>
                         <input class="text" required formControlName="title" maxlength="30" type="text"
-                            placeholder="Name Activity" />
+                            placeholder="{{lang.activity_name}}" />
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Description Activity</label>
+                        <label class="form-label">{{lang.description_activity}}</label>
                         <textarea class="textarea" required formControlName="subtitle" rows="3" maxlength="150"
-                            placeholder="Description Activity"></textarea>
+                            placeholder="{{lang.description_activity}}"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Status</label>
+                        <label class="form-label">{{lang.status}}</label>
                         <select formControlName="status" class="select" name="statusActivity">
-                            <option *ngFor="let item of statusType; let i = index" [value]="item.Id">{{item.statusName}}
+                            <option value="1">{{lang.pather_unassigned}}
+                            </option>
+                            <option value="2">{{lang.pather_in_progress}}
+                            </option>
+                            <option value="3">{{lang.pather_completed}}
+                            </option>
+                            <option value="4">{{lang.pather_pause}}
                             </option>
                         </select>
                     </div>
                     <div class="mb-1">
-                        <label class="form-label">Participating roles</label>
+                        <label class="form-label">{{lang.participating_roles}}</label>
                     </div>
                     <div class="mb-3 checkbox">
                         <input formControlName="rolesListAnalyst" type="checkbox" id="analystCheck">
-                        <label class="form-check-label" for="analystCheck">Analyst</label>
+                        <label class="form-check-label" for="analystCheck">{{lang.analyst}}</label>
                     </div>
                     <div class="mb-3 checkbox">
                         <input formControlName="rolesListDesigner" type="checkbox" id="designerCheck">
-                        <label class="form-check-label" for="designerCheck">Designer</label>
+                        <label class="form-check-label" for="designerCheck">{{lang.designer}}</label>
                     </div>
                     <div class="mb-3 checkbox">
                         <input formControlName="rolesListProgrammer" type="checkbox" id="programmerCheck">
-                        <label class="form-check-label" for="programmerCheck">Programmer</label>
+                        <label class="form-check-label" for="programmerCheck">{{lang.programmer}}</label>
                     </div>
                     <div class="mb-3">
-                        <label class="control-label" for="dateEnd">Completion
-                            date</label>
+                        <label class="control-label" for="dateEnd">{{lang.completion_date}}</label>
                         <input formControlName="dateEnd" required class="date" name="dateEnd"
                             placeholder="MM/DD/YYYY" type="date" />
                     </div>
                     <div class="list-group card-body">
                         <button type="submit" [disabled]="!this.form.valid" class="btn btn-update"
-                            data-bs-dismiss="modal">Add Activity</button>
+                            data-bs-dismiss="modal">{{lang.add_activity}}</button>
                     </div>
                 </form>
             </div>

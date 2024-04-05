@@ -44,6 +44,15 @@
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
                             </div>
+                            
+                        </div>
+                        <div class="col-6 input-info">
+                            <div class="col-10">
+                                <button class="btn-email-check w-100 h-100" [disabled]="isVerify" (click)="!isVerify ? verifyAccountRequest() : null" type="button">
+                                    {{!isVerify ? lang.verify_email : lang.verified}}
+                                    <i class="fa-solid fa-check fa-xl"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -68,13 +77,21 @@
                             <label class="form-label" for="name-update">{{lang.user_name}}</label>
                             <input class="text" id="name-update" name="name-update" type="text"
                                 formControlName="userName" placeholder="{{loginService.getUserInfo().userName}}"
-                                required />
+                                required maxlength="15" />
+                            <div *ngIf="formName.get('userName')?.hasError('minlength') && !formName.get('userName')?.hasError('pattern') && formName.get('userName')?.value != ''"
+                                class="form-text error">{{lang.user_validation_messages.minlength}}</div>
+                            <div *ngIf="formName.get('userName')?.hasError('pattern') && !formName.get('userName')?.hasError('minlength') && formName.get('userName')?.value != ''"
+                                class="form-text error">{{lang.user_validation_messages.pattern}}</div>
+                            <div *ngIf="formName.get('userName')?.hasError('pattern') && formName.get('userName')?.hasError('minlength') && formName.get('userName')?.value != ''"
+                                class="form-text error">{{lang.user_validation_messages.minlength_pattern}}</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="name-update-c">{{lang.new_user_name}}</label>
                             <input class="text" id="name-update-c" name="name-update" type="text"
                                 formControlName="userNameConfirm" placeholder="{{loginService.getUserInfo().userName}}"
                                 required />
+                            <div *ngIf="formName.get('userNameConfirm')?.value !== '' && formName.get('userNameConfirm')?.hasError('matchFields')"
+                                class="form-text error">{{lang.user_validation_messages.matchfields}}</div>
                         </div>
                         <div class="list-group card-body">
                             <button type="submit" [disabled]="this.formName.invalid" class="btn
@@ -89,12 +106,16 @@
                             <input class="text" id="email-update" name="name-update" type="text"
                                 formControlName="userEmail" placeholder="{{loginService.getUserInfo().userMail}}"
                                 required />
+                            <div *ngIf="formEmail.get('userEmail')?.hasError('email') && formEmail.get('email')?.value != ''"
+                                class="form-text error">{{lang.email_validation_message.email}}</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="name-update-c">{{lang.new_email}}</label>
                             <input class="text" id="email-update-c" name="email-update" type="text"
                                 formControlName="userEmailConfirm" placeholder="{{loginService.getUserInfo().userMail}}"
                                 required />
+                            <div *ngIf="formEmail.get('userEmailConfirm')?.value !== '' && formEmail.get('userEmailConfirm')?.hasError('matchFields')"
+                                class="form-text error">{{lang.email_validation_message.matchfields}}</div>
                         </div>
                         <div class="list-group card-body">
                             <button type="submit" [disabled]="this.formEmail.invalid" class="btn
@@ -108,13 +129,23 @@
                             <label class="form-label" for="phone-update">{{lang.phone}}</label>
                             <input class="text" id="phone-update" name="phone-update" type="text"
                                 formControlName="userPhone" placeholder="{{loginService.getUserInfo().phoneNumber}}"
-                                required />
+                                required minlength="10" maxlength="10" />
+
+                            <div *ngIf="formPhone.get('userPhone')?.hasError('minlength') && !formPhone.get('userPhone')?.hasError('pattern') && formPhone.get('userPhone')?.value != ''"
+                                class="form-text error">{{lang.phone_validation_messages.minlength}}</div>
+                            <div *ngIf="formPhone.get('userPhone')?.hasError('pattern') && !formPhone.get('userPhone')?.hasError('minlength') && formPhone.get('userPhone')?.value != ''"
+                                class="form-text error">{{lang.phone_validation_messages.pattern}}</div>
+                            <div *ngIf="formPhone.get('userPhone')?.hasError('pattern') && formPhone.get('userPhone')?.hasError('minlength') && formPhone.get('userPhone')?.value != ''"
+                                class="form-text error">{{lang.phone_validation_messages.minlength_pattern}}</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="phone-update-c">{{lang.new_phone}}</label>
                             <input class="text" id="phone-update-c" name="phone-update" type="text"
                                 formControlName="userPhoneConfirm"
-                                placeholder="{{loginService.getUserInfo().phoneNumber}}" required />
+                                placeholder="{{loginService.getUserInfo().phoneNumber}}" required minlength="10"
+                                maxlength="10" />
+                            <div *ngIf="formPhone.get('userPhoneConfirm')?.value !== '' && formPhone.get('userPhoneConfirm')?.hasError('matchFields')"
+                                class="form-text error">{{lang.phone_validation_messages.matchfields}}</div>
                         </div>
                         <div class="list-group card-body">
                             <button type="submit" [disabled]="this.formPhone.invalid" class="btn

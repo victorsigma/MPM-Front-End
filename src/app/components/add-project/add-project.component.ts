@@ -9,6 +9,8 @@ import { ProjectListService } from '../../services/project-list.service';
 import { Router } from '@angular/router';
 import { error } from 'console';
 import { ToastrService } from 'ngx-toastr';
+import { LangService } from 'src/app/services/lang.service';
+import { Lang } from 'src/app/models/lang';
 
 @Component({
   selector: 'app-add-project',
@@ -21,12 +23,16 @@ export class AddProjectComponent implements OnInit {
   project: ProjectData = new ProjectData();
   relationProject: ProjectsHasUser = new ProjectsHasUser();
 
+  public lang: Lang = new Lang();
+
   @Output() newProject: EventEmitter<ProjectData> = new EventEmitter();
   constructor(
-    public projectId: ProjectDataService, 
-    private projectList:ProjectListService,
-    public toastr: ToastrService
-    ) {
+    public projectId: ProjectDataService,
+    private projectList: ProjectListService,
+    public toastr: ToastrService, 
+    private langService: LangService
+  ) {
+    this.lang = this.langService.getLang();
     this.form = new UntypedFormGroup(
       {
         title: new UntypedFormControl(),
@@ -44,7 +50,7 @@ export class AddProjectComponent implements OnInit {
       id: '',
       title: this.form.get('title')?.value,
       subtitle: this.form.get('subtitle')?.value,
-      src: 'img_'+this.random(1, 7),
+      src: 'img_' + this.random(1, 7),
       dateStart: new Date(),
       dateEnd: new Date(new Date(this.form.get('dateEnd')?.value)),
       owner: ''

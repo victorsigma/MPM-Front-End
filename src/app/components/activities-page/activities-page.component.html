@@ -11,7 +11,7 @@
                     <li class="nav-item" *ngIf="userRol == 0">
                         <button class="button-options" data-bs-toggle="modal"
                             data-bs-target="#projectOptions"><i class="fa-solid fa-gear"></i> {{lang.options}}</button>
-                        <button class="button-options" (click)="goToMemberRoute()"><i class="fa-solid fa-users-gear fa-xs"></i> Members</button>
+                        <button class="button-options" (click)="goToMemberRoute()"><i class="fa-solid fa-users-gear fa-xs"></i> {{lang.pather_members}}</button>
                         <button class="button-options" data-bs-toggle="modal" data-bs-target="#addActivity"><i class="fa-solid fa-plus"></i> {{lang.pather_add}}</button>
                     </li>
                 </ul>
@@ -21,7 +21,7 @@
                 <li class="nav-item" *ngIf="userRol == 0">
                     <button class="button-options" data-bs-toggle="modal"
                         data-bs-target="#projectOptions">{{lang.options}}</button>
-                    <button class="button-options" (click)="goToMemberRoute()">Members</button>
+                    <button class="button-options" (click)="goToMemberRoute()">{{lang.pather_members}}</button>
                     <button class="button-options" data-bs-toggle="modal" data-bs-target="#addActivity">{{lang.pather_add}} <i
                             class="fa-solid fa-plus fa-xs"></i></button>
                 </li>

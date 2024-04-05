@@ -7,6 +7,7 @@ import { Title } from '@angular/platform-browser';
 import { ladas } from 'src/app/libs/ladas';
 import { LangService } from 'src/app/services/lang.service';
 import { Lang } from 'src/app/models/lang';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class RegisterSectionComponent implements OnInit {
     user: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(15), Validators.pattern(/^[a-zA-Z0-9]+$/)]),
     email: new FormControl('', [Validators.email, Validators.required]),
     phone: new FormControl('', [Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]+$/), Validators.required]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[0-9])[^'",{}\[\]\s]*$/)])
+    password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[0-9])(?=.*[a-zA-Z].*[a-zA-Z])[^'",{}\[\]\s]*$/)])
   });
   captchaResponse: boolean = false;
 
@@ -36,7 +37,7 @@ export class RegisterSectionComponent implements OnInit {
 
   public lang: Lang = new Lang();
   public theme: 'dark' | 'light' = 'dark';
-  constructor(private userList: UsersListService, private toastr: ToastrService, private titleService: Title, private langService: LangService) {
+  constructor(private userList: UsersListService, private toastr: ToastrService, private titleService: Title, private langService: LangService, private router: Router) {
     this.appIcon = document.body.getAttribute('data-bs-theme') == 'default' ? 'assets/img/mpm-logo-dark.png' : 'assets/img/mpm-logo-light.png';
     this.titleService.setTitle(`MPM - Register`)
     this.lang = this.langService.getLang();
@@ -44,7 +45,7 @@ export class RegisterSectionComponent implements OnInit {
       user: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(15), Validators.pattern(/^[a-zA-Z0-9]+$/)]),
       email: new FormControl('', [Validators.email, Validators.required]),
       phone: new FormControl('', [Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]+$/), Validators.required]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[0-9])[^'",{}\[\]\s]*$/)])
+      password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[0-9])(?=.*[a-zA-Z].*[a-zA-Z])[^'",{}\[\]\s]*$/)])
     });
   }
 
@@ -67,6 +68,7 @@ export class RegisterSectionComponent implements OnInit {
       this.userList.addUser(this.user).subscribe(data => {
         this.toastr.success('Successfully registered.', 'Operation Completed');
         this.form.reset();
+        this.router.navigate(['/']);
       }, (error) => {
         console.log(error)
       })
@@ -75,7 +77,7 @@ export class RegisterSectionComponent implements OnInit {
         user: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(15), Validators.pattern(/^[a-zA-Z0-9]+$/)]),
         email: new FormControl('', [Validators.email, Validators.required]),
         phone: new FormControl('', [Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]+$/), Validators.required]),
-        password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[0-9])[^'",{}\[\]\s]*$/)])
+        password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[0-9])(?=.*[a-zA-Z].*[a-zA-Z])[^'",{}\[\]\s]*$/)])
       });
     }
   }

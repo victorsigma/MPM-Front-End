@@ -48,6 +48,10 @@ import { SitemapComponent } from './components/sitemap/sitemap.component';
 import { PrivacynoticeComponent } from './components/privacynotice/privacynotice.component';
 import { RecaptchaModule } from "ng-recaptcha";
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { PasswordRecoveryFormComponent } from './components/password-recovery-form/password-recovery-form.component';
+import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
+import { SecurityService } from './services/security.service';
+import { VerifyAccountComponent } from './components/verify-account/verify-account.component';
 
 
 @NgModule({
@@ -86,7 +90,10 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     BreadcrumbcrumbComponent,
     SitemapComponent,
     PrivacynoticeComponent,
-    CarouselComponent
+    CarouselComponent,
+    PasswordRecoveryFormComponent,
+    PasswordRecoveryComponent,
+    VerifyAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -105,7 +112,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
-      deps: [ProjectDataService, ActivityDataService]
+      deps: [ProjectDataService, ActivityDataService, SecurityService]
     }
   ],
   bootstrap: [AppComponent]

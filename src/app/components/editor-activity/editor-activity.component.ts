@@ -3,6 +3,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ActivityDataService } from '../../services/activity-data.service';
 import { UpdateDataService } from 'src/app/services/update-data.service';
 import { ActivityData, ActivityDataPost } from '../../models/ativities';
+import { LangService } from 'src/app/services/lang.service';
+import { Lang } from 'src/app/models/lang';
 
 @Component({
   selector: 'app-editor-activity',
@@ -24,11 +26,15 @@ export class EditorActivityComponent implements OnInit {
     rolesListDesigner: new FormControl(),
     rolesListProgrammer: new FormControl()
   })
+
+  public lang: Lang = new Lang();
   constructor(
     public dataServiceModal: ActivityDataService,
     public activityData: ActivityDataService,
-    private emitter: UpdateDataService
+    private emitter: UpdateDataService,
+    private langService: LangService
   ) {
+    this.lang = this.langService.getLang();
     this.emitter.emitter.subscribe(() => {
       this.reloadForm()
     });

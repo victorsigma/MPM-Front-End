@@ -1,17 +1,24 @@
 <form [formGroup]="form" (ngSubmit)="addMember()">
     <div class="mb-3">
-        <label class="form-label" for="userName">User Name or Email</label>
+        <label class="form-label" for="userName">{{lang.user_name}} - {{lang.email_address}}</label>
         <input class="text" id="userName" name="userName" formControlName="userName" required type="text"
-            placeholder="Enter User Name or Email" aria-describedby="userNameHelp" />
-    <div id="userNameHelp" class="form-text">Enter a user name or e-mail address.</div>
+            placeholder="{{lang.enter}} {{lang.user_name}} - {{lang.email_address}}" aria-describedby="userNameHelp" />
+        <div *ngIf="form.get('userName')?.hasError('email') && form.get('userName')?.value != ''"
+            class="form-text error">{{lang.email_validation_message.email}}</div>
+        <div *ngIf="form.get('userName')?.hasError('minlength') && !form.get('userName')?.hasError('pattern') && form.get('userName')?.value != ''"
+            class="form-text error">{{lang.user_validation_messages.minlength}}</div>
+        <div *ngIf="form.get('userName')?.hasError('pattern') && !form.get('userName')?.hasError('minlength') && form.get('userName')?.value != ''"
+            class="form-text error">{{lang.user_validation_messages.pattern}}</div>
+        <div *ngIf="form.get('userName')?.hasError('pattern') && form.get('userName')?.hasError('minlength') && form.get('userName')?.value != ''"
+            class="form-text error">{{lang.user_validation_messages.minlength_pattern}}</div>
     </div>
 
     <div class="mb-3">
-        <label class="form-label" for="userRole">Select Role</label>
+        <label class="form-label" for="userRole">{{lang.select_rol}}</label>
         <select class="select" formControlName="userRole" id="userRole" aria-label="Select User Role">
-            <option value="1">Analyst</option>
-            <option value="2">Designer</option>
-            <option value="3">Programmer</option>
+            <option value="1">{{lang.analyst}}</option>
+            <option value="2">{{lang.designer}}</option>
+            <option value="3">{{lang.programmer}}</option>
         </select>
     </div>
 

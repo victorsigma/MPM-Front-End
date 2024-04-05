@@ -39,11 +39,19 @@
                             <label class="form-label" for="password-update">{{lang.password}}</label>
                             <input class="text" id="password-update" name="password-update" type="password"
                                 formControlName="userPassword" placeholder="*******" required />
+                            <div *ngIf="formPassword.get('userPassword')?.hasError('minlength') && !formPassword.get('userPassword')?.hasError('pattern') && formPassword.get('userPassword')?.value != ''"
+                                class="form-text error">{{lang.password_validation_messages.minlength}}</div>
+                            <div *ngIf="formPassword.get('userPassword')?.hasError('pattern') && !formPassword.get('userPassword')?.hasError('minlength') && formPassword.get('userPassword')?.value != ''"
+                                class="form-text error">{{lang.password_validation_messages.pattern}}</div>
+                            <div *ngIf="formPassword.get('userPassword')?.hasError('pattern') && formPassword.get('userPassword')?.hasError('minlength') && formPassword.get('userPassword')?.value != ''"
+                                class="form-text error">{{lang.password_validation_messages.minlength_pattern}}</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="password-update-c">{{lang.new_password}}</label>
                             <input class="text" id="password-update-c" name="password-update" type="password"
                                 formControlName="userPasswordConfirm" placeholder="*******" required />
+                            <div *ngIf="formPassword.get('userPasswordConfirm')?.value !== '' && formPassword.get('userPasswordConfirm')?.hasError('matchFields')"
+                                class="form-text error">{{lang.password_validation_messages.matchfields}}</div>
                         </div>
                         <div class="list-group card-body">
                             <button type="submit" [disabled]="this.formPassword.invalid" class="btn

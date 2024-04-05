@@ -1,0 +1,59 @@
+.container {
+    padding-top: 10%;
+    /* Establecer la altura completa de la ventana */
+}
+
+.load {
+    border: 24px solid var(--modal-color);
+    border-left-color: var(--primary-color);
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+    transition: opacity 0.3s ease;
+    /* Transición suave para la animación de carga */
+}
+
+.status-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    opacity: 0;
+    /* Ocultar los círculos de estado inicialmente */
+    transition: opacity 0.3s ease;
+    /* Transición suave para los círculos de estado */
+}
+
+.error {
+    background-color: var(--danger-color);
+    border: 12px solid var(--warning-color);
+    color: white !important;
+}
+
+.show {
+    opacity: 1;
+    /* Mostrar los círculos de estado */
+}
+
+.completed {
+    background-color: var(--primary-color);
+    border: 12px solid var(--secondary-color);
+    color: white !important;
+}
+
+.fa-6xl {
+    font-size: 6em;
+    line-height: .03125em;
+    vertical-align: -.1875em;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

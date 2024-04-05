@@ -78,10 +78,10 @@ export class Lang {
     phone_number: string = ''
     remember: string = '';
 
-    user_validation_messages: { minlength: string, pattern: string, minlength_pattern: string } = { minlength: '', pattern: '', minlength_pattern: '' };
-    email_validation_message: { email: string } = { email: '' };
-    phone_validation_messages: { minlength: string, pattern: string, minlength_pattern: string } = { minlength: '', pattern: '', minlength_pattern: '' };
-    password_validation_messages: { minlength: string, pattern: string, minlength_pattern: string } = { minlength: '', pattern: '', minlength_pattern: '' };
+    user_validation_messages: { minlength: string, pattern: string, minlength_pattern: string, matchfields: string } = { minlength: '', pattern: '', minlength_pattern: '', matchfields: '' };
+    email_validation_message: { email: string, matchfields: string } = { email: '', matchfields: '' };
+    phone_validation_messages: { minlength: string, pattern: string, minlength_pattern: string, matchfields: string } = { minlength: '', pattern: '', minlength_pattern: '', matchfields: '' };
+    password_validation_messages: { minlength: string, pattern: string, minlength_pattern: string, matchfields: string } = { minlength: '', pattern: '', minlength_pattern: '', matchfields: '' };
 
     loading: string = '';
 
@@ -94,4 +94,61 @@ export class Lang {
     members_search: string = '';
 
     options: string = '';
+
+    password_lost: string = '';
+
+    password_recovery: { request: string, reset: string, text: string } = { request: '', reset: '', text: '' };
+
+    submit: string = '';
+
+    verify_account: string = '';
+    verify_status: { inprocess: string, error: string, completed: string } ={ inprocess: '', error: '', completed: '' };
+    verify_email: string = '';
+    verified: string = '';
+
+    project_options: string = '';
+    change_project_name: string = '';
+    change_description: string = '';
+    start_date: string = '';
+    completion_date: string = '';
+    actual_date: string = '';
+
+    create_project: string = '';
+    project_name: string = '';
+    project_description: string = '';
+
+    add_activity: string = '';
+    activity_name: string = '';
+    description_activity: string = '';
+    status: string = '';
+    participating_roles: string = '';
+    analyst: string = '';
+    designer: string = '';
+    programmer: string = '';
+
+    change_activity_name: string = '';
+    change_status: string = '';
+
+    enter: string = '';
+    select_rol: string = '';
+
+    member: string = '';
+    remove: string = '';
+    change_rol: string = '';
+    update_member: string = '';
+
+    mpm_description_1: string = '';
+    mpm_description_2: string = '';
+    mpm_description_3: string = '';
+    mpm_description_4: string = '';
+    mpm_description_5: string = '';
+    mpm_description_6: string = '';
+    mpm_description_7: string = '';
+    mpm_description_8: string = '';
+
+    tag_error: string = '';
+
+    strong_1: string = '';
+    strong_2: string = '';
+    strong_3: string = '';
 }

@@ -1,6 +1,19 @@
 a {
     cursor: pointer;
     text-decoration: none;
+    transition: all 0.3s ease 0s;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+i {
+    transition: all 0.3s ease 0s;
+}
+
+i:hover {
+    color: var(--primary-color);
 }
 
 * {

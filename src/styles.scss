@@ -21,8 +21,8 @@
     --primary-color: #f1c0ff;
     --secondary-color: #6347ee;
     --success-color: #8861ff;
-    --danger-color: #00008e;
-    --warning-color: #2c19ad;
+    --danger-color: #aa5454;
+    --warning-color: #e0ae50;
     --options-color: #4930cd;
     --more-color: #b080ff;
     --info-color: #d2a0ff;
@@ -478,7 +478,7 @@ option {
 }
 
 .error {
-    color: rgb(255, 99, 99);
+    color: rgb(255, 99, 99) !important;
 }
 
 
@@ -498,6 +498,7 @@ option {
 .btn-close-color {
     color: var(--text-color);
     border: 3px solid transparent;
+    transition: all 0.3s ease 0s;
 }
 
 .btn-close-color:focus {
@@ -516,6 +517,7 @@ option {
 .btn-update {
     color: var(--text-color);
     border: solid var(--primary-color) 2px;
+    transition: all 0.3s ease 0s;
 }
 
 
@@ -531,6 +533,7 @@ option {
 .btn-delete {
     color: var(--text-color);
     border: solid var(--danger-color) 2px;
+    transition: all 0.3s ease 0s;
 }
 
 
@@ -586,6 +589,29 @@ option {
 
 .button-options:focus {
     border: var(--success-color) 2px solid;
+}
+
+
+.btn-email-check {
+    background-color: var(--auto-fill-color); /* Cambia el color para que coincida con el tema */
+    color: var(--text-color); /* Color del texto */
+    border: solid var(--secondary-color) 2px !important;
+    border-radius: 0.375rem;
+    padding: 10px 20px; /* Ajusta el padding */
+    font-size: 14px; /* Ajusta el tamaño de la fuente */
+    background-size: 1500% 100%;
+    background-image: linear-gradient(to right, var(--auto-fill-color), var(--modal-color));
+    transition: all 0.3s ease 0s;
+}
+
+.btn-email-check:enabled:hover {
+    background-position: 100% 100%;
+    
+    background-color: var(--modal-color);
+}
+.btn-email-check:enabled:active {
+    background-color: var(--modal-color);
+    border: solid var(--modal-color) 2px !important;
 }
 
 .modal-header {
@@ -845,6 +871,14 @@ option {
     background-color: var(--success-color);
     border: 1px #494949 solid;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23fff" height="6" width="4.5" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>');
+}
+
+.checkbox label {
+    transition: all 0.3s ease 0s;
+}
+
+.checkbox label:hover {
+    color: var(--primary-color);
 }
 
 .upper-firt::first-letter {

@@ -5,7 +5,10 @@ import { Lang } from 'src/app/models/lang';
 import { User, UserUpdate } from 'src/app/models/users';
 import { LangService } from 'src/app/services/lang.service';
 import { LoginDataService } from 'src/app/services/login-data.service';
+import { SecurityService } from 'src/app/services/security.service';
 import matchFieldsValidator from 'src/app/validators/matchFieldsValidator';
+import { map } from 'rxjs';
+import { error } from 'console';
 
 @Component({
   selector: 'app-information-account',
@@ -16,17 +19,17 @@ export class InformationAccountComponent {
 
   formName: UntypedFormGroup = new UntypedFormGroup({
     userName: new UntypedFormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(15), Validators.pattern(/^[a-zA-Z0-9]+$/)]),
-    userNameConfirm: new UntypedFormControl()
+    userNameConfirm: new UntypedFormControl('')
   }, {validators: [matchFieldsValidator('userName', 'userNameConfirm') as ValidatorFn]})
 
   formEmail: UntypedFormGroup = new UntypedFormGroup({
     userEmail: new UntypedFormControl('', [Validators.required, Validators.email]),
-    userEmailConfirm: new UntypedFormControl()
+    userEmailConfirm: new UntypedFormControl('')
   }, {validators: matchFieldsValidator('userEmail', 'userEmailConfirm') as ValidatorFn})
 
   formPhone: UntypedFormGroup = new UntypedFormGroup({
     userPhone: new UntypedFormControl('', [Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]+$/), Validators.required]),
-    userPhoneConfirm: new UntypedFormControl()
+    userPhoneConfirm: new UntypedFormControl('')
   }, {validators: matchFieldsValidator('userPhone', 'userPhoneConfirm') as ValidatorFn})
 
   public modal = { title: '', type: '' }
@@ -34,11 +37,29 @@ export class InformationAccountComponent {
   public user: User = new User()
 
   public lang: Lang = new Lang()
-  constructor(public loginService: LoginDataService, private langService: LangService) {
+
+  public isVerify: boolean = true;
+  constructor(public loginService: LoginDataService, private langService: LangService, private securityService: SecurityService) {
     this.lang = this.langService.getLang()
+    this.securityService.verifyAccount().subscribe({
+      next: (data) => {
+        this.isVerify = data.emailAlreadyVerified
+      }
+    })
   }
 
-  updateName() {
+  public verifyAccountRequest(): void {
+    this.securityService.verifyAccountRequest().subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    })
+  }
+
+  public updateName(): void {
     const userUpdate = new UserUpdate();
     userUpdate.userName = this.formName.get('userNameConfirm')?.value;
 
@@ -47,7 +68,7 @@ export class InformationAccountComponent {
     })
   }
 
-  updateEmail() {
+  public updateEmail(): void {
     const userUpdate = new UserUpdate();
     userUpdate.userMail = this.formEmail.get('userEmailConfirm')?.value;
 
@@ -56,7 +77,7 @@ export class InformationAccountComponent {
     })
   }
 
-  updatePhone() {
+  public updatePhone(): void {
     const userUpdate = new UserUpdate();
     userUpdate.phoneNumber = this.formPhone.get('userPhoneConfirm')?.value;
 
@@ -65,28 +86,28 @@ export class InformationAccountComponent {
     })
   }
 
-  editNameModal() {
+  public editNameModal(): void {
     this.modal.title = this.lang.change_user_name;
     this.modal.type = 'name'
     const editModal = new Modal(document.getElementById('editModal') as Element);
     editModal.show(document.body)
   }
 
-  editEmailModal() {
+  public editEmailModal(): void {
     this.modal.title = this.lang.change_email_address;
     this.modal.type = 'email'
     const editModal = new Modal(document.getElementById('editModal') as Element);
     editModal.show(document.body)
   }
 
-  editPhoneModal() {
+  public editPhoneModal(): void {
     this.modal.title = this.lang.change_phone;
     this.modal.type = 'phone'
     const editModal = new Modal(document.getElementById('editModal') as Element);
     editModal.show(document.body)
   }
 
-  reloadForms() {
+  private reloadForms(): void {
     this.formName = new UntypedFormGroup({
       userName: new UntypedFormControl(),
       userNameConfirm: new UntypedFormControl()

@@ -5,6 +5,8 @@ import { ProjectDataService } from 'src/app/services/project-data.service';
 import unMatchFieldsValidator from 'src/app/validators/unMatchRoleValidators';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { LangService } from 'src/app/services/lang.service';
+import { Lang } from 'src/app/models/lang';
 
 @Component({
   selector: 'app-member-item',
@@ -24,8 +26,9 @@ export class MemberItemComponent implements OnInit {
     userRole: new UntypedFormControl(0, [unMatchFieldsValidator(this.actualRole)])
   });
 
-  constructor(private projectData: ProjectDataService, private activeRoute: ActivatedRoute) {
-
+  public lang: Lang = new Lang();
+  constructor(private projectData: ProjectDataService, private activeRoute: ActivatedRoute, private langService: LangService) {
+    this.lang = this.langService.getLang();
   }
 
   ngOnInit(): void {

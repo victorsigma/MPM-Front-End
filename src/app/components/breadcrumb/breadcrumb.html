@@ -3,7 +3,7 @@
     <div class="row">
       <div> <!-- Ajuste aquí -->
         <ol class="breadcrumb"> <!-- Quitamos la clase float-right -->
-          <li class="breadcrumb-item" [class.active]="title === lang.pather_home"><a routerLink="/">{{lang.pather_home}}</a></li>
+          <li class="breadcrumb-item" [class.active]="title === lang.pather_home"><a routerLink="/"><i class="fa-solid fa-house fa-sm"></i></a></li>
           <li *ngIf="ggfather !== undefined" class="breadcrumb-item"><a [routerLink]="ggfather.path">{{ggfather.title}}</a></li>
           <li *ngIf="ggfather === undefined && gfather !== undefined" class="breadcrumb-item"><a [routerLink]="gfather.path">{{gfather.title}}</a></li>
           <li *ngIf="ggfather !== undefined && gfather !== undefined" class="breadcrumb-item"><a [routerLink]="removeLastsSegment()">{{gfather.title}}</a></li>

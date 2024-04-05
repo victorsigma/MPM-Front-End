@@ -26,6 +26,7 @@ export class LoginSectionComponent implements OnInit {
     remember: new FormControl()
   });
   appIcon: string = '';
+  captchaKey: string = ''
 
   public lang: Lang = new Lang();
   public theme: 'dark' | 'light' = 'dark';
@@ -34,6 +35,7 @@ export class LoginSectionComponent implements OnInit {
     this.appIcon = document.body.getAttribute('data-bs-theme') == 'default' ? 'assets/img/mpm-logo-dark.png' : 'assets/img/mpm-logo-light.png';
     this.titleService.setTitle(`MPM - Login`)
     this.lang = this.langService.getLang();
+    this.captchaKey = environment.recaptcha;
   }
 
   ngOnInit(): void {
