@@ -1,7 +1,7 @@
 import { Lang } from "../models/lang";
 
 export const enEN: Lang = {
-    "home_title": "My Proyect Manager" ,
+    "home_title": "My Project Manager" ,
     "home_slogan": "Where your ideas find their way.",
     "home_register": "Create Account",
     "home_login": "Login",
@@ -170,7 +170,7 @@ export const enEN: Lang = {
 }
 
 export const esMX: Lang = {
-    "home_title": "My Proyect Manager"/*"Mi Gerente de Proyectos"*/,
+    "home_title": "My Project Manager"/*"Mi Gerente de Proyectos"*/,
     "home_slogan": "Donde tus ideas encuentran su camino.",
     "home_register": "Crear una cuenta",
     "home_login": "Iniciar sesión",

@@ -6,8 +6,8 @@
                 (click)="sliderChange()">
                 <i class="fa-solid fa-bars"></i>
             </button>
-            <img class="navbar-brand" [class.m-title]="isMobile" id="offcanvasExampleLabel"
-                [src]="appIcon" alt="mpm-logo" routerLink="/" style="max-height: 40px;">
+            <img class="navbar-brand" [class.m-title]="isMobile" id="offcanvasExampleLabel" [src]="appIcon"
+                alt="mpm-logo" routerLink="/" style="max-height: 40px;">
             <li *ngIf="loginService.isLogin() && isMobile" class="dropdown">
                 <a class="btn btn-icon" data-bs-toggle="dropdown" #btnIconMobile data-bs-auto-close="outside"><img
                         src="{{iconPathSmall+userIcon}}" alt="..."></a>
@@ -26,7 +26,8 @@
                         <hr class="dropdown-divider">
                     </li>
                     <li><button class="dropdown-item" (click)="logout()"><i
-                                class="fa-solid fa-arrow-right-from-bracket fa-sm"></i>&nbsp;&nbsp;{{lang.logout}}</button></li>
+                                class="fa-solid fa-arrow-right-from-bracket fa-sm"></i>&nbsp;&nbsp;{{lang.logout}}</button>
+                    </li>
                 </ul>
             </li>
             <li *ngIf="!loginService.isLogin() && isMobile" class="dropdown">
@@ -38,7 +39,8 @@
                 </ul>
                 <ul class="navbar-nav d-flex" *ngIf="!loginService.isLogin()">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="" routerLink="register">{{lang.register}}</a>
+                        <a class="nav-link active" aria-current="page" href=""
+                            routerLink="register">{{lang.register}}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="" routerLink="login">{{lang.login}}</a>
@@ -111,13 +113,24 @@
         </div>
         <div class="col">
             <app-breadcrumbs></app-breadcrumbs>
+            <div class="col-12" *ngIf="this.router.url === '/'">
+
+                <li class="dropdown">
+                    <input type="text" [(ngModel)]="searchTerm" (input)="handleInput(dropdown)" (keydown.enter)="handleEnter()" data-bs-toggle="dropdown"
+                        placeholder="Buscar" class="text mb-3">
+                    <ul class="dropdown-menu w-100 dropdown-menu-dark show" #dropdown style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 39.1949px);" >
+                        <li *ngFor="let item of filteredRoutes" ><a class="dropdown-item" routerLink="{{item.path}}"><i
+                                    class="fa-regular fa-user fa-sm"></i>&nbsp;&nbsp;{{item.title}}</a></li>
+                    </ul>
+                </li>
+            </div>
             <div class="page">
                 <!-- Contenido principal de tu página, incluyendo el <router-outlet> -->
                 <router-outlet></router-outlet>
             </div>
             <app-footer></app-footer>
         </div>
-        
+
     </div>
 </div>
 
@@ -127,8 +140,8 @@
             data-bs-target="#offcanvasExample">
             <i class="fa-solid fa-bars"></i>
         </button>
-        <img class="offcanvas-title" id="offcanvasExampleLabel" [src]="this.appIcon" alt="mpm-logo"
-            routerLink="" style="max-height: 40px;">
+        <img class="offcanvas-title" id="offcanvasExampleLabel" [src]="this.appIcon" alt="mpm-logo" routerLink=""
+            style="max-height: 40px;">
     </div>
     <div class="offcanvas-body">
         <div id="navbarSupportedContent">

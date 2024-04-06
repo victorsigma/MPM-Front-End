@@ -19,7 +19,7 @@ export class ProjectsPageComponent implements OnInit {
   createProject: Subject<ProjectData> = new Subject<ProjectData>();
 
   public projectList: ProjectData[] = [];
-//fitro de busqueda
+  //fitro de busqueda
   public searchTerm: string = '';
 
   public lang: Lang = new Lang();

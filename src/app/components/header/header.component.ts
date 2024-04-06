@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginDataService } from '../../services/login-data.service';
 import { ProjectListService } from '../../services/project-list.service';
@@ -7,6 +7,7 @@ import { accountPaths, defaultPaths, editActivitiesPaths, membersPaths, projectP
 import { environment } from 'src/environments/environment';
 import { Lang } from 'src/app/models/lang';
 import { LangService } from 'src/app/services/lang.service';
+import { routes } from 'src/app/libs/search-routes';
 
 @Component({
   selector: 'app-header',
@@ -23,12 +24,17 @@ export class HeaderComponent implements OnInit {
   public paths: any = defaultPaths;
   public patherPath: string = ''
   public appIcon: string = '';
+  //fitro de busqueda
+  public searchTerm: string = '';
+
+  private routes: Array<{title: string, path: string}> = [];
 
   public lang: Lang = new Lang();
-  constructor(private router:Router, public loginService:LoginDataService, private projectList:ProjectListService, private breakpointObserver: BreakpointObserver, private langService: LangService) {
+  constructor(public router:Router, public loginService:LoginDataService, private projectList:ProjectListService, private breakpointObserver: BreakpointObserver, private langService: LangService) {
     this.lang = this.langService.getLang();
     this.appIcon = document.body.getAttribute('data-bs-theme') == 'default' ? 'assets/img/mpm-logo-dark.png' : 'assets/img/mpm-logo-light.png';
     this.slideStyle = localStorage.getItem('slideStyle') == 'true' ? true : false;
+    this.routes = routes
     this.breakpointObserver.observe('(max-width: 992px)')
     .subscribe(result => {
       this.isMobile = result.matches;
@@ -80,5 +86,25 @@ export class HeaderComponent implements OnInit {
     if(this.isMobile) return;
     this.slideStyle = !this.slideStyle;
     localStorage.setItem('slideStyle', `${this.slideStyle}`);
+  }
+
+  get filteredRoutes(): Array<{title: string, path: string}> {
+    if(this.searchTerm !== '') {
+      return this.routes.filter(route =>
+        route.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      return [];
+    }
+  }
+
+
+  handleInput(dropdown: HTMLUListElement) {
+    console.log('select')
+    dropdown.style.background = '#fff !important'
+  }
+
+  handleEnter() {
+    
   }
 }
