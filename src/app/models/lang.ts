@@ -153,7 +153,7 @@ export class Lang {
     strong_2: string = '';
     strong_3: string = '';
 
-
+    search: string = '';
     toast: {
         register_ok: string,
         register_error: string,

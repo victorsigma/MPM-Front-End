@@ -116,11 +116,11 @@
             <div class="col-12" *ngIf="this.router.url === '/'">
 
                 <li class="dropdown">
-                    <input type="text" [(ngModel)]="searchTerm" (input)="handleInput(dropdown)" (keydown.enter)="handleEnter()" data-bs-toggle="dropdown"
-                        placeholder="Buscar" class="text mb-3">
-                    <ul class="dropdown-menu w-100 dropdown-menu-dark show" #dropdown style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 39.1949px);" >
-                        <li *ngFor="let item of filteredRoutes" ><a class="dropdown-item" routerLink="{{item.path}}"><i
-                                    class="fa-regular fa-user fa-sm"></i>&nbsp;&nbsp;{{item.title}}</a></li>
+                    <input type="text" #inputElement [(ngModel)]="searchTerm" (blur)="onInputUnselect($event)" (focus)="onInputSelect()" (input)="handleInput()" (keydown.enter)="handleEnter()"
+                        placeholder="{{lang.search}}" class="text mb-3">
+                    <ul class="dropdown-menu dropdown-menu-dark w-100 dropdown-menu-search" #dropdownSearch>
+                        <li *ngFor="let item of filteredRoutes" ><a class="dropdown-item" routerLink="{{item.path}}">
+                            <i class="fa-solid fa-magnifying-glass fa-sm"></i>&nbsp;&nbsp;{{item.title}}</a></li>
                     </ul>
                 </li>
             </div>

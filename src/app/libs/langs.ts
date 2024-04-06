@@ -146,6 +146,7 @@ export const enEN: Lang = {
     "strong_1": "Simplify complexity:",
     "strong_2": "Task visualization system:",
     "strong_3": "Detailed role system:",
+    "search": "Search...",
     "toast": {
         "register_ok": "Successfully registered",
         "register_error": "Bad Request",
@@ -315,6 +316,7 @@ export const esMX: Lang = {
     "strong_1": "Simplifica la complejidad:",
     "strong_2": "Sistema de visualización de tareas:",
     "strong_3": "Sistema de roles detallado:",
+    "search": "Buscar...",
     "toast": {
         "register_ok": "Registrado con éxito",
         "register_error": "Bad Request",

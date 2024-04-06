@@ -17,10 +17,19 @@
     top: 100%;
     left: -255px;
     margin-top: var(--bs-dropdown-spacer);
-    background-color: var(--modal-color);
+    background-color: var(--modal-color) !important;
     border: none;
     border-radius: 10px;
     width: 300px;
+}
+
+.dropdown-menu {
+    background-color: var(--modal-color) !important;
+}
+
+.dropdown-menu-search {
+    border-top-left-radius: 0% !important;
+    border-top-right-radius: 0% !important;
 }
 
 .dropdown {
