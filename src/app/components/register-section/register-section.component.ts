@@ -8,6 +8,7 @@ import { ladas } from 'src/app/libs/ladas';
 import { LangService } from 'src/app/services/lang.service';
 import { Lang } from 'src/app/models/lang';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -34,6 +35,7 @@ export class RegisterSectionComponent implements OnInit {
     return parseInt(ladaA) - parseInt(ladaB)
   });
   appIcon: string = '';
+  captchaKey: string = ''
 
   public lang: Lang = new Lang();
   public theme: 'dark' | 'light' = 'dark';
@@ -47,6 +49,7 @@ export class RegisterSectionComponent implements OnInit {
       phone: new FormControl('', [Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]+$/), Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(/^(?=.*[0-9])(?=.*[a-zA-Z].*[a-zA-Z])[^'",{}\[\]\s]*$/)])
     });
+    this.captchaKey = environment.recaptcha;
   }
 
   ngOnInit(): void {
