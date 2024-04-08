@@ -49,8 +49,11 @@ export class ProjectDataService {
     return this.http.get(this.myAppUrl + this.myApiUrlHas + `?project=${idProject}`)
   }
 
+  updateProjectUser(userName: string, idProject: string, idRol: any): Observable<any> {
+    return this.http.put(`${this.myAppUrl}${this.myApiUrlHas}?project=${idProject}&user=${userName}`, {idRol: idRol});
+  }
+
   removeProjectUser(userName: string, idProject: string): Observable<any> {
-    console.log(this.myAppUrl + this.myApiUrlHas + `?project=${idProject}&user=${userName}`)
-    return this.http.delete(this.myAppUrl + this.myApiUrlHas + `?project=${idProject}&user=${userName}`)
+    return this.http.delete(`${this.myAppUrl}${this.myApiUrlHas}?project=${idProject}&user=${userName}`)
   }
 }

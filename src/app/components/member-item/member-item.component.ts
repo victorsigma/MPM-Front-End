@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProjectUserData } from 'src/app/models/projectsHasUser';
-import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ProjectDataService } from 'src/app/services/project-data.service';
 import unMatchFieldsValidator from 'src/app/validators/unMatchRoleValidators';
 import { ActivatedRoute } from '@angular/router';
@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 import { LangService } from 'src/app/services/lang.service';
 import { Lang } from 'src/app/models/lang';
 import { ToastrService } from 'ngx-toastr';
+import { error } from 'console';
 
 @Component({
   selector: 'app-member-item',
@@ -23,8 +24,8 @@ export class MemberItemComponent implements OnInit {
 
   actualRole: number = 0;
 
-  public form: UntypedFormGroup = new UntypedFormGroup({
-    userRole: new UntypedFormControl(0, [unMatchFieldsValidator(this.actualRole)])
+  public form: FormGroup = new FormGroup({
+    userRole: new FormControl(0, [unMatchFieldsValidator(this.actualRole)])
   });
 
   public lang: Lang = new Lang();
@@ -36,20 +37,20 @@ export class MemberItemComponent implements OnInit {
     switch (this.member.rolName) {
       case 'Analyst':
         this.actualRole = 1;
-        this.form = new UntypedFormGroup({
-          userRole: new UntypedFormControl(1, [unMatchFieldsValidator(this.actualRole)])
+        this.form = new FormGroup({
+          userRole: new FormControl(1, [unMatchFieldsValidator(this.actualRole)])
         });
         break;
       case 'Designer':
-        this.actualRole = 1;
-        this.form = new UntypedFormGroup({
-          userRole: new UntypedFormControl(2, [unMatchFieldsValidator(this.actualRole)])
+        this.actualRole = 2;
+        this.form = new FormGroup({
+          userRole: new FormControl(2, [unMatchFieldsValidator(this.actualRole)])
         });
         break;
       case 'Programmer':
-        this.actualRole = 1;
-        this.form = new UntypedFormGroup({
-          userRole: new UntypedFormControl(3, [unMatchFieldsValidator(this.actualRole)])
+        this.actualRole = 3;
+        this.form = new FormGroup({
+          userRole: new FormControl(3, [unMatchFieldsValidator(this.actualRole)])
         });
         break;
     }
@@ -71,8 +72,40 @@ export class MemberItemComponent implements OnInit {
   }
 
   updateMember() {
+    const { idProject } = this.activeRoute.snapshot.params
+    const newRol = this.form.get('userRole')?.value;
     if (this.actualRole != this.form.get('userRole')?.value) {
+      this.projectData.updateProjectUser(this.member.userName, idProject, newRol).subscribe({
+        next: (data) => {
+          this.member = data;
 
+          switch (this.member.rolName) {
+            case 'Analyst':
+              this.actualRole = 1;
+              this.form = new FormGroup({
+                userRole: new FormControl(1, [unMatchFieldsValidator(this.actualRole)])
+              });
+              break;
+            case 'Designer':
+              this.actualRole = 2;
+              this.form = new FormGroup({
+                userRole: new FormControl(2, [unMatchFieldsValidator(this.actualRole)])
+              });
+              break;
+            case 'Programmer':
+              this.actualRole = 3;
+              this.form = new FormGroup({
+                userRole: new FormControl(3, [unMatchFieldsValidator(this.actualRole)])
+              });
+              break;
+          }
+
+          this.toastr.success(this.lang.toast.update_ok, this.lang.toast.status_complited);
+        },
+        error: (error) => {
+          this.toastr.error(this.lang.toast.update_error, this.lang.toast.status_cancel);
+        }
+      })
     }
   }
 }
