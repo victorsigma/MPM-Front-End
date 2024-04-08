@@ -43,7 +43,7 @@
                 <form *ngIf="twoFactorAuthentication" [formGroup]="formAuthentication" (ngSubmit)="loginAuth()">
                     <div class="mb-3">
                         <label for="authCode" class="form-label">{{lang.auth_code}}</label>
-                        <input formControlName="verificationCode" type="text" class="text" id="authCode"
+                        <input formControlName="verificationCode" type="text" autocomplete="off" class="text" id="authCode"
                             aria-describedby="verificationCodeHelp">
                     </div>
 
