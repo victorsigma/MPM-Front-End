@@ -48,7 +48,7 @@
                         </div>
                         <div class="col-6 input-info">
                             <div class="col-10">
-                                <button class="btn-email-check w-100 h-100" [disabled]="isVerify" (click)="!isVerify ? verifyAccountRequest() : null" type="button">
+                                <button *ngIf="isVerify != undefined" class="btn-email-check w-100 h-100" [disabled]="isVerify" (click)="!isVerify ? verifyAccountRequest() : null" type="button">
                                     {{!isVerify ? lang.verify_email : lang.verified}}
                                     <i class="fa-solid fa-check fa-xl"></i>
                                 </button>

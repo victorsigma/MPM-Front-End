@@ -39,7 +39,7 @@ export class InformationAccountComponent {
 
   public lang: Lang = new Lang()
 
-  public isVerify: boolean = true;
+  public isVerify: boolean | undefined = undefined;
   constructor(public loginService: LoginDataService, private langService: LangService, private securityService: SecurityService, private toastr: ToastrService) {
     this.lang = this.langService.getLang()
     this.securityService.verifyAccount().subscribe({

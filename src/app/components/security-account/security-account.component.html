@@ -16,6 +16,19 @@
                                 </button>
                             </div>
                         </div>
+                        <div class="col-6 input-info">
+                            <div class="col-10">
+                                <button class="btn-email-check w-100 h-100" *ngIf="!isVerify && isVerify != undefined" (click)="verifyAccountMessage()" type="button">
+                                    {{lang.enable_a2f}}
+                                    <i class="fa-solid fa-check fa-xl"></i>
+                                </button>
+
+                                <button class="btn-email-check w-100 h-100" *ngIf="isVerify && isA2F != undefined" type="button" (click)="isA2F == undefined ? null : isA2F ? disableA2FModal() : enableA2FModal()">
+                                    {{!isA2F ? lang.enable_a2f : lang.disable_a2f}}
+                                    <i class="fa-solid fa-check fa-xl"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -59,6 +72,38 @@
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="enableA2F" tabindex="-1" aria-labelledby="enableA2FLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="enableA2FLabel">{{lang.enable_a2f}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex" style="justify-content: flex-end;">
+                <button type="button" class="btn btn-delete" data-bs-dismiss="modal" style="margin-right: 6px;">{{lang.action_cancel}}</button>
+                <button type="button" class="btn btn-update" data-bs-dismiss="modal" (click)="enableA2F()">{{lang.enable_a2f}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="disableA2F" tabindex="-1" aria-labelledby="disableA2FLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="disableA2FLabel">{{lang.disable_a2f}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex" style="justify-content: flex-end;">
+                <button type="button" class="btn btn-delete" data-bs-dismiss="modal" style="margin-right: 6px;">{{lang.action_cancel}}</button>
+                <button type="button" class="btn btn-update" data-bs-dismiss="modal" (click)="disableA2F()">{{lang.disable_a2f}}</button>
             </div>
         </div>
     </div>

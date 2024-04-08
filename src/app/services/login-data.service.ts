@@ -13,7 +13,8 @@ export class LoginDataService {
 
 
   private myAppUrl = environment.apiKey;
-  private myApiUrl = 'api/Login';
+  private myApiUrl = 'api/login';
+  private myApiURlT = 'api/twoFactorAuthentication';
   private myApiUrlV = 'api/verifyLogin'; 
   private myApiUrlC = 'api/changeTheme'; 
   private myApiUrlI = 'api/changeIcon'; 
@@ -35,6 +36,10 @@ export class LoginDataService {
   }
 
   public login(user: Login, isRemember: boolean): Observable<Jwt> {
+    return this.http.post<Jwt>(`${this.myAppUrl}${this.myApiURlT}?remember=${isRemember}`, user)
+  }
+
+  public loginAuth(user: Login, isRemember: boolean): Observable<Jwt> {
     return this.http.post<Jwt>(`${this.myAppUrl}${this.myApiUrl}?remember=${isRemember}`, user)
   }
 
@@ -91,7 +96,7 @@ export class LoginDataService {
   }
 
   private getUser(): Jwt {
-    const user: Jwt = { 'token': localStorage.getItem('token') || '' }
+    const user: Jwt = { 'token': localStorage.getItem('token') || '', 'message': null }
     return user;
   }
 

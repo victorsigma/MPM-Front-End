@@ -151,6 +151,10 @@ export const enEN: Lang = {
         "register_ok": "Successfully registered",
         "register_error": "Bad Request",
         "login_error": "Incorrect data",
+        "enable_a2f_ok": "Dual authentication was successfully enabled",
+        "enable_a2f_error": "Dual authentication could not be enabled",
+        "disable_a2f_ok": "Dual authentication was successfully disabled",
+        "disable_a2f_error": "Dual authentication could not be disabled",
         "project_add_ok": "Project successfully created",
         "project_add_error": "Error creating the project",
         "activity_add_ok": "The activity was added",
@@ -167,7 +171,10 @@ export const enEN: Lang = {
         "status_cancel": "Operation Canceled",
         "status_complited": "Operation Completed",
         "capcha": "Complete the captcha",
-    }
+    },
+    "auth_code": "Enter your verification code",
+    "enable_a2f": "Enable A2F",
+    "disable_a2f": "Disable A2F",
 }
 
 export const esMX: Lang = {
@@ -321,6 +328,10 @@ export const esMX: Lang = {
         "register_ok": "Registrado con éxito",
         "register_error": "Bad Request",
         "login_error": "Datos incorrectos",
+        "enable_a2f_ok": "La doble autenticación se ha habilitado correctamente",
+        "enable_a2f_error": "No se pudo habilitar la doble autenticación",
+        "disable_a2f_ok": "La doble autenticación se ha desactivado correctamente",
+        "disable_a2f_error": "No se pudo deshabilitar la autenticación dual",
         "project_add_ok": "Proyecto creado con éxito",
         "project_add_error": "Error al crear el proyecto",
         "activity_add_ok": "La actividad se ha añadido",
@@ -337,5 +348,8 @@ export const esMX: Lang = {
         "status_cancel": "Operación cancelada",
         "status_complited": "Operación completada",
         "capcha": "Completa el captcha",
-    }
+    },
+    "auth_code": "Introduzca su código de verificación",
+    "enable_a2f": "Habilitar A2F",
+    "disable_a2f": "Deshabilitar A2F",
 }

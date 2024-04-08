@@ -26,8 +26,10 @@ export class UserUpdate {
 export class Login {
     userNameOrEmail: string = '';
     password: string = '';
+    verificationCode: string | null = null;
 }
 
 export class Jwt {
     token: string = '';
+    message: string | null = null;
 }

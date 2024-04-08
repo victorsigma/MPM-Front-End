@@ -158,6 +158,10 @@ export class Lang {
         register_ok: string,
         register_error: string,
         login_error: string,
+        enable_a2f_ok: string,
+        enable_a2f_error: string,
+        disable_a2f_ok: string,
+        disable_a2f_error: string,
         project_add_ok: string,
         project_add_error: string,
         activity_add_ok: string,
@@ -178,6 +182,10 @@ export class Lang {
         register_ok: '',
         register_error: '',
         login_error: '',
+        enable_a2f_ok: '',
+        enable_a2f_error: '',
+        disable_a2f_ok: '',
+        disable_a2f_error: '',
         project_add_ok: '',
         project_add_error: '',
         activity_add_ok: '',
@@ -194,5 +202,10 @@ export class Lang {
         status_cancel: '',
         status_complited: '',
         capcha: ''
-    }
+    };
+    
+    auth_code: string = '';
+
+    enable_a2f: string = '';
+    disable_a2f: string = '';
 }
