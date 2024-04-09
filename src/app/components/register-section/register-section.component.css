@@ -66,6 +66,7 @@
     flex-wrap: wrap;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
+    min-height: calc(100vh - 162px);
 }
 
 .captcha-container{
@@ -85,6 +86,7 @@
     .slider {
         width: 100%;
         padding-top: 5px;
+        min-height: 100%;
     }
 
     .login {
