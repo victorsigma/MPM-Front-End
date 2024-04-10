@@ -1,25 +1,22 @@
 <div class="modal fade" id="deleteProject" tabindex="-1"
-    aria-labelledby="deleteProjectLabe1" aria-hidden="true">
+    aria-labelledby="deleteProjectLabe1" aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteProjectLabel">Project
-                    Options</h5>
+                <h5 class="modal-title" id="deleteProjectLabel">{{lang.project_options}}</h5>
                 <button type="button" class="btn-close btn-close-white"
                     data-bs-dismiss="modal" (click)="reloadForm()" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form [formGroup]="form" (ngSubmit)="deleteProject()">
                     <div class="mb-3">
-                        <label class="form-label" for="passwordValidation">Password Validation</label>
+                        <label class="form-label" for="passwordValidation">{{lang.delete_project_title}}</label>
                         <input class="text" id="passwordValidation" autocomplete="off"
                             name="passwordValidation"
-                            type="password" formControlName="password" placeholder="Security password"/>
+                            type="password" formControlName="title" placeholder="{{lang.title}}"/>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" (click)="reloadForm()" class="btn button-close"
-                            data-bs-dismiss="modal">Close</button>
-                        <button type="submit" data-bs-dismiss="modal" class="btn button-delete">Delete</button>
+                    <div class="list-group card-body">
+                        <button type="submit" [disabled]="form.get('title')?.value != project.title" data-bs-dismiss="modal" class="btn btn-delete">{{lang.remove}}</button>
                     </div>
                 </form>
             </div>

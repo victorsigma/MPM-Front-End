@@ -23,6 +23,8 @@ export class AddProjectComponent implements OnInit {
   project: ProjectData = new ProjectData();
   relationProject: ProjectsHasUser = new ProjectsHasUser();
 
+  public isCustom: boolean = false;
+
   public lang: Lang = new Lang();
 
   @Output() newProject: EventEmitter<ProjectData> = new EventEmitter();
@@ -50,7 +52,7 @@ export class AddProjectComponent implements OnInit {
       id: '',
       title: this.form.get('title')?.value,
       subtitle: this.form.get('subtitle')?.value,
-      src: 'img_' + this.random(1, 7),
+      src: this.project.src != '' ? this.project.src : 'img_' + this.random(1, 7),
       dateStart: new Date(),
       dateEnd: new Date(new Date(this.form.get('dateEnd')?.value)),
       owner: ''

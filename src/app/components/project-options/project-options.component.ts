@@ -21,6 +21,8 @@ export class ProjectOptionsComponent implements OnInit {
     dateEnd: new FormControl(),
   });
 
+  public isCustom: boolean = false;
+
   public lang: Lang = new Lang();
 
   constructor(private projectList: ProjectListService, private langService: LangService, private toastr: ToastrService) {

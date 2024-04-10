@@ -208,4 +208,8 @@ export class Lang {
 
     enable_a2f: string = '';
     disable_a2f: string = '';
+
+    title: string = '';
+    delete_project_title: string = '';
+    customization: string = '';
 }

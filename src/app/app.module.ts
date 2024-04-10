@@ -53,6 +53,7 @@ import { PasswordRecoveryComponent } from './components/password-recovery/passwo
 import { SecurityService } from './services/security.service';
 import { VerifyAccountComponent } from './components/verify-account/verify-account.component';
 import { FadeInOutDirective } from './directives/fade-in-out.directive';
+import { ArrowIconDirective } from './directives/arrow-icon.directive';
 
 
 @NgModule({
@@ -95,7 +96,8 @@ import { FadeInOutDirective } from './directives/fade-in-out.directive';
     PasswordRecoveryFormComponent,
     PasswordRecoveryComponent,
     VerifyAccountComponent,
-    FadeInOutDirective
+    FadeInOutDirective,
+    ArrowIconDirective
   ],
   imports: [
     BrowserModule,

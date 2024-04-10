@@ -8,6 +8,11 @@ a:hover {
     color: var(--primary-color);
 }
 
+.show {
+    color: transparent !important;
+    cursor: default;
+}
+
 i {
     transition: all 0.3s ease 0s;
 }
@@ -25,7 +30,7 @@ i:hover {
 }
 
 .active {
-    color: rgb(66, 164, 255);
+    color: var(--secondary-color) !important;
 }
 
 .float-end p {

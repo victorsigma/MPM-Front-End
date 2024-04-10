@@ -23,21 +23,6 @@ export class ProjectListService {
   getProject: ProjectData[] = [];
   constructor(private loginData: LoginDataService, private memberList: UsersProjectsService, private http: HttpClient) { }
 
-  loadProjects() {
-    // this.memberList.getList();
-    // this.getList();
-    
-    // if(this.projects.length != 0) {
-    //   this.reseatProjects();
-    // }
-    // this.memberList.projectMembers.filter(data => { return data.userIdUser == this.loginData.usersList[0].userId }).forEach(elemet => {
-    //   this.getProject = this.projectsMaster.filter(data => {
-    //     return data.id == elemet.proyectsIdProject
-    //   })
-    //   this.projects.push(this.getProject[0])
-    // });
-  }
-
   reseatProjects() {
     this.projects = [];
   }

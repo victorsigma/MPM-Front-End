@@ -1,0 +1,53 @@
+.container-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    /* Espacio entre las imágenes */
+}
+
+.grid-item {
+    /* Ajusta el tamaño de los elementos según sea necesario */
+    width: 100%;
+}
+
+.grid-item img {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    user-select: none;
+    border: transparent 2px solid;
+    transition: all 0.3s ease 0s;
+}
+
+.grid-item img.active {
+    border: var(--text-color) 2px solid;
+    cursor: default;
+}
+
+.grid-item img:hover {
+    border: var(--text-color) 2px solid;
+}
+
+.fa-solid {
+    transition: transform 0.3s ease;
+}
+
+.fa-solid.rotate-up {
+    transform: rotate(180deg);
+}
+
+.drop-down {
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: all 0.3s ease 0s;
+    user-select: none;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 6px;
+}
+
+.drop-down:hover {
+    color: var(--primary-color);
+}

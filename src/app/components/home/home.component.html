@@ -35,7 +35,7 @@
                 <div class="row">
                     <div class="p-2 col-sm-4 col-md-4 mb-2">
                         <a class="d-block" routerLink="projects">
-                            <img class="img-thumbnail mb-3" src="./assets/img/caps/projects.png" alt="">
+                            <img class="img-thumbnail mb-3" src="./assets/img/caps/projects.jpeg" alt="">
                             <h3 class="h5 mb-1">{{lang.projects}}</h3>
                         </a>
                         <p class="text-sub">{{lang.home_create_several_projects}}</p>
@@ -44,7 +44,7 @@
 
                     <div class="p-2 col-sm-4 col-md-4 mb-2">
                         <a class="d-block" [routerLink]="activityUrl">
-                            <img class="img-thumbnail mb-3" src="./assets/img/caps/activities.png" alt="">
+                            <img class="img-thumbnail mb-3" src="./assets/img/caps/activities.jpg" alt="">
                             <h3 class="h5 mb-1">{{lang.activities}}</h3>
                         </a>
                         <p class="text-sub">{{lang.home_create_activities}}</p>
@@ -52,7 +52,7 @@
 
                     <div class="p-2 col-sm-4 col-md-4 mb-2">
                         <a class="d-block" [routerLink]="activityUrl != '' ? [activityUrl, 'members'] : ''">
-                            <img class="img-thumbnail mb-3" src="./assets/img/caps/add_remove_member.png" alt="">
+                            <img class="img-thumbnail mb-3" src="./assets/img/caps/add_remove_member.jpg" alt="">
                             <h3 class="h5 mb-1">{{lang.home_add_remove_members}}</h3>
                         </a>
                         <p class="text-sub">{{lang.home_add_remove_project_members}}</p>
@@ -61,7 +61,7 @@
 
                     <div class="p-2 col-sm-4 col-md-4 mb-2">
                         <a class="d-block" [routerLink]="activityUrl">
-                            <img class="img-thumbnail mb-3" src="./assets/img/caps/change_project.png" alt="">
+                            <img class="img-thumbnail mb-3" src="./assets/img/caps/change_project.jpg" alt="">
                             <h3 class="h5 mb-1">{{lang.home_modify_project}}</h3>
                         </a>
                         <p class="text-sub">{{lang.home_make_changes_modify_project}}</p>
@@ -69,7 +69,7 @@
 
                     <div class="p-2 col-sm-4 col-md-4 mb-2">
                         <a class="d-block" [routerLink]="activityUrl">
-                            <img class="img-thumbnail mb-3" src="./assets/img/caps/edit_activity.png" alt="">
+                            <img class="img-thumbnail mb-3" src="./assets/img/caps/edit_activity.jpg" alt="">
                             <h3 class="h5 mb-1">{{lang.home_change_activity_elements}}</h3>
                         </a>
                         <p class="text-sub">{{lang.home_edit_activity_elements}}</p>
@@ -81,20 +81,22 @@
         <app-carousel></app-carousel>
         <hr>
         <div class="video-container col-12" [class.d-flex]="!isMobile">
-            <p class="video-text" [class.col-12]="isMobile" [class.video-text-p-right]="!isMobile">
-                {{lang.mpm_description_1}}
-            </p>
-            <ul class="container-justify">
-                <li>
-                    <strong>{{lang.strong_1}}</strong> {{lang.mpm_description_2}}
-                </li>
-                <li>
-                    <strong>{{lang.strong_2}}</strong> {{lang.mpm_description_3}}
-                </li>
-                <li>
-                    <strong>{{lang.strong_3}}</strong> {{lang.mpm_description_4}}
-                </li>
-            </ul>
+            <div class="video-text col-7" [class.col-12]="isMobile">
+                <p class="video-text" [class.col-12]="isMobile" [class.video-text-p-right]="!isMobile">
+                    {{lang.mpm_description_1}}
+                </p>
+                <ul class="container-justify">
+                    <li>
+                        <strong>{{lang.strong_1}}</strong> {{lang.mpm_description_2}}
+                    </li>
+                    <li>
+                        <strong>{{lang.strong_2}}</strong> {{lang.mpm_description_3}}
+                    </li>
+                    <li>
+                        <strong>{{lang.strong_3}}</strong> {{lang.mpm_description_4}}
+                    </li>
+                </ul>
+            </div>
             <video autoplay [muted]="'muted'" loop class="video-size" [class.col-4]="!isMobile"
                 [class.col-12]="isMobile">
                 <source src="https://mpm-back-end-node.onrender.com/api/videos/publicidad.mp4" type="video/mp4">

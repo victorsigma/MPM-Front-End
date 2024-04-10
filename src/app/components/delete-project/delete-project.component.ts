@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ProjectData } from 'src/app/models/projects';
 import { ProjectsHasUser } from 'src/app/models/projectsHasUser';
 import { LoginDataService } from 'src/app/services/login-data.service';
@@ -8,6 +8,8 @@ import { UsersProjectsService } from 'src/app/services/users-projects.service';
 import { Router } from '@angular/router';
 import { ActivityData } from '../../models/ativities';
 import { ActivityDataService } from '../../services/activity-data.service';
+import { LangService } from 'src/app/services/lang.service';
+import { Lang } from 'src/app/models/lang';
 
 @Component({
   selector: 'app-delete-project',
@@ -20,53 +22,38 @@ export class DeleteProjectComponent implements OnInit {
   @Input() project: ProjectData = new ProjectData();
   members: ProjectsHasUser[] = [];
   activities: ActivityData[] = [];
-  form: UntypedFormGroup = new UntypedFormGroup({
-    password: new UntypedFormControl
+  form: FormGroup = new FormGroup({
+    title: new FormControl
   });
+
+  public lang: Lang = new Lang();
   constructor(
-    private loginService: LoginDataService,
     private projectList: ProjectListService,
     private memberList: UsersProjectsService,
     private activityData: ActivityDataService,
+    private langService: LangService,
     private route: Router
   ) {
+    this.lang = this.langService.getLang();
   }
 
   ngOnInit(): void {
   }
 
   deleteProject(): void {
-    if (this.validation()) {
-      this.members = this.memberList.projectMembers.filter(memberList => {
-        return memberList.proyectsIdProject == this.project.id;
-      })
-      // this.activities = this.activityData.activitiesMaster.filter(activityData: any => {
-      //   return activityData.projectId == this.project.id;
-      // })
 
-      this.members.forEach(element => {
-        this.memberList.removeProjectUser(element.id).subscribe();
-      })
+    console.log(this.form.get('title')?.value)
 
-      this.activities.forEach(element => {
-        this.activityData.removeActivity(element.id).subscribe();
-      })
-
+    if (this.form.get('title')?.value == this.project.title) {
       this.projectList.removeProjects(this.project.id).subscribe(()=> {
-        this.projectList.loadProjects();
-        this.memberList.getList();
+        this.route.navigate(['/projects']);
       });
-      this.route.navigate(['/']);
     }
   }
 
-  validation(): boolean {
-    return true //(AES.decrypt(this.loginService.usersList[0].password, this.userList.encryptionKey).toString(enc.Utf8) === this.form.get('password')?.value)
-  }
-
   reloadForm() {
-    this.form = new UntypedFormGroup({
-      password: new UntypedFormControl
+    this.form = new FormGroup({
+      title: new FormControl
     });
   }
 }

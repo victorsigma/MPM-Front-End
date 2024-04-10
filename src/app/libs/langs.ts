@@ -175,6 +175,9 @@ export const enEN: Lang = {
     "auth_code": "Enter your verification code",
     "enable_a2f": "Enable A2F",
     "disable_a2f": "Disable A2F",
+    "title": "Title",
+    "delete_project_title": "Confirm the project title to delete",
+    "customization": "Customization",
 }
 
 export const esMX: Lang = {
@@ -352,4 +355,7 @@ export const esMX: Lang = {
     "auth_code": "Introduzca su código de verificación",
     "enable_a2f": "Habilitar A2F",
     "disable_a2f": "Deshabilitar A2F",
+    "title": "Título",
+    "delete_project_title": "Confirme el título del proyecto que desea eliminar",
+    "customization": "Personalización",
 }

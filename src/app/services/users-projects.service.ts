@@ -22,12 +22,6 @@ export class UsersProjectsService {
     return this.http.get(this.myAppUrl + this.myApiUrl)
   }
 
-  getList() {
-    this.getListProjectUser().subscribe(async data=> {
-      this.projectMembers = await data;
-    })
-  }
-
   addProjectUser(projectUser: PostProjectsHasUser) {
     return this.http.post(this.myAppUrl + this.myApiUrl, projectUser)
   }

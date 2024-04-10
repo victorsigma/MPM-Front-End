@@ -28,6 +28,8 @@ export class EditorActivityComponent implements OnInit {
     rolesListProgrammer: new FormControl()
   })
 
+  public isCustom: boolean = false;
+
   public lang: Lang = new Lang();
   constructor(
     public dataServiceModal: ActivityDataService,

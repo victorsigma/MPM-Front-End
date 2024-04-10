@@ -81,10 +81,6 @@ export class HeaderComponent implements OnInit {
     this.updateLogin();
   }
 
-  reloadProjects() {
-    this.projectList.loadProjects();
-  }
-
 
   sliderChange() {
     if (this.isMobile) return;

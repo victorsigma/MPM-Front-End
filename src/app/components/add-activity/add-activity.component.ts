@@ -31,6 +31,8 @@ export class AddActivityComponent implements OnInit {
   @Output() newActivity: EventEmitter<ActivityData> = new EventEmitter();
   @Input() project:ProjectData | undefined = new ProjectData();
 
+  public isCustom: boolean = false;
+
   public lang: Lang = new Lang();
   constructor(private toastr: ToastrService, private activityService: ActivityDataService, private router: Router, private langService: LangService) {
     this.url = this.router.url.split('/')
@@ -45,7 +47,7 @@ export class AddActivityComponent implements OnInit {
       id: '',
       title: this.form.get('title')?.value,
       subtitle: this.form.get('subtitle')?.value,
-      src: 'img_'+this.random(1, 7),
+      src: this.activity.src != '' ? this.activity.src : 'img_'+this.random(1, 7),
       status: this.form.get('status')?.value,
       dateEnd: new Date(new Date(this.form.get('dateEnd')?.value)),
       leader: true,

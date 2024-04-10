@@ -51,9 +51,53 @@
                         <input formControlName="dateEnd" required class="date" name="dateEnd"
                             placeholder="MM/DD/YYYY" type="date" />
                     </div>
-                    <div class="list-group card-body">
-                        <button type="submit" [disabled]="!this.form.valid" class="btn btn-update"
-                            data-bs-dismiss="modal">{{lang.add_activity}}</button>
+
+
+                    <div class="mb-3 ">
+                        <a class="drop-down d-flex" type="button" (click)="isCustom = !isCustom">
+                            {{lang.customization}} <i class="fa-solid" [class.fa-caret-down]="!isCustom"
+                                [class.fa-caret-up]="isCustom" [class.rotate-up]="isCustom"></i>
+                        </a>
+                    </div>
+
+                    <div *ngIf="isCustom" class="mb-3 container-grid">
+                        <div class="grid-item">
+                            <img src="./assets/img/card/img_1.jpg" (click)="activity.src = 'img_1'" [class.active]="activity.src === 'img_1'"
+                                alt="Miniatura 1">
+                        </div>
+                        <div class="grid-item">
+                            <img src="./assets/img/card/img_2.jpg" (click)="activity.src = 'img_2'" [class.active]="activity.src === 'img_2'"
+                                alt="Miniatura 2">
+                        </div>
+                        <div class="grid-item">
+                            <img src="./assets/img/card/img_3.jpg" (click)="activity.src = 'img_3'" [class.active]="activity.src === 'img_3'"
+                                alt="Miniatura 3">
+                        </div>
+
+                        <div class="grid-item">
+                            <img src="./assets/img/card/img_4.jpg" (click)="activity.src = 'img_4'" [class.active]="activity.src === 'img_4'"
+                                alt="Miniatura 4">
+                        </div>
+                        <div class="grid-item">
+                            <img src="./assets/img/card/img_5.jpg" (click)="activity.src = 'img_5'" [class.active]="activity.src === 'img_5'"
+                                alt="Miniatura 5">
+                        </div>
+                        <div class="grid-item">
+                            <img src="./assets/img/card/img_6.jpg" (click)="activity.src = 'img_6'" [class.active]="activity.src === 'img_6'"
+                                alt="Miniatura 6">
+                        </div>
+
+                        <div class="grid-item">
+                            <img src="./assets/img/card/img_7.jpg" (click)="activity.src = 'img_7'" [class.active]="activity.src === 'img_7'"
+                                alt="Miniatura 7">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <div class="list-group card-body">
+                            <button type="submit" [disabled]="!this.form.valid" class="btn btn-update"
+                                data-bs-dismiss="modal">{{lang.add_activity}}</button>
+                        </div>
                     </div>
                 </form>
             </div>
