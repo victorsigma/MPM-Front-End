@@ -35,8 +35,7 @@
 
                     <div class="mb-3 ">
                         <a class="drop-down d-flex" type="button" (click)="isCustom = !isCustom">
-                            {{lang.customization}} <i class="fa-solid" [class.fa-caret-down]="!isCustom"
-                                [class.fa-caret-up]="isCustom" [class.rotate-up]="isCustom"></i>
+                            {{lang.customization}} <i class="fa-solid fa-caret-down" [class.rotate-up]="isCustom"></i>
                         </a>
                     </div>
 
@@ -72,15 +71,6 @@
                                 [class.active]="project.src === 'img_7'" alt="Miniatura 7">
                         </div>
                     </div>
-
-
-                    <!-- <div class="modal-footer" style="justify-content: space-between !important;">
-                        
-                        <button type="button" class="btn btn-delete"
-                            data-bs-dismiss="modal" 
-                            data-bs-toggle="modal"
-                            data-bs-target="#deleteProject"><i class="fa-solid fa-trash fa-sm"></i></button>
-                    </div> -->
 
                     <div class="modal-footer d-flex">
                         <button type="button" class="btn btn-delete" data-bs-dismiss="modal" data-bs-toggle="modal"

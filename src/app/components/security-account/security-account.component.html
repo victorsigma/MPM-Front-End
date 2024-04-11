@@ -19,13 +19,19 @@
                         <div class="col-6 input-info">
                             <div class="col-10">
                                 <button class="btn-email-check w-100 h-100" *ngIf="!isVerify && isVerify != undefined" (click)="verifyAccountMessage()" type="button">
-                                    {{lang.enable_a2f}}
-                                    <i class="fa-solid fa-check fa-xl"></i>
+                                    {{lang.enable_a2f}}&nbsp;&nbsp;<i class="fa-solid fa-check"></i>
                                 </button>
 
                                 <button class="btn-email-check w-100 h-100" *ngIf="isVerify && isA2F != undefined" type="button" (click)="isA2F == undefined ? null : isA2F ? disableA2FModal() : enableA2FModal()">
-                                    {{!isA2F ? lang.enable_a2f : lang.disable_a2f}}
-                                    <i class="fa-solid fa-check fa-xl"></i>
+                                    {{!isA2F ? lang.enable_a2f : lang.disable_a2f}}&nbsp;&nbsp;<i *ngIf="isA2F" class="fa-solid fa-check"></i>
+                                </button>
+                                <button *ngIf="isVerify == undefined" class="btn-email-check w-100 h-100" type="button">
+                                    <div class="lds-ellipsis">
+                                        <div class="ellipsis-1 ellipsis"></div>
+                                        <div class="ellipsis-2 ellipsis"></div>
+                                        <div class="ellipsis-3 ellipsis"></div>
+                                        <div class="ellipsis-4 ellipsis"></div>
+                                    </div>
                                 </button>
                             </div>
                         </div>

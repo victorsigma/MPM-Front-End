@@ -44,13 +44,23 @@
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
                             </div>
-                            
+
                         </div>
                         <div class="col-6 input-info">
                             <div class="col-10">
-                                <button *ngIf="isVerify != undefined" class="btn-email-check w-100 h-100" [disabled]="isVerify" (click)="!isVerify ? verifyAccountRequest() : null" type="button">
-                                    {{!isVerify ? lang.verify_email : lang.verified}}
-                                    <i class="fa-solid fa-check fa-xl"></i>
+                                <button *ngIf="isVerify != undefined" class="btn-email-check w-100 h-100"
+                                    [disabled]="isVerify" (click)="!isVerify ? verifyAccountRequest() : null"
+                                    type="button">
+                                    {{!isVerify ? lang.verify_email : lang.verified}}&nbsp;&nbsp;<i class="fa-solid fa-check"></i>
+                                </button>
+
+                                <button *ngIf="isVerify == undefined" class="btn-email-check w-100 h-100" type="button">
+                                    <div class="lds-ellipsis">
+                                        <div class="ellipsis-1 ellipsis"></div>
+                                        <div class="ellipsis-2 ellipsis"></div>
+                                        <div class="ellipsis-3 ellipsis"></div>
+                                        <div class="ellipsis-4 ellipsis"></div>
+                                    </div>
                                 </button>
                             </div>
                         </div>

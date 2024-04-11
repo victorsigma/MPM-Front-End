@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">{{dataServiceModal.getModalActivity().title}}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="reloadForm()"></button>
             </div>
             <div class="modal-body">
                 <form [formGroup]="form" (ngSubmit)="editActivity()">
@@ -70,8 +70,7 @@
 
                     <div class="mb-3 ">
                         <a class="drop-down d-flex" type="button" (click)="isCustom = !isCustom">
-                            {{lang.customization}} <i class="fa-solid" [class.fa-caret-down]="!isCustom"
-                                [class.fa-caret-up]="isCustom" [class.rotate-up]="isCustom"></i>
+                            {{lang.customization}} <i class="fa-solid fa-caret-down" [class.rotate-up]="isCustom"></i>
                         </a>
                     </div>
 

@@ -18,6 +18,8 @@ export class EditorActivityComponent implements OnInit {
 
   @Input() public activity: ActivityData = new ActivityData();
 
+  private srcOld: string = this.activity.src;
+
   form: FormGroup = new FormGroup({
     title: new FormControl(),
     subtitle: new FormControl(),
@@ -45,6 +47,7 @@ export class EditorActivityComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.srcOld = this.activity.src;
     this.form = new FormGroup({
       title: new FormControl(),
       subtitle: new FormControl(),
@@ -119,14 +122,6 @@ export class EditorActivityComponent implements OnInit {
   }
 
   reloadForm() {
-    // this.form = new FormGroup({
-    //   title: new FormControl(),
-    //   subtitle: new FormControl(),
-    //   status: new FormControl(this.dataServiceModal.activity.status),
-    //   dateEnd: new FormControl(),
-    //   rolesListAnalyst: new FormControl(this.dataServiceModal.activity.analyst),
-    //   rolesListDesigner: new FormControl(this.dataServiceModal.activity.designer),
-    //   rolesListProgrammer: new FormControl(this.dataServiceModal.activity.programmer)
-    // })
+    this.activity.src = this.srcOld;
   }
 }
