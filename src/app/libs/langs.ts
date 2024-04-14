@@ -178,6 +178,12 @@ export const enEN: Lang = {
     "title": "Title",
     "delete_project_title": "Confirm the project title to delete",
     "customization": "Customization",
+    "logout_modal": { 
+        "title": "No recent activity", 
+        "body": "Do you wish to log out due to inactivity?", 
+        "confirm": "Extend session", 
+        "cancel": "Logout"
+    },
 }
 
 export const esMX: Lang = {
@@ -358,4 +364,10 @@ export const esMX: Lang = {
     "title": "Título",
     "delete_project_title": "Confirme el título del proyecto que desea eliminar",
     "customization": "Personalización",
+    "logout_modal": { 
+        "title": "No hay actividad reciente", 
+        "body": "¿Desea cerrar la sesión debido a inactividad?", 
+        "confirm": "Extender sesión", 
+        "cancel": "Cerrar sesión" 
+    },
 }

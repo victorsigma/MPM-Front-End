@@ -212,4 +212,6 @@ export class Lang {
     title: string = '';
     delete_project_title: string = '';
     customization: string = '';
+
+    logout_modal: { title: string, body: string, confirm: string, cancel: string } = { title: '', body: '', confirm: '', cancel: '' }
 }

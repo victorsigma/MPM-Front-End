@@ -54,6 +54,7 @@ import { SecurityService } from './services/security.service';
 import { VerifyAccountComponent } from './components/verify-account/verify-account.component';
 import { FadeInOutDirective } from './directives/fade-in-out.directive';
 import { ArrowIconDirective } from './directives/arrow-icon.directive';
+import { LogoutModalComponent } from './components/logout-modal/logout-modal.component';
 
 
 @NgModule({
@@ -97,7 +98,8 @@ import { ArrowIconDirective } from './directives/arrow-icon.directive';
     PasswordRecoveryComponent,
     VerifyAccountComponent,
     FadeInOutDirective,
-    ArrowIconDirective
+    ArrowIconDirective,
+    LogoutModalComponent
   ],
   imports: [
     BrowserModule,

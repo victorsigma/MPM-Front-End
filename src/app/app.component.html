@@ -1,2 +1,19 @@
 <app-header></app-header>
 <app-load-screen></app-load-screen>
+
+<div #logoutModal class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{lang.logout_modal.title}}</h5>
+            </div>
+            <div class="modal-body">
+                {{lang.logout_modal.body}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="cancel()">{{lang.logout_modal.cancel}}</button>
+                <button type="button" class="btn btn-primary" (click)="logout()">{{lang.logout_modal.confirm}}</button>
+            </div>
+        </div>
+    </div>
+</div>
