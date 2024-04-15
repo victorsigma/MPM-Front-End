@@ -7,7 +7,7 @@ import { LoginDataService } from './login-data.service';
   providedIn: 'root'
 })
 export class LogoutService {
-  private inactivityTime = (30*60*1000);
+  private inactivityTime = (5*60*1000);
   private activityEvents$: Observable<any>;
   private activityTimer$: Observable<any> | undefined = undefined;
   private activitySubscription: Subscription | undefined = undefined;
@@ -17,10 +17,13 @@ export class LogoutService {
 
   constructor(private loginService: LoginDataService) {
     this.activityEvents$ = merge(
+      fromEvent(document, 'keydown'),
+      fromEvent(document, 'keypress'),
+      fromEvent(document, 'touchstart'),
+      fromEvent(document, 'touchmove'),
       fromEvent(document, 'mousemove'),
       fromEvent(document, 'wheel'),
-      fromEvent(document, 'click'),
-      fromEvent(document, 'keypress')
+      fromEvent(document, 'click')
     );
 
     if(this.loginService.isLogin()) this.initInactivityDetection();
